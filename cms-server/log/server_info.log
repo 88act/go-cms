@@ -1,0 +1,1138 @@
+[go-cms]2021/10/12 - 16:24:12.968	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[go-cms]2021/10/12 - 16:24:12.977	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[go-cms]2021/10/12 - 16:24:12.977	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[go-cms]2021/10/12 - 16:24:12.978	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[go-cms]2021/10/12 - 16:24:13.008	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[go-cms]2021/10/12 - 16:24:13.010	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/12 - 16:48:07.144	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/12 - 16:48:07.147	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/12 - 16:48:07.148	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/12 - 16:48:07.148	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/12 - 16:48:07.234	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/12 - 16:48:07.236	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 09:46:41.496	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 09:46:41.499	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 09:46:41.500	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 09:46:41.500	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 09:46:41.519	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 09:46:41.531	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 11:43:08.810	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 11:43:08.813	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 11:43:08.813	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 11:43:08.814	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 11:43:08.843	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 11:43:08.857	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 12:11:18.727	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 12:11:18.730	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 12:11:18.730	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 12:11:18.731	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 12:11:18.750	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 12:11:18.764	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 13:15:33.780	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 13:15:33.788	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 13:15:33.788	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 13:15:33.789	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 13:15:33.822	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 13:15:33.823	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 13:48:21.459	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 13:48:21.463	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 13:48:21.463	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 13:48:21.463	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 13:48:21.482	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 13:48:21.483	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 14:22:13.999	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:65	register table success
+[GoCms]2021/10/13 - 14:22:14.002	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 14:22:14.002	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 14:22:14.003	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 14:22:14.041	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:99	router register success
+[GoCms]2021/10/13 - 14:22:14.045	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 14:28:11.576	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 14:28:11.581	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 14:28:11.581	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 14:28:11.582	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 14:28:11.610	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 14:28:11.612	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 14:29:37.248	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 14:29:37.252	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 14:29:37.252	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 14:29:37.252	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 14:29:37.274	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 14:29:37.276	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 15:02:28.297	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 15:02:28.301	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 15:02:28.302	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 15:02:28.302	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 15:02:28.336	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 15:02:28.338	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 15:21:29.046	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 15:21:29.050	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 15:21:29.051	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 15:21:29.052	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 15:21:29.109	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 15:21:29.111	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 15:32:59.177	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 15:32:59.182	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 15:32:59.182	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 15:32:59.183	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 15:32:59.261	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 15:32:59.264	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 15:41:53.756	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 15:41:53.760	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 15:41:53.760	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 15:41:53.760	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 15:41:53.795	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 15:41:53.796	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 15:51:50.271	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 15:51:50.275	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 15:51:50.275	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 15:51:50.276	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 15:51:50.307	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 15:51:50.309	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 16:10:52.634	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 16:10:52.640	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 16:10:52.641	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 16:10:52.642	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 16:10:52.754	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 16:10:52.756	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 16:11:13.088	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 16:11:13.093	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 16:11:13.093	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 16:11:13.094	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 16:11:13.121	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 16:11:13.122	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 16:51:15.638	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 16:51:15.643	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 16:51:15.644	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 16:51:15.644	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 16:51:15.768	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 16:51:15.777	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 16:53:52.940	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 16:53:52.944	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 16:53:52.944	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 16:53:52.945	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 16:53:53.019	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 16:53:53.022	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 17:45:12.147	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 17:45:12.151	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 17:45:12.152	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 17:45:12.152	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 17:45:12.257	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 17:45:12.259	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/13 - 17:46:44.261	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/13 - 17:46:44.265	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/13 - 17:46:44.266	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/13 - 17:46:44.266	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/13 - 17:46:44.294	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/13 - 17:46:44.297	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 10:08:36.708	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 10:08:36.710	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 10:08:36.711	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 10:08:36.829	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 10:08:36.833	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 10:11:51.788	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 10:11:51.794	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 10:11:51.795	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 10:11:51.795	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 10:11:51.879	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 10:11:51.880	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 10:31:39.795	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 10:31:39.802	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 10:31:39.802	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 10:31:39.803	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 10:31:39.835	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 10:31:39.837	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 10:53:49.361	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 10:53:49.365	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 10:53:49.365	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 10:53:49.365	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 10:53:49.400	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 10:53:49.401	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 10:59:31.724	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 10:59:31.728	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 10:59:31.729	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 10:59:31.729	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 10:59:31.762	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 10:59:31.765	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:05:46.005	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:05:46.010	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:05:46.010	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:05:46.011	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:05:46.091	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:05:46.094	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:16:14.176	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:16:14.186	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:16:14.186	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:16:14.186	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:16:14.231	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:16:14.234	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:22:49.952	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:22:49.955	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:22:49.955	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:22:49.956	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:22:49.986	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:22:49.988	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:26:26.359	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:26:26.365	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:26:26.365	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:26:26.366	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:26:26.393	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:26:26.435	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:45:07.690	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:45:07.694	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:45:07.694	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:45:07.695	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:45:07.731	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:45:07.733	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:47:43.183	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:47:43.188	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:47:43.188	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:47:43.188	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:47:43.255	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:47:43.256	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 11:58:27.049	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 11:58:27.054	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 11:58:27.054	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 11:58:27.055	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 11:58:27.086	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 11:58:27.089	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 13:52:38.438	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 13:52:38.442	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 13:52:38.442	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 13:52:38.442	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 13:52:38.474	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 13:52:38.479	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:18:32.157	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:18:32.165	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:18:32.165	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:18:32.166	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:18:32.201	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:18:32.250	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:22:12.373	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:22:12.380	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:22:12.380	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:22:12.380	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:22:12.414	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:22:12.431	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:25:24.481	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:25:24.485	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:25:24.485	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:25:24.486	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:25:24.510	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:25:24.518	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:50:36.605	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:50:36.623	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:50:36.625	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:50:36.626	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:50:36.748	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:50:36.752	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:51:55.490	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:51:55.495	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:51:55.495	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:51:55.495	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:51:55.574	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:51:55.591	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:52:45.015	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:52:45.019	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:52:45.019	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:52:45.020	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:52:45.046	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:52:45.086	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:54:04.114	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:54:04.118	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:54:04.119	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:54:04.119	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:54:04.145	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:54:04.154	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 14:55:00.760	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 14:55:00.764	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 14:55:00.764	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 14:55:00.764	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 14:55:00.791	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 14:55:00.803	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 15:25:47.118	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 15:25:47.123	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 15:25:47.123	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 15:25:47.123	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 15:25:47.187	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 15:25:47.200	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 15:26:05.069	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 15:26:05.073	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 15:26:05.073	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 15:26:05.074	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 15:26:05.142	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 15:26:05.157	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 15:50:38.127	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 15:50:38.131	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 15:50:38.131	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 15:50:38.131	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 15:50:38.164	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 15:50:38.174	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:12:33.254	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:12:33.260	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:12:33.260	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:12:33.261	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:12:33.373	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:12:33.378	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:15:14.731	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:15:14.735	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:15:14.735	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:15:14.736	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:15:14.763	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:15:14.787	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:23:38.980	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:23:38.985	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:23:38.985	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:23:38.986	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:23:39.053	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:23:39.069	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:23:52.783	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:23:52.787	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:23:52.787	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:23:52.787	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:23:52.812	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:23:52.842	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:26:01.876	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:26:01.880	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:26:01.880	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:26:01.880	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:26:01.906	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:26:01.924	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 16:33:09.773	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 16:33:09.778	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 16:33:09.778	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 16:33:09.779	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 16:33:09.858	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 16:33:09.874	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/14 - 17:40:31.004	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:66	register table success
+[GoCms]2021/10/14 - 17:40:31.010	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/14 - 17:40:31.010	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/14 - 17:40:31.011	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/14 - 17:40:31.109	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:100	router register success
+[GoCms]2021/10/14 - 17:40:31.120	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 09:47:36.595	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 09:47:36.647	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 09:47:36.648	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 09:47:36.649	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 09:47:36.698	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 09:47:36.701	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 09:48:36.700	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 09:48:36.752	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 09:48:36.752	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 09:48:36.753	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 09:48:36.932	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 09:48:36.942	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 09:50:11.611	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 09:50:11.654	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 09:50:11.654	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 09:50:11.655	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 09:50:11.681	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 09:50:11.698	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 14:06:44.490	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 14:06:44.553	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 14:06:44.553	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 14:06:44.554	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 14:06:44.588	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 14:06:44.603	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 14:56:20.313	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 14:56:20.383	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 14:56:20.383	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 14:56:20.391	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 14:56:20.458	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 14:56:20.461	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 15:08:52.534	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 15:08:52.578	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 15:08:52.578	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 15:08:52.579	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 15:08:52.677	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 15:08:52.694	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 15:30:13.584	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 15:30:13.628	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 15:30:13.628	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 15:30:13.629	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 15:30:13.673	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 15:30:13.709	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 16:50:04.309	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 16:50:04.356	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 16:50:04.356	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 16:50:04.357	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 16:50:04.389	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 16:50:04.394	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 17:07:15.584	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 17:07:15.628	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 17:07:15.628	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 17:07:15.629	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 17:07:15.663	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 17:07:15.664	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 17:14:29.772	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 17:14:29.816	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 17:14:29.816	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 17:14:29.817	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 17:14:29.924	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 17:14:29.935	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 17:16:26.923	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 17:16:26.967	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 17:16:26.967	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 17:16:26.968	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 17:16:27.001	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 17:16:27.015	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 17:17:25.197	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 17:17:25.242	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 17:17:25.242	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 17:17:25.243	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 17:17:25.279	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 17:17:25.286	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/15 - 17:25:41.402	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/15 - 17:25:41.447	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/15 - 17:25:41.447	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/15 - 17:25:41.448	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/15 - 17:25:41.479	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/15 - 17:25:41.519	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":8888"}
+[GoCms]2021/10/18 - 17:15:53.260	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/18 - 17:15:53.304	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/18 - 17:15:53.304	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/18 - 17:15:53.304	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/18 - 17:15:53.354	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/18 - 17:15:53.368	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/18 - 17:20:19.438	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/18 - 17:20:19.488	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/18 - 17:20:19.489	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/18 - 17:20:19.490	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/18 - 17:20:19.577	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/18 - 17:20:19.592	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/19 - 14:29:29.239	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/19 - 14:29:29.289	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/19 - 14:29:29.290	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/19 - 14:29:29.290	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/19 - 14:29:29.360	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/19 - 14:29:29.364	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/19 - 17:05:43.203	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/19 - 17:05:43.251	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/19 - 17:05:43.252	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/19 - 17:05:43.252	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/19 - 17:05:43.299	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/19 - 17:05:43.345	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/19 - 17:08:24.522	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/19 - 17:08:24.558	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/19 - 17:08:24.558	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/19 - 17:08:24.559	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/19 - 17:08:24.684	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/19 - 17:08:24.701	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/19 - 17:11:32.531	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/19 - 17:11:32.573	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/19 - 17:11:32.573	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/19 - 17:11:32.574	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/19 - 17:11:32.614	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/19 - 17:11:32.655	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/19 - 17:14:06.003	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/19 - 17:14:06.045	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/19 - 17:14:06.045	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/19 - 17:14:06.046	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/19 - 17:14:06.152	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/19 - 17:14:06.160	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 11:40:58.650	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 11:40:58.695	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 11:40:58.695	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 11:40:58.696	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 11:40:58.786	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 11:40:58.791	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 11:43:04.705	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 11:43:04.748	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 11:43:04.749	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 11:43:04.749	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 11:43:04.785	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 11:43:04.788	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 11:45:31.502	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 11:45:31.543	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 11:45:31.543	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 11:45:31.544	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 11:45:31.576	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 11:45:31.586	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 11:46:32.510	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 11:46:32.555	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 11:46:32.556	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 11:46:32.556	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 11:46:32.587	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 11:46:32.593	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 13:15:54.335	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 13:15:54.374	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 13:15:54.374	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 13:15:54.374	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 13:15:54.461	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 13:15:54.477	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 13:18:42.073	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 13:18:42.115	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 13:18:42.116	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 13:18:42.116	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 13:18:42.157	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 13:18:42.178	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 13:30:53.256	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 13:30:53.300	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 13:30:53.301	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 13:30:53.302	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 13:30:53.344	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 13:30:53.346	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:03:14.522	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:03:14.564	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:03:14.564	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:03:14.565	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:03:14.635	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:03:14.644	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:04:37.506	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:04:37.552	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:04:37.552	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:04:37.553	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:04:37.586	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:04:37.596	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:11:35.385	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:11:35.428	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:11:35.428	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:11:35.429	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:11:35.457	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:11:35.467	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:14:41.665	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:14:41.704	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:14:41.705	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:14:41.705	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:14:41.734	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:14:41.749	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:46:15.199	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:46:15.238	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:46:15.238	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:46:15.239	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:46:15.269	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:46:15.279	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 16:47:32.354	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 16:47:32.391	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 16:47:32.391	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 16:47:32.392	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 16:47:32.421	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 16:47:32.437	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/20 - 17:14:59.599	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/20 - 17:14:59.643	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/20 - 17:14:59.643	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/20 - 17:14:59.643	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/20 - 17:14:59.715	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/20 - 17:14:59.733	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/21 - 11:25:48.055	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/21 - 11:25:48.098	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/21 - 11:25:48.098	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/21 - 11:25:48.099	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/21 - 11:25:48.130	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/21 - 11:25:48.164	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 10:31:54.353	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 10:31:54.396	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 10:31:54.397	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 10:31:54.397	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 10:31:54.461	[34minfo[0m	C:/work_go/go-cms-fork/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 10:31:54.474	[34minfo[0m	C:/work_go/go-cms-fork/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 13:42:56.260	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 13:42:56.304	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 13:42:56.304	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 13:42:56.305	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 13:42:56.354	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 13:42:56.360	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 13:44:22.677	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 13:44:22.734	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 13:44:22.790	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 13:44:22.794	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 13:44:23.515	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 13:44:23.536	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 14:29:35.756	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 14:29:35.803	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 14:29:35.804	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 14:29:35.806	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 14:29:35.853	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 14:29:35.856	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 14:33:21.136	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 14:33:21.182	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 14:33:21.183	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 14:33:21.183	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 14:33:21.276	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 14:33:21.286	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 14:43:00.187	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 14:43:00.230	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 14:43:00.230	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 14:43:00.232	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 14:43:00.262	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 14:43:00.265	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 14:44:43.343	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 14:44:43.387	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 14:44:43.388	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 14:44:43.388	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 14:44:43.415	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 14:44:43.421	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 14:58:10.235	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 14:58:10.277	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 14:58:10.277	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 14:58:10.278	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 14:58:10.307	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 14:58:10.314	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 15:12:23.057	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 15:12:23.101	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 15:12:23.101	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 15:12:23.102	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 15:12:23.132	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 15:12:23.141	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 15:13:33.452	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 15:13:33.497	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 15:13:33.497	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 15:13:33.498	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 15:13:33.528	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 15:13:33.546	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 15:21:00.801	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 15:21:00.844	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 15:21:00.845	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 15:21:00.846	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 15:21:00.879	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 15:21:00.890	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 15:23:29.728	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 15:23:29.770	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 15:23:29.770	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 15:23:29.771	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 15:23:29.874	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 15:23:29.886	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/25 - 15:29:58.733	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/25 - 15:29:58.775	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/25 - 15:29:58.776	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/25 - 15:29:58.776	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/25 - 15:29:58.807	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/25 - 15:29:58.820	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 17:25:10.903	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 17:25:10.971	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 17:25:10.971	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 17:25:10.973	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 17:25:12.420	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 17:25:12.430	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 17:32:35.526	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 17:32:35.566	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 17:32:35.566	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 17:32:35.568	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 17:32:35.609	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 17:32:35.616	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 17:50:35.571	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 17:50:35.612	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 17:50:35.613	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 17:50:35.614	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 17:50:35.705	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 17:50:35.722	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 17:56:06.814	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 17:56:06.858	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 17:56:06.859	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 17:56:06.860	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 17:56:06.956	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 17:56:06.968	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 18:00:14.797	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 18:00:14.838	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 18:00:14.838	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 18:00:14.839	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 18:00:14.873	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 18:00:14.875	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/26 - 18:01:19.497	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/26 - 18:01:19.539	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/26 - 18:01:19.540	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/26 - 18:01:19.541	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/26 - 18:01:19.633	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/26 - 18:01:19.636	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 14:48:20.356	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 14:48:20.406	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 14:48:20.407	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 14:48:20.408	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 14:48:20.497	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 14:48:20.509	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 15:34:10.082	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 15:34:10.127	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 15:34:10.127	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 15:34:10.127	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 15:34:10.176	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 15:34:10.187	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 15:36:26.477	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 15:36:26.480	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 15:36:26.482	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 15:36:26.525	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 15:36:26.531	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 16:17:36.165	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 16:17:36.167	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 16:17:36.167	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 16:17:36.202	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 16:17:36.208	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 16:26:13.041	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 16:26:13.183	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 16:26:13.183	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 16:26:13.184	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 16:26:13.218	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 16:26:13.231	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 22:58:54.222	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 22:58:54.312	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 22:58:54.313	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 22:58:54.315	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 22:58:54.394	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 22:58:54.409	[34minfo[0m	D:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 23:11:59.747	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 23:11:59.814	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 23:11:59.814	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 23:11:59.815	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 23:11:59.874	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 23:11:59.885	[34minfo[0m	D:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/27 - 23:29:11.852	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/27 - 23:29:11.917	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/27 - 23:29:11.917	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/27 - 23:29:11.918	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/27 - 23:29:11.977	[34minfo[0m	D:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/27 - 23:29:11.979	[34minfo[0m	D:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 13:24:50.592	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 13:24:50.593	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 13:24:50.594	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 13:24:50.673	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 13:24:50.687	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 13:48:30.237	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 13:48:30.374	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 13:48:30.375	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 13:48:30.376	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 13:48:30.423	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 13:48:30.434	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 15:21:29.111	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 15:21:29.242	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 15:21:29.242	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 15:21:29.246	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 15:21:29.384	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 15:21:29.388	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 15:23:04.215	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 15:23:04.327	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 15:23:04.327	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 15:23:04.328	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 15:23:04.425	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 15:23:04.440	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 15:51:15.860	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 15:51:16.022	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 15:51:16.031	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 15:51:16.039	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 15:51:16.222	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 15:51:16.229	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 16:36:04.052	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 16:36:04.164	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 16:36:04.164	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 16:36:04.165	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 16:36:04.192	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 16:36:04.200	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 16:47:53.460	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 16:47:53.461	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 16:47:53.462	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 16:47:53.502	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 16:47:53.518	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/10/28 - 16:48:31.448	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/10/28 - 16:48:31.560	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/10/28 - 16:48:31.561	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/10/28 - 16:48:31.562	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/10/28 - 16:48:31.632	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/10/28 - 16:48:31.648	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/03 - 17:13:37.835	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/03 - 17:13:37.839	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/03 - 17:13:37.846	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/03 - 17:13:38.019	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/03 - 17:13:38.035	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/03 - 17:17:11.865	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/03 - 17:17:11.914	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/03 - 17:17:11.914	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/03 - 17:17:11.915	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/03 - 17:17:11.952	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/03 - 17:17:11.954	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 10:59:05.119	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 10:59:05.185	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 10:59:05.185	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 10:59:05.186	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 10:59:05.228	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 10:59:05.244	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:16:08.556	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:16:08.600	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:16:08.600	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:16:08.601	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:16:08.642	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:16:08.659	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:34:10.186	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:34:10.232	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:34:10.232	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:34:10.233	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:34:10.268	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:34:10.276	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:40:37.639	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:40:37.694	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:40:37.694	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:40:37.695	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:40:37.789	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:40:37.805	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:42:00.911	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:42:00.958	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:42:00.958	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:42:00.959	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:42:01.043	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:42:01.058	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:43:56.980	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:43:57.022	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:43:57.023	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:43:57.023	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:43:57.122	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:43:57.127	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:45:15.212	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:45:15.257	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:45:15.258	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:45:15.259	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:45:15.308	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:45:15.321	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:51:32.114	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:51:32.153	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:51:32.153	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:51:32.154	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:51:32.228	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:51:32.247	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 11:56:34.441	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 11:56:34.486	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 11:56:34.486	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 11:56:34.486	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 11:56:34.565	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 11:56:34.567	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 13:19:13.699	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 13:19:13.744	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 13:19:13.744	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 13:19:13.744	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 13:19:13.779	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 13:19:13.790	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 13:48:57.674	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 13:48:57.721	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 13:48:57.721	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 13:48:57.722	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 13:48:57.816	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 13:48:57.835	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 13:53:46.127	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 13:53:46.174	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 13:53:46.174	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 13:53:46.175	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 13:53:46.213	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 13:53:46.218	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 13:55:16.949	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 13:55:16.992	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 13:55:16.992	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 13:55:16.993	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 13:55:17.025	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 13:55:17.046	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:01:19.580	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 14:01:19.622	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:01:19.623	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:01:19.623	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:01:19.719	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:01:19.724	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:16:57.202	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/gorm.go:68	register table success
+[GoCms]2021/11/04 - 14:16:57.251	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:16:57.251	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:16:57.252	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:16:57.348	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:16:57.361	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:24:35.568	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:24:35.570	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:24:35.571	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:24:35.684	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:24:35.700	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:24:50.293	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:24:50.295	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:24:50.295	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:24:50.330	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:24:50.344	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:27:54.383	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:27:54.384	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:27:54.385	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:27:54.423	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:27:54.439	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:33:47.286	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:33:47.287	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:33:47.288	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:33:47.333	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:33:47.346	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:35:48.382	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:35:48.383	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:35:48.385	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:35:48.425	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:35:48.438	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:37:00.510	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:37:00.511	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:37:00.513	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:37:00.548	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:37:00.551	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 14:59:28.572	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 14:59:28.573	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 14:59:28.575	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 14:59:28.616	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 14:59:28.630	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 15:08:23.281	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 15:08:23.283	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 15:08:23.284	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 15:08:23.320	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 15:08:23.336	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 15:09:19.795	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 15:09:19.795	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 15:09:19.796	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 15:09:19.834	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 15:09:19.835	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/04 - 15:28:33.818	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/04 - 15:28:33.819	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/04 - 15:28:33.819	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/04 - 15:28:33.864	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/04 - 15:28:33.867	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:05:44.105	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:05:44.106	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:05:44.107	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:05:44.171	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:05:44.176	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:23:32.255	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:23:32.255	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:23:32.256	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:23:32.274	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:23:32.275	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:25:16.484	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:25:16.484	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:25:16.485	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:25:16.499	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:25:16.503	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:26:16.115	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:26:16.116	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:26:16.116	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:26:16.134	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:26:16.134	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:33:17.924	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:33:17.924	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:33:17.925	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:33:17.958	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:33:17.963	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:35:05.154	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:35:05.154	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:35:05.154	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:35:05.166	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:35:05.168	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:35:24.571	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:35:24.572	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:35:24.572	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:35:24.593	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:35:24.594	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:38:03.409	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:38:03.410	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:38:03.410	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:38:03.423	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:38:03.427	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:38:10.899	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:38:10.899	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:38:10.899	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:38:10.910	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:38:10.915	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/05 - 17:38:22.660	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/05 - 17:38:22.662	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/05 - 17:38:22.662	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/05 - 17:38:22.720	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/05 - 17:38:22.721	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:36:54.250	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:36:54.251	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:36:54.251	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:36:54.275	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:36:54.281	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:36:54.281	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:36:54.282	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:36:54.282	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:36:54.346	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:36:54.357	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:36:54.474	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:36:54.475	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:36:54.475	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:36:54.492	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:36:54.495	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:37:26.055	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:37:26.055	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:37:26.056	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:37:26.075	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:37:26.078	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:37:51.672	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:37:51.673	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:37:51.673	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:37:51.687	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:37:51.688	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:38:24.175	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:38:24.176	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:38:24.176	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:38:24.191	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:38:24.192	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:38:34.038	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:38:34.039	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:38:34.039	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:38:34.058	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:38:34.059	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:38:53.278	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:38:53.279	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:38:53.279	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:38:53.295	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:38:53.298	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:39:18.106	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:39:18.107	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:39:18.107	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:39:18.122	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:39:18.135	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:39:37.287	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:39:37.288	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:39:37.288	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:39:37.306	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:39:37.307	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:40:57.824	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:40:57.825	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:40:57.825	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:40:57.856	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:40:57.859	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:41:35.611	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:41:35.612	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:41:35.613	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:41:35.625	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:41:35.633	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:43:11.018	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:43:11.018	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:43:11.019	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:43:11.037	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:43:11.038	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 10:55:27.610	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 10:55:27.611	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 10:55:27.611	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 10:55:27.625	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 10:55:27.629	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 12:26:43.295	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 12:26:43.296	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 12:26:43.296	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 12:26:43.310	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 12:26:43.321	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 12:26:43.505	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 12:26:43.506	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 12:26:43.506	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 12:26:43.533	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 12:26:43.534	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 12:26:53.486	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 12:26:53.487	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 12:26:53.487	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 12:26:53.498	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 12:26:53.498	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/08 - 12:26:53.511	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/08 - 12:26:53.512	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/08 - 12:26:53.512	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/08 - 12:26:53.521	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/08 - 12:26:53.530	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 10:52:56.699	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 10:52:56.702	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 10:52:56.702	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 10:52:56.743	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 10:52:56.749	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 11:02:49.669	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 11:02:49.670	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 11:02:49.670	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 11:02:49.712	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 11:02:49.721	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 11:10:56.501	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 11:10:56.502	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 11:10:56.502	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 11:10:56.526	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 11:10:56.532	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 13:30:32.276	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 13:30:32.280	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 13:30:32.280	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 13:30:32.352	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 13:30:32.358	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 13:33:51.530	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 13:33:51.531	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 13:33:51.531	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 13:33:51.543	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 13:33:51.546	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:35:39.185	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:35:39.188	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:35:39.188	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:35:39.212	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:35:39.217	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:35:39.551	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:35:39.552	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:35:39.552	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:35:39.572	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:35:39.577	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:38:12.440	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:38:12.440	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:38:12.441	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:38:12.481	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:38:12.494	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:38:45.833	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:38:45.833	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:38:45.834	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:38:45.863	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:38:45.873	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:48:47.112	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:48:47.113	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:48:47.113	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:48:47.132	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:48:47.136	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:48:48.983	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:48:48.983	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:48:48.983	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:48:49.015	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:48:49.022	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:49:48.066	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:49:48.066	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:49:48.066	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:49:48.080	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:49:48.084	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:57:22.967	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:57:22.968	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:57:22.968	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:57:22.993	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:57:22.997	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 14:59:36.715	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 14:59:36.715	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 14:59:36.715	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 14:59:36.759	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 14:59:36.764	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:00:07.040	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:00:07.041	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:00:07.041	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:00:07.057	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:00:07.061	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:00:32.970	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:00:32.971	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:00:32.971	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:00:32.996	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:00:32.997	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:00:45.154	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:00:45.155	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:00:45.155	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:00:45.171	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:00:45.172	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:01:07.342	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:01:07.342	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:01:07.342	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:01:07.391	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:01:07.407	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:01:50.931	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:01:50.933	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:01:50.934	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:01:50.947	[34minfo[0m	C:/work_go/go-cms-builder/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:01:50.948	[34minfo[0m	C:/work_go/go-cms-builder/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:45:46.084	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:45:46.085	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:45:46.086	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:45:46.167	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:45:46.176	[34minfo[0m	C:/work_go/go-cms/server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:55:23.671	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:55:23.672	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:55:23.673	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:55:23.799	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:55:23.812	[34minfo[0m	C:/work_go/go-cms/cms-server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 15:58:19.404	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 15:58:19.405	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 15:58:19.406	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 15:58:19.443	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 15:58:19.459	[34minfo[0m	C:/work_go/go-cms/cms-server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 16:05:35.390	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 16:05:35.392	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 16:05:35.392	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 16:05:35.445	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 16:05:35.457	[34minfo[0m	C:/work_go/go-cms/cms-server/core/server.go:37	server run success on 	{"address": ":40050"}
+[GoCms]2021/11/09 - 16:32:43.798	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:33	use middleware logger
+[GoCms]2021/11/09 - 16:32:43.799	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:36	use middleware cors
+[GoCms]2021/11/09 - 16:32:43.799	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:38	register swagger handler
+[GoCms]2021/11/09 - 16:32:43.829	[34minfo[0m	C:/work_go/go-cms/cms-server/initialize/router.go:102	router register success
+[GoCms]2021/11/09 - 16:32:43.840	[34minfo[0m	C:/work_go/go-cms/cms-server/core/server.go:37	server run success on 	{"address": ":40050"}
