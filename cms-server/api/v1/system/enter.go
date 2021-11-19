@@ -5,6 +5,7 @@ import "github.com/88act/go-cms/server/service"
 type ApiGroup struct {
 	SystemApiApi
 	AuthorityApi
+	SuperBuilderApi
 	BaseApi
 	CasbinApi
 	DictionaryApi
@@ -20,6 +21,8 @@ var authorityService = service.ServiceGroupApp.SystemServiceGroup.AuthorityServi
 var apiService = service.ServiceGroupApp.SystemServiceGroup.ApiService
 var menuService = service.ServiceGroupApp.SystemServiceGroup.MenuService
 var casbinService = service.ServiceGroupApp.SystemServiceGroup.CasbinService
+var superBuilderService = service.ServiceGroupApp.SystemServiceGroup.SuperBuilderService
+var superBuilderHistoryService = service.ServiceGroupApp.SystemServiceGroup.SuperBuilderHistoryService
 var dictionaryService = service.ServiceGroupApp.SystemServiceGroup.DictionaryService
 var dictionaryDetailService = service.ServiceGroupApp.SystemServiceGroup.DictionaryDetailService
 var initDBService = service.ServiceGroupApp.SystemServiceGroup.InitDBService
