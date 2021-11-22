@@ -3,6 +3,7 @@ module github.com/88act/go-cms/server
 go 1.16
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/aliyun/aliyun-oss-go-sdk v2.1.6+incompatible
 	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
 	github.com/casbin/casbin/v2 v2.11.0
@@ -20,6 +21,7 @@ require (
 	github.com/go-playground/validator/v10 v10.3.0 // indirect
 	github.com/go-redis/redis/v8 v8.11.0
 	github.com/go-sql-driver/mysql v1.6.0
+	github.com/gocolly/colly/v2 v2.1.0
 	github.com/gofrs/uuid v3.2.0+incompatible
 	github.com/gogf/gf v1.16.6
 	github.com/gomodule/redigo v2.0.0+incompatible // indirect
