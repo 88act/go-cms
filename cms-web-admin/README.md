@@ -1,6 +1,3 @@
-管理后台web页面
-
-
 # qm-plus-vue-page
 
 ## Project setup
@@ -81,7 +78,8 @@ web
 │   ├── App.vue  -- 入口页面
 │   ├── main.js  -- 入口文件 加载组件 初始化等
 │   └── permission.js  -- 跳转
-├── build.config.js  -- 环境变量build配置 
+├── build.config.js  -- 环境变量build配置
+├ 
 ├── .babelrc    -- babel-loader 配置
 ├── .travis.yml -- 自动化CI配置
 ├── vue.config.js  -- vue-cli 配置

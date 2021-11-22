@@ -20,20 +20,17 @@ const formatRouter = (routes) => {
 const KeepAliveFilter = (routes) => {
   routes && routes.forEach(item => {
     // 子菜单中有 keep-alive 的，父菜单也必须 keep-alive，否则无效。这里将子菜单中有 keep-alive 的父菜单也加入。
-    if ((item.children && item.children.some(ch => ch.meta.keepAlive) || item.meta.keepAlive)) {
-		try {
-			 item.component().then(val => {
-				 keepAliveRouters.push(val.default.name) 
-				 }
-			)
-		} catch(e ){
-			console.log("KeepAliveFilter error ="+e.message); 
+	try{
+		if ((item.children && item.children.some(ch => ch.meta.keepAlive) || item.meta.keepAlive)) {
+		  item.component().then(val => { keepAliveRouters.push(val.default.name) })
 		}
-     
-    }
-    if (item.children && item.children.length > 0) {
-      KeepAliveFilter(item.children)
-    }
+		if (item.children && item.children.length > 0) {
+		  KeepAliveFilter(item.children)
+		}
+	}catch(e){
+		console.log("KeepAliveFilter 错误"+e.message)
+	}
+    
   })
 }
 

@@ -54,9 +54,7 @@
             </div>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" style="width: 46%" @click="checkInit"
-              >前往初始化</el-button
-            >
+            
             <el-button
               type="primary"
               style="width: 46%; margin-left: 8%"
@@ -66,24 +64,23 @@
           </el-form-item>
         </el-form>
       </div>
-      <div class="login_panle_right" />
+   <!--   <div class="login_panle_right" /> -->
       <div class="login_panle_foot">
-        <div class="links">
+        <!-- <div class="links">
           <a href="http:// ">
             <img src="@/assets/docs.png" class="link-icon" />
-          </a>
-          <a href="https:// ">
-            <img src="@/assets/yuque.png" class="link-icon" />
-          </a>
-          <a href="https:// ">
-            <img src="@/assets/github.png" class="link-icon" />
-          </a>
-          <a href="https:// ">
-            <img src="@/assets/video.png" class="link-icon" />
-          </a>
-        </div>
+          </a> 
+        </div> -->
         <div class="copyright">
-          Copyright &copy; {{ curYear }} 💖 go-cms
+			<div >
+			<!--   广州唐韵信息科技有限公司 版权所有{{ curYear }} 
+			   <a href="https://www.88act.com" style="color:#ff5500;" target="_blank">88act.com</a> -->
+			   <a style="color:#0055ff;" target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021007954号-1</a>
+			  <br>  
+			 <div style="width:300px;margin:0 auto; padding:20px 0;">
+			  <img src="https://www.88act.com/static/beian.png"> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602008885" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44010602008885号</p></a>
+			   </div>  
+		  </div>  
         </div>
       </div>
     </div>

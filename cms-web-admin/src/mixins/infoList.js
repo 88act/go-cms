@@ -116,12 +116,38 @@ export default {
       }
       afterFunc()
     },
+    
+    async getExcelList(page,pageSize) {  
+      this.obj_attr_is_null(this.searchInfo);  
+      const excel = await  this.excelListApi({ page: page, pageSize:pageSize, ...this.searchInfo }) 
+	  if (excel.code === 200) {
+	    this.downloadWithUrl(excel.data.url,excel.data.filename)
+	  }
+    },
+	
 	sortChange({ prop, order }) {
 	  if (prop) {
 	    this.searchInfo.orderKey = toSQLLine(prop)
 	    this.searchInfo.orderDesc = order === 'descending'
 	  }
 	  this.getTableData()
-	} 
+	},
+	 /**
+	    * @param {string} url
+	    * @param {string} fileName
+	    * 通过链接下载文件
+	    */
+	   downloadWithUrl (url, fileName) {
+	     const aLink = document.createElement('a');
+	     aLink.style.display = 'none';
+	     aLink.href = url;
+	     aLink.download = fileName;
+	     //aLink.target = '_parent';
+		 aLink.target = '_blank';
+	     document.body.appendChild(aLink);
+	     aLink.click();
+	     document.body.removeChild(aLink); // 下载完成移除元素
+	   } 
+	
   }
 }
