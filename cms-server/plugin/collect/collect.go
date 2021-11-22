@@ -2,7 +2,6 @@ package plugin
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -11,176 +10,95 @@ import (
 
 	"github.com/88act/go-cms/server/global"
 	"github.com/88act/go-cms/server/model/business"
+	"github.com/88act/go-cms/server/myError"
 	"github.com/88act/go-cms/server/service"
 	"github.com/88act/go-cms/server/utils"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gogf/gf/util/gconv"
 )
 
-var once sync.Once = sync.Once{}
-var instanse *CollectManager
-
-type News2 struct {
-	Title   string
-	Media   string
-	Url     string
-	PubTime string
-	Content string
-}
-
 /**
 * 数据采集管理器，单例
  */
-type CollectManager struct {
-	List []business.ColCollect
+type Collect struct {
+	Data      business.ColCollect
+	statusRun int
 }
 
-/**
-*获取单例
- */
-func GetCollectManager() *CollectManager {
-	once.Do(func() {
-		instanse = new(CollectManager)
-		instanse.List = []business.ColCollect{}
-		//instanse.Name = "这是一个单例"
-	})
-	return instanse
+func (m *Collect) Stop() (err error) {
+	m.statusRun = 0
+	err = global.DB.Model(&m.Data).Update("status_run", 0).Error
+	if err != nil {
+		return myError.New(myError.ErrDbUpdate, "停止失败，更新数据库失败")
+	} else {
+		global.LOG.Debug("更新数据库 StatusRun 成功")
+	}
+	return myError.New(myError.ErrOK, "停止成功")
 }
 
-func (m *CollectManager) Start(collect business.ColCollect, opt int) (err error) {
-	collect_old := business.ColCollect{}
-	var idx int = -1
-	for i, v := range m.List {
-		if v.ID == collect.ID {
-			collect_old = v
-			idx = i
-			break
-		}
+func (m *Collect) Start() (err error) {
+	//更新数据库
+	err = global.DB.Model(&m.Data).Update("status_run", 1).Error
+	if err != nil {
+		return myError.New(myError.ErrDbUpdate, "启动失败，更新数据库失败")
+	} else {
+		global.LOG.Debug("更新数据库 StatusRun成功")
 	}
-	fmt.Println("idx === ", idx)
-	if idx >= 0 {
-		fmt.Println("*collect_old.StatusRun === ", *collect_old.StatusRun)
-	}
-	if opt == 1 {
-		//启动
-		if idx >= 0 && 1 == *collect_old.StatusRun {
-			fmt.Println(collect.Name + "已经在运行了")
-			return nil
+	global.LOG.Debug(m.Data.Name + " 启动，加入队列id=" + gconv.String(m.Data.ID))
+	m.statusRun = 1
+	go m.beginCollect()
+	return myError.New(myError.ErrOK, "启动成功")
+}
+func (m *Collect) beginCollect() {
+	global.LOG.Debug("beginCollect开始分页获取  PageStart =" + gconv.String(m.Data.PageStart) + "PageEnd=" + gconv.String(m.Data.PageEnd))
+	var wg_page sync.WaitGroup
+	for i := *m.Data.PageStart; i <= *m.Data.PageEnd; i++ {
+		if m.statusRun == 1 {
+			wg_page.Add(1)
+			go m.getPage(i, &wg_page)
 		} else {
-			//加入队列
-
-			var statusRun int = 1
-			collect.StatusRun = &statusRun
-			m.List = append(m.List, collect)
-			fmt.Println(collect.Name + "加入队列")
-			fmt.Println("List 长度=====")
-			fmt.Println(len(m.List))
-			return nil
+			global.LOG.Debug("getPage 中途退出 id=" + gconv.String(m.Data.ID) + " , i=" + gconv.String(i))
+			return
 		}
-	} else if opt == 0 {
-		//停止
-		if idx >= 0 {
-			fmt.Println(collect.Name + " 已经在运行了 删除队列1个 ")
-			//删除队列1个
-			m.List = append(m.List[:idx], m.List[idx+1:]...)
-			fmt.Println("List 长度=====")
-			fmt.Println(len(m.List))
-			return nil
-		} else {
-			fmt.Println(collect.Name + "原来没启动。。。")
-			return nil
-		}
-
 	}
-	return nil
-	// //
-	// url := collect.Url
-	// resp, err := http.Get(url)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// defer resp.Body.Close()
-	// if resp.StatusCode != 200 {
-	// 	log.Fatalf("status code error: %d %s", resp.StatusCode, resp.Status)
-	// }
-
-	// html, err := goquery.NewDocumentFromReader(resp.Body)
-	// //global.LOG.Debug(html.Text())
-	// var newsList []string
-	// newsList = getUrlList(html, newsList)
-	// //fmt.Println(newsList)
-	// var wg sync.WaitGroup
-	// for i := 0; i < len(newsList); i++ {
-	// 	wg.Add(1)
-	// 	go getDetail(newsList[i], &wg, collect)
-	// }
-	// wg.Wait()
-	// //开始下一页
-	// global.LOG.Debug("完成 ---Wait--1-")
-	// return nil
+	wg_page.Wait()
+	global.LOG.Debug("beginCollect完成全部 getPage-----")
+	m.statusRun = 0
+	m.Data.StatusRun = &m.statusRun
 }
 
-func (m *CollectManager) start_do(collect business.ColCollect, opt int) (err error) {
-
-	//
-	m.List = append(m.List, collect)
-	//
-	url := collect.Url
+func (m *Collect) getPage(page int, wg_page *sync.WaitGroup) {
+	url := m.Data.Url
+	if page > 0 {
+		url = fmt.Sprintf(m.Data.UrlPage, page)
+	}
+	global.LOG.Debug("page=" + gconv.String(page) + " ,page url = " + url)
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err)
+		global.LOG.Error(err.Error())
 	}
-
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		log.Fatalf("status code error: %d %s", resp.StatusCode, resp.Status)
+		//log.Fatalf("status code error: %d %s", resp.StatusCode, resp.Status)
+		global.LOG.Error(fmt.Sprintf("status code error: %d %s", resp.StatusCode, resp.Status))
 	}
-
 	html, err := goquery.NewDocumentFromReader(resp.Body)
 	//global.LOG.Debug(html.Text())
 	var newsList []string
 	newsList = getUrlList(html, newsList)
 	//fmt.Println(newsList)
-	var wg sync.WaitGroup
+	var wg_detail sync.WaitGroup
 	for i := 0; i < len(newsList); i++ {
-		wg.Add(1)
-		go getDetail(newsList[i], &wg, collect)
+		if m.statusRun == 1 {
+			wg_detail.Add(1)
+			go getDetail(newsList[i], &wg_detail, m.Data)
+		} else {
+			global.LOG.Debug("getDetail() 中途退出 id=" + gconv.String(m.Data.ID) + " , i=" + gconv.String(i))
+			return
+		}
 	}
-	wg.Wait()
-	//开始下一页
-	global.LOG.Debug("完成 ---Wait--1-")
-	return nil
-}
-
-func (m *CollectManager) Stop(collect business.ColCollect) (err error) {
-
-	//
-	url := collect.Url
-	resp, err := http.Get(url)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer resp.Body.Close()
-	if resp.StatusCode != 200 {
-		log.Fatalf("status code error: %d %s", resp.StatusCode, resp.Status)
-	}
-
-	html, err := goquery.NewDocumentFromReader(resp.Body)
-	//global.LOG.Debug(html.Text())
-	var newsList []string
-	newsList = getUrlList(html, newsList)
-	//fmt.Println(newsList)
-	var wg sync.WaitGroup
-	for i := 0; i < len(newsList); i++ {
-		wg.Add(1)
-		go getDetail(newsList[i], &wg, collect)
-	}
-	wg.Wait()
-	//开始下一页
-	global.LOG.Debug("完成 ---Wait--1-")
-	return nil
+	wg_detail.Wait()
+	global.LOG.Debug("getDetail()  正常完成 ")
 }
 
 func getUrlList(html *goquery.Document, newsList []string) []string {
@@ -197,7 +115,7 @@ func getUrlList(html *goquery.Document, newsList []string) []string {
 	return newsList
 }
 
-func getDetail(url string, wg *sync.WaitGroup, collect business.ColCollect) {
+func getDetail(url string, wg *sync.WaitGroup, data business.ColCollect) {
 	resp, err := http.Get(url)
 	if err != nil {
 		global.LOG.Error(err.Error())
@@ -218,7 +136,7 @@ func getDetail(url string, wg *sync.WaitGroup, collect business.ColCollect) {
 	news := business.ColHsj{}
 
 	news.Url = url
-	news.PubUnit = collect.Name
+	news.PubUnit = data.Name
 	html.Find("p[class=biaoti]").Each(func(i int, selection *goquery.Selection) {
 		news.Title = selection.Text()
 	})
@@ -240,19 +158,12 @@ func getDetail(url string, wg *sync.WaitGroup, collect business.ColCollect) {
 	reg := regexp.MustCompile(`\d+`)
 	timeString := reg.FindAllString(tmpTime, -1)
 	strTime := fmt.Sprintf("%s-%s-%s %s:%s:00", timeString[0], timeString[1], timeString[2], timeString[3], timeString[4])
-	colId := gconv.Int(collect.ID)
+	colId := gconv.Int(data.ID)
 	news.ColId = &colId
 	news.PubTime = utils.Str2Time(strTime)
 	status := 1
 	news.Status = &status
 	err = service.ServiceGroupApp.BusinessServiceGroup.ColHsjService.CreateColHsj(news)
-	global.LOG.Debug("完成 ---")
-
-	// fmt.Println("news.Title=", news.Title)
-	// fmt.Println("news.Url=", news.Url)
-	// fmt.Println("news.PubUnit=", news.PubUnit)
-	// fmt.Println("news.content=", news.Content)
-	// fmt.Println("news.PubTime=", news.PubTime)
-
+	global.LOG.Debug("完成一个页面news ---")
 	wg.Done()
 }
