@@ -74,7 +74,8 @@
           <el-button size="mini" type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>
           <el-button size="mini" type="primary" icon="el-icon-plus" @click="goEditForm(0)">新增</el-button>
          {{- if .BeExcel }}
-           <el-button size="mini" type="primary" icon="el-icon-plus" @click="onExcel">导出</el-button>
+           <el-button size="mini" type="success"  @click="onExcel">导出当前</el-button>
+         <el-button size="mini" type="success"  @click="onExcelAll">导出全部</el-button>
         {{- end }}
           <el-popover v-model:visible="deleteVisible" placement="top" width="160">
             <p>确定要删除吗？</p>
@@ -237,7 +238,8 @@ import {
   update{{.StructName}},
   find{{.StructName}},
   get{{.StructName}}List,
-  quickEdit
+  quickEdit,
+  excelList
 } from '@/api/{{.PackageName}}' //  此处请自行替换地址
 import { formatTimeToStr } from '@/utils/date'
 import infoList from '@/mixins/infoList' 
@@ -250,6 +252,7 @@ export default {
     return {
       beNewWindow:{{.BeNewWindow}},//是否在新窗口打开编辑器
       listApi: get{{ .StructName }}List,   
+      excelListApi: excelList,
  {{- range .Fields}}
       {{- if .DictType }}
       {{ .DictType }}Options: [],
@@ -412,8 +415,11 @@ export default {
         // this.getTableData()
       }
     },
-     onExcel(){
-       console.log("excel");		  
+   onExcel(){
+        this.getExcelList(this.page,this.pageSize)    
+    },
+    onExcelAll(){
+        this.getExcelList(1,1000)  
     }
   },
 }

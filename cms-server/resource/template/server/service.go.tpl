@@ -60,9 +60,10 @@ func ({{.Abbreviation}}Service *{{.StructName}}Service)Get{{.StructName}}(id uin
     return err, obj
 }
 
+
 // Get{{.StructName}}InfoList 分页获取{{.StructName}}记录
 // Author [88act](https://github.com/88act)
-func ({{.Abbreviation}}Service *{{.StructName}}Service)Get{{.StructName}}InfoList(info businessReq.{{.StructName}}Search, createdAtBetween []string,fields string) (err error, list interface{}, total int64) {
+func ({{.Abbreviation}}Service *{{.StructName}}Service)Get{{.StructName}}InfoList(info businessReq.{{.StructName}}Search, createdAtBetween []string,fields string) (err error, list []business.{{.StructName}}Mini, total int64) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     //修改 by ljd  增加查询排序 
@@ -72,6 +73,86 @@ func ({{.Abbreviation}}Service *{{.StructName}}Service)Get{{.StructName}}InfoLis
 	db := global.DB.Model(&business.{{.StructName}}{})
     //var {{.Abbreviation}}s []business.{{.StructName}}
     var {{.Abbreviation}}s []business.{{.StructName}}Mini
+
+    //修改 by ljd  
+    if info.ID > 0 {
+		db = db.Where("`id` = ?", info.ID)
+	}
+	if createdAtBetween != nil && len(createdAtBetween) > 0 {
+		db = db.Where("`created_at` BETWEEN ? AND ?", createdAtBetween[0], createdAtBetween[1])
+	}
+
+    // 如果有条件搜索 下方会自动创建搜索语句
+        {{- range .Fields}}
+            {{- if .FieldSearchType}}
+                {{- if eq .FieldType "string" }}
+    if info.{{.FieldName}} != "" {
+        db = db.Where("`{{.ColumnName}}` {{.FieldSearchType}} ?",{{if eq .FieldSearchType "LIKE"}}"%"+ {{ end }}info.{{.FieldName}}{{if eq .FieldSearchType "LIKE"}}+"%"{{ end }})
+    }
+                {{- else if eq .FieldType "bool" }}
+    if info.{{.FieldName}} != nil {
+        db = db.Where("`{{.ColumnName}}` {{.FieldSearchType}} ?",{{if eq .FieldSearchType "LIKE"}}"%"+{{ end }}info.{{.FieldName}}{{if eq .FieldSearchType "LIKE"}}+"%"{{ end }})
+    }
+                {{- else if eq .FieldType "int" }}
+    if info.{{.FieldName}} != nil {
+        db = db.Where("`{{.ColumnName}}` {{.FieldSearchType}} ?",{{if eq .FieldSearchType "LIKE"}}"%"+{{ end }}info.{{.FieldName}}{{if eq .FieldSearchType "LIKE"}}+"%"{{ end }})
+    }
+                {{- else if eq .FieldType "float64" }}
+    if info.{{.FieldName}} != nil {
+        db = db.Where("`{{.ColumnName}}` {{.FieldSearchType}} ?",{{if eq .FieldSearchType "LIKE"}}"%"+{{ end }}info.{{.FieldName}}{{if eq .FieldSearchType "LIKE"}}+"%"{{ end }})
+    }
+                {{- else if eq .FieldType "time.Time" }}
+    if info.{{.FieldName}} != nil {
+          db = db.Where("`{{.ColumnName}}` {{.FieldSearchType}} > ?", info.{{.FieldName}})
+    }
+                {{- end }}
+        {{- end }}
+    {{- end }}
+	err = db.Count(&total).Error
+	//err = db.Limit(limit).Offset(offset).Find(&{{.Abbreviation}}s).Error
+    //修改 by ljd  增加查询排序 
+     OrderStr := "id desc"
+     if !utils.IsEmpty(order) { 
+		if desc {
+			OrderStr = order + " desc"
+		} else {
+			OrderStr = order
+		} 
+	}  
+    if utils.IsEmpty(fields) {
+      err = db.Order(OrderStr).Limit(limit).Offset(offset).Find(&{{.Abbreviation}}s).Error
+    } else {
+      err = db.Select(fields).Order(OrderStr).Limit(limit).Offset(offset).Find(&{{.Abbreviation}}s).Error
+    }         
+     //更新图片path
+	for i, v := range {{.Abbreviation}}s {
+	 v.MapData = make(map[string]string)
+     {{- range .Fields}} 
+         {{- if eq .FieldType "image"}} 
+        if !utils.IsEmpty(v.{{.FieldName}}) {
+            _, v.MapData[v.{{.FieldName}}] = commFileService.GetPathByGuid(v.{{.FieldName}})
+        }     
+        {{- end}}  
+      {{- end }}
+	  {{.Abbreviation}}s[i] = v
+	}
+	return err, {{.Abbreviation}}s, total
+}
+
+
+
+// Get{{.StructName}}InfoList 分页获取{{.StructName}}记录
+// Author [88act](https://github.com/88act)
+func ({{.Abbreviation}}Service *{{.StructName}}Service)Get{{.StructName}}InfoListAll(info businessReq.{{.StructName}}Search, createdAtBetween []string,fields string) (err error,list []business.{{.StructName}}, total int64) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+    //修改 by ljd  增加查询排序 
+    order := info.OrderKey
+	desc := info.OrderDesc
+    // 创建db
+	db := global.DB.Model(&business.{{.StructName}}{})
+    var {{.Abbreviation}}s []business.{{.StructName}}
+    //var {{.Abbreviation}}s []business.{{.StructName}}Mini
 
     //修改 by ljd  
     if info.ID > 0 {

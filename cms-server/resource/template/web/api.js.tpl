@@ -112,3 +112,19 @@ export const quickEdit = (data) => {
     data
   })
 }
+
+// @Tags {{.StructName}}
+// @Summary 导出excel{{.StructName}}列表
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data query request.PageInfo true "分页导出excel{{.StructName}}列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /{{.Abbreviation}}/get{{.StructName}}excelList [get]
+export const excelList = (params) => {
+  return service({
+    url: '/{{.Abbreviation}}/excelList',
+    method: 'get',
+    params
+  })
+}

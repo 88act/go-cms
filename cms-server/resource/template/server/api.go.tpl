@@ -187,3 +187,33 @@ func ({{.Abbreviation}}Api *{{.StructName}}Api) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
+
+
+// Get{{.StructName}}List 分页导出excel {{.StructName}}列表
+// @Tags {{.StructName}}
+// @Summary 分页导出excel {{.StructName}}列表
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data query businessReq.{{.StructName}}Search true "分页导出excel {{.StructName}}列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /{{.Abbreviation}}/excelList [get]
+func ({{.Abbreviation}}Api *{{.StructName}}Api) ExcelList(c *gin.Context) {
+	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
+
+	var pageInfo businessReq.{{.StructName}}Search
+	_ = c.ShouldBindQuery(&pageInfo)
+	if err, list, total := {{.Abbreviation}}Service.Get{{.StructName}}InfoList(pageInfo,createdAtBetween,""); err != nil {
+	    global.LOG.Error("获取失败!", zap.Any("err", err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(response.PageResult{
+            List:     list,
+            Total:    total,
+            Page:     pageInfo.Page,
+            PageSize: pageInfo.PageSize,
+        }, "获取成功", c)
+    }
+}
+
+
