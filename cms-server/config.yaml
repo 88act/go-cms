@@ -58,12 +58,11 @@ captcha:
 # mysql connect configuration
 # 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://www.github.com/88act/go-cms/server.com/docs/first）
 mysql:
-  path: 120.24.150.47:53306
-  #path: 120.24.150.47:53306
+  path: 127.0.0.1:53306 
   config: charset=utf8mb4&parseTime=True&loc=Local
   db-name: go-cms
-  username: go-cms
-  password: go-cmsgo-cms
+  username: root
+  password: 123456
   max-idle-conns: 0
   max-open-conns: 0
  #  max-idle-conns: 10
@@ -74,7 +73,7 @@ mysql:
 # local configuration
 local:
   base-url: http://localhost:40050/
-  base-path: C:/work_go/go-cms-fork/server/
+  base-path: C:/work_go/go-cms-builder/server/
   path: res/sys
   path-user: res/user
 
@@ -118,11 +117,11 @@ aliyun-oss:
 
 # tencent cos configuration
 tencent-cos:
-  bucket: 'xxxxx88act'
+  bucket: 'xxxxx-10005608'
   region: 'ap-shanghai'
   secret-id: 'xxxxxxxx'
   secret-key: 'xxxxxxxx'
-  base-url: 'https://88act'
+  base-url: 'https://gin.vue.admin'
   base-path: 'yourBasePath'
   path-prefix: 'github.com/88act/go-cms/server'
 

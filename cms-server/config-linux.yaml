@@ -1,4 +1,3 @@
-# github.com/88act/go-cms/server Global Configuration
 
 # jwt configuration
 jwt:
@@ -56,14 +55,13 @@ captcha:
   img-height: 80
 
 # mysql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://www.github.com/88act/go-cms/server.com/docs/first）
+# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://www.github.com/flipped-aurora/gin-vue-admin/server.com/docs/first）
 mysql:
-  path: 127.0.0.1:53306
-  #path: 120.24.150.47:53306
+  path: 127.0.0.1:53306 
   config: charset=utf8mb4&parseTime=True&loc=Local
   db-name: go-cms
-  username: go-cms
-  password: go-cmsgo-cms
+  username: root
+  password: 123456
   max-idle-conns: 0
   max-open-conns: 0
  #  max-idle-conns: 10
@@ -73,8 +71,8 @@ mysql:
 
 
 
-# business configuration
-business:
+# super-builder configuration
+super-builder:
   transfer-restart: true
   # root 自动适配项目根目录
   # 请不要手动配置,他会在项目加载的时候识别出根路径
@@ -126,7 +124,7 @@ tencent-cos:
   secret-id: 'xxxxxxxx'
   secret-key: 'xxxxxxxx'
   base-url: 'https://gin.vue.admin'
-  path-prefix: 'github.com/88act/go-cms/server'
+  path-prefix: 'github.com/flipped-aurora/gin-vue-admin/server'
 
 # excel configuration
 excel:
