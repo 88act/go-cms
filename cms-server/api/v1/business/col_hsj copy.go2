@@ -192,20 +192,20 @@ func (colHsjApi *ColHsjApi) QuickEdit(c *gin.Context) {
 	}
 }
 
-// GetColHsjList 分页导出excel ColHsj列表
-// @Tags ColHsj
-// @Summary 分页导出excel ColHsj列表
+// excelList 分页excel导出ColCollect列表
+// @Tags ColCollect
+// @Summary 分页excel导出ColCollect列表
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query businessReq.ColHsjSearch true "分页导出excel ColHsj列表"
+// @Param data query businessReq.ColCollectSearch true "分页excel导出ColCollect列表"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /colHsj/excelList [get]
+// @Router /colHsj/ExcelList [post]
 func (colHsjApi *ColHsjApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 	var pageInfo businessReq.ColHsjSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if err, list, _ := colHsjService.GetColHsjInfoListAll(pageInfo, createdAtBetween, ""); err != nil {
+	if err, list, _ := colHsjService.GetColHsjInfoList(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
@@ -268,3 +268,69 @@ func (colHsjApi *ColHsjApi) ExcelList(c *gin.Context) {
 		}
 	}
 }
+
+// var hsjList []business.ColHsj
+// dataObj := business.ColHsj{}
+// if reflect.TypeOf(list).Kind() == reflect.Slice {
+// 	s := reflect.ValueOf(list)
+// 	for i := 0; i < s.Len(); i++ {
+// 		ele := s.Index(i)
+// 		hsjList = append(hsjList, ele.Interface().(business.ColHsj))
+// 	}
+// }
+//	hsjList := list.([]business.ColHsj)
+
+// err := excel.SaveAs(filePath)
+// return err
+
+//PS:便于理解，这里说明是按列写，不是按行写
+//遍历结果集
+// for i, v := range hsjList {
+// 	//取出每条结果结构体中的属性集item
+// 	item := reflect.TypeOf(v).Elem()
+// 	//遍历属性集d，注意如果有gorm.model 则index需要从1开始遍历，否则从0
+// 	for j := 1; j < item.NumField(); j++ {
+// 		// 设置表头
+// 		if i == 0 {
+// 			//根据结构体中绑定的tag，根据分隔符，拿到列号
+// 			column := strings.Split(item.Field(j).Tag.Get("xlsx"), "-")[0]
+// 			//同理拿到列名
+// 			name := strings.Split(item.Field(j).Tag.Get("xlsx"), "-")[1]
+// 			// 设置表头
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+1), name)
+// 		}
+
+// 		// 设置内容
+// 		column := strings.Split(item.Field(j).Tag.Get("xlsx"), "-")[0]
+// 		switch item.Field(j).Type.String() {
+// 		//根据属性的类型进行断言，写入
+// 		case "string":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).String())
+// 		case "int32":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).Int())
+// 		case "int64":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).Int())
+// 		case "bool":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).Bool())
+// 		case "float32":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).Float())
+// 		case "float64":
+// 			xlsx.SetCellValue("Sheet1", fmt.Sprintf("%s%d", column, i+2), reflect.ValueOf(v).Elem().Field(j).Float())
+// 		}
+// 	}
+//}
+
+// xlsx.SetActiveSheet(index)
+// // 保存到xlsx中
+
+// err := xlsx.SaveAs("test_write.xlsx")
+// if err != nil {
+// 	fmt.Println(err)
+// }
+
+// response.OkWithDetailed(response.PageResult{
+// 	List:     list,
+// 	Total:    total,
+// 	Page:     pageInfo.Page,
+// 	PageSize: pageInfo.PageSize,
+// }, "获取成功", c)

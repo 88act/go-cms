@@ -9,6 +9,7 @@ import (
 	businessReq "github.com/88act/go-cms/server/model/business/request"
 	"github.com/88act/go-cms/server/model/common/request"
 	"github.com/88act/go-cms/server/model/common/response"
+	"github.com/88act/go-cms/server/myError"
 	"github.com/88act/go-cms/server/service"
 	"github.com/88act/go-cms/server/utils"
 	"github.com/gin-gonic/gin"
@@ -188,6 +189,33 @@ func (colCollectApi *ColCollectApi) QuickEdit(c *gin.Context) {
 	}
 }
 
+// GetColCollectList 分页导出excel ColCollect列表
+// @Tags ColCollect
+// @Summary 分页导出excel ColCollect列表
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data query businessReq.ColCollectSearch true "分页导出excel ColCollect列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /colCollect/excelList [get]
+func (colCollectApi *ColCollectApi) ExcelList(c *gin.Context) {
+	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
+
+	var pageInfo businessReq.ColCollectSearch
+	_ = c.ShouldBindQuery(&pageInfo)
+	if err, list, total := colCollectService.GetColCollectInfoList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
+}
+
 // StartOrStopCollect 启动/停止收集
 // @Tags ColCollect
 // @Summary 用id查询ColCollect
@@ -211,9 +239,18 @@ func (colCollectApi *ColCollectApi) StartOrStopCollect(c *gin.Context) {
 		global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
 	} else {
-		_ = collectManager.Start(collent, opt)
-		response.OkWithMessage("成功", c)
 		//启动收集器
+		myErr := collectManager.Start(collent, opt)
+		value, ok := myErr.(myError.MyError)
+		if ok {
+			if value.Type == myError.ErrOK {
+				response.OkWithMessage(value.Msg, c)
+			} else {
+				response.FailWithMessage(value.Msg, c)
+			}
+		} else {
+			response.FailWithMessage(myErr.Error(), c)
+		}
 
 	}
 }
