@@ -1,110 +1,122 @@
-## server项目结构
+<div align=center>
+<img src="https://cms.88act.com/res/img/go-cms.png" width=300" height="300" />
+</div>
+<div align=center>
+<img src="https://img.shields.io/badge/golang-1.16-blue"/>
+<img src="https://img.shields.io/badge/gin-1.6.3-blue"/>
+<img src="https://img.shields.io/badge/vue-3.0.0-blue"/> 
+ 
+</div>
 
-```shell
-├── api
-│   └── v1
-├── config
-├── core
-├── docs
-├── global
-├── initialize
-│   └── internal
-├── middleware
-├── model
-│   ├── request
-│   └── response
-├── packfile
-├── resource
-│   ├── excel
-│   ├── page
-│   └── template
-├── router
-├── service
-├── source
-└── utils
-    ├── timer
-    └── upload
+[English](./README-en.md) | 简体中文
+
+ 
+[github地址](https://github.com/88act/go-cms): https://github.com/88act/go-cms
+ 
+ 
+
+# 重要提示
+
+ 
+
+## 1. 基本介绍
+
+### 1.1 项目介绍
+
+> go-cms, golang的cms内容管理系统, 前端web-admin居于 vue3 element-plus ,客户端居于uniapp,后端居于 golang gin  后端集成jwt鉴权，动态路由，动态菜单，casbin鉴权功能.
+- 同时,系统集成 客服聊天websocket系统, 
+- 集成居于celly的数据采集,网络爬虫系统,
+- 集成强大的前后端代码生成器.
+- go-cms管理后台,集成文件库功能,统一管理图片/视频/文件等附件,自动对比文件哈希码,避免相同的文件多次上传
+- go-cms管理后台,集成tinyEditor 富媒体编辑器
+- golang后台可运行于 微信云托管容器,阿里云托管容器
+
+
+ 
+[在线预览](http://cms-test.88act.com/admin)   
+http://cms-test.88act.com/admin
+测试用户名：test123
+测试密码：test123 
+ 
+
+### 2.1 server项目
+
+使用 `Goland`或 vscode 编辑工具，打开server目录 
+```bash
+
+# 克隆项目
+git clone https://github.com/88act/go-cms.git
+# 进入server文件夹
+cd server 
+# 使用 go mod 并安装go依赖包
+go generate 
+# 编译 
+go build -o server main.go (windows编译命令为go build -o server.exe main.go ) 
+# 运行二进制
+./server (windows运行命令为 server.exe)
 ```
 
-| 文件夹       | 说明                    | 描述                        |
-| ------------ | ----------------------- | --------------------------- |
-| `api`        | api层                   | api层 |
-| `--v1`       | v1版本接口              | v1版本接口                  |
-| `config`     | 配置包                  | config.yaml对应的配置结构体 |
-| `core`       | 核心文件                | 核心组件(zap, viper, server)的初始化 |
-| `docs`       | swagger文档目录         | swagger文档目录 |
-| `global`     | 全局对象                | 全局对象 |
-| `initialize` | 初始化 | router,redis,gorm,validator, timer的初始化 |
-| `--internal` | 初始化内部函数 | gorm 的 longger 自定义,在此文件夹的函数只能由 `initialize` 层进行调用 |
-| `middleware` | 中间件层 | 用于存放 `gin` 中间件代码 |
-| `model`      | 模型层                  | 模型对应数据表              |
-| `--request`  | 入参结构体              | 接收前端发送到后端的数据。  |
-| `--response` | 出参结构体              | 返回给前端的数据结构体      |
-| `packfile`   | 静态文件打包            | 静态文件打包 |
-| `resource`   | 静态资源文件夹          | 负责存放静态文件                |
-| `--excel` | excel导入导出默认路径 | excel导入导出默认路径 |
-| `--page` | 表单生成器 | 表单生成器 打包后的dist |
-| `--template` | 模板 | 模板文件夹,存放的是代码生成器的模板 |
-| `router`     | 路由层                  | 路由层 |
-| `service`    | service层               | 存放业务逻辑问题 |
-| `source` | source层 | 存放初始化数据的函数 |
-| `utils`      | 工具包                  | 工具函数封装            |
-| `--timer` | timer | 定时器接口封装 |
-| `--upload`      | oss                  | oss接口封装        |
+### 2.2 web项目
+
+```bash
+# 进入web文件夹
+cd web
+
+# 安装依赖
+cnpm install || npm install
+
+# 启动web项目
+npm run serve
+```
+
+### 2.3 swagger自动化API文档
+
+#### 2.3.1 安装 swagger
+
+ 
+````
+go get -u github.com/swaggo/swag/cmd/swag
+````
+  
+#### 2.3.2 生成API文档
+
+```` shell
+cd server
+swag init
+````
+
+> 执行上面的命令后，server目录下会出现docs文件夹里的 `docs.go`, `swagger.json`, `swagger.yaml` 三个文件更新，启动go服务之后, 在浏览器输入 [http://localhost:40040/swagger/index.html](http://localhost:40040/swagger/index.html) 即可查看swagger文档
 
 
+## 3. 技术选型
 
+- 前端：用基于vue3 element-plus构建基础页面。
+- 后端：golang gin gormv2  也使用了部分其他开源项目模块,如 gofarme  gav celly
+- 开发热更新: air 。
+- 数据库： MySql`(8.0) 
+- 缓存： Redis` 
+- API文档：使用`Swagger`构建自动化文档。
+ 
+ 
 
+### 4. 技术群
 
+### QQ交流群：555475796
+| QQ 群 |
+|  :---:  |
+| <img src="https://cms.88act.com/res/img/qq.jpg" width="180"/> |
 
-Save将包括执行更新SQL时的所有字段，即使它没有更改
+### 微信交流群
+| 微信 |
+|  :---:  | 
+| <img width="150" src="https://cms.88act.com/res/img/wx.png"> 
 
-db.First(&user)
+添加微信，备注"加入go-cms交流群"
 
-user.Name = "jinzhu 2"
-user.Age = 100
-db.Save(&user)
+### [关于我们](https://cms.88act.com/about/)
 
+## 5. 贡献者
+ 
+## 6. 商用注意事项
 
-
-
-// 更新单个属性（如果更改）
-db.Model(&user).Update("name", "hello")
-//// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111;
-
-// 使用组合条件更新单个属性
-db.Model(&user).Where("active = ?", true).Update("name", "hello")
-//// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
-
-// 使用`map`更新多个属性，只会更新这些更改的字段
-db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "actived": false})
-//// UPDATE users SET name='hello', age=18, actived=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
-
-// 使用`struct`更新多个属性，只会更新这些更改的和非空白字段
-db.Model(&user).Updates(User{Name: "hello", Age: 18})
-//// UPDATE users SET name='hello', age=18, updated_at = '2013-11-17 21:34:10' WHERE id = 111;
-
-// 警告:当使用struct更新时，FORM将仅更新具有非空值的字段
-// 对于下面的更新，什么都不会更新为""，0，false是其类型的空白值
-db.Model(&user).Updates(User{Name: "", Age: 0, Actived: false})
-
-
-
-db.Delete(&user)
-//// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE id = 111;
-
-// 批量删除
-db.Where("age = ?", 20).Delete(&User{})
-//// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE age = 20;
-
-// 软删除的记录将在查询时被忽略
-db.Where("age = 20").Find(&user)
-//// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;
-
-// 使用Unscoped查找软删除的记录
-db.Unscoped().Where("age = 20").Find(&users)
-//// SELECT * FROM users WHERE age = 20;
-
-// 使用Unscoped永久删除记录
-db.Unscoped().Delete(&order)
-//// DELETE FROM orders WHERE id=10;
+如果您将此项目用于商业用途，请遵守Apache2.0协议 
