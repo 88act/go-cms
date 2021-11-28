@@ -33,8 +33,8 @@ English| [简体中文](./README.md)
 
 
  
-[在线预览](http://cms-test.88act.com/admin)   
-http://cms-test.88act.com/admin
+[在线预览](http://go-cms.88act.com/admin)   
+http://go-cms.88act.com/admin
 测试用户名：test123
 测试密码：test123 
  
