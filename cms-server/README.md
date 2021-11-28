@@ -33,10 +33,10 @@
 
 
  
-[在线预览](http://go-cms.88act.com/admin)   
-http://go-cms.88act.com/admin
-测试 用户名：test123
-测试 密码：test123 
+[在线预览](http://120.24.150.47/admin)   
+http://120.24.150.47/admin
+测试用户名：test123
+测试密码：test123 
  
 
 ### 2.1 server项目
@@ -113,7 +113,7 @@ swag init
 
 添加微信，备注"加入go-cms交流群"
 
-### [关于我们](https://cms.88act.com/about/)
+### [关于我们] 
 
 ## 5. 贡献者
  

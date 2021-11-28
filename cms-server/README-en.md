@@ -15,10 +15,6 @@ English| [简体中文](./README.md)
  
  
 
-# 重要提示
-
- 
-
 ## 1. 基本介绍
 
 ### 1.1 项目介绍
@@ -33,8 +29,8 @@ English| [简体中文](./README.md)
 
 
  
-[在线预览](http://go-cms.88act.com/admin)     
-http://go-cms.88act.com/admin  
+[在线预览](http://120.24.150.47/admin)   
+http://120.24.150.47/admin
 测试用户名：test123
 测试密码：test123 
  
@@ -113,7 +109,7 @@ swag init
 
 添加微信，备注"加入go-cms交流群"
 
-### [关于我们](https://cms.88act.com/about/)
+### [关于我们] 
 
 ## 5. 贡献者
  
