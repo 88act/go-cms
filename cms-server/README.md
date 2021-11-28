@@ -35,8 +35,8 @@
  
 [在线预览](http://go-cms.88act.com/admin)   
 http://go-cms.88act.com/admin
-测试用户名：test123
-测试密码：test123 
+测试 用户名：test123
+测试 密码：test123 
  
 
 ### 2.1 server项目
