@@ -24,12 +24,12 @@
 ### 1.1 项目介绍
 
 > go-cms, golang的cms内容管理系统, 前端web-admin居于 vue3 element-plus ,客户端居于uniapp,后端居于 golang gin  后端集成jwt鉴权，动态路由，动态菜单，casbin鉴权功能.
-- 系统集成 客服聊天websocket系统, 
+- 同时,系统集成 客服聊天websocket系统, 
 - 集成居于celly的数据采集,网络爬虫系统,
-- 集成强大的前后端代码生成器. 自动生成前后端go vue3 js 代码,自动生成居于gofamre框架的api接口输入参数有效性校验.
+- 集成强大的前后端代码生成器.
 - go-cms管理后台,集成文件库功能,统一管理图片/视频/文件等附件,自动对比文件哈希码,避免相同的文件多次上传
 - go-cms管理后台,集成tinyEditor 富媒体编辑器
-- golang后台可docker部署, 可运行于 微信云托管,阿里云托管,或自建的k8s容器群集
+- golang后台可运行于 微信云托管容器,阿里云托管容器
 
 
  
@@ -120,3 +120,18 @@ swag init
 ## 6. 商用注意事项
 
 如果您将此项目用于商业用途，请遵守Apache2.0协议 
+
+
+## 7. 附系统截图
+  代码生成与字段配置  
+| <img src="https://cms.88act.com/res/img/gocms/g1.jpg"  /> |
+
+集成媒体库管理 ,集中管理上传文件 ,文件分模块管理,文件上传自动对比哈希值,避免重复
+| <img src="https://cms.88act.com/res/img/gocms/g2.jpg"  /> |
+
+集成富文本编辑器 ,集成媒体库选择文件
+| <img src="https://cms.88act.com/res/img/gocms/g3.jpg"  /> |
+
+新闻采集器
+| <img src="https://cms.88act.com/res/img/gocms/g3.jpg"  /> |
+ 
