@@ -129,5 +129,5 @@ swag init
 | <img src="https://cms.88act.com/res/img/gocms/g3.jpg"  /> |
 
 新闻采集器
-| <img src="https://cms.88act.com/res/img/gocms/g3.jpg"  /> |
+| <img src="https://cms.88act.com/res/img/gocms/g4.jpg"  /> |
  
