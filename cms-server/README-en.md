@@ -5,18 +5,14 @@
 <img src="https://img.shields.io/badge/golang-1.16-blue"/>
 <img src="https://img.shields.io/badge/gin-1.6.3-blue"/>
 <img src="https://img.shields.io/badge/vue-3.0.0-blue"/> 
- 
+
 </div>
 
-[English](./README-en.md) | 简体中文
+English| [简体中文](./README.md) 
 
  
 [github地址](https://github.com/88act/go-cms): https://github.com/88act/go-cms
  
- 
-
-# 重要提示
-
  
 
 ## 1. 基本介绍

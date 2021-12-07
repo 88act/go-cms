@@ -5,18 +5,14 @@
 <img src="https://img.shields.io/badge/golang-1.16-blue"/>
 <img src="https://img.shields.io/badge/gin-1.6.3-blue"/>
 <img src="https://img.shields.io/badge/vue-3.0.0-blue"/> 
- 
+
 </div>
 
-[English](./README-en.md) | 简体中文
+English| [简体中文](./README.md) 
 
  
 [github地址](https://github.com/88act/go-cms): https://github.com/88act/go-cms
  
- 
-
-# 重要提示
-
  
 
 ## 1. 基本介绍
@@ -120,3 +116,18 @@ swag init
 ## 6. 商用注意事项
 
 如果您将此项目用于商业用途，请遵守Apache2.0协议 
+
+
+## 7. 附系统截图
+  代码生成与字段配置  
+| <img src="https://cms.88act.com/res/img/gocms/g1.jpg"  /> |
+
+集成媒体库管理 ,集中管理上传文件 ,文件分模块管理,文件上传自动对比哈希值,避免重复
+| <img src="https://cms.88act.com/res/img/gocms/g2.jpg"  /> |
+
+集成富文本编辑器 ,集成媒体库选择文件
+| <img src="https://cms.88act.com/res/img/gocms/g3.jpg"  /> |
+
+新闻采集器
+| <img src="https://cms.88act.com/res/img/gocms/g4.jpg"  /> |
+ 
