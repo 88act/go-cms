@@ -1,0 +1,30 @@
+// 配置文件格式为 jsonc，支持注释
+{
+  // Dockerfile 路径
+  "dockerfilePath": "Dockerfile",
+  // 构建路径
+  "buildDir": "",
+  // 容器服务监听的端口号
+  "containerPort": 40050,
+  // 环境变量，用字符串 key-value 对表示
+  "envParams": {},
+  // CPU，单位：核
+  "cpu": 0.5,
+  // 内存，单位：G
+  "mem": 1,
+  // 以下配置在本地调试时不起作用
+  // 扩缩容依据单位
+  "policyType": "cpu",
+  // 扩缩容阈值，单位：CPU 百分比
+  "policyThreshold": 60,
+  // 日志采集方式
+  "customLogs": "stdout",
+  // 启动检测延迟，单位：秒
+  "initialDelaySeconds": 2,
+  // 最小实例数
+  "minNum": 0,
+  // 最大实例数
+  "maxNum": 50,
+  // 备注
+  "remark": ""
+}
