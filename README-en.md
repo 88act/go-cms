@@ -113,13 +113,7 @@ swag init
 | QQ 群 |
 |  :---:  |
 | <img src="https://cms.88act.com/res/img/qq.jpg" width="180"/> |
-
-### 微信交流群
-| 微信 |
-|  :---:  | 
-| <img width="150" src="https://cms.88act.com/res/img/wx.png"> 
-
-添加微信，备注"加入go-cms交流群"
+ 
 
 ### [关于我们] 
 
