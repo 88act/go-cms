@@ -23,14 +23,25 @@
 
 ### 1.1 项目介绍
 
-> go-cms, golang的cms内容管理系统, 前端web-admin居于 vue3 element-plus ,客户端居于uniapp,后端居于 golang gin  后端集成jwt鉴权，动态路由，动态菜单，casbin鉴权功能.
-- 同时,系统集成 客服聊天websocket系统, 
-- 集成居于celly的数据采集,网络爬虫系统,
-- 集成强大的前后端代码生成器.
-- go-cms管理后台,集成文件库功能,统一管理图片/视频/文件等附件,自动对比文件哈希码,避免相同的文件多次上传
-- go-cms管理后台,集成tinyEditor 富媒体编辑器
-- golang后台可运行于 微信云托管容器,阿里云托管容器
+> go-cms, golang的cms内容管理系统, 管理后台web-admin居于 vue3 element-plus ,客户端居于uniapp,后端居于 golang gin  后端集成jwt鉴权，动态路由，动态菜单，casbin鉴权功能.
 
+- 前端api接口，居于gozero 微服务框架，主要考虑性能和服务可用性，应对高并发的client请求。
+本项目提供了gozero 和gokit的微服务demo代码. 
+
+- 后端api接口，使用的是gin框架的单体服务模式，使用代码生成器，基本能生成全功能代码，兼顾开发效率
+，后端单体服务api已可以部署到k8s容器，实现负载动态扩展。
+
+- 集成强大的前后端代码生成器,可以生成前后端所有代码，包括 api vue js 。可以完成复杂的查询，排序，增删改操作
+
+-  集成文件库功能,统一管理图片/视频/文件等附件,自动对比文件哈希码,避免相同的文件多次上传
+
+-  集成tinyEditor 富媒体编辑器
+
+- 集成居于celly的数据采集,网络爬虫系统
+ 
+-  集成腾讯IM消息记录定时下载功能
+
+-  集成k8s容器管理器（进行中...）
 
  
 [在线预览](http://120.24.150.47/admin)   
@@ -106,7 +117,10 @@ swag init
 |  :---:  |
 | <img src="https://cms.88act.com/res/img/qq.jpg" width="180"/> |
 
-
+### 微信交流群
+| 微信 |
+|  :---:  | 
+| <img width="150" src="https://cms.88act.com/res/img/wx.png"> 
 
 添加微信，备注"加入go-cms交流群"
 
@@ -131,4 +145,10 @@ swag init
 
 新闻采集器
 | <img src="https://cms.88act.com/res/img/gocms/g4.jpg"  /> |
+
+k8s集群管理(进行中....)
+| <img src="https://cms.88act.com/res/img/gocms/g5.jpg"  /> |
+
+腾讯IM历史消息下载器
+| <img src="https://cms.88act.com/res/img/gocms/g6.jpg"  /> |
  
