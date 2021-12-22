@@ -1,0 +1,61 @@
+ //跨域 rest.WithCors()
+ server := rest.MustNewServer(c.RestConf, rest.WithCors())
+
+生成文档,下载 goctl-swagger 放到gopath  https://github.com/zeromicro/goctl-swagger
+
+goctl api plugin -plugin goctl-swagger="swagger" -api user.api -dir .
+
+指定Host，basePath api-host-and-base-path
+goctl api plugin -plugin goctl-swagger="swagger -host 127.0.0.1:8888" -api user.api -dir .
+
+goctl api plugin -plugin goctl-swagger="swagger -filename user.json -host 127.0.0.1:8888 -basepath /api" -api user.api -dir .
+goctl api plugin -plugin goctl-swagger="swagger -filename user.json -host 127.0.0.1:8888" -api user.api -dir .
+
+ 
+运行界面ui https://github.com/go-swagger/go-swagger
+
+swagger_windows_amd64  serve -F=swagger .\rest.swagger.json
+
+
+
+Swagger Codegen 生成客户端调用代码(go,javascript,php)
+for l in go javascript php; do
+  docker run --rm -v "$(pwd):/go-work" swaggerapi/swagger-codegen-cli generate \
+    -i "/go-work/rest.swagger.json" \
+    -l "$l" \
+    -o "/go-work/clients/$l"
+done
+
+
+
+1.安装
+框架安装 go get -u github.com/tal-tech/go-zero
+框架代码生成工具安装 go get -u github.com/tal-tech/go-zero/tools/goctl
+
+2.创建api
+进到api/doc/目录执行
+
+ cd micro/doc
+//goctl api -o front.api
+goctl api go -api front.api -dir ../api
+
+3.创建rpc
+进到rpc/sys/目录操作
+goctl rpc template -o sys.proto
+goctl rpc proto -src sys.proto -dir .
+
+进到rpc/ums/目录操作
+goctl rpc template -o ums.proto
+goctl rpc proto -src ums.proto -dir .
+ 
+
+4.创建model
+进到rpc/目录操作
+goctl model mysql ddl -c -src book.sql -dir .
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="sys*" -dir ./model/sysmodel
+
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="ums*" -dir ./model/umsmodel
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="pms*" -dir ./model/pmsmodel
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="oms*" -dir ./model/omsmodel
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="sms*" -dir ./model/smsmodel
+goctl model mysql datasource -url="root:123456@tcp(127.0.0.1:3306)/gozero" -table="pay*" -dir ./model/paymodel

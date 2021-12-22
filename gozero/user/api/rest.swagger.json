@@ -1,0 +1,278 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "user api",
+    "description": "用户系统",
+    "version": ""
+  },
+  "host": "127.0.0.1:8888",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user/info": {
+      "get": {
+        "operationId": "userInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/user/ping": {
+      "post": {
+        "operationId": "ping",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PingReq"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "operationId": "register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {}
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterReq"
+            }
+          }
+        ],
+        "tags": [
+          "user-api"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "JwtToken": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "JwtToken",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter"
+      ]
+    },
+    "LoginReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "smscode": {
+          "type": "string",
+          "description": "短信码"
+        }
+      },
+      "title": "LoginReq",
+      "required": [
+        "username",
+        "mobile",
+        "password",
+        "smscode"
+      ]
+    },
+    "PingReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PingReq",
+      "required": [
+        "id"
+      ]
+    },
+    "RegisterReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "基本一个手机号码就完事"
+        },
+        "password": {
+          "type": "string"
+        },
+        "smscode": {
+          "type": "string",
+          "description": "短信码"
+        }
+      },
+      "title": "RegisterReq",
+      "required": [
+        "username",
+        "mobile",
+        "password",
+        "smscode"
+      ]
+    },
+    "UserReply": {
+      "type": "object",
+      "properties": {
+        "auid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "beid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "应用id"
+        },
+        "ptyid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "对应平台"
+        },
+        "username": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "openid": {
+          "type": "string"
+        },
+        "avator": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "": {
+          "$ref": "#/definitions/JwtToken"
+        }
+      },
+      "title": "UserReply",
+      "required": [
+        "auid",
+        "uid",
+        "beid",
+        "ptyid",
+        "username",
+        "mobile",
+        "nickname",
+        "openid",
+        "avator",
+        "gender"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

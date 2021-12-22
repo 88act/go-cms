@@ -1,0 +1,31 @@
+syntax = "proto3";  
+option go_package="./;book";
+ 
+// 请求书详情的参数结构  book_id 32位整形  
+message BookInfoParams {  
+    int32 book_id = 1;  
+}  
+
+
+// 书详情信息的结构   book_name字符串类型 
+message BookInfo {  
+    int32 book_id = 1;  
+    string  book_name = 2;  
+}  
+
+// 请求书列表的参数结构  page、limit   32位整形
+message BookListParams {  
+    int32 page = 1;  
+    int32 limit = 2;  
+}  
+
+
+// 书列表的结构    BookInfo结构数组
+message BookList {  
+    repeated BookInfo book_list = 1;  
+}  
+// 定义 获取书详情  和 书列表服务   入参出参分别为上面所定义的结构  
+service BookService {  
+    rpc GetBookInfo (BookInfoParams) returns (BookInfo) {}  
+    rpc GetBookList (BookListParams) returns (BookList) {}  
+}
