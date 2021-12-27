@@ -10,8 +10,8 @@ import (
 	"github.com/gogf/gf/util/gconv"
 )
 
-var once sync.Once = sync.Once{}
-var instanse *CollectManager
+var once_CollectManager sync.Once = sync.Once{}
+var obj_CollectManager *CollectManager
 
 /**
 * 数据采集管理器，单例
@@ -28,22 +28,22 @@ type CollectManager struct {
 *获取单例
  */
 func GetCollectManager() *CollectManager {
-	once.Do(func() {
-		instanse = new(CollectManager)
+	once_CollectManager.Do(func() {
+		obj_CollectManager = new(CollectManager)
 		//instanse.init()
-		//instanse.Name = "这是一个单例"
 	})
-	return instanse
+	return obj_CollectManager
 }
 
 func (m *CollectManager) Init() {
-	global.LOG.Debug("CollectManager init ....")
+	global.LOG.Info("爬虫采集器插件服务器 CollectManager init ....")
 	m.List = []*Collect{}
 	m.runChan = make(chan business.ColCollect, 1)
 	m.stopChan = make(chan business.ColCollect, 1)
 	m.exitChan = make(chan int, 1)
 	go m.manager_run()
 }
+
 func (m *CollectManager) Start(data business.ColCollect, opt int) (err error) {
 	collect_old := new(Collect)
 	var idx int = -1
@@ -58,7 +58,7 @@ func (m *CollectManager) Start(data business.ColCollect, opt int) (err error) {
 	if opt == 1 {
 		//启动
 		if idx >= 0 {
-			if 1 == *collect_old.Data.StatusRun {
+			if *collect_old.Data.StatusRun == 1 {
 				global.LOG.Debug(data.Name + "启动，旧的已经在运行了")
 				return myError.New(myError.ErrOK, "启动成功,旧的已经在运行了")
 			} else {
@@ -89,19 +89,19 @@ func (m *CollectManager) Start(data business.ColCollect, opt int) (err error) {
 }
 
 func (m *CollectManager) manager_run() {
-	global.LOG.Debug("CollectManager 开始运行 manager_run.....")
+	global.LOG.Info("CollectManager 开始运行 manager_run.....")
 	for {
 		select {
 		// 启动
 		case runCol := <-m.runChan:
-			global.LOG.Debug("CollectManager 运行。。 " + runCol.Name)
+			global.LOG.Info("CollectManager 运行。。 " + runCol.Name)
 		// 停止
 		case stopCol := <-m.stopChan:
-			global.LOG.Debug("CollectManager 停止。。 " + stopCol.Name)
+			global.LOG.Info("CollectManager 停止。。 " + stopCol.Name)
 		//退出Manager
 		case _ = <-m.exitChan:
 			//关闭所有的collect
-			global.LOG.Debug("CollectManager 退出")
+			global.LOG.Info("CollectManager 退出")
 			return
 		}
 	}
