@@ -3,35 +3,20 @@
   <!----------查询form------------------ -->
     <div class="search-term">
       <el-form :inline="true" :model="searchInfo" class="demo-form-inline"> 
-      <el-form-item label="创建时间">
-            <el-date-picker 
-                  v-model="searchInfo.createdAtBetween" 
-                  type="datetimerange"
-                  format="YYYY-MM-DD HH:mm:ss"
-                  :shortcuts="shortcuts"
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                />
-              </el-form-item> 
         <el-form-item label="ID">
             <el-input placeholder="搜索ID" v-model="searchInfo.ID" />
         </el-form-item> 
-                <el-form-item label="名称">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.name" clearable />
-                </el-form-item> 
                 <el-form-item label="appid">
                   <el-input placeholder="搜索条件" v-model="searchInfo.appId" clearable />
-                </el-form-item> 
-                <el-form-item label="管理员帐号">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.identifier" clearable />
                 </el-form-item>
-                  <el-form-item label="运行次数">
-                      <el-input placeholder="搜索条件" v-model="searchInfo.runTimes" clearable />
-                  </el-form-item>
                 <el-form-item label="状态" prop="status">                
                     <el-select v-model="searchInfo.status" placeholder="请选择" clearable>
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="运行状态" prop="statusRun">                
+                    <el-select v-model="searchInfo.statusRun" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value"></el-option>
                     </el-select>
                 </el-form-item>
         <el-form-item>
@@ -66,7 +51,7 @@
       <el-table-column type="selection" width="55" />      
        <el-table-column label="ID" min-width="60" prop="ID" sortable="custom" />
           <!--name  BeQuickEdit -->  
-        <el-table-column label="名称" prop="name" width="120"   sortable="custom" >
+        <el-table-column label="名称" prop="name" width="120"   >
         <template #default="scope">
             <el-popover trigger="click" placement="top"  width = "280">  
             <el-row :gutter="10">
@@ -80,7 +65,7 @@
         </template>
           </el-table-column>
           <!--appId  BeQuickEdit -->  
-        <el-table-column label="appid" prop="appId" width="120"   >
+        <el-table-column label="appid" prop="appId" width="120"   sortable="custom" >
         <template #default="scope">
             <el-popover trigger="click" placement="top"  width = "280">  
             <el-row :gutter="10">
@@ -94,7 +79,7 @@
         </template>
           </el-table-column>
           <!--identifier  BeQuickEdit -->  
-        <el-table-column label="管理员帐号" prop="identifier" width="120"   sortable="custom" >
+        <el-table-column label="管理员帐号" prop="identifier" width="120"   >
         <template #default="scope">
             <el-popover trigger="click" placement="top"  width = "280">  
             <el-row :gutter="10">
@@ -107,21 +92,8 @@
             </el-popover>
         </template>
           </el-table-column> 
-      <!--userSig BeHide -->
-          <!--runTimes  BeQuickEdit -->  
-        <el-table-column label="运行次数" prop="runTimes" width="120"   sortable="custom" >
-        <template #default="scope">
-            <el-popover trigger="click" placement="top"  width = "280">  
-            <el-row :gutter="10">
-              <el-col :span="16">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.runTimes"></el-input></el-col>
-              <el-col :span="4"> <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="quickEdit_do('run_times',scope.row.ID,scope.row.runTimes,scope)">保存</el-button> </el-col> 
-            </el-row>  
-              <template #reference>
-                <div  class="quickEditTxt"  > {{scope.row.runTimes}} </div>
-              </template>
-            </el-popover>
-        </template>
-          </el-table-column>
+      <!--userSig BeHide --> 
+          <el-table-column label="运行次数" prop="runTimes" width="120"   sortable="custom"  />
           <!--beginTime  BeQuickEdit -->  
         <el-table-column label="开始时间" prop="beginTime" width="120"   sortable="custom" >
         <template #default="scope">
@@ -151,7 +123,7 @@
         </template>
           </el-table-column>
           <!--status  BeQuickEdit -->
-        <el-table-column label="状态" prop="status" width="120"  >
+        <el-table-column label="状态" prop="status" width="120"  sortable="custom" >
         <template #default="scope">  
         <el-popover trigger="click" placement="top"  width = "280">  
               <el-select v-model="scope.row.status" placeholder="请选择"  @change="quickEdit_do('status',scope.row.ID,scope.row.status,scope)">
@@ -162,6 +134,19 @@
               </template>
             </el-popover>
         </template>  
+        </el-table-column>
+          <!--statusRun  BeQuickEdit -->
+        <el-table-column label="运行状态" prop="statusRun" width="120"  sortable="custom" >
+        <template #default="scope">  
+        <el-popover trigger="click" placement="top"  width = "280">  
+              <el-select v-model="scope.row.statusRun" placeholder="请选择"  @change="quickEdit_do('status_run',scope.row.ID,scope.row.statusRun,scope)">
+                  <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value"></el-option>
+              </el-select> 
+              <template #reference>
+                  <div class="quickEdit" > {{filterDict(scope.row.statusRun,"status_run")}} </div>
+              </template>
+            </el-popover>
+        </template>  
         </el-table-column> 
       <el-table-column label="日期" width="180" prop="created_at" sortable="custom" >
         <template #default="scope">{{ formatDate(scope.row.CreatedAt)}}</template>
@@ -169,6 +154,10 @@
       
       <el-table-column label="操作">
         <template #default="scope">
+			<el-button plain size="mini" type="success" icon="el-icon-bell" class="table-button"
+				@click="startCollect(scope.row.ID)">启动</el-button>
+			<el-button plain size="mini" type="warning" icon="el-icon-baseball" class="table-button"
+				@click="stopCollect(scope.row.ID)">停止</el-button>
           <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="goEditForm(scope.row.ID)">编辑</el-button>
           <el-button plain size="mini" type="danger" icon="el-icon-delete"  @click="deleteRow(scope.row)">删除</el-button>
         </template>
@@ -213,6 +202,11 @@
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
+        <el-form-item label="运行状态:">
+                 <el-select v-model="formData.statusRun" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value" />
+                 </el-select>
+       </el-form-item>
      </el-form>
       <div slot="footer" class="el-dialog__footer">
         <el-button @click="closeDialog">取 消</el-button>
@@ -230,7 +224,8 @@ import {
   findImTxim,
   getImTximList,
   quickEdit,
-  excelList
+  excelList,
+  startOrStopCollect
 } from '@/api/imTxim' //  此处请自行替换地址
 import { formatTimeToStr } from '@/utils/date'
 import infoList from '@/mixins/infoList' 
@@ -245,6 +240,7 @@ export default {
       listApi: getImTximList,   
       excelListApi: excelList,
       statusOptions: [],
+      status_runOptions: [],
       formData: {
            name: '',
            appId: '',
@@ -254,6 +250,7 @@ export default {
            beginTime: '',
            nowTime: '',
             status: 0,
+            statusRun: 0,
             mapData: {}
       } 
     }
@@ -261,6 +258,7 @@ export default {
   
   async created() {
     await this.getDict('status')
+    await this.getDict('status_run')
     await this.getTableData()
   },
   methods: { 
@@ -384,8 +382,44 @@ export default {
     },
     onExcelAll(){
         this.getExcelList(1,1000)  
-    }
-  },
+    },
+	async startCollect(id) {
+		const res = await startOrStopCollect({
+			ID: id,
+			opt: 1
+		})
+		if (res.code === 200) {
+			this.$message({
+				type: 'success',
+				message: '成功,' + res.msg
+			})
+			this.getTableData();
+		} else {
+			this.$message({
+				type: 'fail',
+				message: '失败,' + res.msg
+			})
+		}
+	},
+	async stopCollect(id) {
+		const res = await startOrStopCollect({
+			ID: id,
+			opt: 0
+		})
+		if (res.code === 200) {
+			this.$message({
+				type: 'success',
+				message: '成功,' + res.msg
+			})
+			this.getTableData();
+		} else {
+			this.$message({
+				type: 'fail',
+				message: '失败,' + res.msg
+			})
+		}
+	},
+  } 
 }
 </script>
 <style>

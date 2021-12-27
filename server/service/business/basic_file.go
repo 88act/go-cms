@@ -129,7 +129,9 @@ func (m *BasicFileService) GetBasicFileInfoList(info bizReq.BasicFileSearch, cre
 	}
 	//如果有图片image类型，更新图片path
 	for i, v := range basicFiles {
-		v.MapData = make(map[string]string)
+		if !utils.IsEmpty(v.Path) {
+			v.Path = global.CONFIG.Local.BaseUrl + v.Path
+		}
 		basicFiles[i] = v
 	}
 	return basicFiles, total, err

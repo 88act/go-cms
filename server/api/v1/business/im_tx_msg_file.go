@@ -3,21 +3,22 @@ package business
 import (
 	"errors"
 	"go-cms/global"
-	"go-cms/model/business"
+    "go-cms/model/business"
 	bizReq "go-cms/model/business/request"
-	"go-cms/model/common/request"
-	"go-cms/model/common/response"
-	bizSev "go-cms/service/business"
+    "go-cms/model/common/request" 
+    "go-cms/model/common/response"
+    bizSev "go-cms/service/business"   
 	commSev "go-cms/service/common"
-
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
-	"go.uber.org/zap"
+    "go.uber.org/zap" 
 	"gorm.io/gorm"
-)
+) 
 
 type ImTxMsgFileApi struct {
 }
+
+ 
 
 // CreateImTxMsgFile 创建ImTxMsgFile
 // @Tags ImTxMsgFile
@@ -31,17 +32,19 @@ type ImTxMsgFileApi struct {
 func (imTxMsgFileApi *ImTxMsgFileApi) CreateImTxMsgFile(c *gin.Context) {
 	var dataObj business.ImTxMsgFile
 	_ = c.ShouldBindJSON(&dataObj)
-
-	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
+	
+	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
-	if err := bizSev.GetImTxMsgFileService().CreateImTxMsgFile(dataObj); err != nil {
-		global.LOG.Error("创建失败!", zap.Any("err", err))
+ 
+	if id,err := bizSev.GetImTxMsgFileSev().Create(dataObj); err != nil {
+        global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-		response.OkWithMessage("创建成功", c)
+	    idResp := &response.IdResp{Id: id}
+		response.OkWithData(idResp, c)
 	}
 }
 
@@ -57,8 +60,8 @@ func (imTxMsgFileApi *ImTxMsgFileApi) CreateImTxMsgFile(c *gin.Context) {
 func (imTxMsgFileApi *ImTxMsgFileApi) DeleteImTxMsgFile(c *gin.Context) {
 	var imTxMsgFile business.ImTxMsgFile
 	_ = c.ShouldBindJSON(&imTxMsgFile)
-	if err := bizSev.GetImTxMsgFileService().DeleteImTxMsgFile(imTxMsgFile); err != nil {
-		global.LOG.Error("删除失败!", zap.Any("err", err))
+	if err := bizSev.GetImTxMsgFileSev().Delete(imTxMsgFile); err != nil {
+        global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -76,9 +79,9 @@ func (imTxMsgFileApi *ImTxMsgFileApi) DeleteImTxMsgFile(c *gin.Context) {
 // @Router /imTxMsgFile/deleteImTxMsgFileByIds [delete]
 func (imTxMsgFileApi *ImTxMsgFileApi) DeleteImTxMsgFileByIds(c *gin.Context) {
 	var IDS request.IdsReq
-	_ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetImTxMsgFileService().DeleteImTxMsgFileByIds(IDS); err != nil {
-		global.LOG.Error("批量删除失败!", zap.Any("err", err))
+    _ = c.ShouldBindJSON(&IDS)
+	if err := bizSev.GetImTxMsgFileSev().DeleteByIds(IDS); err != nil {
+        global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -103,8 +106,8 @@ func (imTxMsgFileApi *ImTxMsgFileApi) UpdateImTxMsgFile(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetImTxMsgFileService().UpdateImTxMsgFile(dataObj); err != nil {
-		global.LOG.Error("更新失败!", zap.Any("err", err))
+	if err := bizSev.GetImTxMsgFileSev().Update(dataObj); err != nil {
+        global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -122,14 +125,14 @@ func (imTxMsgFileApi *ImTxMsgFileApi) UpdateImTxMsgFile(c *gin.Context) {
 // @Router /imTxMsgFile/findImTxMsgFile [get]
 func (imTxMsgFileApi *ImTxMsgFileApi) FindImTxMsgFile(c *gin.Context) {
 	var imTxMsgFile business.ImTxMsgFile
-	_ = c.ShouldBindQuery(&imTxMsgFile)
-	reimTxMsgFile, err := bizSev.GetImTxMsgFileService().GetImTxMsgFile(imTxMsgFile.ID, "")
-	if errors.Is(err, gorm.ErrRecordNotFound) {
+	_ = c.ShouldBindQuery(&imTxMsgFile) 
+	 reimTxMsgFile,err:= bizSev.GetImTxMsgFileSev().Get(imTxMsgFile.ID,""); 
+	 if errors.Is(err, gorm.ErrRecordNotFound) { 
 		response.OkWithData(gin.H{"imTxMsgFile": nil}, c)
-	} else if err != nil {
-		global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil { 
+        global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else {
+	} else { 
 		response.OkWithData(gin.H{"imTxMsgFile": reimTxMsgFile}, c)
 	}
 }
@@ -148,18 +151,20 @@ func (imTxMsgFileApi *ImTxMsgFileApi) GetImTxMsgFileList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTxMsgFileSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTxMsgFileService().GetImTxMsgFileInfoList(pageInfo, createdAtBetween, ""); err != nil {
-		global.LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
-	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
-	}
+	if  list, total, err := bizSev.GetImTxMsgFileSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	    global.LOG.Error("获取失败!", zap.Any("err", err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(response.PageResult{
+            List:     list,
+            Total:    total,
+            Page:     pageInfo.Page,
+            PageSize: pageInfo.PageSize,
+        }, "获取成功", c)
+    }
 }
+
+
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -167,14 +172,13 @@ func (imTxMsgFileApi *ImTxMsgFileApi) GetImTxMsgFileList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ImTxMsgFile true "快速更新ImTxMsgFile"
+// @Param data body business.ImTxMsgFile true "快速更新ImTxMsgFile" 
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /imTxMsgFile/quickEdit [post]
+// @Router  /imTxMsgFile/quickEdit [post] 
 func (imTxMsgFileApi *ImTxMsgFileApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "im_tx_msg_file"
-	//var_dump.Dump(quickEdit)
+	quickEdit.Table = "im_tx_msg_file" 
 	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -182,6 +186,7 @@ func (imTxMsgFileApi *ImTxMsgFileApi) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
+
 
 // GetImTxMsgFileList 分页导出excel ImTxMsgFile列表
 // @Tags ImTxMsgFile
@@ -197,15 +202,17 @@ func (imTxMsgFileApi *ImTxMsgFileApi) ExcelList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTxMsgFileSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTxMsgFileService().GetImTxMsgFileInfoList(pageInfo, createdAtBetween, ""); err != nil {
-		global.LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
-	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
-	}
+	if list, total,err:= bizSev.GetImTxMsgFileSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	    global.LOG.Error("获取失败!", zap.Any("err", err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(response.PageResult{
+            List:     list,
+            Total:    total,
+            Page:     pageInfo.Page,
+            PageSize: pageInfo.PageSize,
+        }, "获取成功", c)
+    }
 }
+
+

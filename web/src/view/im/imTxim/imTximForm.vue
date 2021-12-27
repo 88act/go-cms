@@ -28,6 +28,11 @@
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
+        <el-form-item label="运行状态:">
+                 <el-select v-model="formData.statusRun" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value" />
+                 </el-select>
+       </el-form-item>
         <el-form-item>
           <el-button size="mini" type="primary" @click="save">保存</el-button>
           <el-button size="mini" type="primary" @click="back">返回</el-button>
@@ -53,6 +58,7 @@ export default {
   data() {
     return {
       statusOptions: [],
+      status_runOptions: [],
       formData: {
            name: '',
            appId: '',
@@ -62,6 +68,7 @@ export default {
            beginTime: '',
            nowTime: '',
             status: 0,
+            statusRun: 0,
             mapData: {}
       }
     }
@@ -77,7 +84,8 @@ export default {
     } else {
       this.editType = 'create'
     }
-    await this.getDict('status') 
+    await this.getDict('status')
+    await this.getDict('status_run') 
   },
   methods: {
     async save() {  

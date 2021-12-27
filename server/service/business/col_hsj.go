@@ -42,7 +42,7 @@ func (colHsjService *ColHsjService) UpdateColHsj(colHsj business.ColHsj) (err er
 // GetColHsj 根据id获取ColHsj记录
 // Author [88act](https://github.com/88act)
 func (colHsjService *ColHsjService) GetColHsj(id uint, fields string) (err error, obj business.ColHsj) {
-	err = global.DB.Where("id = ?", id).First(&obj).Error
+
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
 	} else {
@@ -70,7 +70,7 @@ func (colHsjService *ColHsjService) GetColHsjInfoList(info businessReq.ColHsjSea
 	if info.ID > 0 {
 		db = db.Where("`id` = ?", info.ID)
 	}
-	if createdAtBetween != nil && len(createdAtBetween) > 0 {
+	if len(createdAtBetween) > 2 {
 		db = db.Where("`created_at` BETWEEN ? AND ?", createdAtBetween[0], createdAtBetween[1])
 	}
 

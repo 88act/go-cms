@@ -15,22 +15,22 @@ import (
 	"gorm.io/gorm"
 ) 
 
-type ColKeyFieldApi struct {
+type MemUserApi struct {
 }
 
  
 
-// CreateColKeyField 创建ColKeyField
-// @Tags ColKeyField
-// @Summary 创建ColKeyField
+// CreateMemUser 创建MemUser
+// @Tags MemUser
+// @Summary 创建MemUser
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ColKeyField true "创建ColKeyField"
+// @Param data body business.MemUser true "创建MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /colKeyField/createColKeyField [post]
-func (colKeyFieldApi *ColKeyFieldApi) CreateColKeyField(c *gin.Context) {
-	var dataObj business.ColKeyField
+// @Router /memUser/createMemUser [post]
+func (memUserApi *MemUserApi) CreateMemUser(c *gin.Context) {
+	var dataObj business.MemUser
 	_ = c.ShouldBindJSON(&dataObj)
 	
 	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
@@ -39,7 +39,7 @@ func (colKeyFieldApi *ColKeyFieldApi) CreateColKeyField(c *gin.Context) {
 	}
 
  
-	if err := bizSev.GetColKeyFieldService().CreateColKeyField(dataObj); err != nil {
+	if err := bizSev.GetMemUserService().CreateMemUser(dataObj); err != nil {
         global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
@@ -47,19 +47,19 @@ func (colKeyFieldApi *ColKeyFieldApi) CreateColKeyField(c *gin.Context) {
 	}
 }
 
-// DeleteColKeyField 删除ColKeyField
-// @Tags ColKeyField
-// @Summary 删除ColKeyField
+// DeleteMemUser 删除MemUser
+// @Tags MemUser
+// @Summary 删除MemUser
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ColKeyField true "删除ColKeyField"
+// @Param data body business.MemUser true "删除MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
-// @Router /colKeyField/deleteColKeyField [delete]
-func (colKeyFieldApi *ColKeyFieldApi) DeleteColKeyField(c *gin.Context) {
-	var colKeyField business.ColKeyField
-	_ = c.ShouldBindJSON(&colKeyField)
-	if err := bizSev.GetColKeyFieldService().DeleteColKeyField(colKeyField); err != nil {
+// @Router /memUser/deleteMemUser [delete]
+func (memUserApi *MemUserApi) DeleteMemUser(c *gin.Context) {
+	var memUser business.MemUser
+	_ = c.ShouldBindJSON(&memUser)
+	if err := bizSev.GetMemUserService().DeleteMemUser(memUser); err != nil {
         global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
@@ -67,19 +67,19 @@ func (colKeyFieldApi *ColKeyFieldApi) DeleteColKeyField(c *gin.Context) {
 	}
 }
 
-// DeleteColKeyFieldByIds 批量删除ColKeyField
-// @Tags ColKeyField
-// @Summary 批量删除ColKeyField
+// DeleteMemUserByIds 批量删除MemUser
+// @Tags MemUser
+// @Summary 批量删除MemUser
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body request.IdsReq true "批量删除ColKeyField"
+// @Param data body request.IdsReq true "批量删除MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"批量删除成功"}"
-// @Router /colKeyField/deleteColKeyFieldByIds [delete]
-func (colKeyFieldApi *ColKeyFieldApi) DeleteColKeyFieldByIds(c *gin.Context) {
+// @Router /memUser/deleteMemUserByIds [delete]
+func (memUserApi *MemUserApi) DeleteMemUserByIds(c *gin.Context) {
 	var IDS request.IdsReq
     _ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetColKeyFieldService().DeleteColKeyFieldByIds(IDS); err != nil {
+	if err := bizSev.GetMemUserService().DeleteMemUserByIds(IDS); err != nil {
         global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
@@ -87,17 +87,17 @@ func (colKeyFieldApi *ColKeyFieldApi) DeleteColKeyFieldByIds(c *gin.Context) {
 	}
 }
 
-// UpdateColKeyField 更新ColKeyField
-// @Tags ColKeyField
-// @Summary 更新ColKeyField
+// UpdateMemUser 更新MemUser
+// @Tags MemUser
+// @Summary 更新MemUser
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ColKeyField true "更新ColKeyField"
+// @Param data body business.MemUser true "更新MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router /colKeyField/updateColKeyField [put]
-func (colKeyFieldApi *ColKeyFieldApi) UpdateColKeyField(c *gin.Context) {
-	var dataObj business.ColKeyField
+// @Router /memUser/updateMemUser [put]
+func (memUserApi *MemUserApi) UpdateMemUser(c *gin.Context) {
+	var dataObj business.MemUser
 	_ = c.ShouldBindJSON(&dataObj)
 
 	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
@@ -105,7 +105,7 @@ func (colKeyFieldApi *ColKeyFieldApi) UpdateColKeyField(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetColKeyFieldService().UpdateColKeyField(dataObj); err != nil {
+	if err := bizSev.GetMemUserService().UpdateMemUser(dataObj); err != nil {
         global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -113,44 +113,44 @@ func (colKeyFieldApi *ColKeyFieldApi) UpdateColKeyField(c *gin.Context) {
 	}
 }
 
-// FindColKeyField 用id查询ColKeyField
-// @Tags ColKeyField
-// @Summary 用id查询ColKeyField
+// FindMemUser 用id查询MemUser
+// @Tags MemUser
+// @Summary 用id查询MemUser
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query business.ColKeyField true "用id查询ColKeyField"
+// @Param data query business.MemUser true "用id查询MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"查询成功"}"
-// @Router /colKeyField/findColKeyField [get]
-func (colKeyFieldApi *ColKeyFieldApi) FindColKeyField(c *gin.Context) {
-	var colKeyField business.ColKeyField
-	_ = c.ShouldBindQuery(&colKeyField) 
-	 recolKeyField,err:= bizSev.GetColKeyFieldService().GetColKeyField(colKeyField.ID,""); 
+// @Router /memUser/findMemUser [get]
+func (memUserApi *MemUserApi) FindMemUser(c *gin.Context) {
+	var memUser business.MemUser
+	_ = c.ShouldBindQuery(&memUser) 
+	 rememUser,err:= bizSev.GetMemUserService().GetMemUser(memUser.ID,""); 
 	 if errors.Is(err, gorm.ErrRecordNotFound) { 
-		response.OkWithData(gin.H{"colKeyField": nil}, c)
+		response.OkWithData(gin.H{"memUser": nil}, c)
 	} else if err != nil { 
         global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
 	} else { 
-		response.OkWithData(gin.H{"colKeyField": recolKeyField}, c)
+		response.OkWithData(gin.H{"memUser": rememUser}, c)
 	}
 }
 
-// GetColKeyFieldList 分页获取ColKeyField列表
-// @Tags ColKeyField
-// @Summary 分页获取ColKeyField列表
+// GetMemUserList 分页获取MemUser列表
+// @Tags MemUser
+// @Summary 分页获取MemUser列表
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query bizReq.ColKeyFieldSearch true "分页获取ColKeyField列表"
+// @Param data query bizReq.MemUserSearch true "分页获取MemUser列表"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /colKeyField/getColKeyFieldList [get]
-func (colKeyFieldApi *ColKeyFieldApi) GetColKeyFieldList(c *gin.Context) {
+// @Router /memUser/getMemUserList [get]
+func (memUserApi *MemUserApi) GetMemUserList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 
-	var pageInfo bizReq.ColKeyFieldSearch
+	var pageInfo bizReq.MemUserSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetColKeyFieldService().GetColKeyFieldInfoList(pageInfo,createdAtBetween,""); err != nil {
+	if  list, total, err := bizSev.GetMemUserService().GetMemUserInfoList(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
@@ -171,13 +171,13 @@ func (colKeyFieldApi *ColKeyFieldApi) GetColKeyFieldList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ColKeyField true "快速更新ColKeyField" 
+// @Param data body business.MemUser true "快速更新MemUser" 
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /colKeyField/quickEdit [post] 
-func (colKeyFieldApi *ColKeyFieldApi) QuickEdit(c *gin.Context) {
+// @Router  /memUser/quickEdit [post] 
+func (memUserApi *MemUserApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "col_key_field" 
+	quickEdit.Table = "mem_user" 
 	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -187,21 +187,21 @@ func (colKeyFieldApi *ColKeyFieldApi) QuickEdit(c *gin.Context) {
 }
 
 
-// GetColKeyFieldList 分页导出excel ColKeyField列表
-// @Tags ColKeyField
-// @Summary 分页导出excel ColKeyField列表
+// GetMemUserList 分页导出excel MemUser列表
+// @Tags MemUser
+// @Summary 分页导出excel MemUser列表
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query bizReq.ColKeyFieldSearch true "分页导出excel ColKeyField列表"
+// @Param data query bizReq.MemUserSearch true "分页导出excel MemUser列表"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /colKeyField/excelList [get]
-func (colKeyFieldApi *ColKeyFieldApi) ExcelList(c *gin.Context) {
+// @Router /memUser/excelList [get]
+func (memUserApi *MemUserApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 
-	var pageInfo bizReq.ColKeyFieldSearch
+	var pageInfo bizReq.MemUserSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total,err:= bizSev.GetColKeyFieldService().GetColKeyFieldInfoList(pageInfo,createdAtBetween,""); err != nil {
+	if list, total,err:= bizSev.GetMemUserService().GetMemUserInfoList(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {

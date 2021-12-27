@@ -15,19 +15,22 @@
               <el-input v-model="formData.toAccount" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="时间撮:">
-                 <el-input v-model.number="formData.msgTimestamp" clearable placeholder="请输入" />
+                <el-date-picker v-model="formData.msgTimestamp" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
        </el-form-item>
         <el-form-item label="seq:">
                  <el-input v-model.number="formData.msgSeq" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="random:"> 
-              <el-input v-model="formData.msgRandom" clearable placeholder="请输入" />
+        <el-form-item label="random:">
+                 <el-input v-model.number="formData.msgRandom" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="消息类型:"> 
               <el-input v-model="formData.msgType" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="内容:">
               <editor ref="editor_msgContent" :value="formData.msgContent" placeholder="请输入内容" />
+       </el-form-item>
+        <el-form-item label="文本:"> 
+              <el-input v-model="formData.msgText" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="媒体文件:"> 
               <el-input v-model="formData.mediaList" clearable placeholder="请输入" />
@@ -82,11 +85,12 @@ export default {
            msgTime: '',
            fromAccount: '',
            toAccount: '',
-            msgTimestamp: 0,
+            msgTimestamp: new Date(),
             msgSeq: 0,
-           msgRandom: '',
+            msgRandom: 0,
            msgType: '',
            msgContent: '',
+           msgText: '',
            mediaList: '',
            mediaListTx: '',
             statusMedia: 0,

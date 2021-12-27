@@ -26,9 +26,13 @@ func GetCmsAdSeatService() *CmsAdSeatService {
 
 // CreateCmsAdSeat 创建CmsAdSeat记录
 // Author [88act](https://github.com/88act)
-func (m *CmsAdSeatService) CreateCmsAdSeat(cmsAdSeat business.CmsAdSeat) (err error) {
-	err = global.DB.Create(&cmsAdSeat).Error
-	return err
+func (m *CmsAdSeatService) CreateCmsAdSeat(data business.CmsAdSeat) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+
 }
 
 // DeleteCmsAdSeat 删除CmsAdSeat记录

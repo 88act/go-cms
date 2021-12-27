@@ -3,21 +3,22 @@ package business
 import (
 	"errors"
 	"go-cms/global"
-	"go-cms/model/business"
+    "go-cms/model/business"
 	bizReq "go-cms/model/business/request"
-	"go-cms/model/common/request"
-	"go-cms/model/common/response"
-	bizSev "go-cms/service/business"
+    "go-cms/model/common/request" 
+    "go-cms/model/common/response"
+    bizSev "go-cms/service/business"   
 	commSev "go-cms/service/common"
-
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
-	"go.uber.org/zap"
+    "go.uber.org/zap" 
 	"gorm.io/gorm"
-)
+) 
 
 type ImTximApi struct {
 }
+
+ 
 
 // CreateImTxim 创建ImTxim
 // @Tags ImTxim
@@ -31,17 +32,19 @@ type ImTximApi struct {
 func (imTximApi *ImTximApi) CreateImTxim(c *gin.Context) {
 	var dataObj business.ImTxim
 	_ = c.ShouldBindJSON(&dataObj)
-
-	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
+	
+	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
-	if err := bizSev.GetImTximService().CreateImTxim(dataObj); err != nil {
-		global.LOG.Error("创建失败!", zap.Any("err", err))
+ 
+	if id,err := bizSev.GetImTximSev().Create(dataObj); err != nil {
+        global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-		response.OkWithMessage("创建成功", c)
+	    idResp := &response.IdResp{Id: id}
+		response.OkWithData(idResp, c)
 	}
 }
 
@@ -57,8 +60,8 @@ func (imTximApi *ImTximApi) CreateImTxim(c *gin.Context) {
 func (imTximApi *ImTximApi) DeleteImTxim(c *gin.Context) {
 	var imTxim business.ImTxim
 	_ = c.ShouldBindJSON(&imTxim)
-	if err := bizSev.GetImTximService().DeleteImTxim(imTxim); err != nil {
-		global.LOG.Error("删除失败!", zap.Any("err", err))
+	if err := bizSev.GetImTximSev().Delete(imTxim); err != nil {
+        global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -76,9 +79,9 @@ func (imTximApi *ImTximApi) DeleteImTxim(c *gin.Context) {
 // @Router /imTxim/deleteImTximByIds [delete]
 func (imTximApi *ImTximApi) DeleteImTximByIds(c *gin.Context) {
 	var IDS request.IdsReq
-	_ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetImTximService().DeleteImTximByIds(IDS); err != nil {
-		global.LOG.Error("批量删除失败!", zap.Any("err", err))
+    _ = c.ShouldBindJSON(&IDS)
+	if err := bizSev.GetImTximSev().DeleteByIds(IDS); err != nil {
+        global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -103,8 +106,8 @@ func (imTximApi *ImTximApi) UpdateImTxim(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetImTximService().UpdateImTxim(dataObj); err != nil {
-		global.LOG.Error("更新失败!", zap.Any("err", err))
+	if err := bizSev.GetImTximSev().Update(dataObj); err != nil {
+        global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -122,14 +125,14 @@ func (imTximApi *ImTximApi) UpdateImTxim(c *gin.Context) {
 // @Router /imTxim/findImTxim [get]
 func (imTximApi *ImTximApi) FindImTxim(c *gin.Context) {
 	var imTxim business.ImTxim
-	_ = c.ShouldBindQuery(&imTxim)
-	reimTxim, err := bizSev.GetImTximService().GetImTxim(imTxim.ID, "")
-	if errors.Is(err, gorm.ErrRecordNotFound) {
+	_ = c.ShouldBindQuery(&imTxim) 
+	 reimTxim,err:= bizSev.GetImTximSev().Get(imTxim.ID,""); 
+	 if errors.Is(err, gorm.ErrRecordNotFound) { 
 		response.OkWithData(gin.H{"imTxim": nil}, c)
-	} else if err != nil {
-		global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil { 
+        global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else {
+	} else { 
 		response.OkWithData(gin.H{"imTxim": reimTxim}, c)
 	}
 }
@@ -148,18 +151,20 @@ func (imTximApi *ImTximApi) GetImTximList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTximSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTximService().GetImTximInfoList(pageInfo, createdAtBetween, ""); err != nil {
-		global.LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
-	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
-	}
+	if  list, total, err := bizSev.GetImTximSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	    global.LOG.Error("获取失败!", zap.Any("err", err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(response.PageResult{
+            List:     list,
+            Total:    total,
+            Page:     pageInfo.Page,
+            PageSize: pageInfo.PageSize,
+        }, "获取成功", c)
+    }
 }
+
+
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -167,14 +172,13 @@ func (imTximApi *ImTximApi) GetImTximList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ImTxim true "快速更新ImTxim"
+// @Param data body business.ImTxim true "快速更新ImTxim" 
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /imTxim/quickEdit [post]
+// @Router  /imTxim/quickEdit [post] 
 func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "im_txim"
-	//var_dump.Dump(quickEdit)
+	quickEdit.Table = "im_txim" 
 	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -182,6 +186,7 @@ func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
+
 
 // GetImTximList 分页导出excel ImTxim列表
 // @Tags ImTxim
@@ -197,15 +202,17 @@ func (imTximApi *ImTximApi) ExcelList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTximSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTximService().GetImTximInfoList(pageInfo, createdAtBetween, ""); err != nil {
-		global.LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
-	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
-	}
+	if list, total,err:= bizSev.GetImTximSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	    global.LOG.Error("获取失败!", zap.Any("err", err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(response.PageResult{
+            List:     list,
+            Total:    total,
+            Page:     pageInfo.Page,
+            PageSize: pageInfo.PageSize,
+        }, "获取成功", c)
+    }
 }
+
+

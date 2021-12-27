@@ -17,21 +17,30 @@
         <el-form-item label="文件大小:">
                  <el-input v-model.number="formData.fileSize" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="文件md5:">
-                 <el-input v-model.number="formData.fileMd5" clearable placeholder="请输入" />
+        <el-form-item label="文件md5:"> 
+              <el-input v-model="formData.fileMd5" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="压缩大小:">
                  <el-input v-model.number="formData.gzipSize" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="压缩md5:">
-                 <el-input v-model.number="formData.gzipMd5" clearable placeholder="请输入" />
+        <el-form-item label="压缩md5:"> 
+              <el-input v-model="formData.gzipMd5" clearable placeholder="请输入" />
+       </el-form-item>
+        <el-form-item label="请求code:"> 
+              <el-input v-model="formData.errorCode" clearable placeholder="请输入" />
+       </el-form-item>
+        <el-form-item label="请求信息:"> 
+              <el-input v-model="formData.errorInfo" clearable placeholder="请输入" />
+       </el-form-item>
+        <el-form-item label="请求状态:"> 
+              <el-input v-model="formData.actionStatus" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="本地路径:"> 
               <el-input v-model="formData.localFile" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="状态:">
                  <el-select v-model="formData.status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in status_downloadOptions" :key="key" :label="item.label" :value="item.value" />
+                      <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
         <el-form-item>
@@ -58,16 +67,19 @@ export default {
   mixins: [infoList,tinymce,editForm], 
   data() {
     return {
-      status_downloadOptions: [],
+      statusOptions: [],
       formData: {
            chatType: '',
            msgTime: '',
            url: '',
             expireTime: new Date(),
             fileSize: 0,
-            fileMd5: 0,
+           fileMd5: '',
             gzipSize: 0,
-            gzipMd5: 0,
+           gzipMd5: '',
+           errorCode: '',
+           errorInfo: '',
+           actionStatus: '',
            localFile: '',
             status: 0,
             mapData: {}
@@ -85,7 +97,7 @@ export default {
     } else {
       this.editType = 'create'
     }
-    await this.getDict('status_download') 
+    await this.getDict('status') 
   },
   methods: {
     async save() {  

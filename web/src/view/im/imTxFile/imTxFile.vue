@@ -16,31 +16,18 @@
               </el-form-item> 
         <el-form-item label="ID">
             <el-input placeholder="搜索ID" v-model="searchInfo.ID" />
-        </el-form-item> 
-                <el-form-item label="消息类型">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.chatType" clearable />
-                </el-form-item> 
-                <el-form-item label="消息时间">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.msgTime" clearable />
-                </el-form-item> 
-                <el-form-item label="下载路径">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.url" clearable />
+        </el-form-item>
+                  <el-form-item label="消息id">
+                      <el-input placeholder="搜索条件" v-model="searchInfo.msgId" clearable />
+                  </el-form-item>
+                <el-form-item label="文件类型" prop="mediaType">                
+                    <el-select v-model="searchInfo.mediaType" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in media_typeOptions" :key="key" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
                 </el-form-item>
-                  <el-form-item label="文件大小">
-                      <el-input placeholder="搜索条件" v-model="searchInfo.fileSize" clearable />
-                  </el-form-item> 
-                <el-form-item label="请求code">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.errorCode" clearable />
-                </el-form-item> 
-                <el-form-item label="请求信息">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.errorInfo" clearable />
-                </el-form-item> 
-                <el-form-item label="请求状态">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.actionStatus" clearable />
-                </el-form-item>
-                <el-form-item label="状态" prop="status">                
+                <el-form-item label="下载状态" prop="status">                
                     <el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value"></el-option>
+                      <el-option v-for="(item,key) in status_downloadOptions" :key="key" :label="item.label" :value="item.value"></el-option>
                     </el-select>
                 </el-form-item>
         <el-form-item>
@@ -74,45 +61,22 @@
     >
       <el-table-column type="selection" width="55" />      
        <el-table-column label="ID" min-width="60" prop="ID" sortable="custom" /> 
-          <el-table-column label="消息类型" prop="chatType" width="120"   sortable="custom"  /> 
-          <el-table-column label="消息时间" prop="msgTime" width="120"   sortable="custom"  /> 
-      <!--url BeHide -->
-            <el-table-column label="过期时间" width="180" prop="expireTime"   sortable="custom" >
-                <template #default="scope">{{formatDate(scope.row.expireTime)}}</template>
-             </el-table-column> 
-          <el-table-column label="文件大小" prop="fileSize" width="120"   sortable="custom"  /> 
-          <el-table-column label="文件md5" prop="fileMd5" width="120"    /> 
-          <el-table-column label="压缩大小" prop="gzipSize" width="120"   sortable="custom"  /> 
-          <el-table-column label="压缩md5" prop="gzipMd5" width="120"    /> 
-          <el-table-column label="请求code" prop="errorCode" width="120"   sortable="custom"  /> 
-      <!--errorInfo BeHide -->
-          <!--actionStatus  BeQuickEdit -->  
-        <el-table-column label="请求状态" prop="actionStatus" width="120"   sortable="custom" >
-        <template #default="scope">
-            <el-popover trigger="click" placement="top"  width = "280">  
-            <el-row :gutter="10">
-              <el-col :span="16">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.actionStatus"></el-input></el-col>
-              <el-col :span="4"> <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="quickEdit_do('action_status',scope.row.ID,scope.row.actionStatus,scope)">保存</el-button> </el-col> 
-            </el-row>  
-              <template #reference>
-                <div  class="quickEditTxt"  > {{scope.row.actionStatus}} </div>
-              </template>
-            </el-popover>
-        </template>
-          </el-table-column> 
-      <!--localFile BeHide -->
-          <!--status  BeQuickEdit -->
-        <el-table-column label="状态" prop="status" width="120"  sortable="custom" >
-        <template #default="scope">  
-        <el-popover trigger="click" placement="top"  width = "280">  
-              <el-select v-model="scope.row.status" placeholder="请选择"  @change="quickEdit_do('status',scope.row.ID,scope.row.status,scope)">
-                  <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value"></el-option>
-              </el-select> 
-              <template #reference>
-                  <div class="quickEdit" > {{filterDict(scope.row.status,"status")}} </div>
-              </template>
-            </el-popover>
-        </template>  
+          <el-table-column label="消息id" prop="msgId" width="120"   sortable="custom"  />
+        <el-table-column label="文件类型" prop="mediaType" width="120"  sortable="custom" >
+          <template #default="scope">
+            {{filterDict(scope.row.mediaType,"media_type")}}
+          </template>
+        </el-table-column> 
+        <el-table-column label="图" prop="local" width="120"   >
+            <template #default="scope">
+              <ImageView :url="scope.row.local" />
+            </template>
+        </el-table-column>  
+      <!--local BeHide -->
+        <el-table-column label="下载状态" prop="status" width="120"  sortable="custom" >
+          <template #default="scope">
+            {{filterDict(scope.row.status,"status_download")}}
+          </template>
         </el-table-column> 
       <el-table-column label="日期" width="180" prop="created_at" sortable="custom" >
         <template #default="scope">{{ formatDate(scope.row.CreatedAt)}}</template>
@@ -138,45 +102,23 @@
     <!---------- 编辑弹窗------------------ -->
     <el-dialog  v-if="dialogFormVisible"  :before-close="closeDialog" v-model="dialogFormVisible" title="编辑资料">
       <el-form :model="formData" label-position="right" label-width="80px">
-        <el-form-item label="消息类型:"> 
-              <el-input v-model="formData.chatType" clearable placeholder="请输入" />
+        <el-form-item label="消息id:">
+                 <el-input v-model.number="formData.msgId" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="消息时间:"> 
-              <el-input v-model="formData.msgTime" clearable placeholder="请输入" />
+        <el-form-item label="文件类型:">
+                 <el-select v-model="formData.mediaType" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in media_typeOptions" :key="key" :label="item.label" :value="item.value" />
+                 </el-select>
        </el-form-item>
-        <el-form-item label="下载路径:"> 
+        <el-form-item label="远程地址:"> 
               <el-input v-model="formData.url" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="过期时间:">
-                <el-date-picker v-model="formData.expireTime" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
-       </el-form-item>
-        <el-form-item label="文件大小:">
-                 <el-input v-model.number="formData.fileSize" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="文件md5:"> 
-              <el-input v-model="formData.fileMd5" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="压缩大小:">
-                 <el-input v-model.number="formData.gzipSize" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="压缩md5:"> 
-              <el-input v-model="formData.gzipMd5" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="请求code:"> 
-              <el-input v-model="formData.errorCode" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="请求信息:"> 
-              <el-input v-model="formData.errorInfo" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="请求状态:"> 
-              <el-input v-model="formData.actionStatus" clearable placeholder="请输入" />
-       </el-form-item>
         <el-form-item label="本地路径:"> 
-              <el-input v-model="formData.localFile" clearable placeholder="请输入" />
+              <el-input v-model="formData.local" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="状态:">
+        <el-form-item label="下载状态:">
                  <el-select v-model="formData.status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
+                      <el-option v-for="(item,key) in status_downloadOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
      </el-form>
@@ -190,40 +132,33 @@
 
 <script>
 import {
-  createImTxMsgFile, 
-  deleteImTxMsgFileByIds,
-  updateImTxMsgFile,
-  findImTxMsgFile,
-  getImTxMsgFileList,
+  createImTxFile, 
+  deleteImTxFileByIds,
+  updateImTxFile,
+  findImTxFile,
+  getImTxFileList,
   quickEdit,
   excelList
-} from '@/api/imTxMsgFile' //  此处请自行替换地址
+} from '@/api/imTxFile' //  此处请自行替换地址
 import { formatTimeToStr } from '@/utils/date'
 import infoList from '@/mixins/infoList' 
 import tinymce from '@/mixins/tinymce' 
 import editForm from '@/mixins/editForm' 
 export default {
-  name: 'ImTxMsgFile',
+  name: 'ImTxFile',
   mixins: [infoList,tinymce,editForm], 
   data() {
     return {
       beNewWindow:false,//是否在新窗口打开编辑器
-      listApi: getImTxMsgFileList,   
+      listApi: getImTxFileList,   
       excelListApi: excelList,
-      statusOptions: [],
+      media_typeOptions: [],
+      status_downloadOptions: [],
       formData: {
-           chatType: '',
-           msgTime: '',
+            msgId: 0,
+            mediaType: 0,
            url: '',
-            expireTime: new Date(),
-            fileSize: 0,
-           fileMd5: '',
-            gzipSize: 0,
-           gzipMd5: '',
-           errorCode: '',
-           errorInfo: '',
-           actionStatus: '',
-           localFile: '',
+           local: '',
             status: 0,
             mapData: {}
       } 
@@ -231,7 +166,8 @@ export default {
   },
   
   async created() {
-    await this.getDict('status')
+    await this.getDict('media_type')
+    await this.getDict('status_download')
     await this.getTableData()
   },
   methods: { 
@@ -251,7 +187,7 @@ export default {
       }).then(() => {
          const ids = [row.ID] 
          this.doDelete(ids); 
-        //this.deleteImTxMsgFile(row)
+        //this.deleteImTxFile(row)
       })
     },
     async onDelete() {
@@ -270,7 +206,7 @@ export default {
       this.doDelete(ids); 
     },
   	async doDelete(ids) { 
-     const res = await deleteImTxMsgFileByIds({ ids })
+     const res = await deleteImTxFileByIds({ ids })
       if (res.code === 200) {
         this.$message({
           type: 'success',
@@ -286,18 +222,18 @@ export default {
    async goEditForm(id) { 
 	  if (this.beNewWindow) {
 		  if (id >0) {
-			this.$router.push({ name:'imTxMsgFileForm', params:{id:id}})
+			this.$router.push({ name:'imTxFileForm', params:{id:id}})
 		  } else {
-			 this.$router.push({ name:'imTxMsgFileForm',params:{id:id}})
+			 this.$router.push({ name:'imTxFileForm',params:{id:id}})
 		  }
 	  }else
 	  {
 		 if (id >0) {
-			  const res = await findImTxMsgFile({ID:id})
+			  const res = await findImTxFile({ID:id})
 			  //console.log(res.data)
 			  this.editType = 'update'
 			  if (res.code === 200) 
-			     this.formData = res.data.imTxMsgFile 
+			     this.formData = res.data.imTxFile 
 		 }else
 		 {
 			this.editType = 'create' 
@@ -312,13 +248,13 @@ export default {
       let res;
       switch (this.editType) {
         case "create":         
-          res = await createImTxMsgFile(this.formData);
+          res = await createImTxFile(this.formData);
           break
         case "update": 
-          res = await updateImTxMsgFile(this.formData);
+          res = await updateImTxFile(this.formData);
           break
         default: 
-          res = await createImTxMsgFile(this.formData);
+          res = await createImTxFile(this.formData);
           break
       }
       if (res.code === 200) {

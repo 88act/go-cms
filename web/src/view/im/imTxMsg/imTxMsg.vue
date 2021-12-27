@@ -28,9 +28,23 @@
                 </el-form-item> 
                 <el-form-item label="接收人">
                   <el-input placeholder="搜索条件" v-model="searchInfo.toAccount" clearable />
-                </el-form-item> 
+                </el-form-item>
+              <el-form-item label="时间撮"> 
+                <el-date-picker
+                v-model="formData.msgTimestamp"  
+                type="datetimerange"
+                format="YYYY-MM-DD HH:mm:ss"
+                :shortcuts="shortcuts"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+              /> 
+             </el-form-item> 
                 <el-form-item label="消息类型">
                   <el-input placeholder="搜索条件" v-model="searchInfo.msgType" clearable />
+                </el-form-item> 
+                <el-form-item label="文本">
+                  <el-input placeholder="搜索条件" v-model="searchInfo.msgText" clearable />
                 </el-form-item>
                 <el-form-item label="媒体下载" prop="statusMedia">                
                     <el-select v-model="searchInfo.statusMedia" placeholder="请选择" clearable>
@@ -82,12 +96,15 @@
           <el-table-column label="消息类型" prop="chatType" width="120"   sortable="custom"  /> 
           <el-table-column label="消息时间" prop="msgTime" width="120"   sortable="custom"  /> 
           <el-table-column label="发送人" prop="fromAccount" width="120"   sortable="custom"  /> 
-          <el-table-column label="接收人" prop="toAccount" width="120"   sortable="custom"  /> 
-      <!--msgTimestamp BeHide --> 
+          <el-table-column label="接收人" prop="toAccount" width="120"   sortable="custom"  />
+            <el-table-column label="时间撮" width="180" prop="msgTimestamp"   sortable="custom" >
+                <template #default="scope">{{formatDate(scope.row.msgTimestamp)}}</template>
+             </el-table-column> 
       <!--msgSeq BeHide --> 
       <!--msgRandom BeHide --> 
           <el-table-column label="消息类型" prop="msgType" width="120"   sortable="custom"  /> 
       <!--msgContent BeHide --> 
+          <el-table-column label="文本" prop="msgText" width="120"    /> 
       <!--mediaList BeHide --> 
       <!--mediaListTx BeHide -->
         <el-table-column label="媒体下载" prop="statusMedia" width="120"  sortable="custom" >
@@ -95,8 +112,8 @@
             {{filterDict(scope.row.statusMedia,"status_download")}}
           </template>
         </el-table-column> 
-          <el-table-column label="IP地址" prop="clientIp" width="120"   sortable="custom"  /> 
-          <el-table-column label="平台" prop="msgFromPlatform" width="120"    />
+      <!--clientIp BeHide --> 
+      <!--msgFromPlatform BeHide -->
         <el-table-column label="状态" prop="status" width="120"  sortable="custom" >
           <template #default="scope">
             {{filterDict(scope.row.status,"status")}}
@@ -139,19 +156,22 @@
               <el-input v-model="formData.toAccount" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="时间撮:">
-                 <el-input v-model.number="formData.msgTimestamp" clearable placeholder="请输入" />
+                <el-date-picker v-model="formData.msgTimestamp" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
        </el-form-item>
         <el-form-item label="seq:">
                  <el-input v-model.number="formData.msgSeq" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="random:"> 
-              <el-input v-model="formData.msgRandom" clearable placeholder="请输入" />
+        <el-form-item label="random:">
+                 <el-input v-model.number="formData.msgRandom" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="消息类型:"> 
               <el-input v-model="formData.msgType" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="内容:">
               <editor ref="editor_msgContent" :value="formData.msgContent" placeholder="请输入内容" />
+       </el-form-item>
+        <el-form-item label="文本:"> 
+              <el-input v-model="formData.msgText" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="媒体文件:"> 
               <el-input v-model="formData.mediaList" clearable placeholder="请输入" />
@@ -213,11 +233,12 @@ export default {
            msgTime: '',
            fromAccount: '',
            toAccount: '',
-            msgTimestamp: 0,
+            msgTimestamp: new Date(),
             msgSeq: 0,
-           msgRandom: '',
+            msgRandom: 0,
            msgType: '',
            msgContent: '',
+           msgText: '',
            mediaList: '',
            mediaListTx: '',
             statusMedia: 0,
