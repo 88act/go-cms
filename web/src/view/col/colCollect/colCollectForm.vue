@@ -31,7 +31,7 @@
        </el-form-item>
         <el-form-item label="运行状态:">
                  <el-select v-model="formData.statusRun" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value" />
+                      <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
         <el-form-item label="状态:">
@@ -63,7 +63,7 @@ export default {
   mixins: [infoList,tinymce,editForm], 
   data() {
     return {
-      status_runOptions: [],
+      statusOptions: [],
       statusOptions: [],
       formData: {
             userid: 0,
@@ -92,7 +92,7 @@ export default {
     } else {
       this.editType = 'create'
     }
-    await this.getDict('status_run')
+    await this.getDict('status')
     await this.getDict('status') 
   },
   methods: {

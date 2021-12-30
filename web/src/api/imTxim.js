@@ -128,3 +128,20 @@ export const excelList = (params) => {
     params
   })
 }
+
+
+// @Tags ColCollect
+// @Summary 启动或停止采集器
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data query model.ColCollect true "启动或停止采集器"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"成功"}"
+// @Router /imTxim/startOrStopCollect [get]
+export const startOrStopCollect = (params) => {
+  return service({
+    url: '/imTxim/startOrStopCollect',
+    method: 'get',
+    params
+  })
+}

@@ -123,9 +123,13 @@
         </template>
           </el-table-column> 
       <!--detail BeHide --> 
-      <!--expDetail BeHide --> 
-          <el-table-column label="投放时间" prop="startTime" width="120"   sortable="custom"  /> 
-          <el-table-column label="结束时间" prop="endTime" width="120"   sortable="custom"  />
+      <!--expDetail BeHide -->
+            <el-table-column label="投放时间" width="180" prop="startTime"   sortable="custom" >
+                <template #default="scope">{{formatDate(scope.row.startTime)}}</template>
+             </el-table-column>
+            <el-table-column label="结束时间" width="180" prop="endTime"   sortable="custom" >
+                <template #default="scope">{{formatDate(scope.row.endTime)}}</template>
+             </el-table-column>
           <!--totalClick  BeQuickEdit -->  
         <el-table-column label="点击量" prop="totalClick" width="120"   sortable="custom" >
         <template #default="scope">
