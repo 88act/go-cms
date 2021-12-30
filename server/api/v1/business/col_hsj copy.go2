@@ -1,3 +1,81 @@
+ 
+// GetColHsjList 分页导出excel ColHsj列表
+// @Tags ColHsj
+// @Summary 分页导出excel ColHsj列表
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data query businessReq.ColHsjSearch true "分页导出excel ColHsj列表"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
+// @Router /colHsj/excelList [get]
+func (colHsjApi *ColHsjApi) ExcelList(c *gin.Context) {
+	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
+	var pageInfo businessReq.ColHsjSearch
+	_ = c.ShouldBindQuery(&pageInfo)
+	if err, list, _ := colHsjService.GetColHsjInfoListAll(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else {
+			dataObj := business.ColHsjMini{}
+			dataObj2 := business.ColHsj{}
+			sheetFields := []string{"ID"}
+			sheetFieldsJson := []string{"Id"}
+			t := reflect.TypeOf(dataObj)
+			for i := 0; i < t.NumField(); i++ {
+				fieldName := t.Field(i).Tag.Get("cn")
+				fieldJson := t.Field(i).Tag.Get("json")
+				//fmt.Println("fieldName =1= " + fieldName)
+				if !utils.IsEmpty(fieldName) {
+					sheetFields = append(sheetFields, fieldName)
+					sheetFieldsJson = append(sheetFieldsJson, fieldJson)
+				}
+			}
+			t2 := reflect.TypeOf(dataObj2)
+			for i := 0; i < t2.NumField(); i++ {
+				fieldName := t2.Field(i).Tag.Get("cn")
+				fieldJson := t2.Field(i).Tag.Get("json")
+				//fmt.Println("fieldName =1= " + fieldName)
+				if !utils.IsEmpty(fieldName) {
+					sheetFields = append(sheetFields, fieldName)
+					sheetFieldsJson = append(sheetFieldsJson, fieldJson)
+				}
+			}
+			fmt.Println("sheetFields")
+			fmt.Println(sheetFields)
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				//excel.SetSheetRow("Sheet1", axis, &[]interface{}{v.ID, *v.ColId, v.Url, v.Title, v.PubTime.Format("2006-01-02 15:04:05"), v.PubUnit, v.Log, v.Lat, *v.Status, v.Content})
+				//var arr = []interface{}{"姓名", "性别", "年龄", "工作"}
+				var arr = utils.Strct2Slice(v, sheetFieldsJson)
+				fmt.Println(arr)
+				// 数据必须是 []interface{} 类型的
+				//err := f.SetSheetRow("data", "A1", &arr)
+				excel.SetSheetRow("Sheet1", axis, &arr)
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			fmt.Println(filePath)
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename}
+				fmt.Println(resData)
+				response.OkWithData(resData, c)
+			}
+
+		}
+	}
+}
+
+
 package business
 
 import (

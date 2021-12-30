@@ -1,17 +1,21 @@
 package business
 
 import (
-	"errors"
+ "errors"
+	"fmt"
 	"go-cms/global"
-    "go-cms/model/business"
+	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
-    "go-cms/model/common/request" 
-    "go-cms/model/common/response"
-    bizSev "go-cms/service/business"   
+	"go-cms/model/common/request"
+	"go-cms/model/common/response"
+	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
-    "github.com/gin-gonic/gin"
+	"time"
+
+	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
-    "go.uber.org/zap" 
+	"github.com/xuri/excelize/v2"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 ) 
 
@@ -39,11 +43,12 @@ func (memUserSafeApi *MemUserSafeApi) CreateMemUserSafe(c *gin.Context) {
 	}
 
  
-	if err := bizSev.GetMemUserSafeService().CreateMemUserSafe(dataObj); err != nil {
+	if id,err := bizSev.GetMemUserSafeSev().Create(dataObj); err != nil {
         global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-		response.OkWithMessage("创建成功", c)
+	    idResp := &response.IdResp{Id: id}
+		response.OkWithData(idResp, c)
 	}
 }
 
@@ -59,7 +64,7 @@ func (memUserSafeApi *MemUserSafeApi) CreateMemUserSafe(c *gin.Context) {
 func (memUserSafeApi *MemUserSafeApi) DeleteMemUserSafe(c *gin.Context) {
 	var memUserSafe business.MemUserSafe
 	_ = c.ShouldBindJSON(&memUserSafe)
-	if err := bizSev.GetMemUserSafeService().DeleteMemUserSafe(memUserSafe); err != nil {
+	if err := bizSev.GetMemUserSafeSev().Delete(memUserSafe); err != nil {
         global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
@@ -79,7 +84,7 @@ func (memUserSafeApi *MemUserSafeApi) DeleteMemUserSafe(c *gin.Context) {
 func (memUserSafeApi *MemUserSafeApi) DeleteMemUserSafeByIds(c *gin.Context) {
 	var IDS request.IdsReq
     _ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetMemUserSafeService().DeleteMemUserSafeByIds(IDS); err != nil {
+	if err := bizSev.GetMemUserSafeSev().DeleteByIds(IDS); err != nil {
         global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
@@ -105,7 +110,7 @@ func (memUserSafeApi *MemUserSafeApi) UpdateMemUserSafe(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetMemUserSafeService().UpdateMemUserSafe(dataObj); err != nil {
+	if err := bizSev.GetMemUserSafeSev().Update(dataObj); err != nil {
         global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -125,7 +130,7 @@ func (memUserSafeApi *MemUserSafeApi) UpdateMemUserSafe(c *gin.Context) {
 func (memUserSafeApi *MemUserSafeApi) FindMemUserSafe(c *gin.Context) {
 	var memUserSafe business.MemUserSafe
 	_ = c.ShouldBindQuery(&memUserSafe) 
-	 rememUserSafe,err:= bizSev.GetMemUserSafeService().GetMemUserSafe(memUserSafe.ID,""); 
+	 rememUserSafe,err:= bizSev.GetMemUserSafeSev().Get(memUserSafe.ID,""); 
 	 if errors.Is(err, gorm.ErrRecordNotFound) { 
 		response.OkWithData(gin.H{"memUserSafe": nil}, c)
 	} else if err != nil { 
@@ -150,7 +155,7 @@ func (memUserSafeApi *MemUserSafeApi) GetMemUserSafeList(c *gin.Context) {
 
 	var pageInfo bizReq.MemUserSafeSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetMemUserSafeService().GetMemUserSafeInfoList(pageInfo,createdAtBetween,""); err != nil {
+	if  list, total, err := bizSev.GetMemUserSafeSev().GetList(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
@@ -178,7 +183,7 @@ func (memUserSafeApi *MemUserSafeApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "mem_user_safe" 
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -187,7 +192,7 @@ func (memUserSafeApi *MemUserSafeApi) QuickEdit(c *gin.Context) {
 }
 
 
-// GetMemUserSafeList 分页导出excel MemUserSafe列表
+// excelList 分页导出excel MemUserSafe列表
 // @Tags MemUserSafe
 // @Summary 分页导出excel MemUserSafe列表
 // @Security ApiKeyAuth
@@ -198,20 +203,48 @@ func (memUserSafeApi *MemUserSafeApi) QuickEdit(c *gin.Context) {
 // @Router /memUserSafe/excelList [get]
 func (memUserSafeApi *MemUserSafeApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-
 	var pageInfo bizReq.MemUserSafeSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total,err:= bizSev.GetMemUserSafeService().GetMemUserSafeInfoList(pageInfo,createdAtBetween,""); err != nil {
+	if list,_,err:= bizSev.GetMemUserSafeSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
+        if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else { 
+			sheetFields := []string{}  
+					sheetFields = append(sheetFields, "用户id")  
+					sheetFields = append(sheetFields, "类型")  
+					sheetFields = append(sheetFields, "旧值")  
+					sheetFields = append(sheetFields, "新值")  
+					sheetFields = append(sheetFields, "状态") 
+
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				var arr = []interface{}{}
+				arr = append(arr, *v.UserId)
+				arr = append(arr, *v.Type)
+				arr = append(arr, *v.ValOld)
+				arr = append(arr, *v.ValNew)
+				arr = append(arr, *v.Status)   
+			    excel.SetSheetRow("Sheet1", axis,&arr)  
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename} 
+				response.OkWithData(resData, c)
+			} 
+		}
     }
 }
 
 
+ 

@@ -2,6 +2,7 @@ package business
 
 import (
 	"errors"
+	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
@@ -9,9 +10,11 @@ import (
 	"go-cms/model/common/response"
 	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
+	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -37,11 +40,12 @@ func (cmsCatApi *CmsCatApi) CreateCmsCat(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetCmsCatService().CreateCmsCat(dataObj); err != nil {
+	if id, err := bizSev.GetCmsCatSev().Create(dataObj); err != nil {
 		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-		response.OkWithMessage("创建成功", c)
+		idResp := &response.IdResp{Id: id}
+		response.OkWithData(idResp, c)
 	}
 }
 
@@ -57,7 +61,7 @@ func (cmsCatApi *CmsCatApi) CreateCmsCat(c *gin.Context) {
 func (cmsCatApi *CmsCatApi) DeleteCmsCat(c *gin.Context) {
 	var cmsCat business.CmsCat
 	_ = c.ShouldBindJSON(&cmsCat)
-	if err := bizSev.GetCmsCatService().DeleteCmsCat(cmsCat); err != nil {
+	if err := bizSev.GetCmsCatSev().Delete(cmsCat); err != nil {
 		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
@@ -77,7 +81,7 @@ func (cmsCatApi *CmsCatApi) DeleteCmsCat(c *gin.Context) {
 func (cmsCatApi *CmsCatApi) DeleteCmsCatByIds(c *gin.Context) {
 	var IDS request.IdsReq
 	_ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetCmsCatService().DeleteCmsCatByIds(IDS); err != nil {
+	if err := bizSev.GetCmsCatSev().DeleteByIds(IDS); err != nil {
 		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
@@ -103,7 +107,7 @@ func (cmsCatApi *CmsCatApi) UpdateCmsCat(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetCmsCatService().UpdateCmsCat(dataObj); err != nil {
+	if err := bizSev.GetCmsCatSev().Update(dataObj); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -123,7 +127,7 @@ func (cmsCatApi *CmsCatApi) UpdateCmsCat(c *gin.Context) {
 func (cmsCatApi *CmsCatApi) FindCmsCat(c *gin.Context) {
 	var cmsCat business.CmsCat
 	_ = c.ShouldBindQuery(&cmsCat)
-	recmsCat, err := bizSev.GetCmsCatService().GetCmsCat(cmsCat.ID, "")
+	recmsCat, err := bizSev.GetCmsCatSev().Get(cmsCat.ID, "")
 	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"cmsCat": nil}, c)
 	} else if err != nil {
@@ -148,7 +152,7 @@ func (cmsCatApi *CmsCatApi) GetCmsCatList(c *gin.Context) {
 
 	var pageInfo bizReq.CmsCatSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetCmsCatService().GetCmsCatInfoList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, total, err := bizSev.GetCmsCatSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
@@ -174,8 +178,7 @@ func (cmsCatApi *CmsCatApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "cms_cat"
-	//var_dump.Dump(quickEdit)
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -183,7 +186,7 @@ func (cmsCatApi *CmsCatApi) QuickEdit(c *gin.Context) {
 	}
 }
 
-// GetCmsCatList 分页导出excel CmsCat列表
+// excelList 分页导出excel CmsCat列表
 // @Tags CmsCat
 // @Summary 分页导出excel CmsCat列表
 // @Security ApiKeyAuth
@@ -194,18 +197,59 @@ func (cmsCatApi *CmsCatApi) QuickEdit(c *gin.Context) {
 // @Router /cmsCat/excelList [get]
 func (cmsCatApi *CmsCatApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-
 	var pageInfo bizReq.CmsCatSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetCmsCatService().GetCmsCatInfoList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, _, err := bizSev.GetCmsCatSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
+		if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "父ID")
+			sheetFields = append(sheetFields, "系统分类")
+			sheetFields = append(sheetFields, "群组id")
+			sheetFields = append(sheetFields, "文章类型")
+			sheetFields = append(sheetFields, "名称")
+			sheetFields = append(sheetFields, "配图")
+			sheetFields = append(sheetFields, "排序")
+			sheetFields = append(sheetFields, "是否导航")
+			sheetFields = append(sheetFields, "描述")
+			sheetFields = append(sheetFields, "关键词")
+			sheetFields = append(sheetFields, "别名")
+			sheetFields = append(sheetFields, "状态")
+
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				var arr = []interface{}{}
+				arr = append(arr, *v.Pid)
+				arr = append(arr, *v.BeSys)
+				arr = append(arr, *v.GroupId)
+				arr = append(arr, *v.MediaType)
+				arr = append(arr, v.Name)
+				arr = append(arr, v.Thumb)
+				arr = append(arr, *v.Sort)
+				arr = append(arr, *v.BeNav)
+				arr = append(arr, v.Desc)
+				arr = append(arr, v.Keywords)
+				arr = append(arr, v.Alias)
+				arr = append(arr, *v.Status)
+				excel.SetSheetRow("Sheet1", axis, &arr)
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename}
+				response.OkWithData(resData, c)
+			}
+		}
 	}
 }

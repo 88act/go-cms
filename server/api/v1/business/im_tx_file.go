@@ -2,6 +2,7 @@ package business
 
 import (
 	"errors"
+	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
@@ -9,9 +10,11 @@ import (
 	"go-cms/model/common/response"
 	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
+	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -149,15 +152,10 @@ func (imTxFileApi *ImTxFileApi) GetImTxFileList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTxFileSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTxFileSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
+	if list, total, err := bizSev.GetImTxFileSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
-
-		for i, v := range list {
-			list[i].Local = global.CONFIG.Local.BaseUrl + v.Local
-		}
-
 		response.OkWithDetailed(response.PageResult{
 			List:     list,
 			Total:    total,
@@ -180,7 +178,7 @@ func (imTxFileApi *ImTxFileApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "im_tx_file"
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -188,7 +186,7 @@ func (imTxFileApi *ImTxFileApi) QuickEdit(c *gin.Context) {
 	}
 }
 
-// GetImTxFileList 分页导出excel ImTxFile列表
+// excelList 分页导出excel ImTxFile列表
 // @Tags ImTxFile
 // @Summary 分页导出excel ImTxFile列表
 // @Security ApiKeyAuth
@@ -199,18 +197,45 @@ func (imTxFileApi *ImTxFileApi) QuickEdit(c *gin.Context) {
 // @Router /imTxFile/excelList [get]
 func (imTxFileApi *ImTxFileApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-
 	var pageInfo bizReq.ImTxFileSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTxFileSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, _, err := bizSev.GetImTxFileSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
+		if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "消息id")
+			sheetFields = append(sheetFields, "文件类型")
+			sheetFields = append(sheetFields, "远程地址")
+			sheetFields = append(sheetFields, "本地路径")
+			sheetFields = append(sheetFields, "下载状态")
+
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				var arr = []interface{}{}
+				arr = append(arr, *v.MsgId)
+				arr = append(arr, *v.MediaType)
+				arr = append(arr, v.Url)
+				arr = append(arr, v.Local)
+				arr = append(arr, *v.Status)
+				excel.SetSheetRow("Sheet1", axis, &arr)
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename}
+				response.OkWithData(resData, c)
+			}
+		}
 	}
 }

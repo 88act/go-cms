@@ -5,7 +5,7 @@ import (
 	"go-cms/model/business" 
      bizReq "go-cms/model/business/request"
     "go-cms/model/common/request"
-    "go-cms/service/common"
+     comSev "go-cms/service/common" 
     "go-cms/utils"
     "sync"
 )
@@ -17,7 +17,7 @@ var once_CmsArticle sync.Once = sync.Once{}
 var obj_CmsArticleService *CmsArticleService
 
 //获取单例 
-func GetCmsArticleService() *CmsArticleService {
+func GetCmsArticleSev() *CmsArticleService {
 	once_CmsArticle.Do(func() {
 		obj_CmsArticleService= new(CmsArticleService)
 		//instanse.init()
@@ -27,56 +27,72 @@ func GetCmsArticleService() *CmsArticleService {
 
 
 
-// CreateCmsArticle 创建CmsArticle记录
+// Create 创建CmsArticle记录
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService) CreateCmsArticle(cmsArticle business.CmsArticle) (err error) {
-	err = global.DB.Create(&cmsArticle).Error
+func (m *CmsArticleService) Create(data business.CmsArticle) (id uint,err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除CmsArticle记录
+// Author [88act](https://github.com/88act)
+func (m *CmsArticleService)Delete(data business.CmsArticle) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteCmsArticle 删除CmsArticle记录
+// DeleteByIds 批量删除CmsArticle记录
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService)DeleteCmsArticle(cmsArticle business.CmsArticle) (err error) {
-	err = global.DB.Delete(&cmsArticle).Error
-	return err
-}
-
-// DeleteCmsArticleByIds 批量删除CmsArticle记录
-// Author [88act](https://github.com/88act)
-func (m *CmsArticleService)DeleteCmsArticleByIds(ids request.IdsReq) (err error) {
+func (m *CmsArticleService)DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.CmsArticle{},"id in ?",ids.Ids).Error
 	return err
 }
 
-// UpdateCmsArticle 更新CmsArticle记录
+// Update  更新CmsArticle记录
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService)UpdateCmsArticle(cmsArticle business.CmsArticle) (err error) {
-	err = global.DB.Save(&cmsArticle).Error
+func (m *CmsArticleService)Update(data business.CmsArticle) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetCmsArticle 根据id获取CmsArticle记录
+
+// UpdateByMap  更新CmsArticle记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService)GetCmsArticle(id uint,fields string ) ( obj business.CmsArticle,err error ) {
+func (m *CmsArticleService)UpdateByMap(data business.CmsArticle, mapData map[string]interface{}) (err error) {
+    err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+
+// Get 根据id获取CmsArticle记录
+// Author [88act](https://github.com/88act)
+func (m *CmsArticleService)Get(id uint,fields string ) ( obj business.CmsArticle,err error ) {
  
     if utils.IsEmpty(fields) {
         err = global.DB.Where("id = ?", id).First(&obj).Error 
-        	} else {
+    } else {
         err = global.DB.Select(fields).Where("id = ?", id).First(&obj).Error  
 	}
 
    //如果有图片image类型，更新图片path
     obj.MapData = make(map[string]string) 
     if !utils.IsEmpty(obj.Thumb) {
-        _,obj.MapData[obj.Thumb] = common.GetCommonFileService().GetPathByGuid(obj.Thumb)
+        _,obj.MapData[obj.Thumb] = comSev.GetCommonFileSev().GetPathByGuid(obj.Thumb)
     }  
     return  obj,err
 }
 
 
-// GetCmsArticleInfoList 分页获取CmsArticle记录
+// GetList 分页获取CmsArticle记录
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService)GetCmsArticleInfoList(info bizReq .CmsArticleSearch, createdAtBetween []string,fields string) (list []business.CmsArticleMini, total int64,err error) {
+func (m *CmsArticleService)GetList(info bizReq .CmsArticleSearch, createdAtBetween []string,fields string) (list []business.CmsArticleMini, total int64,err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     //修改 by ljd  增加查询排序 
@@ -135,7 +151,7 @@ func (m *CmsArticleService)GetCmsArticleInfoList(info bizReq .CmsArticleSearch, 
 	for i, v := range cmsArticles {
 	 v.MapData = make(map[string]string) 
         if !utils.IsEmpty(v.Thumb) {
-            _, v.MapData[v.Thumb] = common.GetCommonFileService().GetPathByGuid(v.Thumb)
+            _, v.MapData[v.Thumb] = comSev.GetCommonFileSev().GetPathByGuid(v.Thumb)
         }
 	  cmsArticles[i] = v
 	}
@@ -143,9 +159,9 @@ func (m *CmsArticleService)GetCmsArticleInfoList(info bizReq .CmsArticleSearch, 
 }
  
 
-// GetCmsArticleInfoListAll  分页获取CmsArticle记录 (全部字段)
+//GetListAll 分页获取CmsArticle记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *CmsArticleService)GetCmsArticleInfoListAll(info bizReq .CmsArticleSearch, createdAtBetween []string,fields string) (list []business.CmsArticle, total int64,err error) {
+func (m *CmsArticleService)GetListAll(info bizReq .CmsArticleSearch, createdAtBetween []string,fields string) (list []business.CmsArticle, total int64,err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     //修改 by ljd  增加查询排序 
@@ -204,7 +220,7 @@ func (m *CmsArticleService)GetCmsArticleInfoListAll(info bizReq .CmsArticleSearc
 	for i, v := range cmsArticles {
 	 v.MapData = make(map[string]string) 
         if !utils.IsEmpty(v.Thumb) {
-            _, v.MapData[v.Thumb] = common.GetCommonFileService().GetPathByGuid(v.Thumb)
+            _, v.MapData[v.Thumb] = comSev.GetCommonFileSev().GetPathByGuid(v.Thumb)
         }
 	  cmsArticles[i] = v
 	}

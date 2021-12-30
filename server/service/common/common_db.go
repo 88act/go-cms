@@ -13,7 +13,7 @@ var once_CommonDb sync.Once = sync.Once{}
 var obj_CommonDbService *CommonDbService
 
 //获取单例
-func GetCommonDbService() *CommonDbService {
+func GetCommonDbSev() *CommonDbService {
 	once_CommonDb.Do(func() {
 		obj_CommonDbService = new(CommonDbService)
 		//instanse.init()

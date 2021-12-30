@@ -22,6 +22,7 @@ type ImTximMini struct {
       BeginTime  string `json:"beginTime" cn:"开始时间" form:"beginTime" gorm:"column:begin_time;comment:开始时间;type:varchar(100);"`
       NowTime  string `json:"nowTime" cn:"当前时间" form:"nowTime" gorm:"column:now_time;comment:当前时间;type:varchar(100);"`
       Status  *int `json:"status" cn:"状态" form:"status" gorm:"column:status;comment:状态:0未上传,1正常;type:smallint"`
+      StatusRun  *int `json:"statusRun" cn:"运行状态" form:"statusRun" gorm:"column:status_run;comment:运行状态;type:smallint"`
 
 }
 

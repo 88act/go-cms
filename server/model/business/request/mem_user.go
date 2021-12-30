@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type ColCollectSearch struct{
-    business.ColCollect
+type MemUserSearch struct{
+    business.MemUser
     request.PageInfo
 }

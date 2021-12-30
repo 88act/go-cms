@@ -5,7 +5,7 @@ import (
 	"go-cms/model/business" 
      bizReq "go-cms/model/business/request"
     "go-cms/model/common/request"
-    "go-cms/service/common"
+     comSev "go-cms/service/common" 
     "go-cms/utils"
     "sync"
 )
@@ -17,7 +17,7 @@ var once_CmsAd sync.Once = sync.Once{}
 var obj_CmsAdService *CmsAdService
 
 //获取单例 
-func GetCmsAdService() *CmsAdService {
+func GetCmsAdSev() *CmsAdService {
 	once_CmsAd.Do(func() {
 		obj_CmsAdService= new(CmsAdService)
 		//instanse.init()
@@ -27,56 +27,72 @@ func GetCmsAdService() *CmsAdService {
 
 
 
-// CreateCmsAd 创建CmsAd记录
+// Create 创建CmsAd记录
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService) CreateCmsAd(cmsAd business.CmsAd) (err error) {
-	err = global.DB.Create(&cmsAd).Error
+func (m *CmsAdService) Create(data business.CmsAd) (id uint,err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除CmsAd记录
+// Author [88act](https://github.com/88act)
+func (m *CmsAdService)Delete(data business.CmsAd) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteCmsAd 删除CmsAd记录
+// DeleteByIds 批量删除CmsAd记录
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService)DeleteCmsAd(cmsAd business.CmsAd) (err error) {
-	err = global.DB.Delete(&cmsAd).Error
-	return err
-}
-
-// DeleteCmsAdByIds 批量删除CmsAd记录
-// Author [88act](https://github.com/88act)
-func (m *CmsAdService)DeleteCmsAdByIds(ids request.IdsReq) (err error) {
+func (m *CmsAdService)DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.CmsAd{},"id in ?",ids.Ids).Error
 	return err
 }
 
-// UpdateCmsAd 更新CmsAd记录
+// Update  更新CmsAd记录
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService)UpdateCmsAd(cmsAd business.CmsAd) (err error) {
-	err = global.DB.Save(&cmsAd).Error
+func (m *CmsAdService)Update(data business.CmsAd) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetCmsAd 根据id获取CmsAd记录
+
+// UpdateByMap  更新CmsAd记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService)GetCmsAd(id uint,fields string ) ( obj business.CmsAd,err error ) {
+func (m *CmsAdService)UpdateByMap(data business.CmsAd, mapData map[string]interface{}) (err error) {
+    err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+
+// Get 根据id获取CmsAd记录
+// Author [88act](https://github.com/88act)
+func (m *CmsAdService)Get(id uint,fields string ) ( obj business.CmsAd,err error ) {
  
     if utils.IsEmpty(fields) {
         err = global.DB.Where("id = ?", id).First(&obj).Error 
-        	} else {
+    } else {
         err = global.DB.Select(fields).Where("id = ?", id).First(&obj).Error  
 	}
 
    //如果有图片image类型，更新图片path
     obj.MapData = make(map[string]string) 
     if !utils.IsEmpty(obj.Image) {
-        _,obj.MapData[obj.Image] = common.GetCommonFileService().GetPathByGuid(obj.Image)
+        _,obj.MapData[obj.Image] = comSev.GetCommonFileSev().GetPathByGuid(obj.Image)
     }  
     return  obj,err
 }
 
 
-// GetCmsAdInfoList 分页获取CmsAd记录
+// GetList 分页获取CmsAd记录
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService)GetCmsAdInfoList(info bizReq .CmsAdSearch, createdAtBetween []string,fields string) (list []business.CmsAdMini, total int64,err error) {
+func (m *CmsAdService)GetList(info bizReq .CmsAdSearch, createdAtBetween []string,fields string) (list []business.CmsAdMini, total int64,err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     //修改 by ljd  增加查询排序 
@@ -102,6 +118,7 @@ func (m *CmsAdService)GetCmsAdInfoList(info bizReq .CmsAdSearch, createdAtBetwee
     if info.Status != nil {
         db = db.Where("`status` = ?",info.Status)
     }
+    
     err = db.Count(&total).Error
     if err != nil {
 		return cmsAds, 0, err
@@ -125,7 +142,7 @@ func (m *CmsAdService)GetCmsAdInfoList(info bizReq .CmsAdSearch, createdAtBetwee
 	for i, v := range cmsAds {
 	 v.MapData = make(map[string]string) 
         if !utils.IsEmpty(v.Image) {
-            _, v.MapData[v.Image] = common.GetCommonFileService().GetPathByGuid(v.Image)
+            _, v.MapData[v.Image] = comSev.GetCommonFileSev().GetPathByGuid(v.Image)
         }
 	  cmsAds[i] = v
 	}
@@ -133,9 +150,9 @@ func (m *CmsAdService)GetCmsAdInfoList(info bizReq .CmsAdSearch, createdAtBetwee
 }
  
 
-// GetCmsAdInfoListAll  分页获取CmsAd记录 (全部字段)
+//GetListAll 分页获取CmsAd记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *CmsAdService)GetCmsAdInfoListAll(info bizReq .CmsAdSearch, createdAtBetween []string,fields string) (list []business.CmsAd, total int64,err error) {
+func (m *CmsAdService)GetListAll(info bizReq .CmsAdSearch, createdAtBetween []string,fields string) (list []business.CmsAd, total int64,err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
     //修改 by ljd  增加查询排序 
@@ -185,7 +202,7 @@ func (m *CmsAdService)GetCmsAdInfoListAll(info bizReq .CmsAdSearch, createdAtBet
 	for i, v := range cmsAds {
 	 v.MapData = make(map[string]string) 
         if !utils.IsEmpty(v.Image) {
-            _, v.MapData[v.Image] = common.GetCommonFileService().GetPathByGuid(v.Image)
+            _, v.MapData[v.Image] = comSev.GetCommonFileSev().GetPathByGuid(v.Image)
         }
 	  cmsAds[i] = v
 	}

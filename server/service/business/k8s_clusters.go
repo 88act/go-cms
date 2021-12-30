@@ -16,7 +16,7 @@ var once_K8sClusters sync.Once = sync.Once{}
 var obj_K8sClustersService *K8sClustersService
 
 //获取单例
-func GetK8sClustersService() *K8sClustersService {
+func GetK8sClustersSev() *K8sClustersService {
 	once_K8sClusters.Do(func() {
 		obj_K8sClustersService = new(K8sClustersService)
 		//instanse.init()
@@ -24,37 +24,51 @@ func GetK8sClustersService() *K8sClustersService {
 	return obj_K8sClustersService
 }
 
-// CreateK8sClusters 创建K8sClusters记录
+// Create 创建K8sClusters记录
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) CreateK8sClusters(k8sClusters business.K8sClusters) (err error) {
-	err = global.DB.Create(&k8sClusters).Error
+func (m *K8sClustersService) Create(data business.K8sClusters) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除K8sClusters记录
+// Author [88act](https://github.com/88act)
+func (m *K8sClustersService) Delete(data business.K8sClusters) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteK8sClusters 删除K8sClusters记录
+// DeleteByIds 批量删除K8sClusters记录
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) DeleteK8sClusters(k8sClusters business.K8sClusters) (err error) {
-	err = global.DB.Delete(&k8sClusters).Error
-	return err
-}
-
-// DeleteK8sClustersByIds 批量删除K8sClusters记录
-// Author [88act](https://github.com/88act)
-func (m *K8sClustersService) DeleteK8sClustersByIds(ids request.IdsReq) (err error) {
+func (m *K8sClustersService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.K8sClusters{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateK8sClusters 更新K8sClusters记录
+// Update  更新K8sClusters记录
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) UpdateK8sClusters(k8sClusters business.K8sClusters) (err error) {
-	err = global.DB.Save(&k8sClusters).Error
+func (m *K8sClustersService) Update(data business.K8sClusters) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetK8sClusters 根据id获取K8sClusters记录
+// UpdateByMap  更新K8sClusters记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) GetK8sClusters(id uint, fields string) (obj business.K8sClusters, err error) {
+func (m *K8sClustersService) UpdateByMap(data business.K8sClusters, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取K8sClusters记录
+// Author [88act](https://github.com/88act)
+func (m *K8sClustersService) Get(id uint, fields string) (obj business.K8sClusters, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -67,9 +81,9 @@ func (m *K8sClustersService) GetK8sClusters(id uint, fields string) (obj busines
 	return obj, err
 }
 
-// GetK8sClustersInfoList 分页获取K8sClusters记录
+// GetList 分页获取K8sClusters记录
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) GetK8sClustersInfoList(info bizReq.K8sClustersSearch, createdAtBetween []string, fields string) (list []business.K8sClustersMini, total int64, err error) {
+func (m *K8sClustersService) GetList(info bizReq.K8sClustersSearch, createdAtBetween []string, fields string) (list []business.K8sClustersMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -92,6 +106,7 @@ func (m *K8sClustersService) GetK8sClustersInfoList(info bizReq.K8sClustersSearc
 	if info.ClusterName != "" {
 		db = db.Where("`cluster_name` = ?", info.ClusterName)
 	}
+
 	err = db.Count(&total).Error
 	if err != nil {
 		return k8sClusterss, 0, err
@@ -119,9 +134,9 @@ func (m *K8sClustersService) GetK8sClustersInfoList(info bizReq.K8sClustersSearc
 	return k8sClusterss, total, err
 }
 
-// GetK8sClustersInfoListAll  分页获取K8sClusters记录 (全部字段)
+//GetListAll 分页获取K8sClusters记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *K8sClustersService) GetK8sClustersInfoListAll(info bizReq.K8sClustersSearch, createdAtBetween []string, fields string) (list []business.K8sClusters, total int64, err error) {
+func (m *K8sClustersService) GetListAll(info bizReq.K8sClustersSearch, createdAtBetween []string, fields string) (list []business.K8sClusters, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序

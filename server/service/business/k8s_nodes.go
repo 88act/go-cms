@@ -16,7 +16,7 @@ var once_K8sNodes sync.Once = sync.Once{}
 var obj_K8sNodesService *K8sNodesService
 
 //获取单例
-func GetK8sNodesService() *K8sNodesService {
+func GetK8sNodesSev() *K8sNodesService {
 	once_K8sNodes.Do(func() {
 		obj_K8sNodesService = new(K8sNodesService)
 		//instanse.init()
@@ -24,37 +24,51 @@ func GetK8sNodesService() *K8sNodesService {
 	return obj_K8sNodesService
 }
 
-// CreateK8sNodes 创建K8sNodes记录
+// Create 创建K8sNodes记录
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) CreateK8sNodes(k8sNodes business.K8sNodes) (err error) {
-	err = global.DB.Create(&k8sNodes).Error
+func (m *K8sNodesService) Create(data business.K8sNodes) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除K8sNodes记录
+// Author [88act](https://github.com/88act)
+func (m *K8sNodesService) Delete(data business.K8sNodes) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteK8sNodes 删除K8sNodes记录
+// DeleteByIds 批量删除K8sNodes记录
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) DeleteK8sNodes(k8sNodes business.K8sNodes) (err error) {
-	err = global.DB.Delete(&k8sNodes).Error
-	return err
-}
-
-// DeleteK8sNodesByIds 批量删除K8sNodes记录
-// Author [88act](https://github.com/88act)
-func (m *K8sNodesService) DeleteK8sNodesByIds(ids request.IdsReq) (err error) {
+func (m *K8sNodesService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.K8sNodes{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateK8sNodes 更新K8sNodes记录
+// Update  更新K8sNodes记录
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) UpdateK8sNodes(k8sNodes business.K8sNodes) (err error) {
-	err = global.DB.Save(&k8sNodes).Error
+func (m *K8sNodesService) Update(data business.K8sNodes) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetK8sNodes 根据id获取K8sNodes记录
+// UpdateByMap  更新K8sNodes记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) GetK8sNodes(id uint, fields string) (obj business.K8sNodes, err error) {
+func (m *K8sNodesService) UpdateByMap(data business.K8sNodes, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取K8sNodes记录
+// Author [88act](https://github.com/88act)
+func (m *K8sNodesService) Get(id uint, fields string) (obj business.K8sNodes, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -67,9 +81,9 @@ func (m *K8sNodesService) GetK8sNodes(id uint, fields string) (obj business.K8sN
 	return obj, err
 }
 
-// GetK8sNodesInfoList 分页获取K8sNodes记录
+// GetList 分页获取K8sNodes记录
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) GetK8sNodesInfoList(info bizReq.K8sNodesSearch, createdAtBetween []string, fields string) (list []business.K8sNodesMini, total int64, err error) {
+func (m *K8sNodesService) GetList(info bizReq.K8sNodesSearch, createdAtBetween []string, fields string) (list []business.K8sNodesMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -104,6 +118,7 @@ func (m *K8sNodesService) GetK8sNodesInfoList(info bizReq.K8sNodesSearch, create
 	if info.Label != "" {
 		db = db.Where("`label` = ?", info.Label)
 	}
+
 	err = db.Count(&total).Error
 	if err != nil {
 		return k8sNodess, 0, err
@@ -131,9 +146,9 @@ func (m *K8sNodesService) GetK8sNodesInfoList(info bizReq.K8sNodesSearch, create
 	return k8sNodess, total, err
 }
 
-// GetK8sNodesInfoListAll  分页获取K8sNodes记录 (全部字段)
+//GetListAll 分页获取K8sNodes记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *K8sNodesService) GetK8sNodesInfoListAll(info bizReq.K8sNodesSearch, createdAtBetween []string, fields string) (list []business.K8sNodes, total int64, err error) {
+func (m *K8sNodesService) GetListAll(info bizReq.K8sNodesSearch, createdAtBetween []string, fields string) (list []business.K8sNodes, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
