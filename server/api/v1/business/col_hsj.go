@@ -186,7 +186,7 @@ func (colHsjApi *ColHsjApi) QuickEdit(c *gin.Context) {
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "col_hsj"
 	//var_dump.Dump(quickEdit)
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {

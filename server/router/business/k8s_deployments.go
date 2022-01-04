@@ -11,20 +11,19 @@ type K8sDeploymentsRouter struct {
 
 // InitK8sDeploymentsRouter 初始化 K8sDeployments 路由信息
 func (s *K8sDeploymentsRouter) InitK8sDeploymentsRouter(Router *gin.RouterGroup) {
-	k8sDeploymentsRouter := Router.Group("k8sDeployments").Use(middleware.OperationRecord())
-	k8sDeploymentsRouterWithoutRecord := Router.Group("k8sDeployments")
-	var k8sDeploymentsApi = v1.ApiGroupApp.BusinessApiGroup.K8sDeploymentsApi
+	router := Router.Group("k8sDeployments").Use(middleware.OperationRecord())
+	routerNoRecord := Router.Group("k8sDeployments")
+	var apiV1 = v1.ApiGroupApp.BusinessApiGroup.K8sDeploymentsApi
 	{
-		k8sDeploymentsRouter.POST("createK8sDeployments", k8sDeploymentsApi.CreateK8sDeployments)   // 新建K8sDeployments
-		k8sDeploymentsRouter.DELETE("deleteK8sDeployments", k8sDeploymentsApi.DeleteK8sDeployments) // 删除K8sDeployments
-		k8sDeploymentsRouter.DELETE("deleteK8sDeploymentsByIds", k8sDeploymentsApi.DeleteK8sDeploymentsByIds) // 批量删除K8sDeployments
-		k8sDeploymentsRouter.PUT("updateK8sDeployments", k8sDeploymentsApi.UpdateK8sDeployments)    // 更新K8sDeployments
-	    k8sDeploymentsRouter.POST("quickEdit", k8sDeploymentsApi.QuickEdit)  // 快速编辑
-		k8sDeploymentsRouterWithoutRecord.GET("excelList", k8sDeploymentsApi.ExcelList)  // 分页导出excel K8sDeployments列表
+		router.POST("createK8sDeployments", apiV1.CreateK8sDeployments)   // 新建K8sDeployments
+		router.DELETE("deleteK8sDeployments", apiV1.DeleteK8sDeployments) // 删除K8sDeployments
+		router.DELETE("deleteK8sDeploymentsByIds", apiV1.DeleteK8sDeploymentsByIds) // 批量删除K8sDeployments
+		router.PUT("updateK8sDeployments", apiV1.UpdateK8sDeployments)    // 更新K8sDeployments
+	    router.POST("quickEdit", apiV1.QuickEdit)  // 快速编辑	
 	}
 	{
-		k8sDeploymentsRouterWithoutRecord.GET("findK8sDeployments", k8sDeploymentsApi.FindK8sDeployments)        // 根据ID获取K8sDeployments
-		k8sDeploymentsRouterWithoutRecord.GET("getK8sDeploymentsList", k8sDeploymentsApi.GetK8sDeploymentsList)  // 获取K8sDeployments列表
-	    
+		routerNoRecord.GET("findK8sDeployments", apiV1.FindK8sDeployments)        // 根据ID获取K8sDeployments
+		routerNoRecord.GET("getK8sDeploymentsList", apiV1.GetK8sDeploymentsList)  // 获取K8sDeployments列表
+        routerNoRecord.GET("excelList", apiV1.ExcelList)  // 分页导出excel K8sDeployments列表
 	}
 }

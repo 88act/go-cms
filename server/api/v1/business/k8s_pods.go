@@ -2,6 +2,7 @@ package business
 
 import (
 	"errors"
+	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
@@ -9,9 +10,11 @@ import (
 	"go-cms/model/common/response"
 	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
+	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -37,11 +40,12 @@ func (k8sPodsApi *K8sPodsApi) CreateK8sPods(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetK8sPodsService().CreateK8sPods(dataObj); err != nil {
+	if id, err := bizSev.GetK8sPodsSev().Create(dataObj); err != nil {
 		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-		response.OkWithMessage("创建成功", c)
+		idResp := &response.IdResp{Id: id}
+		response.OkWithData(idResp, c)
 	}
 }
 
@@ -57,7 +61,7 @@ func (k8sPodsApi *K8sPodsApi) CreateK8sPods(c *gin.Context) {
 func (k8sPodsApi *K8sPodsApi) DeleteK8sPods(c *gin.Context) {
 	var k8sPods business.K8sPods
 	_ = c.ShouldBindJSON(&k8sPods)
-	if err := bizSev.GetK8sPodsService().DeleteK8sPods(k8sPods); err != nil {
+	if err := bizSev.GetK8sPodsSev().Delete(k8sPods); err != nil {
 		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
@@ -77,7 +81,7 @@ func (k8sPodsApi *K8sPodsApi) DeleteK8sPods(c *gin.Context) {
 func (k8sPodsApi *K8sPodsApi) DeleteK8sPodsByIds(c *gin.Context) {
 	var IDS request.IdsReq
 	_ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetK8sPodsService().DeleteK8sPodsByIds(IDS); err != nil {
+	if err := bizSev.GetK8sPodsSev().DeleteByIds(IDS); err != nil {
 		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
@@ -103,7 +107,7 @@ func (k8sPodsApi *K8sPodsApi) UpdateK8sPods(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetK8sPodsService().UpdateK8sPods(dataObj); err != nil {
+	if err := bizSev.GetK8sPodsSev().Update(dataObj); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -123,7 +127,7 @@ func (k8sPodsApi *K8sPodsApi) UpdateK8sPods(c *gin.Context) {
 func (k8sPodsApi *K8sPodsApi) FindK8sPods(c *gin.Context) {
 	var k8sPods business.K8sPods
 	_ = c.ShouldBindQuery(&k8sPods)
-	rek8sPods, err := bizSev.GetK8sPodsService().GetK8sPods(k8sPods.ID, "")
+	rek8sPods, err := bizSev.GetK8sPodsSev().Get(k8sPods.ID, "")
 	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"k8sPods": nil}, c)
 	} else if err != nil {
@@ -148,7 +152,7 @@ func (k8sPodsApi *K8sPodsApi) GetK8sPodsList(c *gin.Context) {
 
 	var pageInfo bizReq.K8sPodsSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetK8sPodsService().GetK8sPodsInfoList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, total, err := bizSev.GetK8sPodsSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
@@ -174,8 +178,7 @@ func (k8sPodsApi *K8sPodsApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "k8s_pods"
-	//var_dump.Dump(quickEdit)
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -183,7 +186,7 @@ func (k8sPodsApi *K8sPodsApi) QuickEdit(c *gin.Context) {
 	}
 }
 
-// GetK8sPodsList 分页导出excel K8sPods列表
+// excelList 分页导出excel K8sPods列表
 // @Tags K8sPods
 // @Summary 分页导出excel K8sPods列表
 // @Security ApiKeyAuth
@@ -194,18 +197,51 @@ func (k8sPodsApi *K8sPodsApi) QuickEdit(c *gin.Context) {
 // @Router /k8sPods/excelList [get]
 func (k8sPodsApi *K8sPodsApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-
 	var pageInfo bizReq.K8sPodsSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetK8sPodsService().GetK8sPodsInfoList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, _, err := bizSev.GetK8sPodsSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
-		response.OkWithDetailed(response.PageResult{
-			List:     list,
-			Total:    total,
-			Page:     pageInfo.Page,
-			PageSize: pageInfo.PageSize,
-		}, "获取成功", c)
+		if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "容器名称")
+			sheetFields = append(sheetFields, "容器IP")
+			sheetFields = append(sheetFields, "主机IP")
+			sheetFields = append(sheetFields, "状态")
+			sheetFields = append(sheetFields, "启动时间")
+			sheetFields = append(sheetFields, "重启次数")
+			sheetFields = append(sheetFields, "命名空间")
+			sheetFields = append(sheetFields, "line")
+
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				var arr = []interface{}{}
+				arr = append(arr, v.PodName)
+				arr = append(arr, v.PodIp)
+				arr = append(arr, v.HostIp)
+				arr = append(arr, v.Status)
+				arr = append(arr, v.StartTime)
+				arr = append(arr, *v.RestartCount)
+				arr = append(arr, v.NameSpace)
+				arr = append(arr, *v.Line)
+				excel.SetSheetRow("Sheet1", axis, &arr)
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename}
+				response.OkWithData(resData, c)
+			}
+		}
 	}
 }

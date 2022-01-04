@@ -12,6 +12,11 @@ type Response struct {
 	Msg  string      `json:"msg"`
 }
 
+//返回id
+type IdResp struct {
+	Id uint `json:"id" form:"id"`
+}
+
 const (
 	//ERROR   = 7
 	//SUCCESS = 0

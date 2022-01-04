@@ -11,20 +11,19 @@ type K8sNamespacesRouter struct {
 
 // InitK8sNamespacesRouter 初始化 K8sNamespaces 路由信息
 func (s *K8sNamespacesRouter) InitK8sNamespacesRouter(Router *gin.RouterGroup) {
-	k8sNamespacesRouter := Router.Group("k8sNamespaces").Use(middleware.OperationRecord())
-	k8sNamespacesRouterWithoutRecord := Router.Group("k8sNamespaces")
-	var k8sNamespacesApi = v1.ApiGroupApp.BusinessApiGroup.K8sNamespacesApi
+	router := Router.Group("k8sNamespaces").Use(middleware.OperationRecord())
+	routerNoRecord := Router.Group("k8sNamespaces")
+	var apiV1 = v1.ApiGroupApp.BusinessApiGroup.K8sNamespacesApi
 	{
-		k8sNamespacesRouter.POST("createK8sNamespaces", k8sNamespacesApi.CreateK8sNamespaces)   // 新建K8sNamespaces
-		k8sNamespacesRouter.DELETE("deleteK8sNamespaces", k8sNamespacesApi.DeleteK8sNamespaces) // 删除K8sNamespaces
-		k8sNamespacesRouter.DELETE("deleteK8sNamespacesByIds", k8sNamespacesApi.DeleteK8sNamespacesByIds) // 批量删除K8sNamespaces
-		k8sNamespacesRouter.PUT("updateK8sNamespaces", k8sNamespacesApi.UpdateK8sNamespaces)    // 更新K8sNamespaces
-	    k8sNamespacesRouter.POST("quickEdit", k8sNamespacesApi.QuickEdit)  // 快速编辑
-		k8sNamespacesRouterWithoutRecord.GET("excelList", k8sNamespacesApi.ExcelList)  // 分页导出excel K8sNamespaces列表
+		router.POST("createK8sNamespaces", apiV1.CreateK8sNamespaces)   // 新建K8sNamespaces
+		router.DELETE("deleteK8sNamespaces", apiV1.DeleteK8sNamespaces) // 删除K8sNamespaces
+		router.DELETE("deleteK8sNamespacesByIds", apiV1.DeleteK8sNamespacesByIds) // 批量删除K8sNamespaces
+		router.PUT("updateK8sNamespaces", apiV1.UpdateK8sNamespaces)    // 更新K8sNamespaces
+	    router.POST("quickEdit", apiV1.QuickEdit)  // 快速编辑	
 	}
 	{
-		k8sNamespacesRouterWithoutRecord.GET("findK8sNamespaces", k8sNamespacesApi.FindK8sNamespaces)        // 根据ID获取K8sNamespaces
-		k8sNamespacesRouterWithoutRecord.GET("getK8sNamespacesList", k8sNamespacesApi.GetK8sNamespacesList)  // 获取K8sNamespaces列表
-	    
+		routerNoRecord.GET("findK8sNamespaces", apiV1.FindK8sNamespaces)        // 根据ID获取K8sNamespaces
+		routerNoRecord.GET("getK8sNamespacesList", apiV1.GetK8sNamespacesList)  // 获取K8sNamespaces列表
+        routerNoRecord.GET("excelList", apiV1.ExcelList)  // 分页导出excel K8sNamespaces列表
 	}
 }

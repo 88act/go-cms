@@ -31,7 +31,7 @@ func (o *CommonDbApi) QuickEdit(c *gin.Context) {
 	_ = c.ShouldBindJSON(&quickEdit)
 	//var_dump.Dump(quickEdit)
 
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -54,7 +54,7 @@ func (o *CommonDbApi) Test_db_get(c *gin.Context) {
 	pageInfo := bizReq.CmsCatSearch{}
 	pageInfo.Page = 1
 	pageInfo.PageSize = 20
-	if list, total, err := bizSev.GetCmsCatService().GetCmsCatInfoList(pageInfo, nil, ""); err != nil {
+	if list, total, err := bizSev.GetCmsCatSev().GetList(pageInfo, nil, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
@@ -80,7 +80,7 @@ func (o *CommonDbApi) Test_db(c *gin.Context) {
 	param := c.DefaultQuery("id", "1")
 	fmt.Println("测试数据库 Test_db   =" + param)
 	global.LOG.Error("测试数据库 Test_db   =" + param)
-	if obj, err := bizSev.GetCmsCatService().GetCmsCat(gconv.Uint(param), ""); err != nil {
+	if obj, err := bizSev.GetCmsCatSev().Get(gconv.Uint(param), ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {

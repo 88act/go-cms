@@ -14,6 +14,35 @@ import (
 	"time"
 )
 
+// 三目运算函数
+func Ternary(a bool, b, c interface{}) interface{} {
+	if a {
+		return b
+	}
+	return c
+}
+
+//struct 转 切片
+func Strct2Slice(f interface{}, sheetFieldsJson []string) []interface{} {
+	v := reflect.ValueOf(f)
+	ss := []interface{}{} // make([]string, v.NumField())
+	for i := 0; i < v.NumField(); i++ {
+		ss = append(ss, v.Field(i))
+		//ss[i] = fmt.Sprintf("%v", v.Field(i))
+	}
+	return ss
+}
+
+//转为int指针
+func StringPtr(s string) *string {
+	return &s
+}
+
+//转为string指针
+func IntPtr(s int) *int {
+	return &s
+}
+
 //判断是否为空
 // 0， nil ，"", 空数组 = true
 func IsEmpty(params interface{}) bool {
@@ -34,44 +63,27 @@ func IsEmpty(params interface{}) bool {
 	return flag
 }
 
-var timeTemplates = []string{
-	"2006-01-02 15:04:05", //常规类型
-	"2006/01/02 15:04:05",
-	"2006-01-02",
-	"2006/01/02",
-	"15:04:05",
+// StrToTime 字符串转time
+func Str2Time(str string) *time.Time {
+	timeFormat := "2006-01-02 15:04:05"
+	// 时区
+	Loc, _ := time.LoadLocation("Asia/Shanghai")
+	t, e := time.ParseInLocation(timeFormat, str, Loc)
+	if e != nil {
+		fmt.Println("时间转换错误: str =" + str + "," + e.Error())
+		//return nil
+	}
+	return &t
 }
 
-/* 时间格式字符串转换 */
-func Str2Time(tm string) *time.Time {
-	for i := range timeTemplates {
-		t, err := time.ParseInLocation(timeTemplates[i], tm, time.Local)
-		if nil == err && !t.IsZero() {
-			return &t
-		}
-	}
-	return &time.Time{}
-}
-
-func test() {
-	var tms = []string{
-		"2021-03-04 08:15:11",
-		"2021/03/05 08:15:11",
-		"2021-03-04",
-		"2021/03/05",
-		"08:15:11",
-	}
-
-	for _, v := range tms {
-		fmt.Println("OrgTimeStr: ", v, "; Convert Result: ", Str2Time(v))
-	}
-	/* 输出结果:
-	OrgTimeStr:  2021-03-04 08:15:11 ; Convert Result:  2021-03-04 08:15:11 +0800 CST
-	OrgTimeStr:  2021/03/05 08:15:11 ; Convert Result:  2021-03-05 08:15:11 +0800 CST
-	OrgTimeStr:  2021-03-04 ; Convert Result:  2021-03-04 00:00:00 +0800 CST
-	OrgTimeStr:  2021/03/05 ; Convert Result:  2021-03-05 00:00:00 +0800 CST
-	OrgTimeStr:  08:15:11 ; Convert Result:  0000-01-01 08:15:11 +0800 CST
-	*/
+// numToTime 时间戳转time ,注意是否纳秒
+func Int2Time(ts int64) *time.Time {
+	//timeFormat := "2006-01-02 15:04:05"
+	// 时区
+	//Loc, _ := time.LoadLocation("Asia/Shanghai")
+	//时间戳转化为日期
+	t := time.Unix(ts, 0)
+	return &t
 }
 
 //StrToInt string 转int
@@ -90,36 +102,6 @@ func StrToUInt(str string) uint {
 		return 0
 	}
 	return uint(i)
-}
-
-// StrToTime 字符串转time
-func StrToTime(s string) time.Time {
-	//loc, _ := time.LoadLocation(define.TimeZone)
-	timeLayout := "2006-01-02 15:04:05"
-	//t, _ := time.ParseInLocation(timeLayout, s, loc)
-	t, _ := time.ParseInLocation(timeLayout, s, time.Local)
-	return t
-}
-
-// StrToDate 字符串转Date
-func StrToDate(s string) time.Time {
-	//loc, _ := time.LoadLocation(define.TimeZone)
-	timeLayout := "2006-01-02"
-	t, _ := time.ParseInLocation(timeLayout, s, time.Local)
-	return t
-}
-
-//StrToTimePtr ..
-func StrToTimePtr(str string) *time.Time {
-	//loc, err := time.LoadLocation(define.TimeZone)
-	// if err != nil {
-	// 	return nil
-	// }
-	t, e := time.ParseInLocation("2006-01-02 15:04:05", str, time.Local)
-	if e != nil {
-		return nil
-	}
-	return &t
 }
 
 //阻塞式的执行外部shell命令的函数,等待执行完毕并返回标准输出
@@ -277,3 +259,43 @@ func InArray(needle interface{}, hystack interface{}) bool {
 
 	return false
 }
+
+// var timeTemplates = []string{
+// 	"2006-01-02 15:04:05", //常规类型
+// 	"2006/01/02 15:04:05",
+// 	"2006-01-02",
+// 	"2006/01/02",
+// 	"15:04:05",
+// }
+
+// /* 时间格式字符串转换 */
+// func Str2Time(tm string) *time.Time {
+// 	for i := range timeTemplates {
+// 		t, err := time.ParseInLocation(timeTemplates[i], tm, time.Local)
+// 		if nil == err && !t.IsZero() {
+// 			return &t
+// 		}
+// 	}
+// 	return &time.Time{}
+// }
+
+// func test() {
+// 	var tms = []string{
+// 		"2021-03-04 08:15:11",
+// 		"2021/03/05 08:15:11",
+// 		"2021-03-04",
+// 		"2021/03/05",
+// 		"08:15:11",
+// 	}
+
+// 	for _, v := range tms {
+// 		fmt.Println("OrgTimeStr: ", v, "; Convert Result: ", Str2Time(v))
+// 	}
+// 	/* 输出结果:
+// 	OrgTimeStr:  2021-03-04 08:15:11 ; Convert Result:  2021-03-04 08:15:11 +0800 CST
+// 	OrgTimeStr:  2021/03/05 08:15:11 ; Convert Result:  2021-03-05 08:15:11 +0800 CST
+// 	OrgTimeStr:  2021-03-04 ; Convert Result:  2021-03-04 00:00:00 +0800 CST
+// 	OrgTimeStr:  2021/03/05 ; Convert Result:  2021-03-05 00:00:00 +0800 CST
+// 	OrgTimeStr:  08:15:11 ; Convert Result:  0000-01-01 08:15:11 +0800 CST
+// 	*/
+// }

@@ -5,7 +5,7 @@ import (
 	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
 	"go-cms/model/common/request"
-	"go-cms/service/common"
+	comSev "go-cms/service/common"
 	"go-cms/utils"
 	"sync"
 )
@@ -17,7 +17,7 @@ var once_MemUser sync.Once = sync.Once{}
 var obj_MemUserService *MemUserService
 
 //获取单例
-func GetMemUserService() *MemUserService {
+func GetMemUserSev() *MemUserService {
 	once_MemUser.Do(func() {
 		obj_MemUserService = new(MemUserService)
 		//instanse.init()
@@ -25,37 +25,51 @@ func GetMemUserService() *MemUserService {
 	return obj_MemUserService
 }
 
-// CreateMemUser 创建MemUser记录
+// Create 创建MemUser记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) CreateMemUser(memUser business.MemUser) (err error) {
-	err = global.DB.Create(&memUser).Error
+func (m *MemUserService) Create(data business.MemUser) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除MemUser记录
+// Author [88act](https://github.com/88act)
+func (m *MemUserService) Delete(data business.MemUser) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteMemUser 删除MemUser记录
+// DeleteByIds 批量删除MemUser记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) DeleteMemUser(memUser business.MemUser) (err error) {
-	err = global.DB.Delete(&memUser).Error
-	return err
-}
-
-// DeleteMemUserByIds 批量删除MemUser记录
-// Author [88act](https://github.com/88act)
-func (m *MemUserService) DeleteMemUserByIds(ids request.IdsReq) (err error) {
+func (m *MemUserService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.MemUser{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateMemUser 更新MemUser记录
+// Update  更新MemUser记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) UpdateMemUser(memUser business.MemUser) (err error) {
-	err = global.DB.Save(&memUser).Error
+func (m *MemUserService) Update(data business.MemUser) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetMemUser 根据id获取MemUser记录
+// UpdateByMap  更新MemUser记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) GetMemUser(id uint, fields string) (obj business.MemUser, err error) {
+func (m *MemUserService) UpdateByMap(data business.MemUser, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取MemUser记录
+// Author [88act](https://github.com/88act)
+func (m *MemUserService) Get(id uint, fields string) (obj business.MemUser, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -66,14 +80,14 @@ func (m *MemUserService) GetMemUser(id uint, fields string) (obj business.MemUse
 	//如果有图片image类型，更新图片path
 	obj.MapData = make(map[string]string)
 	if !utils.IsEmpty(obj.Avatar) {
-		_, obj.MapData[obj.Avatar] = common.GetCommonFileService().GetPathByGuid(obj.Avatar)
+		_, obj.MapData[obj.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(obj.Avatar)
 	}
 	return obj, err
 }
 
-// GetMemUserInfoList 分页获取MemUser记录
+// GetList 分页获取MemUser记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) GetMemUserInfoList(info bizReq.MemUserSearch, createdAtBetween []string, fields string) (list []business.MemUserMini, total int64, err error) {
+func (m *MemUserService) GetList(info bizReq.MemUserSearch, createdAtBetween []string, fields string) (list []business.MemUserMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -93,11 +107,35 @@ func (m *MemUserService) GetMemUserInfoList(info bizReq.MemUserSearch, createdAt
 	}
 
 	// 如果有条件搜索 下方会自动创建搜索语句
+	if info.Username != "" {
+		db = db.Where("`username` LIKE ?", "%"+info.Username+"%")
+	}
+	if info.Pws != "" {
+		db = db.Where("`pws` = ?", info.Pws)
+	}
+	if info.Email != "" {
+		db = db.Where("`email` LIKE ?", "%"+info.Email+"%")
+	}
+	if info.Mobile != "" {
+		db = db.Where("`mobile` LIKE ?", "%"+info.Mobile+"%")
+	}
+	if info.Nickname != "" {
+		db = db.Where("`nickname` LIKE ?", "%"+info.Nickname+"%")
+	}
+	if info.Realname != "" {
+		db = db.Where("`realname` LIKE ?", "%"+info.Realname+"%")
+	}
+	if info.CardId != "" {
+		db = db.Where("`card_id` = ?", info.CardId)
+	}
 	if info.Sex != nil {
 		db = db.Where("`sex` = ?", info.Sex)
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
+	}
+	if info.StatusSafe != nil {
+		db = db.Where("`status_safe` = ?", info.StatusSafe)
 	}
 
 	err = db.Count(&total).Error
@@ -121,18 +159,18 @@ func (m *MemUserService) GetMemUserInfoList(info bizReq.MemUserSearch, createdAt
 	}
 	//如果有图片image类型，更新图片path
 	// for i, v := range memUsers {
-	// 	v.MapData = make(map[string]string)
-	// 	if !utils.IsEmpty(v.) {
-	// 		_, v.MapData[v.Avatar] = common.GetCommonFileService().GetPathByGuid(v.Avatar)
-	// 	}
-	// 	memUsers[i] = v
+	//  v.MapData = make(map[string]string)
+	//     if !utils.IsEmpty(v.Avatar) {
+	//         _, v.MapData[v.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(v.Avatar)
+	//     }
+	//   memUsers[i] = v
 	// }
 	return memUsers, total, err
 }
 
-// GetMemUserInfoListAll  分页获取MemUser记录 (全部字段)
+//GetListAll 分页获取MemUser记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *MemUserService) GetMemUserInfoListAll(info bizReq.MemUserSearch, createdAtBetween []string, fields string) (list []business.MemUser, total int64, err error) {
+func (m *MemUserService) GetListAll(info bizReq.MemUserSearch, createdAtBetween []string, fields string) (list []business.MemUser, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -151,11 +189,35 @@ func (m *MemUserService) GetMemUserInfoListAll(info bizReq.MemUserSearch, create
 	}
 
 	// 如果有条件搜索 下方会自动创建搜索语句
+	if info.Username != "" {
+		db = db.Where("`username` LIKE ?", "%"+info.Username+"%")
+	}
+	if info.Pws != "" {
+		db = db.Where("`pws` = ?", info.Pws)
+	}
+	if info.Email != "" {
+		db = db.Where("`email` LIKE ?", "%"+info.Email+"%")
+	}
+	if info.Mobile != "" {
+		db = db.Where("`mobile` LIKE ?", "%"+info.Mobile+"%")
+	}
+	if info.Nickname != "" {
+		db = db.Where("`nickname` LIKE ?", "%"+info.Nickname+"%")
+	}
+	if info.Realname != "" {
+		db = db.Where("`realname` LIKE ?", "%"+info.Realname+"%")
+	}
+	if info.CardId != "" {
+		db = db.Where("`card_id` = ?", info.CardId)
+	}
 	if info.Sex != nil {
 		db = db.Where("`sex` = ?", info.Sex)
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
+	}
+	if info.StatusSafe != nil {
+		db = db.Where("`status_safe` = ?", info.StatusSafe)
 	}
 
 	err = db.Count(&total).Error
@@ -182,7 +244,7 @@ func (m *MemUserService) GetMemUserInfoListAll(info bizReq.MemUserSearch, create
 	for i, v := range memUsers {
 		v.MapData = make(map[string]string)
 		if !utils.IsEmpty(v.Avatar) {
-			_, v.MapData[v.Avatar] = common.GetCommonFileService().GetPathByGuid(v.Avatar)
+			_, v.MapData[v.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(v.Avatar)
 		}
 		memUsers[i] = v
 	}

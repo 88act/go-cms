@@ -1,17 +1,21 @@
 package business
 
 import (
-	"errors"
+ "errors"
+	"fmt"
 	"go-cms/global"
-    "go-cms/model/business"
+	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
-    "go-cms/model/common/request" 
-    "go-cms/model/common/response"
-    bizSev "go-cms/service/business"   
+	"go-cms/model/common/request"
+	"go-cms/model/common/response"
+	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
-    "github.com/gin-gonic/gin"
+	"time"
+
+	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
-    "go.uber.org/zap" 
+	"github.com/xuri/excelize/v2"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 ) 
 
@@ -179,7 +183,7 @@ func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
 	quickEdit.Table = "im_txim" 
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -188,7 +192,7 @@ func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 }
 
 
-// GetImTximList 分页导出excel ImTxim列表
+// excelList 分页导出excel ImTxim列表
 // @Tags ImTxim
 // @Summary 分页导出excel ImTxim列表
 // @Security ApiKeyAuth
@@ -199,20 +203,56 @@ func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 // @Router /imTxim/excelList [get]
 func (imTximApi *ImTximApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-
 	var pageInfo bizReq.ImTximSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total,err:= bizSev.GetImTximSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	if list,_,err:= bizSev.GetImTximSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
+        if len(list) == 0 {
+			response.FailWithMessage("没有数据", c)
+		} else { 
+			sheetFields := []string{}  
+					sheetFields = append(sheetFields, "名称")  
+					sheetFields = append(sheetFields, "appid")  
+					sheetFields = append(sheetFields, "管理员帐号")  
+					sheetFields = append(sheetFields, "签名")  
+					sheetFields = append(sheetFields, "运行次数")  
+					sheetFields = append(sheetFields, "开始时间")  
+					sheetFields = append(sheetFields, "当前时间")  
+					sheetFields = append(sheetFields, "状态")  
+					sheetFields = append(sheetFields, "运行状态") 
+
+			excel := excelize.NewFile()
+			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
+			for i, v := range list {
+				axis := fmt.Sprintf("A%d", i+2)
+				var arr = []interface{}{}
+				arr = append(arr, v.Name)
+				arr = append(arr, v.AppId)
+				arr = append(arr, v.Identifier)
+				arr = append(arr, v.UserSig)
+				arr = append(arr, *v.RunTimes)
+				arr = append(arr, v.BeginTime)
+				arr = append(arr, v.NowTime)
+				arr = append(arr, *v.Status)
+				arr = append(arr, *v.StatusRun)   
+			    excel.SetSheetRow("Sheet1", axis,&arr)  
+			}
+			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
+			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
+			url := global.CONFIG.Local.BaseUrl + global.CONFIG.Local.Path + "/excel/" + filename
+			err := excel.SaveAs(filePath)
+			if err != nil {
+				global.LOG.Error(err.Error())
+				response.FailWithMessage("获取失败", c)
+			} else {
+				resData := map[string]string{"url": url, "filename": filename} 
+				response.OkWithData(resData, c)
+			} 
+		}
     }
 }
 
 
+ 

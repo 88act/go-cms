@@ -3,7 +3,7 @@ package system
 type RouterGroup struct {
 	ApiRouter
 	AuthorityRouter
-	SuperBuilderRouter
+
 	BaseRouter
 	CasbinRouter
 	DictionaryRouter

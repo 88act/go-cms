@@ -16,7 +16,7 @@ var once_K8sDeployments sync.Once = sync.Once{}
 var obj_K8sDeploymentsService *K8sDeploymentsService
 
 //获取单例
-func GetK8sDeploymentsService() *K8sDeploymentsService {
+func GetK8sDeploymentsSev() *K8sDeploymentsService {
 	once_K8sDeployments.Do(func() {
 		obj_K8sDeploymentsService = new(K8sDeploymentsService)
 		//instanse.init()
@@ -24,37 +24,51 @@ func GetK8sDeploymentsService() *K8sDeploymentsService {
 	return obj_K8sDeploymentsService
 }
 
-// CreateK8sDeployments 创建K8sDeployments记录
+// Create 创建K8sDeployments记录
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) CreateK8sDeployments(k8sDeployments business.K8sDeployments) (err error) {
-	err = global.DB.Create(&k8sDeployments).Error
+func (m *K8sDeploymentsService) Create(data business.K8sDeployments) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除K8sDeployments记录
+// Author [88act](https://github.com/88act)
+func (m *K8sDeploymentsService) Delete(data business.K8sDeployments) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteK8sDeployments 删除K8sDeployments记录
+// DeleteByIds 批量删除K8sDeployments记录
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) DeleteK8sDeployments(k8sDeployments business.K8sDeployments) (err error) {
-	err = global.DB.Delete(&k8sDeployments).Error
-	return err
-}
-
-// DeleteK8sDeploymentsByIds 批量删除K8sDeployments记录
-// Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) DeleteK8sDeploymentsByIds(ids request.IdsReq) (err error) {
+func (m *K8sDeploymentsService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.K8sDeployments{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateK8sDeployments 更新K8sDeployments记录
+// Update  更新K8sDeployments记录
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) UpdateK8sDeployments(k8sDeployments business.K8sDeployments) (err error) {
-	err = global.DB.Save(&k8sDeployments).Error
+func (m *K8sDeploymentsService) Update(data business.K8sDeployments) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetK8sDeployments 根据id获取K8sDeployments记录
+// UpdateByMap  更新K8sDeployments记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) GetK8sDeployments(id uint, fields string) (obj business.K8sDeployments, err error) {
+func (m *K8sDeploymentsService) UpdateByMap(data business.K8sDeployments, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取K8sDeployments记录
+// Author [88act](https://github.com/88act)
+func (m *K8sDeploymentsService) Get(id uint, fields string) (obj business.K8sDeployments, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -67,9 +81,9 @@ func (m *K8sDeploymentsService) GetK8sDeployments(id uint, fields string) (obj b
 	return obj, err
 }
 
-// GetK8sDeploymentsInfoList 分页获取K8sDeployments记录
+// GetList 分页获取K8sDeployments记录
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) GetK8sDeploymentsInfoList(info bizReq.K8sDeploymentsSearch, createdAtBetween []string, fields string) (list []business.K8sDeploymentsMini, total int64, err error) {
+func (m *K8sDeploymentsService) GetList(info bizReq.K8sDeploymentsSearch, createdAtBetween []string, fields string) (list []business.K8sDeploymentsMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -95,6 +109,7 @@ func (m *K8sDeploymentsService) GetK8sDeploymentsInfoList(info bizReq.K8sDeploym
 	if info.Deployment != "" {
 		db = db.Where("`deployment` = ?", info.Deployment)
 	}
+
 	err = db.Count(&total).Error
 	if err != nil {
 		return k8sDeploymentss, 0, err
@@ -122,9 +137,9 @@ func (m *K8sDeploymentsService) GetK8sDeploymentsInfoList(info bizReq.K8sDeploym
 	return k8sDeploymentss, total, err
 }
 
-// GetK8sDeploymentsInfoListAll  分页获取K8sDeployments记录 (全部字段)
+//GetListAll 分页获取K8sDeployments记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *K8sDeploymentsService) GetK8sDeploymentsInfoListAll(info bizReq.K8sDeploymentsSearch, createdAtBetween []string, fields string) (list []business.K8sDeployments, total int64, err error) {
+func (m *K8sDeploymentsService) GetListAll(info bizReq.K8sDeploymentsSearch, createdAtBetween []string, fields string) (list []business.K8sDeployments, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序

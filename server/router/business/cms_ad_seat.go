@@ -11,20 +11,19 @@ type CmsAdSeatRouter struct {
 
 // InitCmsAdSeatRouter 初始化 CmsAdSeat 路由信息
 func (s *CmsAdSeatRouter) InitCmsAdSeatRouter(Router *gin.RouterGroup) {
-	cmsAdSeatRouter := Router.Group("cmsAdSeat").Use(middleware.OperationRecord())
-	cmsAdSeatRouterWithoutRecord := Router.Group("cmsAdSeat")
-	var cmsAdSeatApi = v1.ApiGroupApp.BusinessApiGroup.CmsAdSeatApi
+	router := Router.Group("cmsAdSeat").Use(middleware.OperationRecord())
+	routerNoRecord := Router.Group("cmsAdSeat")
+	var apiV1 = v1.ApiGroupApp.BusinessApiGroup.CmsAdSeatApi
 	{
-		cmsAdSeatRouter.POST("createCmsAdSeat", cmsAdSeatApi.CreateCmsAdSeat)   // 新建CmsAdSeat
-		cmsAdSeatRouter.DELETE("deleteCmsAdSeat", cmsAdSeatApi.DeleteCmsAdSeat) // 删除CmsAdSeat
-		cmsAdSeatRouter.DELETE("deleteCmsAdSeatByIds", cmsAdSeatApi.DeleteCmsAdSeatByIds) // 批量删除CmsAdSeat
-		cmsAdSeatRouter.PUT("updateCmsAdSeat", cmsAdSeatApi.UpdateCmsAdSeat)    // 更新CmsAdSeat
-	    cmsAdSeatRouter.POST("quickEdit", cmsAdSeatApi.QuickEdit)  // 快速编辑
-		cmsAdSeatRouterWithoutRecord.GET("excelList", cmsAdSeatApi.ExcelList)  // 分页导出excel CmsAdSeat列表
+		router.POST("createCmsAdSeat", apiV1.CreateCmsAdSeat)   // 新建CmsAdSeat
+		router.DELETE("deleteCmsAdSeat", apiV1.DeleteCmsAdSeat) // 删除CmsAdSeat
+		router.DELETE("deleteCmsAdSeatByIds", apiV1.DeleteCmsAdSeatByIds) // 批量删除CmsAdSeat
+		router.PUT("updateCmsAdSeat", apiV1.UpdateCmsAdSeat)    // 更新CmsAdSeat
+	    router.POST("quickEdit", apiV1.QuickEdit)  // 快速编辑	
 	}
 	{
-		cmsAdSeatRouterWithoutRecord.GET("findCmsAdSeat", cmsAdSeatApi.FindCmsAdSeat)        // 根据ID获取CmsAdSeat
-		cmsAdSeatRouterWithoutRecord.GET("getCmsAdSeatList", cmsAdSeatApi.GetCmsAdSeatList)  // 获取CmsAdSeat列表
-	    
+		routerNoRecord.GET("findCmsAdSeat", apiV1.FindCmsAdSeat)        // 根据ID获取CmsAdSeat
+		routerNoRecord.GET("getCmsAdSeatList", apiV1.GetCmsAdSeatList)  // 获取CmsAdSeat列表
+        routerNoRecord.GET("excelList", apiV1.ExcelList)  // 分页导出excel CmsAdSeat列表
 	}
 }

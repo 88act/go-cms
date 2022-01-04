@@ -17,7 +17,7 @@ var once_CommonFileService sync.Once = sync.Once{}
 var obj_CommonFileService *CommonFileService
 
 //获取单例
-func GetCommonFileService() *CommonFileService {
+func GetCommonFileSev() *CommonFileService {
 	once_CommonFileService.Do(func() {
 		obj_CommonFileService = new(CommonFileService)
 		//instanse.init()

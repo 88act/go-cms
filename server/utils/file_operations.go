@@ -1,10 +1,19 @@
 package utils
 
 import (
+	"archive/tar"
+	"archive/zip"
+	"compress/gzip"
+	"fmt"
+	"go-cms/global"
+	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 	"reflect"
 	"strings"
+
+	"github.com/c4milo/unpackit"
 )
 
 //@author: [88act-5](https://github.com/88act)
@@ -71,4 +80,250 @@ func TrimSpace(target interface{}) {
 func FileExist(path string) bool {
 	_, err := os.Lstat(path)
 	return !os.IsNotExist(err)
+}
+
+func IsFileExist(filename string, filesize int64) bool {
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		fmt.Println(info)
+		return false
+	}
+	if filesize == info.Size() {
+		fmt.Println("安装包已存在！", info.Name(), info.Size(), info.ModTime())
+		return true
+	}
+	del := os.Remove(filename)
+	if del != nil {
+		fmt.Println(del)
+	}
+	return false
+}
+
+func CreateFile(name string) (*os.File, error) {
+	err := os.MkdirAll(string([]rune(name)[0:strings.LastIndex(name, "/")]), 0755)
+	if err != nil {
+		return nil, err
+	}
+	return os.Create(name)
+}
+
+func DownloadFile(url string, localPath string, filename string) (fullPath string, err error) {
+	// 写入文件前，先创建文件夹
+	if err := CreateDir(localPath); err != nil {
+		fmt.Println(err.Error())
+		return fullPath, err
+	}
+	fullPath = localPath + filename
+	res, err := http.Get(url)
+	if err != nil {
+		global.LOG.Error("下载失败 url = " + url + " ,error = " + err.Error())
+		return fullPath, err
+	}
+
+	f, err := os.Create(fullPath)
+	if err != nil {
+		global.LOG.Error("下载失败，创建文件 fullName = " + fullPath + " ,error = " + err.Error())
+		return fullPath, err
+	}
+	defer f.Close()
+	_, err = io.Copy(f, res.Body)
+
+	return fullPath, err
+}
+
+// 压缩 (只能是zip 文件 gz不行) srcFile could be a single file or a directory
+func Zip(srcFile string, destZip string) error {
+	zipfile, err := os.Create(destZip)
+	if err != nil {
+		return err
+	}
+	defer zipfile.Close()
+
+	archive := zip.NewWriter(zipfile)
+	defer archive.Close()
+
+	filepath.Walk(srcFile, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		header, err := zip.FileInfoHeader(info)
+		if err != nil {
+			return err
+		}
+
+		header.Name = path
+		if info.IsDir() {
+			header.Name += "/"
+		} else {
+			header.Method = zip.Deflate
+		}
+
+		writer, err := archive.CreateHeader(header)
+		if err != nil {
+			return err
+		}
+
+		if !info.IsDir() {
+			file, err := os.Open(path)
+			if err != nil {
+				return err
+			}
+			defer file.Close()
+			_, err = io.Copy(writer, file)
+		}
+		return err
+	})
+
+	return err
+}
+
+//解压缩 (只能是zip 文件 gz不行)
+func Unzip(zipFile string, destDir string) error {
+	zipReader, err := zip.OpenReader(zipFile)
+	if err != nil {
+		return err
+	}
+	defer zipReader.Close()
+
+	for _, f := range zipReader.File {
+		fpath := filepath.Join(destDir, f.Name)
+		if f.FileInfo().IsDir() {
+			os.MkdirAll(fpath, os.ModePerm)
+		} else {
+			if err = os.MkdirAll(filepath.Dir(fpath), os.ModePerm); err != nil {
+				return err
+			}
+
+			inFile, err := f.Open()
+			if err != nil {
+				return err
+			}
+			defer inFile.Close()
+
+			outFile, err := os.OpenFile(fpath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, f.Mode())
+			if err != nil {
+				return err
+			}
+			defer outFile.Close()
+
+			_, err = io.Copy(outFile, inFile)
+			if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+// 下面是 gz 文件操作------------------------------------------------------------------------------
+//压缩 使用gzip压缩成tar.gz
+func Gz(files []*os.File, dest string) error {
+	d, _ := os.Create(dest)
+	defer d.Close()
+	gw := gzip.NewWriter(d)
+	defer gw.Close()
+	tw := tar.NewWriter(gw)
+	defer tw.Close()
+	for _, file := range files {
+		err := compress(file, "", tw)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func compress(file *os.File, prefix string, tw *tar.Writer) error {
+	info, err := file.Stat()
+	if err != nil {
+		return err
+	}
+	if info.IsDir() {
+		prefix = prefix + "/" + info.Name()
+		fileInfos, err := file.Readdir(-1)
+		if err != nil {
+			return err
+		}
+		for _, fi := range fileInfos {
+			f, err := os.Open(file.Name() + "/" + fi.Name())
+			if err != nil {
+				return err
+			}
+			err = compress(f, prefix, tw)
+			if err != nil {
+				return err
+			}
+		}
+	} else {
+		header, err := tar.FileInfoHeader(info, "")
+		header.Name = prefix + "/" + header.Name
+		if err != nil {
+			return err
+		}
+		err = tw.WriteHeader(header)
+		if err != nil {
+			return err
+		}
+		_, err = io.Copy(tw, file)
+		file.Close()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+//解压 tar.gz
+func UnGz(tarFile, dest string) error {
+	srcFile, err := os.Open(tarFile)
+	if err != nil {
+		return err
+	}
+	defer srcFile.Close()
+	gr, err := gzip.NewReader(srcFile)
+	if err != nil {
+		return err
+	}
+	defer gr.Close()
+	tr := tar.NewReader(gr)
+	for {
+		hdr, err := tr.Next()
+		if err != nil {
+			if err == io.EOF {
+				break
+			} else {
+				return err
+			}
+		}
+		filename := dest + hdr.Name
+		file, err := createFile(filename)
+		if err != nil {
+			return err
+		}
+		io.Copy(file, tr)
+	}
+	return nil
+}
+
+func createFile(name string) (*os.File, error) {
+	err := os.MkdirAll(string([]rune(name)[0:strings.LastIndex(name, "/")]), 0755)
+	if err != nil {
+		return nil, err
+	}
+	return os.Create(name)
+}
+
+// 解压  tarFile 源文件 ,dest 解压目录
+func Unzip_tx(tarFile, dest string) (path string, err error) {
+	file, _ := os.Open(tarFile)
+	defer file.Close()
+
+	path, err = unpackit.Unpack(file, dest)
+	if err != nil {
+		fmt.Println("txim 解压失败:" + err.Error())
+		return "", err
+	}
+	//  由于gz文件 没有文件头 ,解压后没有文件名 unknown-pack.实际是 json文件
+	return path + "/unknown-pack", err
 }

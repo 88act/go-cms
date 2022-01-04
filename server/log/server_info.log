@@ -1,0 +1,8 @@
+[GoCms]2022/01/04 - 17:02:06.706	[34minfo[0m	C:/work_go/go-cms/server/initialize/gorm.go:86	register table success
+[GoCms]2022/01/04 - 17:02:06.732	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:34	use middleware logger
+[GoCms]2022/01/04 - 17:02:06.733	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:37	use middleware cors
+[GoCms]2022/01/04 - 17:02:06.734	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:39	register swagger handler
+[GoCms]2022/01/04 - 17:02:06.812	[34minfo[0m	C:/work_go/go-cms/server/initialize/router.go:123	router register success
+[GoCms]2022/01/04 - 17:02:06.817	[34minfo[0m	C:/work_go/go-cms/server/core/server.go:40	server run success on 	{"address": ":40050"}
+[GoCms]2022/01/04 - 17:02:06.828	[34minfo[0m	C:/work_go/go-cms/server/plugin/collect/collectmManager.go:39	爬虫采集器插件服务器 CollectManager init ....
+[GoCms]2022/01/04 - 17:02:06.828	[34minfo[0m	C:/work_go/go-cms/server/plugin/collect/collectmManager.go:92	CollectManager 开始运行 manager_run.....

@@ -16,7 +16,7 @@ var once_MemUserSafe sync.Once = sync.Once{}
 var obj_MemUserSafeService *MemUserSafeService
 
 //获取单例
-func GetMemUserSafeService() *MemUserSafeService {
+func GetMemUserSafeSev() *MemUserSafeService {
 	once_MemUserSafe.Do(func() {
 		obj_MemUserSafeService = new(MemUserSafeService)
 		//instanse.init()
@@ -24,37 +24,51 @@ func GetMemUserSafeService() *MemUserSafeService {
 	return obj_MemUserSafeService
 }
 
-// CreateMemUserSafe 创建MemUserSafe记录
+// Create 创建MemUserSafe记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) CreateMemUserSafe(memUserSafe business.MemUserSafe) (err error) {
-	err = global.DB.Create(&memUserSafe).Error
+func (m *MemUserSafeService) Create(data business.MemUserSafe) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除MemUserSafe记录
+// Author [88act](https://github.com/88act)
+func (m *MemUserSafeService) Delete(data business.MemUserSafe) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteMemUserSafe 删除MemUserSafe记录
+// DeleteByIds 批量删除MemUserSafe记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) DeleteMemUserSafe(memUserSafe business.MemUserSafe) (err error) {
-	err = global.DB.Delete(&memUserSafe).Error
-	return err
-}
-
-// DeleteMemUserSafeByIds 批量删除MemUserSafe记录
-// Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) DeleteMemUserSafeByIds(ids request.IdsReq) (err error) {
+func (m *MemUserSafeService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.MemUserSafe{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateMemUserSafe 更新MemUserSafe记录
+// Update  更新MemUserSafe记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) UpdateMemUserSafe(memUserSafe business.MemUserSafe) (err error) {
-	err = global.DB.Save(&memUserSafe).Error
+func (m *MemUserSafeService) Update(data business.MemUserSafe) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetMemUserSafe 根据id获取MemUserSafe记录
+// UpdateByMap  更新MemUserSafe记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) GetMemUserSafe(id uint, fields string) (obj business.MemUserSafe, err error) {
+func (m *MemUserSafeService) UpdateByMap(data business.MemUserSafe, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取MemUserSafe记录
+// Author [88act](https://github.com/88act)
+func (m *MemUserSafeService) Get(id uint, fields string) (obj business.MemUserSafe, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -67,9 +81,9 @@ func (m *MemUserSafeService) GetMemUserSafe(id uint, fields string) (obj busines
 	return obj, err
 }
 
-// GetMemUserSafeInfoList 分页获取MemUserSafe记录
+// GetList 分页获取MemUserSafe记录
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) GetMemUserSafeInfoList(info bizReq.MemUserSafeSearch, createdAtBetween []string, fields string) (list []business.MemUserSafeMini, total int64, err error) {
+func (m *MemUserSafeService) GetList(info bizReq.MemUserSafeSearch, createdAtBetween []string, fields string) (list []business.MemUserSafeMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -94,6 +108,12 @@ func (m *MemUserSafeService) GetMemUserSafeInfoList(info bizReq.MemUserSafeSearc
 	}
 	if info.Type != nil {
 		db = db.Where("`type` = ?", info.Type)
+	}
+	if info.ValOld != nil {
+		db = db.Where("`val_old` = ?", info.ValOld)
+	}
+	if info.ValNew != nil {
+		db = db.Where("`val_new` = ?", info.ValNew)
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
@@ -126,9 +146,9 @@ func (m *MemUserSafeService) GetMemUserSafeInfoList(info bizReq.MemUserSafeSearc
 	return memUserSafes, total, err
 }
 
-// GetMemUserSafeInfoListAll  分页获取MemUserSafe记录 (全部字段)
+//GetListAll 分页获取MemUserSafe记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *MemUserSafeService) GetMemUserSafeInfoListAll(info bizReq.MemUserSafeSearch, createdAtBetween []string, fields string) (list []business.MemUserSafe, total int64, err error) {
+func (m *MemUserSafeService) GetListAll(info bizReq.MemUserSafeSearch, createdAtBetween []string, fields string) (list []business.MemUserSafe, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -152,6 +172,12 @@ func (m *MemUserSafeService) GetMemUserSafeInfoListAll(info bizReq.MemUserSafeSe
 	}
 	if info.Type != nil {
 		db = db.Where("`type` = ?", info.Type)
+	}
+	if info.ValOld != nil {
+		db = db.Where("`val_old` = ?", info.ValOld)
+	}
+	if info.ValNew != nil {
+		db = db.Where("`val_new` = ?", info.ValNew)
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)

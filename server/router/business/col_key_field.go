@@ -1,10 +1,8 @@
 package business
 
 import (
+	"go-cms/api/v1"
 	"go-cms/middleware"
-
-	v1 "go-cms/api/v1"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,16 +15,16 @@ func (s *ColKeyFieldRouter) InitColKeyFieldRouter(Router *gin.RouterGroup) {
 	colKeyFieldRouterWithoutRecord := Router.Group("colKeyField")
 	var colKeyFieldApi = v1.ApiGroupApp.BusinessApiGroup.ColKeyFieldApi
 	{
-		colKeyFieldRouter.POST("createColKeyField", colKeyFieldApi.CreateColKeyField)             // 新建ColKeyField
-		colKeyFieldRouter.DELETE("deleteColKeyField", colKeyFieldApi.DeleteColKeyField)           // 删除ColKeyField
+		colKeyFieldRouter.POST("createColKeyField", colKeyFieldApi.CreateColKeyField)   // 新建ColKeyField
+		colKeyFieldRouter.DELETE("deleteColKeyField", colKeyFieldApi.DeleteColKeyField) // 删除ColKeyField
 		colKeyFieldRouter.DELETE("deleteColKeyFieldByIds", colKeyFieldApi.DeleteColKeyFieldByIds) // 批量删除ColKeyField
-		colKeyFieldRouter.PUT("updateColKeyField", colKeyFieldApi.UpdateColKeyField)              // 更新ColKeyField
-		colKeyFieldRouter.POST("quickEdit", colKeyFieldApi.QuickEdit)                             // 快速编辑
-		colKeyFieldRouterWithoutRecord.GET("excelList", colKeyFieldApi.ExcelList)                 // 分页导出excel ColKeyField列表
+		colKeyFieldRouter.PUT("updateColKeyField", colKeyFieldApi.UpdateColKeyField)    // 更新ColKeyField
+	    colKeyFieldRouter.POST("quickEdit", colKeyFieldApi.QuickEdit)  // 快速编辑
+		colKeyFieldRouterWithoutRecord.GET("excelList", colKeyFieldApi.ExcelList)  // 分页导出excel ColKeyField列表
 	}
 	{
-		colKeyFieldRouterWithoutRecord.GET("findColKeyField", colKeyFieldApi.FindColKeyField)       // 根据ID获取ColKeyField
-		colKeyFieldRouterWithoutRecord.GET("getColKeyFieldList", colKeyFieldApi.GetColKeyFieldList) // 获取ColKeyField列表
-
+		colKeyFieldRouterWithoutRecord.GET("findColKeyField", colKeyFieldApi.FindColKeyField)        // 根据ID获取ColKeyField
+		colKeyFieldRouterWithoutRecord.GET("getColKeyFieldList", colKeyFieldApi.GetColKeyFieldList)  // 获取ColKeyField列表
+	    
 	}
 }

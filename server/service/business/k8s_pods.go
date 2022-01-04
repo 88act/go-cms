@@ -16,7 +16,7 @@ var once_K8sPods sync.Once = sync.Once{}
 var obj_K8sPodsService *K8sPodsService
 
 //获取单例
-func GetK8sPodsService() *K8sPodsService {
+func GetK8sPodsSev() *K8sPodsService {
 	once_K8sPods.Do(func() {
 		obj_K8sPodsService = new(K8sPodsService)
 		//instanse.init()
@@ -24,37 +24,51 @@ func GetK8sPodsService() *K8sPodsService {
 	return obj_K8sPodsService
 }
 
-// CreateK8sPods 创建K8sPods记录
+// Create 创建K8sPods记录
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) CreateK8sPods(k8sPods business.K8sPods) (err error) {
-	err = global.DB.Create(&k8sPods).Error
+func (m *K8sPodsService) Create(data business.K8sPods) (id uint, err error) {
+	err = global.DB.Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.ID, err
+}
+
+// Delete 删除K8sPods记录
+// Author [88act](https://github.com/88act)
+func (m *K8sPodsService) Delete(data business.K8sPods) (err error) {
+	err = global.DB.Delete(&data).Error
 	return err
 }
 
-// DeleteK8sPods 删除K8sPods记录
+// DeleteByIds 批量删除K8sPods记录
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) DeleteK8sPods(k8sPods business.K8sPods) (err error) {
-	err = global.DB.Delete(&k8sPods).Error
-	return err
-}
-
-// DeleteK8sPodsByIds 批量删除K8sPods记录
-// Author [88act](https://github.com/88act)
-func (m *K8sPodsService) DeleteK8sPodsByIds(ids request.IdsReq) (err error) {
+func (m *K8sPodsService) DeleteByIds(ids request.IdsReq) (err error) {
 	err = global.DB.Delete(&[]business.K8sPods{}, "id in ?", ids.Ids).Error
 	return err
 }
 
-// UpdateK8sPods 更新K8sPods记录
+// Update  更新K8sPods记录
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) UpdateK8sPods(k8sPods business.K8sPods) (err error) {
-	err = global.DB.Save(&k8sPods).Error
+func (m *K8sPodsService) Update(data business.K8sPods) (err error) {
+	err = global.DB.Save(&data).Error
 	return err
 }
 
-// GetK8sPods 根据id获取K8sPods记录
+// UpdateByMap  更新K8sPods记录 by Map
+// values := map[string]interface{}{
+// 	"status":0,
+// 	"from": hash,
+// }
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) GetK8sPods(id uint, fields string) (obj business.K8sPods, err error) {
+func (m *K8sPodsService) UpdateByMap(data business.K8sPods, mapData map[string]interface{}) (err error) {
+	err = global.DB.Model(&data).Updates(mapData).Error
+	return err
+}
+
+// Get 根据id获取K8sPods记录
+// Author [88act](https://github.com/88act)
+func (m *K8sPodsService) Get(id uint, fields string) (obj business.K8sPods, err error) {
 
 	if utils.IsEmpty(fields) {
 		err = global.DB.Where("id = ?", id).First(&obj).Error
@@ -67,9 +81,9 @@ func (m *K8sPodsService) GetK8sPods(id uint, fields string) (obj business.K8sPod
 	return obj, err
 }
 
-// GetK8sPodsInfoList 分页获取K8sPods记录
+// GetList 分页获取K8sPods记录
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) GetK8sPodsInfoList(info bizReq.K8sPodsSearch, createdAtBetween []string, fields string) (list []business.K8sPodsMini, total int64, err error) {
+func (m *K8sPodsService) GetList(info bizReq.K8sPodsSearch, createdAtBetween []string, fields string) (list []business.K8sPodsMini, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序
@@ -98,6 +112,7 @@ func (m *K8sPodsService) GetK8sPodsInfoList(info bizReq.K8sPodsSearch, createdAt
 	if info.NameSpace != "" {
 		db = db.Where("`name_space` = ?", info.NameSpace)
 	}
+
 	err = db.Count(&total).Error
 	if err != nil {
 		return k8sPodss, 0, err
@@ -125,9 +140,9 @@ func (m *K8sPodsService) GetK8sPodsInfoList(info bizReq.K8sPodsSearch, createdAt
 	return k8sPodss, total, err
 }
 
-// GetK8sPodsInfoListAll  分页获取K8sPods记录 (全部字段)
+//GetListAll 分页获取K8sPods记录 (全部字段)
 // Author [88act](https://github.com/88act)
-func (m *K8sPodsService) GetK8sPodsInfoListAll(info bizReq.K8sPodsSearch, createdAtBetween []string, fields string) (list []business.K8sPods, total int64, err error) {
+func (m *K8sPodsService) GetListAll(info bizReq.K8sPodsSearch, createdAtBetween []string, fields string) (list []business.K8sPods, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	//修改 by ljd  增加查询排序

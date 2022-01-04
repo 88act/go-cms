@@ -11,20 +11,19 @@ type K8sNodesRouter struct {
 
 // InitK8sNodesRouter 初始化 K8sNodes 路由信息
 func (s *K8sNodesRouter) InitK8sNodesRouter(Router *gin.RouterGroup) {
-	k8sNodesRouter := Router.Group("k8sNodes").Use(middleware.OperationRecord())
-	k8sNodesRouterWithoutRecord := Router.Group("k8sNodes")
-	var k8sNodesApi = v1.ApiGroupApp.BusinessApiGroup.K8sNodesApi
+	router := Router.Group("k8sNodes").Use(middleware.OperationRecord())
+	routerNoRecord := Router.Group("k8sNodes")
+	var apiV1 = v1.ApiGroupApp.BusinessApiGroup.K8sNodesApi
 	{
-		k8sNodesRouter.POST("createK8sNodes", k8sNodesApi.CreateK8sNodes)   // 新建K8sNodes
-		k8sNodesRouter.DELETE("deleteK8sNodes", k8sNodesApi.DeleteK8sNodes) // 删除K8sNodes
-		k8sNodesRouter.DELETE("deleteK8sNodesByIds", k8sNodesApi.DeleteK8sNodesByIds) // 批量删除K8sNodes
-		k8sNodesRouter.PUT("updateK8sNodes", k8sNodesApi.UpdateK8sNodes)    // 更新K8sNodes
-	    k8sNodesRouter.POST("quickEdit", k8sNodesApi.QuickEdit)  // 快速编辑
-		k8sNodesRouterWithoutRecord.GET("excelList", k8sNodesApi.ExcelList)  // 分页导出excel K8sNodes列表
+		router.POST("createK8sNodes", apiV1.CreateK8sNodes)   // 新建K8sNodes
+		router.DELETE("deleteK8sNodes", apiV1.DeleteK8sNodes) // 删除K8sNodes
+		router.DELETE("deleteK8sNodesByIds", apiV1.DeleteK8sNodesByIds) // 批量删除K8sNodes
+		router.PUT("updateK8sNodes", apiV1.UpdateK8sNodes)    // 更新K8sNodes
+	    router.POST("quickEdit", apiV1.QuickEdit)  // 快速编辑	
 	}
 	{
-		k8sNodesRouterWithoutRecord.GET("findK8sNodes", k8sNodesApi.FindK8sNodes)        // 根据ID获取K8sNodes
-		k8sNodesRouterWithoutRecord.GET("getK8sNodesList", k8sNodesApi.GetK8sNodesList)  // 获取K8sNodes列表
-	    
+		routerNoRecord.GET("findK8sNodes", apiV1.FindK8sNodes)        // 根据ID获取K8sNodes
+		routerNoRecord.GET("getK8sNodesList", apiV1.GetK8sNodesList)  // 获取K8sNodes列表
+        routerNoRecord.GET("excelList", apiV1.ExcelList)  // 分页导出excel K8sNodes列表
 	}
 }

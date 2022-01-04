@@ -1,0 +1,1 @@
+[GoCms]2022/01/04 - 17:00:43.051	[31merror[0m	C:/work_go/go-cms/server/initialize/gorm.go:109	MySQL启动异常	{"err": "dial tcp 127.0.0.1:53306: connectex: No connection could be made because the target machine actively refused it."}

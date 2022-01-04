@@ -3,22 +3,21 @@ package business
 import (
 	"errors"
 	"go-cms/global"
-    "go-cms/model/business"
+	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
-    "go-cms/model/common/request" 
-    "go-cms/model/common/response"
-    bizSev "go-cms/service/business"   
+	"go-cms/model/common/request"
+	"go-cms/model/common/response"
+	bizSev "go-cms/service/business"
 	commSev "go-cms/service/common"
-    "github.com/gin-gonic/gin"
+
+	"github.com/gin-gonic/gin"
 	"github.com/gogf/gf/util/gvalid"
-    "go.uber.org/zap" 
+	"go.uber.org/zap"
 	"gorm.io/gorm"
-) 
+)
 
 type ColCollectApi struct {
 }
-
- 
 
 // CreateColCollect 创建ColCollect
 // @Tags ColCollect
@@ -32,15 +31,14 @@ type ColCollectApi struct {
 func (colCollectApi *ColCollectApi) CreateColCollect(c *gin.Context) {
 	var dataObj business.ColCollect
 	_ = c.ShouldBindJSON(&dataObj)
-	
-	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
+
+	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
- 
 	if err := bizSev.GetColCollectService().CreateColCollect(dataObj); err != nil {
-        global.LOG.Error("创建失败!", zap.Any("err", err))
+		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
 		response.OkWithMessage("创建成功", c)
@@ -60,7 +58,7 @@ func (colCollectApi *ColCollectApi) DeleteColCollect(c *gin.Context) {
 	var colCollect business.ColCollect
 	_ = c.ShouldBindJSON(&colCollect)
 	if err := bizSev.GetColCollectService().DeleteColCollect(colCollect); err != nil {
-        global.LOG.Error("删除失败!", zap.Any("err", err))
+		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -78,9 +76,9 @@ func (colCollectApi *ColCollectApi) DeleteColCollect(c *gin.Context) {
 // @Router /colCollect/deleteColCollectByIds [delete]
 func (colCollectApi *ColCollectApi) DeleteColCollectByIds(c *gin.Context) {
 	var IDS request.IdsReq
-    _ = c.ShouldBindJSON(&IDS)
+	_ = c.ShouldBindJSON(&IDS)
 	if err := bizSev.GetColCollectService().DeleteColCollectByIds(IDS); err != nil {
-        global.LOG.Error("批量删除失败!", zap.Any("err", err))
+		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -106,7 +104,7 @@ func (colCollectApi *ColCollectApi) UpdateColCollect(c *gin.Context) {
 	}
 
 	if err := bizSev.GetColCollectService().UpdateColCollect(dataObj); err != nil {
-        global.LOG.Error("更新失败!", zap.Any("err", err))
+		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -124,14 +122,14 @@ func (colCollectApi *ColCollectApi) UpdateColCollect(c *gin.Context) {
 // @Router /colCollect/findColCollect [get]
 func (colCollectApi *ColCollectApi) FindColCollect(c *gin.Context) {
 	var colCollect business.ColCollect
-	_ = c.ShouldBindQuery(&colCollect) 
-	 recolCollect,err:= bizSev.GetColCollectService().GetColCollect(colCollect.ID,""); 
-	 if errors.Is(err, gorm.ErrRecordNotFound) { 
+	_ = c.ShouldBindQuery(&colCollect)
+	recolCollect, err := bizSev.GetColCollectService().GetColCollect(colCollect.ID, "")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"colCollect": nil}, c)
-	} else if err != nil { 
-        global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil {
+		global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else { 
+	} else {
 		response.OkWithData(gin.H{"colCollect": recolCollect}, c)
 	}
 }
@@ -150,20 +148,18 @@ func (colCollectApi *ColCollectApi) GetColCollectList(c *gin.Context) {
 
 	var pageInfo bizReq.ColCollectSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetColCollectService().GetColCollectInfoList(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+	if list, total, err := bizSev.GetColCollectService().GetColCollectInfoList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
 }
-
-
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -171,21 +167,20 @@ func (colCollectApi *ColCollectApi) GetColCollectList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ColCollect true "快速更新ColCollect" 
+// @Param data body business.ColCollect true "快速更新ColCollect"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /colCollect/quickEdit [post] 
+// @Router  /colCollect/quickEdit [post]
 func (colCollectApi *ColCollectApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "col_collect" 
-	if err := commSev.GetCommonDbService().QuickEdit(quickEdit); err != nil {
+	quickEdit.Table = "col_collect"
+	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
 	}
 }
-
 
 // GetColCollectList 分页导出excel ColCollect列表
 // @Tags ColCollect
@@ -201,17 +196,15 @@ func (colCollectApi *ColCollectApi) ExcelList(c *gin.Context) {
 
 	var pageInfo bizReq.ColCollectSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total,err:= bizSev.GetColCollectService().GetColCollectInfoList(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+	if list, total, err := bizSev.GetColCollectService().GetColCollectInfoList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
 }
-
-
