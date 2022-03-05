@@ -1,7 +1,7 @@
 package business
 
 import (
- "errors"
+	"errors"
 	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
@@ -17,12 +17,10 @@ import (
 	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
-) 
+)
 
 type MemUserLogApi struct {
 }
-
- 
 
 // CreateMemUserLog 创建MemUserLog
 // @Tags MemUserLog
@@ -36,18 +34,17 @@ type MemUserLogApi struct {
 func (memUserLogApi *MemUserLogApi) CreateMemUserLog(c *gin.Context) {
 	var dataObj business.MemUserLog
 	_ = c.ShouldBindJSON(&dataObj)
-	
-	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
+
+	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
- 
-	if id,err := bizSev.GetMemUserLogSev().Create(dataObj); err != nil {
-        global.LOG.Error("创建失败!", zap.Any("err", err))
+	if id, err := bizSev.GetMemUserLogSev().Create(dataObj); err != nil {
+		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-	    idResp := &response.IdResp{Id: id}
+		idResp := &response.IdResp{Id: id}
 		response.OkWithData(idResp, c)
 	}
 }
@@ -65,7 +62,7 @@ func (memUserLogApi *MemUserLogApi) DeleteMemUserLog(c *gin.Context) {
 	var memUserLog business.MemUserLog
 	_ = c.ShouldBindJSON(&memUserLog)
 	if err := bizSev.GetMemUserLogSev().Delete(memUserLog); err != nil {
-        global.LOG.Error("删除失败!", zap.Any("err", err))
+		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -83,9 +80,9 @@ func (memUserLogApi *MemUserLogApi) DeleteMemUserLog(c *gin.Context) {
 // @Router /memUserLog/deleteMemUserLogByIds [delete]
 func (memUserLogApi *MemUserLogApi) DeleteMemUserLogByIds(c *gin.Context) {
 	var IDS request.IdsReq
-    _ = c.ShouldBindJSON(&IDS)
+	_ = c.ShouldBindJSON(&IDS)
 	if err := bizSev.GetMemUserLogSev().DeleteByIds(IDS); err != nil {
-        global.LOG.Error("批量删除失败!", zap.Any("err", err))
+		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -111,7 +108,7 @@ func (memUserLogApi *MemUserLogApi) UpdateMemUserLog(c *gin.Context) {
 	}
 
 	if err := bizSev.GetMemUserLogSev().Update(dataObj); err != nil {
-        global.LOG.Error("更新失败!", zap.Any("err", err))
+		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -129,14 +126,14 @@ func (memUserLogApi *MemUserLogApi) UpdateMemUserLog(c *gin.Context) {
 // @Router /memUserLog/findMemUserLog [get]
 func (memUserLogApi *MemUserLogApi) FindMemUserLog(c *gin.Context) {
 	var memUserLog business.MemUserLog
-	_ = c.ShouldBindQuery(&memUserLog) 
-	 rememUserLog,err:= bizSev.GetMemUserLogSev().Get(memUserLog.ID,""); 
-	 if errors.Is(err, gorm.ErrRecordNotFound) { 
+	_ = c.ShouldBindQuery(&memUserLog)
+	rememUserLog, err := bizSev.GetMemUserLogSev().Get(memUserLog.ID, "")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"memUserLog": nil}, c)
-	} else if err != nil { 
-        global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil {
+		global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else { 
+	} else {
 		response.OkWithData(gin.H{"memUserLog": rememUserLog}, c)
 	}
 }
@@ -155,20 +152,18 @@ func (memUserLogApi *MemUserLogApi) GetMemUserLogList(c *gin.Context) {
 
 	var pageInfo bizReq.MemUserLogSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetMemUserLogSev().GetList(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+	if list, total, err := bizSev.GetMemUserLogSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
 }
-
-
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -176,13 +171,13 @@ func (memUserLogApi *MemUserLogApi) GetMemUserLogList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUserLog true "快速更新MemUserLog" 
+// @Param data body business.MemUserLog true "快速更新MemUserLog"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /memUserLog/quickEdit [post] 
+// @Router  /memUserLog/quickEdit [post]
 func (memUserLogApi *MemUserLogApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "mem_user_log" 
+	quickEdit.Table = "mem_user_log"
 	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -190,7 +185,6 @@ func (memUserLogApi *MemUserLogApi) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
-
 
 // excelList 分页导出excel MemUserLog列表
 // @Tags MemUserLog
@@ -205,18 +199,18 @@ func (memUserLogApi *MemUserLogApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 	var pageInfo bizReq.MemUserLogSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list,_,err:= bizSev.GetMemUserLogSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        if len(list) == 0 {
+	if list, _, err := bizSev.GetMemUserLogSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		if len(list) == 0 {
 			response.FailWithMessage("没有数据", c)
-		} else { 
-			sheetFields := []string{}  
-					sheetFields = append(sheetFields, "用户id")  
-					sheetFields = append(sheetFields, "类型")  
-					sheetFields = append(sheetFields, "状态")  
-					sheetFields = append(sheetFields, "ip") 
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "用户id")
+			sheetFields = append(sheetFields, "类型")
+			sheetFields = append(sheetFields, "状态")
+			sheetFields = append(sheetFields, "ip")
 
 			excel := excelize.NewFile()
 			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
@@ -238,8 +232,8 @@ func (memUserLogApi *MemUserLogApi) ExcelList(c *gin.Context) {
 				} else {
 					arr = append(arr, *v.Status)
 				}
-				arr = append(arr, v.Ip)   
-			    excel.SetSheetRow("Sheet1", axis,&arr)  
+				arr = append(arr, v.Ip)
+				excel.SetSheetRow("Sheet1", axis, &arr)
 			}
 			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
 			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
@@ -249,12 +243,9 @@ func (memUserLogApi *MemUserLogApi) ExcelList(c *gin.Context) {
 				global.LOG.Error(err.Error())
 				response.FailWithMessage("获取失败", c)
 			} else {
-				resData := map[string]string{"url": url, "filename": filename} 
+				resData := map[string]string{"url": url, "filename": filename}
 				response.OkWithData(resData, c)
-			} 
+			}
 		}
-    }
+	}
 }
-
-
- 

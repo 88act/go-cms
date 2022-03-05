@@ -12,8 +12,8 @@ import (
 	"datacenter/user/rpc/internal/svc"
 	"datacenter/user/rpc/user"
 
-	"github.com/tal-tech/go-zero/core/conf"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
 )
 
@@ -21,7 +21,7 @@ var configFile = flag.String("f", "etc/user.yaml", "the config file")
 
 func main() {
 	flag.Parse()
-    fmt.Println("rpc  ------1---------")
+	fmt.Println("rpc  ------1---------")
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)

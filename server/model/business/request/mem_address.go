@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type MemAddressSearch struct{
-    business.MemAddress
-    request.PageInfo
+type MemAddressSearch struct {
+	business.MemAddress
+	request.PageInfo
 }

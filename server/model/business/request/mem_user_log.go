@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type MemUserLogSearch struct{
-    business.MemUserLog
-    request.PageInfo
+type MemUserLogSearch struct {
+	business.MemUserLog
+	request.PageInfo
 }

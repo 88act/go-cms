@@ -7,7 +7,7 @@ import (
 	"mime/multipart"
 	"time"
 
-	 "go-cms/global"
+	"go-cms/global"
 
 	"github.com/qiniu/api.v7/v7/auth/qbox"
 	"github.com/qiniu/api.v7/v7/storage"

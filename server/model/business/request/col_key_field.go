@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type ColKeyFieldSearch struct{
-    business.ColKeyField
-    request.PageInfo
+type ColKeyFieldSearch struct {
+	business.ColKeyField
+	request.PageInfo
 }
