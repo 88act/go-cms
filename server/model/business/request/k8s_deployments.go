@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type K8sDeploymentsSearch struct{
-    business.K8sDeployments
-    request.PageInfo
+type K8sDeploymentsSearch struct {
+	business.K8sDeployments
+	request.PageInfo
 }

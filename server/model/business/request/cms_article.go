@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type CmsArticleSearch struct{
-    business.CmsArticle
-    request.PageInfo
+type CmsArticleSearch struct {
+	business.CmsArticle
+	request.PageInfo
 }

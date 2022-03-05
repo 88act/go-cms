@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type BasicFileSearch struct{
-    business.BasicFile
-    request.PageInfo
+type BasicFileSearch struct {
+	business.BasicFile
+	request.PageInfo
 }

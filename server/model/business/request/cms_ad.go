@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type CmsAdSearch struct{
-    business.CmsAd
-    request.PageInfo
+type CmsAdSearch struct {
+	business.CmsAd
+	request.PageInfo
 }

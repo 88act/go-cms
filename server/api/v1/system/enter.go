@@ -5,7 +5,7 @@ import "go-cms/service"
 type ApiGroup struct {
 	SystemApiApi
 	AuthorityApi
-	 
+
 	BaseApi
 	CasbinApi
 	DictionaryApi

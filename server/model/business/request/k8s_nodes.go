@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type K8sNodesSearch struct{
-    business.K8sNodes
-    request.PageInfo
+type K8sNodesSearch struct {
+	business.K8sNodes
+	request.PageInfo
 }

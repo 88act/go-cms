@@ -18,27 +18,27 @@ var wsUpgrader = websocket.Upgrader{
 // websocket消息
 type WsMessage struct {
 	MessageType int
-	Data []byte
+	Data        []byte
 }
 
 // 封装websocket连接
 type WsConnection struct {
 	wsSocket *websocket.Conn // 底层websocket
-	inChan chan *WsMessage	// 读取队列
-	outChan chan *WsMessage // 发送队列
+	inChan   chan *WsMessage // 读取队列
+	outChan  chan *WsMessage // 发送队列
 
-	mutex sync.Mutex	// 避免重复关闭管道
-	isClosed bool
-	closeChan chan byte  // 关闭通知
+	mutex     sync.Mutex // 避免重复关闭管道
+	isClosed  bool
+	closeChan chan byte // 关闭通知
 }
 
 // 读取协程
 func (wsConn *WsConnection) wsReadLoop() {
 	var (
 		msgType int
-		data []byte
-		msg *WsMessage
-		err error
+		data    []byte
+		msg     *WsMessage
+		err     error
 	)
 	for {
 		// 读一个message
@@ -52,7 +52,7 @@ func (wsConn *WsConnection) wsReadLoop() {
 		// 放入请求队列
 		select {
 		case wsConn.inChan <- msg:
-		case <- wsConn.closeChan:
+		case <-wsConn.closeChan:
 			goto CLOSED
 		}
 	}
@@ -70,12 +70,12 @@ func (wsConn *WsConnection) wsWriteLoop() {
 	for {
 		select {
 		// 取一个应答
-		case msg = <- wsConn.outChan:
+		case msg = <-wsConn.outChan:
 			// 写给websocket
 			if err = wsConn.wsSocket.WriteMessage(msg.MessageType, msg.Data); err != nil {
 				goto ERROR
 			}
-		case <- wsConn.closeChan:
+		case <-wsConn.closeChan:
 			goto CLOSED
 		}
 	}
@@ -95,11 +95,11 @@ func InitWebsocket(resp http.ResponseWriter, req *http.Request) (wsConn *WsConne
 		return
 	}
 	wsConn = &WsConnection{
-		wsSocket: wsSocket,
-		inChan: make(chan *WsMessage, 1000),
-		outChan: make(chan *WsMessage, 1000),
+		wsSocket:  wsSocket,
+		inChan:    make(chan *WsMessage, 1000),
+		outChan:   make(chan *WsMessage, 1000),
 		closeChan: make(chan byte),
-		isClosed: false,
+		isClosed:  false,
 	}
 
 	// 读协程
@@ -113,8 +113,8 @@ func InitWebsocket(resp http.ResponseWriter, req *http.Request) (wsConn *WsConne
 // 发送消息
 func (wsConn *WsConnection) WsWrite(messageType int, data []byte) (err error) {
 	select {
-	case wsConn.outChan <- &WsMessage{messageType, data,}:
-	case <- wsConn.closeChan:
+	case wsConn.outChan <- &WsMessage{messageType, data}:
+	case <-wsConn.closeChan:
 		err = errors.New("websocket closed")
 	}
 	return
@@ -123,9 +123,9 @@ func (wsConn *WsConnection) WsWrite(messageType int, data []byte) (err error) {
 // 读取消息
 func (wsConn *WsConnection) WsRead() (msg *WsMessage, err error) {
 	select {
-	case msg = <- wsConn.inChan:
+	case msg = <-wsConn.inChan:
 		return
-	case <- wsConn.closeChan:
+	case <-wsConn.closeChan:
 		err = errors.New("websocket closed")
 	}
 	return

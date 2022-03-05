@@ -1,7 +1,7 @@
 package business
 
 import (
- "errors"
+	"errors"
 	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
@@ -17,12 +17,10 @@ import (
 	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
-) 
+)
 
 type MemUserApi struct {
 }
-
- 
 
 // CreateMemUser 创建MemUser
 // @Tags MemUser
@@ -36,18 +34,17 @@ type MemUserApi struct {
 func (memUserApi *MemUserApi) CreateMemUser(c *gin.Context) {
 	var dataObj business.MemUser
 	_ = c.ShouldBindJSON(&dataObj)
-	
-	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
+
+	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
- 
-	if id,err := bizSev.GetMemUserSev().Create(dataObj); err != nil {
-        global.LOG.Error("创建失败!", zap.Any("err", err))
+	if id, err := bizSev.GetMemUserSev().Create(dataObj); err != nil {
+		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-	    idResp := &response.IdResp{Id: id}
+		idResp := &response.IdResp{Id: id}
 		response.OkWithData(idResp, c)
 	}
 }
@@ -65,7 +62,7 @@ func (memUserApi *MemUserApi) DeleteMemUser(c *gin.Context) {
 	var memUser business.MemUser
 	_ = c.ShouldBindJSON(&memUser)
 	if err := bizSev.GetMemUserSev().Delete(memUser); err != nil {
-        global.LOG.Error("删除失败!", zap.Any("err", err))
+		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -83,9 +80,9 @@ func (memUserApi *MemUserApi) DeleteMemUser(c *gin.Context) {
 // @Router /memUser/deleteMemUserByIds [delete]
 func (memUserApi *MemUserApi) DeleteMemUserByIds(c *gin.Context) {
 	var IDS request.IdsReq
-    _ = c.ShouldBindJSON(&IDS)
+	_ = c.ShouldBindJSON(&IDS)
 	if err := bizSev.GetMemUserSev().DeleteByIds(IDS); err != nil {
-        global.LOG.Error("批量删除失败!", zap.Any("err", err))
+		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -111,7 +108,7 @@ func (memUserApi *MemUserApi) UpdateMemUser(c *gin.Context) {
 	}
 
 	if err := bizSev.GetMemUserSev().Update(dataObj); err != nil {
-        global.LOG.Error("更新失败!", zap.Any("err", err))
+		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -129,14 +126,14 @@ func (memUserApi *MemUserApi) UpdateMemUser(c *gin.Context) {
 // @Router /memUser/findMemUser [get]
 func (memUserApi *MemUserApi) FindMemUser(c *gin.Context) {
 	var memUser business.MemUser
-	_ = c.ShouldBindQuery(&memUser) 
-	 rememUser,err:= bizSev.GetMemUserSev().Get(memUser.ID,""); 
-	 if errors.Is(err, gorm.ErrRecordNotFound) { 
+	_ = c.ShouldBindQuery(&memUser)
+	rememUser, err := bizSev.GetMemUserSev().Get(memUser.ID, "")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"memUser": nil}, c)
-	} else if err != nil { 
-        global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil {
+		global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else { 
+	} else {
 		response.OkWithData(gin.H{"memUser": rememUser}, c)
 	}
 }
@@ -155,20 +152,18 @@ func (memUserApi *MemUserApi) GetMemUserList(c *gin.Context) {
 
 	var pageInfo bizReq.MemUserSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetMemUserSev().GetList(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+	if list, total, err := bizSev.GetMemUserSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
 }
-
-
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -176,13 +171,13 @@ func (memUserApi *MemUserApi) GetMemUserList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUser true "快速更新MemUser" 
+// @Param data body business.MemUser true "快速更新MemUser"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /memUser/quickEdit [post] 
+// @Router  /memUser/quickEdit [post]
 func (memUserApi *MemUserApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "mem_user" 
+	quickEdit.Table = "mem_user"
 	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -190,7 +185,6 @@ func (memUserApi *MemUserApi) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
-
 
 // excelList 分页导出excel MemUser列表
 // @Tags MemUser
@@ -205,37 +199,37 @@ func (memUserApi *MemUserApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 	var pageInfo bizReq.MemUserSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list,_,err:= bizSev.GetMemUserSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        if len(list) == 0 {
+	if list, _, err := bizSev.GetMemUserSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		if len(list) == 0 {
 			response.FailWithMessage("没有数据", c)
-		} else { 
-			sheetFields := []string{}  
-					sheetFields = append(sheetFields, "用户名")  
-					sheetFields = append(sheetFields, "密码")  
-					sheetFields = append(sheetFields, "密码盐")  
-					sheetFields = append(sheetFields, "邮件")  
-					sheetFields = append(sheetFields, "手机")  
-					sheetFields = append(sheetFields, "昵称")  
-					sheetFields = append(sheetFields, "真实名")  
-					sheetFields = append(sheetFields, "身份证")  
-					sheetFields = append(sheetFields, "性别")  
-					sheetFields = append(sheetFields, "生日")  
-					sheetFields = append(sheetFields, "头像")  
-					sheetFields = append(sheetFields, "验证手机")  
-					sheetFields = append(sheetFields, "验证邮箱")  
-					sheetFields = append(sheetFields, "验证实名")  
-					sheetFields = append(sheetFields, "登录次数")  
-					sheetFields = append(sheetFields, "推荐人ID")  
-					sheetFields = append(sheetFields, "推荐人ID2")  
-					sheetFields = append(sheetFields, "推荐码16位（自己的）")  
-					sheetFields = append(sheetFields, "状态")  
-					sheetFields = append(sheetFields, "安全状态")  
-					sheetFields = append(sheetFields, "注册ip")  
-					sheetFields = append(sheetFields, "登录ip")  
-					sheetFields = append(sheetFields, "最后登录时间") 
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "用户名")
+			sheetFields = append(sheetFields, "密码")
+			sheetFields = append(sheetFields, "密码盐")
+			sheetFields = append(sheetFields, "邮件")
+			sheetFields = append(sheetFields, "手机")
+			sheetFields = append(sheetFields, "昵称")
+			sheetFields = append(sheetFields, "真实名")
+			sheetFields = append(sheetFields, "身份证")
+			sheetFields = append(sheetFields, "性别")
+			sheetFields = append(sheetFields, "生日")
+			sheetFields = append(sheetFields, "头像")
+			sheetFields = append(sheetFields, "验证手机")
+			sheetFields = append(sheetFields, "验证邮箱")
+			sheetFields = append(sheetFields, "验证实名")
+			sheetFields = append(sheetFields, "登录次数")
+			sheetFields = append(sheetFields, "推荐人ID")
+			sheetFields = append(sheetFields, "推荐人ID2")
+			sheetFields = append(sheetFields, "推荐码16位（自己的）")
+			sheetFields = append(sheetFields, "状态")
+			sheetFields = append(sheetFields, "安全状态")
+			sheetFields = append(sheetFields, "注册ip")
+			sheetFields = append(sheetFields, "登录ip")
+			sheetFields = append(sheetFields, "最后登录时间")
 
 			excel := excelize.NewFile()
 			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
@@ -308,8 +302,8 @@ func (memUserApi *MemUserApi) ExcelList(c *gin.Context) {
 				} else {
 					arr = append(arr, *v.LastLoginIp)
 				}
-				arr = append(arr, v.LastLoginTime)   
-			    excel.SetSheetRow("Sheet1", axis,&arr)  
+				arr = append(arr, v.LastLoginTime)
+				excel.SetSheetRow("Sheet1", axis, &arr)
 			}
 			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
 			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
@@ -319,12 +313,9 @@ func (memUserApi *MemUserApi) ExcelList(c *gin.Context) {
 				global.LOG.Error(err.Error())
 				response.FailWithMessage("获取失败", c)
 			} else {
-				resData := map[string]string{"url": url, "filename": filename} 
+				resData := map[string]string{"url": url, "filename": filename}
 				response.OkWithData(resData, c)
-			} 
+			}
 		}
-    }
+	}
 }
-
-
- 
