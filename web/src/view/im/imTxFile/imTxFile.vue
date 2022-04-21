@@ -67,9 +67,9 @@
             {{filterDict(scope.row.mediaType,"media_type")}}
           </template>
         </el-table-column> 
-        <el-table-column label="图" prop="local" width="120"   >
+        <el-table-column label="图片" prop="local" width="120"   >
             <template #default="scope">
-              <ImageView :url="scope.row.local" />
+              <ImageView :url="scope.row.local" :nosrc=true />
             </template>
         </el-table-column>  
       <!--local BeHide -->

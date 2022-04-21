@@ -2,6 +2,9 @@
   <div>
     <div class="gocms-form-box">
       <el-form :model="formData" label-position="right" label-width="80px">
+        <el-form-item label="订单id:"> 
+              <el-input v-model="formData.orderId" clearable placeholder="请输入" />
+       </el-form-item>
         <el-form-item label="消息类型:"> 
               <el-input v-model="formData.chatType" clearable placeholder="请输入" />
        </el-form-item>
@@ -54,6 +57,11 @@
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
+        <el-form-item label="订单状态:">
+                 <el-select v-model="formData.order_status" placeholder="请选择" clearable>
+                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value" />
+                 </el-select>
+       </el-form-item>
         <el-form-item>
           <el-button size="mini" type="primary" @click="save">保存</el-button>
           <el-button size="mini" type="primary" @click="back">返回</el-button>
@@ -80,7 +88,9 @@ export default {
     return {
       status_downloadOptions: [],
       statusOptions: [],
+      status_runOptions: [],
       formData: {
+           orderId: '',
            chatType: '',
            msgTime: '',
            fromAccount: '',
@@ -97,6 +107,7 @@ export default {
            clientIp: '',
            msgFromPlatform: '',
             status: 0,
+            order_status: 0,
             mapData: {}
       }
     }
@@ -113,7 +124,8 @@ export default {
       this.editType = 'create'
     }
     await this.getDict('status_download')
-    await this.getDict('status') 
+    await this.getDict('status')
+    await this.getDict('status_run') 
   },
   methods: {
     async save() { 
