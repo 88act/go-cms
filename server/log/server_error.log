@@ -1,1 +1,15 @@
 [GoCms]2022/01/04 - 17:00:43.051	[31merror[0m	C:/work_go/go-cms/server/initialize/gorm.go:109	MySQL启动异常	{"err": "dial tcp 127.0.0.1:53306: connectex: No connection could be made because the target machine actively refused it."}
+[GoCms]2022/04/21 - 10:25:51.378	[31merror[0m	D:/work_go/go-cms/server/initialize/gorm.go:109	MySQL启动异常	{"err": "Error 1044: Access denied for user 'gocms2021'@'%' to database 'go-cms-test'"}
+[GoCms]2022/04/21 - 10:37:55.385	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:37:55.703	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:38:33.348	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:38:33.574	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:38:34.259	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:38:34.322	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:50:34.289	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 10:50:34.511	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 11:17:18.037	[31merror[0m	D:/work_go/go-cms/server/core/server.go:50	listen tcp :40050: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+[GoCms]2022/04/21 - 11:20:37.662	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 11:20:37.986	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
+[GoCms]2022/04/21 - 13:29:38.937	[31merror[0m	D:/work_go/go-cms/server/core/server.go:49	listen tcp :40050: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+[GoCms]2022/04/21 - 14:22:52.069	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_user.go:307	获取失败!	{"err": "record not found"}

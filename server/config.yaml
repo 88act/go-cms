@@ -4,16 +4,22 @@
 
 mysql:
 
-  path: 127.0.0.1:53306
+  path: 0.0.0.0:3306
   config: charset=utf8mb4&parseTime=True&loc=Local
-  db-name: go-cms-builder
-  username: root
-  password: 123456
-
+  db-name:  go-cms-test 
+  username: go-cms
+  password: go-cms
+ 
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: ""
   log-zap: false
+  
+#腾讯im
+txim: 
+  appid : '14006477---'
+  key : '**2cd7c8679331f6cf506d68bf8358185458779***'
+ 
 
 # system configuration
 system:

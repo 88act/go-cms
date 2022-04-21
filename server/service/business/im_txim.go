@@ -106,6 +106,12 @@ func (m *ImTximService) GetList(info bizReq.ImTximSearch, createdAtBetween []str
 	if info.AppId != "" {
 		db = db.Where("`app_id` = ?", info.AppId)
 	}
+	if info.BeginTime != nil {
+		db = db.Where("`begin_time` > > ?", info.BeginTime)
+	}
+	if info.NowTime != nil {
+		db = db.Where("`now_time` > > ?", info.NowTime)
+	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
 	}
@@ -163,6 +169,12 @@ func (m *ImTximService) GetListAll(info bizReq.ImTximSearch, createdAtBetween []
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.AppId != "" {
 		db = db.Where("`app_id` = ?", info.AppId)
+	}
+	if info.BeginTime != nil {
+		db = db.Where("`begin_time` > > ?", info.BeginTime)
+	}
+	if info.NowTime != nil {
+		db = db.Where("`now_time` > > ?", info.NowTime)
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)

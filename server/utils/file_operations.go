@@ -6,14 +6,15 @@ import (
 	"compress/gzip"
 	"fmt"
 	"go-cms/global"
+	unpackit "go-cms/utils/unpackit"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"reflect"
 	"strings"
-
-	"github.com/c4milo/unpackit"
+	//"github.com/c4milo/unpackit"
+	//"github.com/Wanghongw/unpackit"
 )
 
 //@author: [88act-5](https://github.com/88act)
@@ -108,17 +109,18 @@ func CreateFile(name string) (*os.File, error) {
 }
 
 func DownloadFile(url string, localPath string, filename string) (fullPath string, err error) {
+
+	res, err := http.Get(url)
+	if err != nil {
+		global.LOG.Error("下载失败 url = " + url + " ,error = " + err.Error())
+		return "", err
+	}
 	// 写入文件前，先创建文件夹
 	if err := CreateDir(localPath); err != nil {
 		fmt.Println(err.Error())
 		return fullPath, err
 	}
 	fullPath = localPath + filename
-	res, err := http.Get(url)
-	if err != nil {
-		global.LOG.Error("下载失败 url = " + url + " ,error = " + err.Error())
-		return fullPath, err
-	}
 
 	f, err := os.Create(fullPath)
 	if err != nil {
@@ -318,12 +320,12 @@ func createFile(name string) (*os.File, error) {
 func Unzip_tx(tarFile, dest string) (path string, err error) {
 	file, _ := os.Open(tarFile)
 	defer file.Close()
-
-	path, err = unpackit.Unpack(file, dest)
+	// 1024*1024 1M 缓存
+	path, err = unpackit.Unpack(file, dest, "unknown-pack.json", 4*1024*1024)
 	if err != nil {
 		fmt.Println("txim 解压失败:" + err.Error())
 		return "", err
 	}
 	//  由于gz文件 没有文件头 ,解压后没有文件名 unknown-pack.实际是 json文件
-	return path + "/unknown-pack", err
+	return path + "/unknown-pack.json", err
 }

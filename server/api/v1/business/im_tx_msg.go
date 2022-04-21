@@ -152,7 +152,7 @@ func (imTxMsgApi *ImTxMsgApi) GetImTxMsgList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTxMsgSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list, total, err := bizSev.GetImTxMsgSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
+	if list, total, err := bizSev.GetImTxMsgSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
 		global.LOG.Error("获取失败!", zap.Any("err", err))
 		response.FailWithMessage("获取失败", c)
 	} else {
@@ -207,6 +207,7 @@ func (imTxMsgApi *ImTxMsgApi) ExcelList(c *gin.Context) {
 			response.FailWithMessage("没有数据", c)
 		} else {
 			sheetFields := []string{}
+			sheetFields = append(sheetFields, "订单id")
 			sheetFields = append(sheetFields, "消息类型")
 			sheetFields = append(sheetFields, "消息时间")
 			sheetFields = append(sheetFields, "发送人")
@@ -223,28 +224,51 @@ func (imTxMsgApi *ImTxMsgApi) ExcelList(c *gin.Context) {
 			sheetFields = append(sheetFields, "IP地址")
 			sheetFields = append(sheetFields, "平台")
 			sheetFields = append(sheetFields, "状态")
+			sheetFields = append(sheetFields, "订单状态")
 
 			excel := excelize.NewFile()
 			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
 			for i, v := range list {
 				axis := fmt.Sprintf("A%d", i+2)
 				var arr = []interface{}{}
+				arr = append(arr, v.OrderId)
 				arr = append(arr, v.ChatType)
 				arr = append(arr, v.MsgTime)
 				arr = append(arr, v.FromAccount)
 				arr = append(arr, v.ToAccount)
 				arr = append(arr, v.MsgTimestamp)
-				arr = append(arr, *v.MsgSeq)
-				arr = append(arr, *v.MsgRandom)
+				if v.MsgSeq == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.MsgSeq)
+				}
+				if v.MsgRandom == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.MsgRandom)
+				}
 				arr = append(arr, v.MsgType)
 				arr = append(arr, v.MsgContent)
 				arr = append(arr, v.MsgText)
 				arr = append(arr, v.MediaList)
 				arr = append(arr, v.MediaListTx)
-				arr = append(arr, *v.StatusMedia)
+				if v.StatusMedia == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.StatusMedia)
+				}
 				arr = append(arr, v.ClientIp)
 				arr = append(arr, v.MsgFromPlatform)
-				arr = append(arr, *v.Status)
+				if v.Status == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.Status)
+				}
+				if v.OrderStatus == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.OrderStatus)
+				}
 				excel.SetSheetRow("Sheet1", axis, &arr)
 			}
 			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())

@@ -135,6 +135,7 @@ func (m *ImTxFileService) GetList(info bizReq.ImTxFileSearch, createdAtBetween [
 	//如果有图片image类型，更新图片path
 	for i, v := range imTxFiles {
 		v.MapData = make(map[string]string)
+		v.Local = global.CONFIG.Local.BaseUrl + v.Local
 		imTxFiles[i] = v
 	}
 	return imTxFiles, total, err

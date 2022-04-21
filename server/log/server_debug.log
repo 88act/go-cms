@@ -1,2 +1,368 @@
 [GoCms]2022/01/04 - 17:02:06.720	[35mdebug[0m	C:/work_go/go-cms/server/core/server.go:25	redis未开启
 [GoCms]2022/01/04 - 17:17:27.656	[35mdebug[0m	C:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 10:27:11.498	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 10:50:02.097	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:10:30.840	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:12:22.456	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:13:44.882	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:17:17.879	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:18:10.725	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:19:07.789	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 11:37:48.336	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:29:38.792	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:30:10.177	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:32:32.639	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:34:16.600	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/tximManager.go:65	List存在旧的collect，idx=-1
+[GoCms]2022/04/21 - 13:34:16.677	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/txim.go:132	更新数据库 StatusRun成功
+[GoCms]2022/04/21 - 13:34:16.678	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/txim.go:134	中八 启动，加入队列id=3
+[GoCms]2022/04/21 - 13:34:16.679	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/tximManager.go:83	中八 正常启动 
+[GoCms]2022/04/21 - 13:34:20.003	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/txim.go:168	MsgTime =2022032518
+[GoCms]2022/04/21 - 13:34:30.014	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/txim.go:168	MsgTime =2022032519
+[GoCms]2022/04/21 - 13:34:33.022	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/tximManager.go:65	List存在旧的collect，idx=0
+[GoCms]2022/04/21 - 13:34:33.068	[35mdebug[0m	D:/work_go/go-cms/server/plugin/txim/txim.go:115	更新数据库 StatusRun 成功
+[GoCms]2022/04/21 - 13:41:29.208	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:44:24.870	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/04/21 - 13:53:27.348	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collectmManager.go:57	List存在旧的collect，idx=-1
+[GoCms]2022/04/21 - 13:53:27.386	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:46	更新数据库 StatusRun成功
+[GoCms]2022/04/21 - 13:53:27.386	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:48	长江海事局 启动，加入队列id=1
+[GoCms]2022/04/21 - 13:53:27.387	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collectmManager.go:75	长江海事局 正常启动 
+[GoCms]2022/04/21 - 13:53:27.387	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:54	beginCollect开始分页获取  PageStart =0PageEnd=20
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=0 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=20 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_20.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=9 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_9.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=4 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_4.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=1 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_1.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=10 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_10.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=11 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_11.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=2 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_2.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=12 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_12.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=7 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_7.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=3 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_3.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=13 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_13.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=8 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_8.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=14 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_14.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=5 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_5.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=18 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_18.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=19 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_19.shtml
+[GoCms]2022/04/21 - 13:53:27.388	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=17 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_17.shtml
+[GoCms]2022/04/21 - 13:53:27.389	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=15 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_15.shtml
+[GoCms]2022/04/21 - 13:53:27.389	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=16 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_16.shtml
+[GoCms]2022/04/21 - 13:53:27.389	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:76	page=6 ,page url = http://www.cjhdj.com.cn/hdfw/hdtg/index_6.shtml
+[GoCms]2022/04/21 - 13:53:27.478	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220415_257134.shtml
+[GoCms]2022/04/21 - 13:53:27.478	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256850.shtml
+[GoCms]2022/04/21 - 13:53:27.478	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220413_256807.shtml
+[GoCms]2022/04/21 - 13:53:27.478	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220412_256668.shtml
+[GoCms]2022/04/21 - 13:53:27.478	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202203/t20220330_255126.shtml
+[GoCms]2022/04/21 - 13:53:27.479	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220415_257092.shtml
+[GoCms]2022/04/21 - 13:53:27.480	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256845.shtml
+[GoCms]2022/04/21 - 13:53:27.480	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220404_255620.shtml
+[GoCms]2022/04/21 - 13:53:27.480	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220413_256790.shtml
+[GoCms]2022/04/21 - 13:53:27.481	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/hz/202204/t20220412_256667.shtml
+[GoCms]2022/04/21 - 13:53:27.485	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220412_256644.shtml
+[GoCms]2022/04/21 - 13:53:27.485	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220412_256582.shtml
+[GoCms]2022/04/21 - 13:53:27.486	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220411_256460.shtml
+[GoCms]2022/04/21 - 13:53:27.483	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220414_256844.shtml
+[GoCms]2022/04/21 - 13:53:27.483	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220406_255874.shtml
+[GoCms]2022/04/21 - 13:53:27.483	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256759.shtml
+[GoCms]2022/04/21 - 13:53:27.489	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256754.shtml
+[GoCms]2022/04/21 - 13:53:27.484	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220421_257853.shtml
+[GoCms]2022/04/21 - 13:53:27.484	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256786.shtml
+[GoCms]2022/04/21 - 13:53:27.485	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257293.shtml
+[GoCms]2022/04/21 - 13:53:27.490	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257288.shtml
+[GoCms]2022/04/21 - 13:53:27.481	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220330_255096.shtml
+[GoCms]2022/04/21 - 13:53:27.486	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256897.shtml
+[GoCms]2022/04/21 - 13:53:27.482	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220415_257055.shtml
+[GoCms]2022/04/21 - 13:53:27.488	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220410_256335.shtml
+[GoCms]2022/04/21 - 13:53:27.488	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256842.shtml
+[GoCms]2022/04/21 - 13:53:27.488	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255397.shtml
+[GoCms]2022/04/21 - 13:53:27.493	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255335.shtml
+[GoCms]2022/04/21 - 13:53:27.484	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220403_255613.shtml
+[GoCms]2022/04/21 - 13:53:27.489	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256752.shtml
+[GoCms]2022/04/21 - 13:53:27.490	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220421_257830.shtml
+[GoCms]2022/04/21 - 13:53:27.495	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220421_257802.shtml
+[GoCms]2022/04/21 - 13:53:27.481	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220401_255296.shtml
+[GoCms]2022/04/21 - 13:53:27.490	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220420_257660.shtml
+[GoCms]2022/04/21 - 13:53:27.490	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220409_256198.shtml
+[GoCms]2022/04/21 - 13:53:27.497	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220409_256183.shtml
+[GoCms]2022/04/21 - 13:53:27.497	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220408_256106.shtml
+[GoCms]2022/04/21 - 13:53:27.498	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220408_256105.shtml
+[GoCms]2022/04/21 - 13:53:27.498	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220408_256053.shtml
+[GoCms]2022/04/21 - 13:53:27.499	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220408_256002.shtml
+[GoCms]2022/04/21 - 13:53:27.492	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220409_256208.shtml
+[GoCms]2022/04/21 - 13:53:27.493	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256838.shtml
+[GoCms]2022/04/21 - 13:53:27.493	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220418_257448.shtml
+[GoCms]2022/04/21 - 13:53:27.501	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220418_257447.shtml
+[GoCms]2022/04/21 - 13:53:27.504	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220418_257446.shtml
+[GoCms]2022/04/21 - 13:53:27.494	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220403_255598.shtml
+[GoCms]2022/04/21 - 13:53:27.507	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220402_255506.shtml
+[GoCms]2022/04/21 - 13:53:27.509	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220402_255471.shtml
+[GoCms]2022/04/21 - 13:53:27.511	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220401_255429.shtml
+[GoCms]2022/04/21 - 13:53:27.512	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255428.shtml
+[GoCms]2022/04/21 - 13:53:27.496	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220331_255276.shtml
+[GoCms]2022/04/21 - 13:53:27.497	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220406_255776.shtml
+[GoCms]2022/04/21 - 13:53:27.491	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257281.shtml
+[GoCms]2022/04/21 - 13:53:27.491	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220330_255076.shtml
+[GoCms]2022/04/21 - 13:53:27.529	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220330_255074.shtml
+[GoCms]2022/04/21 - 13:53:27.531	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220329_254961.shtml
+[GoCms]2022/04/21 - 13:53:27.533	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202203/t20220329_254957.shtml
+[GoCms]2022/04/21 - 13:53:27.535	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220329_254941.shtml
+[GoCms]2022/04/21 - 13:53:27.492	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256687.shtml
+[GoCms]2022/04/21 - 13:53:27.542	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256686.shtml
+[GoCms]2022/04/21 - 13:53:27.544	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256685.shtml
+[GoCms]2022/04/21 - 13:53:27.547	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256684.shtml
+[GoCms]2022/04/21 - 13:53:27.554	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220412_256683.shtml
+[GoCms]2022/04/21 - 13:53:27.556	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220412_256679.shtml
+[GoCms]2022/04/21 - 13:53:27.506	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220418_257417.shtml
+[GoCms]2022/04/21 - 13:53:27.495	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256750.shtml
+[GoCms]2022/04/21 - 13:53:27.564	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256745.shtml
+[GoCms]2022/04/21 - 13:53:27.565	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256742.shtml
+[GoCms]2022/04/21 - 13:53:27.568	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220413_256741.shtml
+[GoCms]2022/04/21 - 13:53:27.518	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202203/t20220331_255273.shtml
+[GoCms]2022/04/21 - 13:53:27.572	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202203/t20220331_255258.shtml
+[GoCms]2022/04/21 - 13:53:27.574	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202203/t20220331_255228.shtml
+[GoCms]2022/04/21 - 13:53:27.576	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202203/t20220331_255212.shtml
+[GoCms]2022/04/21 - 13:53:27.580	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202203/t20220331_255187.shtml
+[GoCms]2022/04/21 - 13:53:27.491	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256891.shtml
+[GoCms]2022/04/21 - 13:53:27.588	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220414_256890.shtml
+[GoCms]2022/04/21 - 13:53:27.590	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256877.shtml
+[GoCms]2022/04/21 - 13:53:27.592	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256869.shtml
+[GoCms]2022/04/21 - 13:53:27.595	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220414_256860.shtml
+[GoCms]2022/04/21 - 13:53:27.596	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220414_256858.shtml
+[GoCms]2022/04/21 - 13:53:27.498	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220416_257259.shtml
+[GoCms]2022/04/21 - 13:53:27.601	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220416_257251.shtml
+[GoCms]2022/04/21 - 13:53:27.603	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220416_257243.shtml
+[GoCms]2022/04/21 - 13:53:27.605	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220416_257242.shtml
+[GoCms]2022/04/21 - 13:53:27.608	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220416_257229.shtml
+[GoCms]2022/04/21 - 13:53:27.612	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220416_257226.shtml
+[GoCms]2022/04/21 - 13:53:27.614	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220415_257141.shtml
+[GoCms]2022/04/21 - 13:53:27.526	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257280.shtml
+[GoCms]2022/04/21 - 13:53:27.631	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257279.shtml
+[GoCms]2022/04/21 - 13:53:27.632	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220417_257272.shtml
+[GoCms]2022/04/21 - 13:53:27.649	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220416_257260.shtml
+[GoCms]2022/04/21 - 13:53:27.501	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220414_256834.shtml
+[GoCms]2022/04/21 - 13:53:27.663	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256808.shtml
+[GoCms]2022/04/21 - 13:53:27.488	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220406_255859.shtml
+[GoCms]2022/04/21 - 13:53:27.675	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220406_255832.shtml
+[GoCms]2022/04/21 - 13:53:27.682	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220406_255831.shtml
+[GoCms]2022/04/21 - 13:53:27.685	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220406_255816.shtml
+[GoCms]2022/04/21 - 13:53:27.688	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220406_255803.shtml
+[GoCms]2022/04/21 - 13:53:27.696	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220406_255801.shtml
+[GoCms]2022/04/21 - 13:53:27.496	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220420_257659.shtml
+[GoCms]2022/04/21 - 13:53:27.717	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220419_257611.shtml
+[GoCms]2022/04/21 - 13:53:27.720	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220419_257541.shtml
+[GoCms]2022/04/21 - 13:53:27.722	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220419_257539.shtml
+[GoCms]2022/04/21 - 13:53:27.723	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220419_257532.shtml
+[GoCms]2022/04/21 - 13:53:27.728	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220419_257531.shtml
+[GoCms]2022/04/21 - 13:53:27.502	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220407_255984.shtml
+[GoCms]2022/04/21 - 13:53:27.747	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy_1/202204/t20220407_255977.shtml
+[GoCms]2022/04/21 - 13:53:27.753	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220407_255976.shtml
+[GoCms]2022/04/21 - 13:53:27.560	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220418_257414.shtml
+[GoCms]2022/04/21 - 13:53:27.763	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220418_257388.shtml
+[GoCms]2022/04/21 - 13:53:27.767	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220417_257298.shtml
+[GoCms]2022/04/21 - 13:53:27.498	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256739.shtml
+[GoCms]2022/04/21 - 13:53:27.492	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220415_256998.shtml
+[GoCms]2022/04/21 - 13:53:27.811	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:27.493	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255318.shtml
+[GoCms]2022/04/21 - 13:53:27.558	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220412_256676.shtml
+[GoCms]2022/04/21 - 13:53:27.496	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220420_257755.shtml
+[GoCms]2022/04/21 - 13:53:27.760	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220407_255975.shtml
+[GoCms]2022/04/21 - 13:53:27.837	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220407_255973.shtml
+[GoCms]2022/04/21 - 13:53:27.839	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220407_255932.shtml
+[GoCms]2022/04/21 - 13:53:27.842	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220407_255887.shtml
+[GoCms]2022/04/21 - 13:53:27.799	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220415_256997.shtml
+[GoCms]2022/04/21 - 13:53:27.848	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220414_256908.shtml
+[GoCms]2022/04/21 - 13:53:27.851	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220414_256904.shtml
+[GoCms]2022/04/21 - 13:53:27.819	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220401_255317.shtml
+[GoCms]2022/04/21 - 13:53:27.863	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220401_255309.shtml
+[GoCms]2022/04/21 - 13:53:27.866	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255307.shtml
+[GoCms]2022/04/21 - 13:53:27.868	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220401_255308.shtml
+[GoCms]2022/04/21 - 13:53:27.783	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256738.shtml
+[GoCms]2022/04/21 - 13:53:27.499	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220407_255983.shtml
+[GoCms]2022/04/21 - 13:53:27.833	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220420_257685.shtml
+[GoCms]2022/04/21 - 13:53:27.890	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220420_257678.shtml
+[GoCms]2022/04/21 - 13:53:27.898	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220420_257667.shtml
+[GoCms]2022/04/21 - 13:53:27.875	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256726.shtml
+[GoCms]2022/04/21 - 13:53:27.884	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:27.930	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:27.522	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220406_255729.shtml
+[GoCms]2022/04/21 - 13:53:27.935	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220406_255728.shtml
+[GoCms]2022/04/21 - 13:53:27.939	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220406_255726.shtml
+[GoCms]2022/04/21 - 13:53:27.943	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/sy/202204/t20220406_255727.shtml
+[GoCms]2022/04/21 - 13:53:27.945	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220405_255682.shtml
+[GoCms]2022/04/21 - 13:53:27.952	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220405_255677.shtml
+[GoCms]2022/04/21 - 13:53:27.490	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256785.shtml
+[GoCms]2022/04/21 - 13:53:27.965	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256781.shtml
+[GoCms]2022/04/21 - 13:53:27.978	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:27.968	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256776.shtml
+[GoCms]2022/04/21 - 13:53:27.984	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256763.shtml
+[GoCms]2022/04/21 - 13:53:27.996	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:27.909	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256721.shtml
+[GoCms]2022/04/21 - 13:53:28.013	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256708.shtml
+[GoCms]2022/04/21 - 13:53:28.028	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.015	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/xy/202204/t20220413_256707.shtml
+[GoCms]2022/04/21 - 13:53:28.010	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.047	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.033	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:113	http://www.cjhdj.com.cn/hdfw/hdtg/zy/202204/t20220413_256696.shtml
+[GoCms]2022/04/21 - 13:53:28.061	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.071	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.083	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.097	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.104	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.118	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.130	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.157	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.143	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.177	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.188	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.201	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.211	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.225	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.236	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.247	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.259	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.272	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.283	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.295	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.323	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.342	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.332	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.365	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.376	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.395	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.405	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.416	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.420	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.434	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.448	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.462	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.450	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.477	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.502	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.488	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.518	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.545	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.564	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.581	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.585	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.615	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.607	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.622	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.627	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.632	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.637	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.640	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.643	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.649	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.654	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.658	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.662	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.670	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.666	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.665	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.675	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.679	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.683	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.688	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.692	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.695	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.704	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.700	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.708	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.709	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.713	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.718	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.721	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.724	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.728	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.733	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.740	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.747	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.744	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.749	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.748	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.754	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.756	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.759	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.764	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.764	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.768	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.784	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.784	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.789	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.793	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.797	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.800	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.804	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.807	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.809	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.812	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.814	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.817	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.821	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.824	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.828	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.827	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.833	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.838	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.843	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.848	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.852	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.857	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.862	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.867	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.871	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.876	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.878	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.884	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.889	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.891	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.906	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.909	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.912	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.914	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.919	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.919	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:28.923	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.927	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.932	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.939	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.944	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.949	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.953	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.958	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.961	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.966	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.970	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.974	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.977	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.986	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.990	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.993	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.997	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:28.998	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:29.002	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.003	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:29.005	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.008	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.012	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.012	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:29.014	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.019	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.021	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.026	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.026	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:29.030	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.035	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.039	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.041	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:29.043	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.047	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.051	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.053	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.056	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.059	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.065	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:168	完成一个页面news ---
+[GoCms]2022/04/21 - 13:53:29.066	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:102	getDetail()  正常完成 
+[GoCms]2022/04/21 - 13:53:40.763	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collectmManager.go:57	List存在旧的collect，idx=0
+[GoCms]2022/04/21 - 13:53:40.882	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:35	更新数据库 StatusRun 成功
+[GoCms]2022/04/21 - 14:22:01.854	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启

@@ -10,10 +10,13 @@ import (
 	"go-cms/myError"
 
 	"github.com/gogf/gf/util/gconv"
+	"github.com/robfig/cron/v3"
 )
 
 var once_TximManager sync.Once = sync.Once{}
 var obj_TximManager *TximManager
+var cornTxim *cron.Cron
+var cornTxim_id cron.EntryID
 
 /**
 * 数据采集管理器，单例
@@ -45,6 +48,7 @@ func (m *TximManager) Init() {
 	m.stopChan = make(chan business.ImTxim, 10)
 	m.DownChan = make(chan int, 10)
 	m.ExitChan = make(chan int, 1)
+	cornTxim = cron.New(cron.WithSeconds())
 	go m.manager_run()
 }
 

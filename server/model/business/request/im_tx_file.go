@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type ImTxFileSearch struct {
-	business.ImTxFile
-	request.PageInfo
+type ImTxFileSearch struct{
+    business.ImTxFile
+    request.PageInfo
 }

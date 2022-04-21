@@ -1,7 +1,7 @@
 package business
 
 import (
- "errors"
+	"errors"
 	"fmt"
 	"go-cms/global"
 	"go-cms/model/business"
@@ -17,12 +17,10 @@ import (
 	"github.com/xuri/excelize/v2"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
-) 
+)
 
 type ImTximApi struct {
 }
-
- 
 
 // CreateImTxim 创建ImTxim
 // @Tags ImTxim
@@ -36,18 +34,17 @@ type ImTximApi struct {
 func (imTximApi *ImTximApi) CreateImTxim(c *gin.Context) {
 	var dataObj business.ImTxim
 	_ = c.ShouldBindJSON(&dataObj)
-	
-	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
+
+	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
 		response.FailWithMessage("创建失败,"+err.FirstString(), c)
 		return
 	}
 
- 
-	if id,err := bizSev.GetImTximSev().Create(dataObj); err != nil {
-        global.LOG.Error("创建失败!", zap.Any("err", err))
+	if id, err := bizSev.GetImTximSev().Create(dataObj); err != nil {
+		global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
-	    idResp := &response.IdResp{Id: id}
+		idResp := &response.IdResp{Id: id}
 		response.OkWithData(idResp, c)
 	}
 }
@@ -65,7 +62,7 @@ func (imTximApi *ImTximApi) DeleteImTxim(c *gin.Context) {
 	var imTxim business.ImTxim
 	_ = c.ShouldBindJSON(&imTxim)
 	if err := bizSev.GetImTximSev().Delete(imTxim); err != nil {
-        global.LOG.Error("删除失败!", zap.Any("err", err))
+		global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
 		response.OkWithMessage("删除成功", c)
@@ -83,9 +80,9 @@ func (imTximApi *ImTximApi) DeleteImTxim(c *gin.Context) {
 // @Router /imTxim/deleteImTximByIds [delete]
 func (imTximApi *ImTximApi) DeleteImTximByIds(c *gin.Context) {
 	var IDS request.IdsReq
-    _ = c.ShouldBindJSON(&IDS)
+	_ = c.ShouldBindJSON(&IDS)
 	if err := bizSev.GetImTximSev().DeleteByIds(IDS); err != nil {
-        global.LOG.Error("批量删除失败!", zap.Any("err", err))
+		global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
@@ -111,7 +108,7 @@ func (imTximApi *ImTximApi) UpdateImTxim(c *gin.Context) {
 	}
 
 	if err := bizSev.GetImTximSev().Update(dataObj); err != nil {
-        global.LOG.Error("更新失败!", zap.Any("err", err))
+		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
 		response.OkWithMessage("更新成功", c)
@@ -129,14 +126,14 @@ func (imTximApi *ImTximApi) UpdateImTxim(c *gin.Context) {
 // @Router /imTxim/findImTxim [get]
 func (imTximApi *ImTximApi) FindImTxim(c *gin.Context) {
 	var imTxim business.ImTxim
-	_ = c.ShouldBindQuery(&imTxim) 
-	 reimTxim,err:= bizSev.GetImTximSev().Get(imTxim.ID,""); 
-	 if errors.Is(err, gorm.ErrRecordNotFound) { 
+	_ = c.ShouldBindQuery(&imTxim)
+	reimTxim, err := bizSev.GetImTximSev().Get(imTxim.ID, "")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		response.OkWithData(gin.H{"imTxim": nil}, c)
-	} else if err != nil { 
-        global.LOG.Error("查询失败!", zap.Any("err", err))
+	} else if err != nil {
+		global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
-	} else { 
+	} else {
 		response.OkWithData(gin.H{"imTxim": reimTxim}, c)
 	}
 }
@@ -155,20 +152,18 @@ func (imTximApi *ImTximApi) GetImTximList(c *gin.Context) {
 
 	var pageInfo bizReq.ImTximSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetImTximSev().GetList(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        response.OkWithDetailed(response.PageResult{
-            List:     list,
-            Total:    total,
-            Page:     pageInfo.Page,
-            PageSize: pageInfo.PageSize,
-        }, "获取成功", c)
-    }
+	if list, total, err := bizSev.GetImTximSev().GetList(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		response.OkWithDetailed(response.PageResult{
+			List:     list,
+			Total:    total,
+			Page:     pageInfo.Page,
+			PageSize: pageInfo.PageSize,
+		}, "获取成功", c)
+	}
 }
-
-
 
 // QuickEdit 快速更新
 // @Tags QuickEdit
@@ -176,13 +171,13 @@ func (imTximApi *ImTximApi) GetImTximList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.ImTxim true "快速更新ImTxim" 
+// @Param data body business.ImTxim true "快速更新ImTxim"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /imTxim/quickEdit [post] 
+// @Router  /imTxim/quickEdit [post]
 func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "im_txim" 
+	quickEdit.Table = "im_txim"
 	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -190,7 +185,6 @@ func (imTximApi *ImTximApi) QuickEdit(c *gin.Context) {
 		response.OkWithMessage("更新成功", c)
 	}
 }
-
 
 // excelList 分页导出excel ImTxim列表
 // @Tags ImTxim
@@ -205,23 +199,23 @@ func (imTximApi *ImTximApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 	var pageInfo bizReq.ImTximSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list,_,err:= bizSev.GetImTximSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
-	    global.LOG.Error("获取失败!", zap.Any("err", err))
-        response.FailWithMessage("获取失败", c)
-    } else {
-        if len(list) == 0 {
+	if list, _, err := bizSev.GetImTximSev().GetListAll(pageInfo, createdAtBetween, ""); err != nil {
+		global.LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败", c)
+	} else {
+		if len(list) == 0 {
 			response.FailWithMessage("没有数据", c)
-		} else { 
-			sheetFields := []string{}  
-					sheetFields = append(sheetFields, "名称")  
-					sheetFields = append(sheetFields, "appid")  
-					sheetFields = append(sheetFields, "管理员帐号")  
-					sheetFields = append(sheetFields, "签名")  
-					sheetFields = append(sheetFields, "运行次数")  
-					sheetFields = append(sheetFields, "开始时间")  
-					sheetFields = append(sheetFields, "当前时间")  
-					sheetFields = append(sheetFields, "状态")  
-					sheetFields = append(sheetFields, "运行状态") 
+		} else {
+			sheetFields := []string{}
+			sheetFields = append(sheetFields, "名称")
+			sheetFields = append(sheetFields, "appid")
+			sheetFields = append(sheetFields, "管理员帐号")
+			sheetFields = append(sheetFields, "签名")
+			sheetFields = append(sheetFields, "运行次数")
+			sheetFields = append(sheetFields, "开始时间")
+			sheetFields = append(sheetFields, "当前时间")
+			sheetFields = append(sheetFields, "状态")
+			sheetFields = append(sheetFields, "运行状态")
 
 			excel := excelize.NewFile()
 			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
@@ -232,12 +226,24 @@ func (imTximApi *ImTximApi) ExcelList(c *gin.Context) {
 				arr = append(arr, v.AppId)
 				arr = append(arr, v.Identifier)
 				arr = append(arr, v.UserSig)
-				arr = append(arr, *v.RunTimes)
+				if v.RunTimes == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.RunTimes)
+				}
 				arr = append(arr, v.BeginTime)
 				arr = append(arr, v.NowTime)
-				arr = append(arr, *v.Status)
-				arr = append(arr, *v.StatusRun)   
-			    excel.SetSheetRow("Sheet1", axis,&arr)  
+				if v.Status == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.Status)
+				}
+				if v.StatusRun == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.StatusRun)
+				}
+				excel.SetSheetRow("Sheet1", axis, &arr)
 			}
 			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())
 			filePath := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/excel/" + filename
@@ -247,12 +253,9 @@ func (imTximApi *ImTximApi) ExcelList(c *gin.Context) {
 				global.LOG.Error(err.Error())
 				response.FailWithMessage("获取失败", c)
 			} else {
-				resData := map[string]string{"url": url, "filename": filename} 
+				resData := map[string]string{"url": url, "filename": filename}
 				response.OkWithData(resData, c)
-			} 
+			}
 		}
-    }
+	}
 }
-
-
- 

@@ -22,6 +22,7 @@ type ImTxMsg struct {
 // ImTxMsgMini 结构体
 type ImTxMsgMini struct {
 	global.GO_MODEL
+	OrderId      string     `json:"orderId" cn:"订单id" form:"orderId" gorm:"column:order_id;comment:订单id;type:varchar(50);"`
 	ChatType     string     `json:"chatType" cn:"消息类型" form:"chatType" gorm:"column:chat_type;comment:消息类型;type:varchar(100);"`
 	MsgTime      string     `json:"msgTime" cn:"消息时间" form:"msgTime" gorm:"column:msg_time;comment:消息时间;type:varchar(100);"`
 	FromAccount  string     `json:"fromAccount" cn:"发送人" form:"fromAccount" gorm:"column:from_account;comment:发送人;type:varchar(100);"`
@@ -31,6 +32,7 @@ type ImTxMsgMini struct {
 	MsgText      string     `json:"msgText" cn:"文本" form:"msgText" gorm:"column:msg_text;comment:文本;type:varchar(4000);"`
 	StatusMedia  *int       `json:"statusMedia" cn:"媒体下载" form:"statusMedia" gorm:"column:status_media;comment:媒体下载:0未下载,1已下载,2 失败;type:smallint"`
 	Status       *int       `json:"status" cn:"状态" form:"status" gorm:"column:status;comment:状态:0未上传,1已上传,2 失败;type:smallint"`
+	OrderStatus  *int       `json:"order_status" cn:"订单状态" form:"order_status" gorm:"column:order_status;comment:订单状态;type:smallint"`
 }
 
 // TableName ImTxMsg 表名

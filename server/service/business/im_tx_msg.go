@@ -103,6 +103,9 @@ func (m *ImTxMsgService) GetList(info bizReq.ImTxMsgSearch, createdAtBetween []s
 	}
 
 	// 如果有条件搜索 下方会自动创建搜索语句
+	if info.OrderId != "" {
+		db = db.Where("`order_id` = ?", info.OrderId)
+	}
 	if info.ChatType != "" {
 		db = db.Where("`chat_type` = ?", info.ChatType)
 	}
@@ -135,6 +138,9 @@ func (m *ImTxMsgService) GetList(info bizReq.ImTxMsgSearch, createdAtBetween []s
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
+	}
+	if info.OrderStatus != nil {
+		db = db.Where("`order_status` = ?", info.OrderStatus)
 	}
 
 	err = db.Count(&total).Error
@@ -185,6 +191,9 @@ func (m *ImTxMsgService) GetListAll(info bizReq.ImTxMsgSearch, createdAtBetween 
 	}
 
 	// 如果有条件搜索 下方会自动创建搜索语句
+	if info.OrderId != "" {
+		db = db.Where("`order_id` = ?", info.OrderId)
+	}
 	if info.ChatType != "" {
 		db = db.Where("`chat_type` = ?", info.ChatType)
 	}
@@ -217,6 +226,9 @@ func (m *ImTxMsgService) GetListAll(info bizReq.ImTxMsgSearch, createdAtBetween 
 	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
+	}
+	if info.OrderStatus != nil {
+		db = db.Where("`order_status` = ?", info.OrderStatus)
 	}
 
 	err = db.Count(&total).Error

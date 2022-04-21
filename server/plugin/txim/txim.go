@@ -16,6 +16,7 @@ import (
 
 	"github.com/gogf/gf/util/gconv"
 	"github.com/idoubi/goz"
+	"github.com/tencentyun/tls-sig-api-v2-golang/tencentyun"
 	"mvdan.cc/xurls/v2"
 )
 
@@ -57,10 +58,11 @@ type JsonStruct struct {
 
 type MsgBodyStru struct {
 	MsgType    string      `json:"msgType" `
-	MsgContent ContentStru `json:"msgContent" `
+	MsgContent interface{} `json:"msgContent" `
 }
 
-type ContentStru struct {
+// TIMCustomElem
+type TIMCustomElem struct {
 	Text string `json:"Text" `
 	Desc string `json:"Desc" `
 	Data string `json:"Data" `
@@ -76,9 +78,37 @@ type ExtStru struct {
 	Price    string `json:"price"`
 }
 
+type ChatStart struct {
+	Status  int    `json:"status"`
+	OrderId string `json:"orderId" `
+}
+
+//TIMTextElem
+type TIMTextElem struct {
+	Text string `json:"Text"`
+}
+
+//TIMImageElem
+type TIMImageElem struct {
+	UUID           string           `json:"comment"`
+	ImageFormat    int              `json:"ImageFormat" `
+	ImageInfoArray []ImageInfoArray `json:"ImageInfoArray" `
+}
+type ImageInfoArray struct {
+	Type   int    `json:"Type"`
+	Size   int    `json:"Size" `
+	Width  int    `json:"Width" `
+	Height int    `json:"Height" `
+	URL    string `json:"URL" `
+}
+
 func (m *Txim) Stop() (err error) {
-	m.statusRun = 0
-	err = global.DB.Model(&m.Data).Update("status_run", 0).Error
+	m.statusRun = 2
+	mapdata := make(map[string]interface{})
+	mapdata["status_run"] = 2
+	err = bizSev.GetImTximSev().UpdateByMap(m.Data, mapdata)
+	cornTxim.Stop()
+	cornTxim.Remove(cornTxim_id)
 	if err != nil {
 		return myError.New(myError.ErrDbUpdate, "停止失败，更新数据库失败")
 	} else {
@@ -93,7 +123,9 @@ func (m *Txim) Start() (err error) {
 	// err = global.DB.Model(&m.Data).Update("status_run", 1).Error
 	var statusRun int = 1
 	m.Data.StatusRun = &statusRun
-	err = bizSev.GetImTximSev().Update(m.Data)
+	mapdata := make(map[string]interface{})
+	mapdata["status_run"] = 1
+	err = bizSev.GetImTximSev().UpdateByMap(m.Data, mapdata)
 	if err != nil {
 		return myError.New(myError.ErrDbUpdate, "启动失败，更新数据库失败")
 	} else {
@@ -101,47 +133,90 @@ func (m *Txim) Start() (err error) {
 	}
 	global.LOG.Debug(m.Data.Name + " 启动，加入队列id=" + gconv.String(m.Data.ID))
 	m.statusRun = 1
-	fmt.Println("beginCollect----1-----")
 	m.beginCollect()
 	return myError.New(myError.ErrOK, "启动成功")
 }
 
-//读取腾讯接口
 func (m *Txim) beginCollect() {
-	global.LOG.Info("txim 请求beginCollect...")
+	spec1 := "*/10 * * * * ?" // 10秒   20分钟执行一次
+	id, _ := cornTxim.AddFunc(spec1, m.beginCollect_do)
+	cornTxim_id = id
+	cornTxim.Start()
+}
+
+//读取腾讯接口
+func (m *Txim) beginCollect_do() {
+	// 加入定时任务
+	global.LOG.Info("txim 开始腾讯接口 beginCollect_do...")
+	hh, _ := time.ParseDuration("1h")
+	h24, _ := time.ParseDuration("-24h")
+	//比较时间大小的方法有：Before, After, Equal
+	//global.LOG.Debug("NowTime ==1==" + m.Data.NowTime.Add(hh).Format("2006-01-02 15:04:05"))
+	//	global.LOG.Debug("NowTime ==2==" + time.Now().Format("2006-01-02 15:04:05"))
+	mytime := *m.Data.NowTime
+	if mytime.Add(hh).After(time.Now().Add(h24)) {
+		//if mytime.Add(hh).After(time.Now()) {
+		global.LOG.Info("时间超前,24小时后才下载文件，返回，" + mytime.Format("2006-01-02 15:04:05"))
+		//m.Stop()
+		return
+	}
+	//加1 小时
+	myNowTime := m.Data.NowTime
+	//global.LOG.Debug("NowTime ====" + m.Data.NowTime.Format("2006-01-02 15:04:05"))
+	//global.LOG.Debug("NowTime =" + utils.TimeToStr(m.Data.NowTime))
+	MsgTime := utils.TimeToStr(myNowTime)
+	global.LOG.Debug("MsgTime =" + MsgTime)
+	ChatType := "C2C"
+	url := "https://console.tim.qq.com/v4/open_msg_svc/get_history?usersig=" +
+		m.Data.UserSig + "&identifier=" + m.Data.Identifier + "&sdkappid=" + m.Data.AppId + "&contenttype=json"
 	cli := goz.NewClient()
-	resp, err := cli.Post("https://console.tim.qq.com/v4/open_msg_svc/get_history?usersig=eJwtjMEKgkAURf9ltoU97b0hhBaRENgQRbUI2hgz2aMcxEaTon9vUpf3nMv5iIPaB42pRCyiAMS426yNdXzlDme6YDuIp75nZclaxCECSAgRp70xbcmV8ZyIIgDoqePiz6Q-E6GUQ4Vz38Xa3lbN6PQ*T1KdbB*ZoRzbXO3qxeWo1s68ZsuNUzZNCOfi*wNdMjHF&identifier=admin&sdkappid=1400601443&contenttype=json", goz.Options{
+
+	resp, err := cli.Post(url, goz.Options{
 		Headers: map[string]interface{}{
 			"Content-Type": "application/json",
 		},
 		JSON: struct {
 			ChatType string `json:"ChatType"`
 			MsgTime  string `json:"MsgTime"`
-		}{"C2C", "2021122317"},
+		}{ChatType, MsgTime}, // }{"C2C", "2022031718"}, "2022032211"
 	})
 
 	if err != nil {
-		global.LOG.Error("txim 请求错误:" + err.Error())
+		global.LOG.Error("txim 请求错误 setp1:" + err.Error())
 		return
 	}
-
 	body, _ := resp.GetBody()
-
+	fmt.Println("=============body================")
 	fmt.Println(body)
 
+	//
 	var fileResp FileResp
-
 	err = json.Unmarshal([]byte(body), &fileResp)
 	if err != nil {
 		global.LOG.Error("txim json解析错误:" + err.Error())
 		return
 	}
-	//入库操作
-	//if fileResp.ActionStatus =="OK" {
 
+	// 更新数据库 运行次数 当前时间
+	*m.Data.NowTime = m.Data.NowTime.Add(hh)
+	*m.Data.RunTimes = *m.Data.RunTimes + 1
+	mapdata := make(map[string]interface{})
+	mapdata["run_times"] = *m.Data.RunTimes
+	mapdata["now_time"] = *m.Data.NowTime
+	_ = bizSev.GetImTximSev().UpdateByMap(m.Data, mapdata)
+
+	// 文件未准备好 ，退出
+	//if fileResp.ErrorInfo == "Err_File_Not_Ready"  {
+	if fileResp.ErrorCode == 1005 { //Err_File_Expired
+		global.LOG.Info("文件未准备好 ，退出 Err_File_Expired  MsgTime=" + MsgTime)
+		return
+	}
+
+	//文件入库操作
+	//if fileResp.ActionStatus =="OK" {
 	var txf = business.ImTxMsgFile{}
-	txf.ChatType = fileResp.ChatType
-	txf.MsgTime = fileResp.MsgTime
+	txf.ChatType = ChatType // fileResp.ChatType
+	txf.MsgTime = MsgTime   //fileResp.MsgTime
 	txf.ActionStatus = fileResp.ActionStatus
 	txf.ErrorCode = string(fileResp.ErrorCode)
 	txf.ErrorInfo = fileResp.ErrorInfo
@@ -162,19 +237,34 @@ func (m *Txim) beginCollect() {
 		return
 	}
 	txf.ID = id
-	go downloadFile(txf)
+	jsons, _ := json.Marshal(txf)
+	global.LOG.Info("腾讯返回数据：" + string(jsons))
+	//if txf.ErrorInfo == "Err_File_Not_Ready" || txf.ErrorInfo == "Err_File_Expired" {
+	if fileResp.ErrorCode == 1005 || fileResp.ErrorCode == 1004 {
+		global.LOG.Info("没有文件 Err_File_Not_Ready Err_File_Expired  MsgTime=" + MsgTime)
+	} else {
+		go downloadFile(txf)
+	}
+
 }
 
 //下载文件
 func downloadFile(txf business.ImTxMsgFile) {
+	if utils.IsEmpty(txf.Url) {
+		fmt.Println(txf)
+		global.LOG.Error("txf.Url= null")
+		return
+	}
+
 	yearmonth := string([]rune(txf.MsgTime)[:6])
 	dayhour := string([]rune(txf.MsgTime)[6:10]) //string([]byte(data.MsgTime)[4:8])  rune 兼容汉字
 	// res/sys/txim/202112/2110/****.gz
 	local := global.CONFIG.Local.BasePath + global.CONFIG.Local.Path + "/txim/" + yearmonth + "/" + dayhour + "/"
-	global.LOG.Error("txim  local :" + local)
+	//global.LOG.Error("txim  local :" + local)
 	zipPath, err := utils.DownloadFile(txf.Url, local, txf.MsgTime+".gz")
 	if err != nil {
-		global.LOG.Info("txim 下载downloadFile失败:" + err.Error())
+		global.LOG.Error("txim 下载downloadFile失败:" + err.Error())
+		global.LOG.Error("txf.Url=" + txf.Url)
 		return
 	}
 
@@ -197,6 +287,7 @@ func downloadFile(txf business.ImTxMsgFile) {
 // 转换 json数据到数据库
 func json2struct(filepath string, txf business.ImTxMsgFile, local string) (err error) {
 	//打开文件
+	global.LOG.Error(" filepath = " + filepath)
 	inputFile, err := os.Open(filepath)
 	if err != nil {
 		return err
@@ -208,9 +299,17 @@ func json2struct(filepath string, txf business.ImTxMsgFile, local string) (err e
 	for {
 		inputString, readerError := fileReader.ReadString('\n')
 		if readerError == io.EOF {
-			//fmt.Printf("读错误")
+			global.LOG.Error("读错误")
+
 			break
 		}
+		fmt.Println(" inputString ==  " + inputString)
+		if utils.IsEmpty(inputString) {
+			global.LOG.Error("inputString IsEmpty")
+
+			break
+		}
+
 		//去掉首尾回车和，号
 		inputString = strings.Trim(inputString, ",\n") // inputString[:len(inputString)-1] //
 		msg := JsonStruct{}
@@ -235,31 +334,73 @@ func json2struct(filepath string, txf business.ImTxMsgFile, local string) (err e
 		// fmt.Println(ti)
 
 		obj.MsgTimestamp = utils.Int2Time(int64(v.MsgTimestamp))
-		fmt.Println("v.MsgTimestamp")
-		fmt.Println(obj.MsgTimestamp)
+		//fmt.Println("v.MsgTimestamp")
+		//fmt.Println(obj.MsgTimestamp)
 		obj.MsgSeq = &v.MsgSeq
 		obj.MsgRandom = &v.MsgRandom
 		obj.MsgFromPlatform = v.MsgFromPlatform
 		obj.ClientIp = v.ClientIp
 
 		urlList := []string{}
-		if len(v.MsgBody) > 0 {
-			obj.MsgType = v.MsgBody[0].MsgType
-			b, err := json.Marshal(v.MsgBody[0].MsgContent)
-			if err == nil {
-				obj.MsgContent = string(b)
-			}
-			obj.MsgText = v.MsgBody[0].MsgContent.Text
+		for _, mbs := range v.MsgBody {
+			obj.MsgType = mbs.MsgType
+			obj.MsgContent = gconv.String(mbs.MsgContent)
+
+			//obj.MsgText = obj.MsgText +  gconv.String(mbs.MsgContent) + ";"
 			//提取图片url
 			rxStrict := xurls.Strict()
-			urlList = rxStrict.FindAllString(v.MsgBody[0].MsgContent.Ext, -1)
+			mylist := rxStrict.FindAllString(gconv.String(mbs.MsgContent), -1)
+			urlList = append(urlList, mylist...)
 			bytes, e := json.Marshal(urlList)
 			if e == nil {
-				obj.MediaListTx = string(bytes)
+				txurl := string(bytes)
+				if !utils.IsEmpty(txurl) {
+					obj.MediaListTx = obj.MediaListTx + txurl + ";"
+				}
 			}
+			switch obj.MsgType {
+			case "TIMTextElem":
+				global.LOG.Debug("TIMTextElem")
+				tIMTextElem := TIMTextElem{}
+				if err := json.Unmarshal([]byte(gconv.String(mbs.MsgContent)), &tIMTextElem); err == nil {
+					obj.MsgText = tIMTextElem.Text
+				} else {
+					global.LOG.Error("转换TIMTextElem失败 : " + err.Error() + ", String =" + gconv.String(mbs.MsgContent))
+				}
+			case "TIMCustomElem":
+				global.LOG.Debug("TIMCustomElem")
+				tIMCustomElem := TIMCustomElem{}
+				if err := json.Unmarshal([]byte(gconv.String(mbs.MsgContent)), &tIMCustomElem); err == nil {
+					obj.MsgText = tIMCustomElem.Text
+					//订单状态chatstart
+					if tIMCustomElem.Data == "chatstart" {
+						chatStart := ChatStart{}
+						if err := json.Unmarshal([]byte(tIMCustomElem.Ext), &chatStart); err == nil {
+							obj.OrderId = chatStart.OrderId
+							obj.OrderStatus = &chatStart.Status
+						} else {
+							global.LOG.Error("转换订单失败 : " + err.Error() + ", String =" + tIMCustomElem.Ext)
+						}
+					} else {
+						global.LOG.Debug("自定义消息 TIMCustomElem.data =" + tIMCustomElem.Data)
+					}
+
+				} else {
+					global.LOG.Error("转换订单失败 : " + err.Error() + ", String =" + gconv.String(mbs.MsgContent))
+				}
+			case "TIMVideoFileElem":
+				global.LOG.Debug("TIMVideoFileElem")
+			case "TIMSoundElem":
+				global.LOG.Debug("TIMSoundElem")
+			case "TIMImageElem":
+				global.LOG.Debug("TIMImageElem")
+			default:
+				global.LOG.Error("未知类型MsgType = " + obj.MsgType)
+			}
+
 		}
 
-		//imTxMsgList = append(imTxMsgList, obj)
+		// 判断是否 是开始 结束 订单标记
 
 		//写数据库
 		obj.CreatedAt = time.Now()
@@ -276,25 +417,42 @@ func json2struct(filepath string, txf business.ImTxMsgFile, local string) (err e
 			fileID := []uint{}
 			for _, url := range urlList {
 				if !utils.IsEmpty(url) {
-					var txFile business.ImTxFile
-					var idint int = int(id)
-					txFile.MsgId = &idint
-					txFile.Url = url
-					txFile.Local = local // 图片等 下载到相同的目录内
-					txFile.Status = &status
-					//txFile.MediaType = 1
-					fid, err2 := bizSev.GetImTxFileSev().Create(txFile)
-					if err2 != nil {
-						global.LOG.Error("创建 ImTxFile 出错 " + err2.Error())
+					if url == "https://web.sdk.qcloud.com/im/assets/images/transparent.png" || strings.Contains(url, "?imageView") {
+						global.LOG.Info("被忽略的图片 url = " + url)
 					} else {
-						fileID = append(fileID, fid)
+						txFile := business.ImTxFile{}
+						var idint int = int(id)
+						txFile.MsgId = &idint
+						txFile.Url = url
+						txFile.Local = local // 图片等 下载到相同的目录内
+						txFile.Status = &status
+						//txFile.MediaType = 1
+						fid, err2 := bizSev.GetImTxFileSev().Create(txFile)
+						if err2 != nil {
+							global.LOG.Error("创建 ImTxFile 出错 " + err2.Error())
+						} else {
+							fileID = append(fileID, fid)
+						}
 					}
 				}
 			}
 
 		}
 	}
-	// 通知下载文件
+	// 通知下载图片媒体文件
 	GetTximManager().DownChan <- 1
 	return nil
+}
+
+// // 获取sig签名 ， uid 用户名 ， expire 过期时间 秒
+func (m *Txim) GetSig(uid string, expire int) (sig string, err error) {
+	//sig, err = tencentyun.GenSig("1", "2", "xiaojun", 86400*180)
+	sig, err = tencentyun.GenUserSig(global.CONFIG.Txim.Appid, global.CONFIG.Txim.Key, uid, expire)
+	if err != nil {
+		fmt.Println(err.Error())
+		global.LOG.Error(err.Error())
+		return "", err
+	} else {
+		return sig, err
+	}
 }

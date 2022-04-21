@@ -260,6 +260,31 @@ func InArray(needle interface{}, hystack interface{}) bool {
 	return false
 }
 
+// 获取 20160102150405  格式
+func TimeToStr(t *time.Time) string {
+	year := t.Format("2006")
+	month := t.Format("01")
+	day := t.Format("02")
+	hour := t.Format("15")
+	//min := t.Format("04")
+	// second := time.Now().Format("05")
+	str := year + month + day + hour
+	return str
+}
+
+// date := time.Now().Format("2006-01-02 15:04:05")
+// year:=time.Now().Year()
+// month := time.Now().Format("01")
+// day:=time.Now().Day()
+// //或者
+
+// year := time.Now().Format("2006")
+// month := time.Now().Format("01")
+// day := time.Now().Format("02")
+// hour := time.Now().Format("15")
+// min := time.Now().Format("04")
+// second := time.Now().Format("05")
+
 // var timeTemplates = []string{
 // 	"2006-01-02 15:04:05", //常规类型
 // 	"2006/01/02 15:04:05",
