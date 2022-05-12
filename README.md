@@ -31,7 +31,12 @@
 -  /web/ 是gin gorm v2管理后台项目配套的vue的项目
 -  /gokit/ gokit微服务器测试项目
 
-
+[在线预览](http://120.24.150.47/admin)   
+http://120.24.150.47/admin
+测试用户名：test123
+测试密码：test123 
+                                                      
+                                                      
 ## /gozero/微服务项目介绍 
 
 >  本项目是 gozero 的 gorm v2 版本 ,欢迎 Star
@@ -92,7 +97,9 @@ post  http://127.0.0.1:1001/order/v1/order/addOrder
 ####  比较复杂的方式 
 
 - 1、 先启动 docker , 然后  
+  cd /go-cms/gozero/                                                                                                                     
 $ docker network create go-zero-looklook_looklook_net
+                                                                                                                       
 $ docker-compose -f docker-compose-env.yml up -d   
 
 - 2、  然后,按照最简单的方式启动
