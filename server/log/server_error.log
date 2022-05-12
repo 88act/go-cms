@@ -13,3 +13,9 @@
 [GoCms]2022/04/21 - 11:20:37.986	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_dictionary.go:86	查询失败!	{"err": "record not found"}
 [GoCms]2022/04/21 - 13:29:38.937	[31merror[0m	D:/work_go/go-cms/server/core/server.go:49	listen tcp :40050: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
 [GoCms]2022/04/21 - 14:22:52.069	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_user.go:307	获取失败!	{"err": "record not found"}
+[GoCms]2022/05/12 - 21:02:52.004	[31merror[0m	D:/work_go/go-cms/server/initialize/gorm.go:103	MySQL启动异常	{"err": "dial tcp 0.0.0.0:3306: connectex: No connection could be made because the target machine actively refused it."}
+[GoCms]2022/05/12 - 21:54:35.658	[31merror[0m	D:/work_go/go-cms/server/initialize/gorm.go:103	MySQL启动异常	{"err": "dial tcp 127.0.0.1:53306: connectex: No connection could be made because the target machine actively refused it."}
+[GoCms]2022/05/12 - 21:55:25.376	[31merror[0m	D:/work_go/go-cms/server/initialize/gorm.go:103	MySQL启动异常	{"err": "dial tcp 127.0.0.1:53306: connectex: No connection could be made because the target machine actively refused it."}
+[GoCms]2022/05/12 - 22:12:43.658	[31merror[0m	D:/work_go/go-cms/server/api/v1/business/pay_payment.go:159	获取失败!	{"err": "Error 1054: Unknown column 'pay_payment.price' in 'field list'"}
+[GoCms]2022/05/12 - 22:12:56.294	[31merror[0m	D:/work_go/go-cms/server/api/v1/business/pay_payment.go:159	获取失败!	{"err": "Error 1054: Unknown column 'pay_payment.price' in 'field list'"}
+[GoCms]2022/05/12 - 22:15:33.667	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_menu.go:144	删除失败!	{"err": "此菜单存在子菜单不可删除"}

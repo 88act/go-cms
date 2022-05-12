@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type MemUserSafeSearch struct {
-	business.MemUserSafe
-	request.PageInfo
+type ActActSearch struct{
+    business.ActAct
+    request.PageInfo
 }

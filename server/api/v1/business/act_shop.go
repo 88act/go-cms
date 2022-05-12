@@ -19,22 +19,22 @@ import (
 	"gorm.io/gorm"
 ) 
 
-type MemUserApi struct {
+type ActShopApi struct {
 }
 
  
 
-// CreateMemUser 创建MemUser
-// @Tags MemUser
-// @Summary 创建MemUser
+// CreateActShop 创建ActShop
+// @Tags ActShop
+// @Summary 创建ActShop
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUser true "创建MemUser"
+// @Param data body business.ActShop true "创建ActShop"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /memUser/createMemUser [post]
-func (m *MemUserApi) CreateMemUser(c *gin.Context) {
-	var dataObj business.MemUser
+// @Router /actShop/createActShop [post]
+func (m *ActShopApi) CreateActShop(c *gin.Context) {
+	var dataObj business.ActShop
 	_ = c.ShouldBindJSON(&dataObj)
 	
 	if err := gvalid.CheckStruct(c,dataObj, nil); err != nil {
@@ -43,7 +43,7 @@ func (m *MemUserApi) CreateMemUser(c *gin.Context) {
 	}
 
  
-	if id,err := bizSev.GetMemUserSev().Create(dataObj); err != nil {
+	if id,err := bizSev.GetActShopSev().Create(dataObj); err != nil {
         global.LOG.Error("创建失败!", zap.Any("err", err))
 		response.FailWithMessage("创建失败", c)
 	} else {
@@ -52,19 +52,19 @@ func (m *MemUserApi) CreateMemUser(c *gin.Context) {
 	}
 }
 
-// DeleteMemUser 删除MemUser
-// @Tags MemUser
-// @Summary 删除MemUser
+// DeleteActShop 删除ActShop
+// @Tags ActShop
+// @Summary 删除ActShop
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUser true "删除MemUser"
+// @Param data body business.ActShop true "删除ActShop"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
-// @Router /memUser/deleteMemUser [delete]
-func (m *MemUserApi) DeleteMemUser(c *gin.Context) {
-	var memUser business.MemUser
-	_ = c.ShouldBindJSON(&memUser)
-	if err := bizSev.GetMemUserSev().Delete(memUser); err != nil {
+// @Router /actShop/deleteActShop [delete]
+func (m *ActShopApi) DeleteActShop(c *gin.Context) {
+	var actShop business.ActShop
+	_ = c.ShouldBindJSON(&actShop)
+	if err := bizSev.GetActShopSev().Delete(actShop); err != nil {
         global.LOG.Error("删除失败!", zap.Any("err", err))
 		response.FailWithMessage("删除失败", c)
 	} else {
@@ -72,19 +72,19 @@ func (m *MemUserApi) DeleteMemUser(c *gin.Context) {
 	}
 }
 
-// DeleteMemUserByIds 批量删除MemUser
-// @Tags MemUser
-// @Summary 批量删除MemUser
+// DeleteActShopByIds 批量删除ActShop
+// @Tags ActShop
+// @Summary 批量删除ActShop
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body request.IdsReq true "批量删除MemUser"
+// @Param data body request.IdsReq true "批量删除ActShop"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"批量删除成功"}"
-// @Router /memUser/deleteMemUserByIds [delete]
-func (m *MemUserApi) DeleteMemUserByIds(c *gin.Context) {
+// @Router /actShop/deleteActShopByIds [delete]
+func (m *ActShopApi) DeleteActShopByIds(c *gin.Context) {
 	var IDS request.IdsReq
     _ = c.ShouldBindJSON(&IDS)
-	if err := bizSev.GetMemUserSev().DeleteByIds(IDS); err != nil {
+	if err := bizSev.GetActShopSev().DeleteByIds(IDS); err != nil {
         global.LOG.Error("批量删除失败!", zap.Any("err", err))
 		response.FailWithMessage("批量删除失败", c)
 	} else {
@@ -92,17 +92,17 @@ func (m *MemUserApi) DeleteMemUserByIds(c *gin.Context) {
 	}
 }
 
-// UpdateMemUser 更新MemUser
-// @Tags MemUser
-// @Summary 更新MemUser
+// UpdateActShop 更新ActShop
+// @Tags ActShop
+// @Summary 更新ActShop
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUser true "更新MemUser"
+// @Param data body business.ActShop true "更新ActShop"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router /memUser/updateMemUser [put]
-func (m *MemUserApi) UpdateMemUser(c *gin.Context) {
-	var dataObj business.MemUser
+// @Router /actShop/updateActShop [put]
+func (m *ActShopApi) UpdateActShop(c *gin.Context) {
+	var dataObj business.ActShop
 	_ = c.ShouldBindJSON(&dataObj)
 
 	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
@@ -110,7 +110,7 @@ func (m *MemUserApi) UpdateMemUser(c *gin.Context) {
 		return
 	}
 
-	if err := bizSev.GetMemUserSev().Update(dataObj); err != nil {
+	if err := bizSev.GetActShopSev().Update(dataObj); err != nil {
         global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
 	} else {
@@ -118,44 +118,44 @@ func (m *MemUserApi) UpdateMemUser(c *gin.Context) {
 	}
 }
 
-// FindMemUser 用id查询MemUser
-// @Tags MemUser
-// @Summary 用id查询MemUser
+// FindActShop 用id查询ActShop
+// @Tags ActShop
+// @Summary 用id查询ActShop
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query business.MemUser true "用id查询MemUser"
+// @Param data query business.ActShop true "用id查询ActShop"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"查询成功"}"
-// @Router /memUser/findMemUser [get]
-func (m *MemUserApi) FindMemUser(c *gin.Context) {
-	var memUser business.MemUser
-	_ = c.ShouldBindQuery(&memUser) 
-	 rememUser,err:= bizSev.GetMemUserSev().Get(memUser.ID,""); 
+// @Router /actShop/findActShop [get]
+func (m *ActShopApi) FindActShop(c *gin.Context) {
+	var actShop business.ActShop
+	_ = c.ShouldBindQuery(&actShop) 
+	 reactShop,err:= bizSev.GetActShopSev().Get(actShop.ID,""); 
 	 if errors.Is(err, gorm.ErrRecordNotFound) { 
-		response.OkWithData(gin.H{"memUser": nil}, c)
+		response.OkWithData(gin.H{"actShop": nil}, c)
 	} else if err != nil { 
         global.LOG.Error("查询失败!", zap.Any("err", err))
 		response.FailWithMessage("查询失败", c)
 	} else { 
-		response.OkWithData(gin.H{"memUser": rememUser}, c)
+		response.OkWithData(gin.H{"actShop": reactShop}, c)
 	}
 }
 
-// GetMemUserList 分页获取MemUser列表
-// @Tags MemUser
-// @Summary 分页获取MemUser列表
+// GetActShopList 分页获取ActShop列表
+// @Tags ActShop
+// @Summary 分页获取ActShop列表
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query bizReq.MemUserSearch true "分页获取MemUser列表"
+// @Param data query bizReq.ActShopSearch true "分页获取ActShop列表"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /memUser/getMemUserList [get]
-func (m *MemUserApi) GetMemUserList(c *gin.Context) {
+// @Router /actShop/getActShopList [get]
+func (m *ActShopApi) GetActShopList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
 
-	var pageInfo bizReq.MemUserSearch
+	var pageInfo bizReq.ActShopSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if  list, total, err := bizSev.GetMemUserSev().GetList(pageInfo,createdAtBetween,""); err != nil {
+	if  list, total, err := bizSev.GetActShopSev().GetList(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
@@ -176,13 +176,13 @@ func (m *MemUserApi) GetMemUserList(c *gin.Context) {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body business.MemUser true "快速更新MemUser" 
+// @Param data body business.ActShop true "快速更新ActShop" 
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router  /memUser/quickEdit [post] 
-func (m *MemUserApi) QuickEdit(c *gin.Context) {
+// @Router  /actShop/quickEdit [post] 
+func (m *ActShopApi) QuickEdit(c *gin.Context) {
 	var quickEdit request.QuickEdit
 	_ = c.ShouldBindJSON(&quickEdit)
-	quickEdit.Table = "mem_user" 
+	quickEdit.Table = "act_shop" 
 	if err := commSev.GetCommonDbSev().QuickEdit(quickEdit); err != nil {
 		global.LOG.Error("更新失败!", zap.Any("err", err))
 		response.FailWithMessage("更新失败", c)
@@ -192,20 +192,20 @@ func (m *MemUserApi) QuickEdit(c *gin.Context) {
 }
 
 
-// excelList 分页导出excel MemUser列表
-// @Tags MemUser
-// @Summary 分页导出excel MemUser列表
+// excelList 分页导出excel ActShop列表
+// @Tags ActShop
+// @Summary 分页导出excel ActShop列表
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data query bizReq.MemUserSearch true "分页导出excel MemUser列表"
+// @Param data query bizReq.ActShopSearch true "分页导出excel ActShop列表"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"获取成功"}"
-// @Router /memUser/excelList [get]
-func (m *MemUserApi) ExcelList(c *gin.Context) {
+// @Router /actShop/excelList [get]
+func (m *ActShopApi) ExcelList(c *gin.Context) {
 	createdAtBetween, _ := c.GetQueryArray("createdAtBetween[]")
-	var pageInfo bizReq.MemUserSearch
+	var pageInfo bizReq.ActShopSearch
 	_ = c.ShouldBindQuery(&pageInfo)
-	if list,_,err:= bizSev.GetMemUserSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
+	if list,_,err:= bizSev.GetActShopSev().GetListAll(pageInfo,createdAtBetween,""); err != nil {
 	    global.LOG.Error("获取失败!", zap.Any("err", err))
         response.FailWithMessage("获取失败", c)
     } else {
@@ -213,92 +213,108 @@ func (m *MemUserApi) ExcelList(c *gin.Context) {
 			response.FailWithMessage("没有数据", c)
 		} else { 
 			sheetFields := []string{}  
-					sheetFields = append(sheetFields, "用户名")  
-					sheetFields = append(sheetFields, "密码")  
-					sheetFields = append(sheetFields, "密码盐")  
+					sheetFields = append(sheetFields, "用户id")  
+					sheetFields = append(sheetFields, "标题")  
+					sheetFields = append(sheetFields, "简介")  
+					sheetFields = append(sheetFields, "详细内容")  
+					sheetFields = append(sheetFields, "缩略图")  
+					sheetFields = append(sheetFields, "媒体列表")  
+					sheetFields = append(sheetFields, "地址")  
+					sheetFields = append(sheetFields, "地区id")  
+					sheetFields = append(sheetFields, "经度")  
+					sheetFields = append(sheetFields, "纬度")  
 					sheetFields = append(sheetFields, "邮件")  
 					sheetFields = append(sheetFields, "手机")  
-					sheetFields = append(sheetFields, "昵称")  
-					sheetFields = append(sheetFields, "真实名")  
-					sheetFields = append(sheetFields, "身份证")  
-					sheetFields = append(sheetFields, "性别")  
-					sheetFields = append(sheetFields, "生日")  
-					sheetFields = append(sheetFields, "头像")  
-					sheetFields = append(sheetFields, "验证手机")  
-					sheetFields = append(sheetFields, "验证邮箱")  
-					sheetFields = append(sheetFields, "验证实名")  
-					sheetFields = append(sheetFields, "备注")  
-					sheetFields = append(sheetFields, "推荐码16位（自己的）")  
-					sheetFields = append(sheetFields, "状态")  
-					sheetFields = append(sheetFields, "安全状态")  
-					sheetFields = append(sheetFields, "注册ip")  
-					sheetFields = append(sheetFields, "登录ip")  
-					sheetFields = append(sheetFields, "登录次数")  
-					sheetFields = append(sheetFields, "最后登录时间") 
+					sheetFields = append(sheetFields, "vip等级")  
+					sheetFields = append(sheetFields, "vip结束时间")  
+					sheetFields = append(sheetFields, "综合指数")  
+					sheetFields = append(sheetFields, "总分享")  
+					sheetFields = append(sheetFields, "总收藏")  
+					sheetFields = append(sheetFields, "总报名人数")  
+					sheetFields = append(sheetFields, "总评论")  
+					sheetFields = append(sheetFields, "总点击")  
+					sheetFields = append(sheetFields, "总评")  
+					sheetFields = append(sheetFields, "状态") 
 
 			excel := excelize.NewFile()
 			excel.SetSheetRow("Sheet1", "A1", &sheetFields)
 			for i, v := range list {
 				axis := fmt.Sprintf("A%d", i+2)
 				var arr = []interface{}{}
-				arr = append(arr, v.Username)
-				arr = append(arr, v.Password)
-				arr = append(arr, v.PasswordSlat)
+				if v.UserId == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.UserId)
+				}
+				arr = append(arr, v.Name)
+				arr = append(arr, v.Desc)
+				arr = append(arr, v.Detail)
+				arr = append(arr, v.Avater)
+				arr = append(arr, v.MediaList)
+				arr = append(arr, v.Address)
+				if v.AreaId == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.AreaId)
+				}
+				if v.Lng == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.Lng)
+				}
+				if v.Lat == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.Lat)
+				}
 				arr = append(arr, v.Email)
 				arr = append(arr, v.Mobile)
-				arr = append(arr, v.Nickname)
-				arr = append(arr, v.Realname)
-				arr = append(arr, v.CardId)
-				if v.Sex == nil {
+				if v.VipLev == nil {
 					arr = append(arr, "")
 				} else {
-					arr = append(arr, *v.Sex)
+					arr = append(arr, *v.VipLev)
 				}
-				arr = append(arr, v.Birthday)
-				arr = append(arr, v.Avatar)
-				if v.MobileValidated == nil {
+				arr = append(arr, v.VipTime)
+				if v.TotalWhole == nil {
 					arr = append(arr, "")
 				} else {
-					arr = append(arr, *v.MobileValidated)
+					arr = append(arr, *v.TotalWhole)
 				}
-				if v.EmailValidated == nil {
+				if v.TotalShare == nil {
 					arr = append(arr, "")
 				} else {
-					arr = append(arr, *v.EmailValidated)
+					arr = append(arr, *v.TotalShare)
 				}
-				if v.CardidValidated == nil {
+				if v.TotalFav == nil {
 					arr = append(arr, "")
 				} else {
-					arr = append(arr, *v.CardidValidated)
+					arr = append(arr, *v.TotalFav)
 				}
-				arr = append(arr, v.Info)
-				arr = append(arr, v.RecommendCode)
+				if v.TotalJoin == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.TotalJoin)
+				}
+				if v.TotalDiscuss == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.TotalDiscuss)
+				}
+				if v.TotalClick == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.TotalClick)
+				}
+				if v.TotalStar == nil {
+					arr = append(arr, "")
+				} else {
+					arr = append(arr, *v.TotalStar)
+				}
 				if v.Status == nil {
 					arr = append(arr, "")
 				} else {
 					arr = append(arr, *v.Status)
-				}
-				if v.StatusSafe == nil {
-					arr = append(arr, "")
-				} else {
-					arr = append(arr, *v.StatusSafe)
-				}
-				if v.RegIp == nil {
-					arr = append(arr, "")
-				} else {
-					arr = append(arr, *v.RegIp)
-				}
-				if v.LoginIp == nil {
-					arr = append(arr, "")
-				} else {
-					arr = append(arr, *v.LoginIp)
-				}
-				if v.LoginTotal == nil {
-					arr = append(arr, "")
-				} else {
-					arr = append(arr, *v.LoginTotal)
-				}
-				arr = append(arr, v.LoginTime)   
+				}   
 			    excel.SetSheetRow("Sheet1", axis,&arr)  
 			}
 			filename := fmt.Sprintf("ecl%d.xlsx", time.Now().Unix())

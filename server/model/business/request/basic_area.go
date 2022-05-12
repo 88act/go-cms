@@ -5,7 +5,7 @@ import (
 	"go-cms/model/common/request"
 )
 
-type BasicAreaSearch struct {
-	business.BasicArea
-	request.PageInfo
+type BasicAreaSearch struct{
+    business.BasicArea
+    request.PageInfo
 }

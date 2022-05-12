@@ -5,7 +5,6 @@ import "go-cms/service"
 type ApiGroup struct {
 	SystemApiApi
 	AuthorityApi
-	 
 	BaseApi
 	CasbinApi
 	DictionaryApi
@@ -21,7 +20,6 @@ var authorityService = service.ServiceGroupApp.SystemServiceGroup.AuthorityServi
 var apiService = service.ServiceGroupApp.SystemServiceGroup.ApiService
 var menuService = service.ServiceGroupApp.SystemServiceGroup.MenuService
 var casbinService = service.ServiceGroupApp.SystemServiceGroup.CasbinService
-
 var dictionaryService = service.ServiceGroupApp.SystemServiceGroup.DictionaryService
 var dictionaryDetailService = service.ServiceGroupApp.SystemServiceGroup.DictionaryDetailService
 var initDBService = service.ServiceGroupApp.SystemServiceGroup.InitDBService

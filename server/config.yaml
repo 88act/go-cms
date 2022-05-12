@@ -4,11 +4,11 @@
 
 mysql:
 
-  path: 0.0.0.0:3306
+  path: 127.0.0.1:53306
   config: charset=utf8mb4&parseTime=True&loc=Local
-  db-name:  go-cms-test 
-  username: go-cms
-  password: go-cms
+  db-name:  go-cms 
+  username: root
+  password: 123456
  
   max-idle-conns: 10
   max-open-conns: 100

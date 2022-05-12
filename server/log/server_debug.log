@@ -366,3 +366,8 @@
 [GoCms]2022/04/21 - 13:53:40.763	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collectmManager.go:57	List存在旧的collect，idx=0
 [GoCms]2022/04/21 - 13:53:40.882	[35mdebug[0m	D:/work_go/go-cms/server/plugin/collect/collect.go:35	更新数据库 StatusRun 成功
 [GoCms]2022/04/21 - 14:22:01.854	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/05/12 - 21:03:55.084	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/05/12 - 21:07:22.585	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/05/12 - 21:56:10.015	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/05/12 - 22:01:43.023	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启
+[GoCms]2022/05/12 - 22:12:05.493	[35mdebug[0m	D:/work_go/go-cms/server/core/server.go:25	redis未开启

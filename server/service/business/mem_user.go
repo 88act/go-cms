@@ -5,7 +5,6 @@ import (
 	"go-cms/model/business"
 	bizReq "go-cms/model/business/request"
 	"go-cms/model/common/request"
-	comSev "go-cms/service/common"
 	"go-cms/utils"
 	"sync"
 )
@@ -79,9 +78,6 @@ func (m *MemUserService) Get(id uint, fields string) (obj business.MemUser, err 
 
 	//如果有图片image类型，更新图片path
 	obj.MapData = make(map[string]string)
-	if !utils.IsEmpty(obj.Avatar) {
-		_, obj.MapData[obj.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(obj.Avatar)
-	}
 	return obj, err
 }
 
@@ -108,22 +104,19 @@ func (m *MemUserService) GetList(info bizReq.MemUserSearch, createdAtBetween []s
 
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.Username != "" {
-		db = db.Where("`username` LIKE ?", "%"+info.Username+"%")
-	}
-	if info.Pws != "" {
-		db = db.Where("`pws` = ?", info.Pws)
+		db = db.Where("`username` = ?", info.Username)
 	}
 	if info.Email != "" {
-		db = db.Where("`email` LIKE ?", "%"+info.Email+"%")
+		db = db.Where("`email` = ?", info.Email)
 	}
 	if info.Mobile != "" {
-		db = db.Where("`mobile` LIKE ?", "%"+info.Mobile+"%")
+		db = db.Where("`mobile` = ?", info.Mobile)
 	}
 	if info.Nickname != "" {
-		db = db.Where("`nickname` LIKE ?", "%"+info.Nickname+"%")
+		db = db.Where("`nickname` = ?", info.Nickname)
 	}
 	if info.Realname != "" {
-		db = db.Where("`realname` LIKE ?", "%"+info.Realname+"%")
+		db = db.Where("`realname` = ?", info.Realname)
 	}
 	if info.CardId != "" {
 		db = db.Where("`card_id` = ?", info.CardId)
@@ -131,11 +124,32 @@ func (m *MemUserService) GetList(info bizReq.MemUserSearch, createdAtBetween []s
 	if info.Sex != nil {
 		db = db.Where("`sex` = ?", info.Sex)
 	}
+	if info.MobileValidated != nil {
+		db = db.Where("`mobile_validated` = ?", info.MobileValidated)
+	}
+	if info.EmailValidated != nil {
+		db = db.Where("`email_validated` = ?", info.EmailValidated)
+	}
+	if info.CardidValidated != nil {
+		db = db.Where("`cardid_validated` = ?", info.CardidValidated)
+	}
+	if info.RecommendCode != "" {
+		db = db.Where("`recommend_code` = ?", info.RecommendCode)
+	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
 	}
 	if info.StatusSafe != nil {
 		db = db.Where("`status_safe` = ?", info.StatusSafe)
+	}
+	if info.RegIp != nil {
+		db = db.Where("`reg_ip` = ?", info.RegIp)
+	}
+	if info.LoginIp != nil {
+		db = db.Where("`login_ip` = ?", info.LoginIp)
+	}
+	if info.LoginTime != nil {
+		db = db.Where("`login_time` > > ?", info.LoginTime)
 	}
 
 	err = db.Count(&total).Error
@@ -158,13 +172,10 @@ func (m *MemUserService) GetList(info bizReq.MemUserSearch, createdAtBetween []s
 		err = db.Select(fields).Order(OrderStr).Limit(limit).Offset(offset).Find(&memUsers).Error
 	}
 	//如果有图片image类型，更新图片path
-	// for i, v := range memUsers {
-	//  v.MapData = make(map[string]string)
-	//     if !utils.IsEmpty(v.Avatar) {
-	//         _, v.MapData[v.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(v.Avatar)
-	//     }
-	//   memUsers[i] = v
-	// }
+	for i, v := range memUsers {
+		v.MapData = make(map[string]string)
+		memUsers[i] = v
+	}
 	return memUsers, total, err
 }
 
@@ -190,22 +201,19 @@ func (m *MemUserService) GetListAll(info bizReq.MemUserSearch, createdAtBetween 
 
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.Username != "" {
-		db = db.Where("`username` LIKE ?", "%"+info.Username+"%")
-	}
-	if info.Pws != "" {
-		db = db.Where("`pws` = ?", info.Pws)
+		db = db.Where("`username` = ?", info.Username)
 	}
 	if info.Email != "" {
-		db = db.Where("`email` LIKE ?", "%"+info.Email+"%")
+		db = db.Where("`email` = ?", info.Email)
 	}
 	if info.Mobile != "" {
-		db = db.Where("`mobile` LIKE ?", "%"+info.Mobile+"%")
+		db = db.Where("`mobile` = ?", info.Mobile)
 	}
 	if info.Nickname != "" {
-		db = db.Where("`nickname` LIKE ?", "%"+info.Nickname+"%")
+		db = db.Where("`nickname` = ?", info.Nickname)
 	}
 	if info.Realname != "" {
-		db = db.Where("`realname` LIKE ?", "%"+info.Realname+"%")
+		db = db.Where("`realname` = ?", info.Realname)
 	}
 	if info.CardId != "" {
 		db = db.Where("`card_id` = ?", info.CardId)
@@ -213,11 +221,32 @@ func (m *MemUserService) GetListAll(info bizReq.MemUserSearch, createdAtBetween 
 	if info.Sex != nil {
 		db = db.Where("`sex` = ?", info.Sex)
 	}
+	if info.MobileValidated != nil {
+		db = db.Where("`mobile_validated` = ?", info.MobileValidated)
+	}
+	if info.EmailValidated != nil {
+		db = db.Where("`email_validated` = ?", info.EmailValidated)
+	}
+	if info.CardidValidated != nil {
+		db = db.Where("`cardid_validated` = ?", info.CardidValidated)
+	}
+	if info.RecommendCode != "" {
+		db = db.Where("`recommend_code` = ?", info.RecommendCode)
+	}
 	if info.Status != nil {
 		db = db.Where("`status` = ?", info.Status)
 	}
 	if info.StatusSafe != nil {
 		db = db.Where("`status_safe` = ?", info.StatusSafe)
+	}
+	if info.RegIp != nil {
+		db = db.Where("`reg_ip` = ?", info.RegIp)
+	}
+	if info.LoginIp != nil {
+		db = db.Where("`login_ip` = ?", info.LoginIp)
+	}
+	if info.LoginTime != nil {
+		db = db.Where("`login_time` > > ?", info.LoginTime)
 	}
 
 	err = db.Count(&total).Error
@@ -243,9 +272,6 @@ func (m *MemUserService) GetListAll(info bizReq.MemUserSearch, createdAtBetween 
 	//如果有图片image类型，更新图片path
 	for i, v := range memUsers {
 		v.MapData = make(map[string]string)
-		if !utils.IsEmpty(v.Avatar) {
-			_, v.MapData[v.Avatar] = comSev.GetCommonFileSev().GetPathByGuid(v.Avatar)
-		}
 		memUsers[i] = v
 	}
 	return memUsers, total, err

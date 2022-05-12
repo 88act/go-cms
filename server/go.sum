@@ -104,6 +104,8 @@ github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5Kwzbycv
 github.com/fatih/color v1.12.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
 github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
+github.com/favframework/debug v0.0.0-20150708094948-5c7e73aafb21 h1:2vtv9zukSrqqYtdJcwNstCYN24p9ZSjRngFyPZbTfms=
+github.com/favframework/debug v0.0.0-20150708094948-5c7e73aafb21/go.mod h1:Db34HRfPJ7kYnnr5JrXfkuCmxGbJYz7YkAyxnVwYN7A=
 github.com/flipped-aurora/ws v1.0.2 h1:oEUz7sgrbPENvgli7Q4QpC0NIEbJucgR4yjcDMg/AjY=
 github.com/flipped-aurora/ws v1.0.2/go.mod h1:RdyM2Fnvxx7f7A6WSmU1aAhDrQIAVW7LS/0LsAUE5mE=
 github.com/fortytw2/leaktest v1.3.0 h1:u8491cBMTQ8ft8aeV+adlcytMZylmA5nnwwkRZjI8vw=

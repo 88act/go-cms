@@ -11,6 +11,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dsnet/compress v0.0.1
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/favframework/debug v0.0.0-20150708094948-5c7e73aafb21
 	github.com/flipped-aurora/ws v1.0.2
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
