@@ -102,16 +102,4 @@ $ docker-compose -f docker-compose-env.yml up -d
 
 
 
-## 感谢以下优秀的项目 
 
-
-go-zero 微服务: https://github.com/zeromicro/go-zero
-
-go-zero-looklook   https://github.com/Mikaelemmmm/go-zero-looklook
-
-dtm分布式事务：https://github.com/dtm-labs/dtm
-
-gva项目  ：https://github.com/flipped-aurora/gin-vue-admin
-
-  
- 

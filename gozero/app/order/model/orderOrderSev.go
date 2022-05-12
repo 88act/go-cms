@@ -1,3 +1,4 @@
+// 自动生成模板OrderOrderSev
 package model
 
 import (

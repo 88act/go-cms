@@ -1,3 +1,4 @@
+// 自动生成模板ActActSev
 package model
 
 import (
