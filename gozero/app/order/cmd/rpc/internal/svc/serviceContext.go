@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"go-cms/app/order/cmd/rpc/internal/config"
-	"go-cms/app/order/model"
+	"looklook/app/order/cmd/rpc/internal/config"
+	"looklook/app/order/model"
 	"os"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -36,7 +36,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 }
 
 func GormMysql(dsn string) *gorm.DB {
-	//dsn := "root:PXDN93VRKUm8TeE7@tcp(mysql:33069)/go-cms_usercenter?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
+	//dsn := "root:PXDN93VRKUm8TeE7@tcp(mysql:33069)/looklook_usercenter?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
 	var ormLogger logger.Interface
 	//if cfg.Debug {
 	ormLogger = logger.Default.LogMode(logger.Info)

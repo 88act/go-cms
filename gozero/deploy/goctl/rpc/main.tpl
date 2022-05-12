@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	{{.imports}}
-	"go-cms/common/interceptor/rpcserver"
+	"looklook/common/interceptor/rpcserver"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

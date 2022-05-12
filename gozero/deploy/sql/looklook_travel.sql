@@ -1,11 +1,11 @@
 /*
  Navicat MySQL Data Transfer
 
- Source Server         : go-cms
+ Source Server         : looklook
  Source Server Type    : MySQL
  Source Server Version : 80028
  Source Host           : 127.0.0.1:33069
- Source Schema         : go-cms_travel
+ Source Schema         : looklook_travel
 
  Target Server Type    : MySQL
  Target Server Version : 80028

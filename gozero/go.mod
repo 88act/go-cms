@@ -1,4 +1,4 @@
-module go-cms
+module looklook
 
 go 1.17
 

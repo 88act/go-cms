@@ -17,7 +17,7 @@ output.kafka:
   enabled: true
   hosts: ["kafka:9092"]
   #要提前创建topic
-  topic: "go-cms-log"
+  topic: "looklook-log"
   partition.hash:
     reachable_only: true
   compression: gzip

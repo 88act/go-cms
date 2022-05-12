@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	{{.importPackages}}
-    "go-cms/common/middleware"
+    "looklook/common/middleware"
 )
 
 var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file")

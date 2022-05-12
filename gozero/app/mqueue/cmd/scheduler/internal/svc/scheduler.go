@@ -2,7 +2,7 @@ package svc
 
 import (
 	"fmt"
-	"go-cms/app/mqueue/cmd/scheduler/internal/config"
+	"looklook/app/mqueue/cmd/scheduler/internal/config"
 	"time"
 
 	"github.com/hibiken/asynq"

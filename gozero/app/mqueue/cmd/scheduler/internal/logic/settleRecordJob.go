@@ -2,13 +2,13 @@ package logic
 
 import (
 	"fmt"
-	"go-cms/app/mqueue/cmd/job/jobtype"
+	"looklook/app/mqueue/cmd/job/jobtype"
 
 	"github.com/hibiken/asynq"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-// scheduler job ------> go-zero-go-cms/app/mqueue/cmd/job/internal/logic/settleRecord.go.
+// scheduler job ------> go-zero-looklook/app/mqueue/cmd/job/internal/logic/settleRecord.go.
 func (l *MqueueScheduler) settleRecordScheduler() {
 
 	task := asynq.NewTask(jobtype.ScheduleSettleRecord, nil)

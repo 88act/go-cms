@@ -4,8 +4,8 @@ package handler
 import (
 	"net/http"
 
-	user "go-cms/app/usercenter/cmd/api/internal/handler/user"
-	"go-cms/app/usercenter/cmd/api/internal/svc"
+	user "looklook/app/usercenter/cmd/api/internal/handler/user"
+	"looklook/app/usercenter/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

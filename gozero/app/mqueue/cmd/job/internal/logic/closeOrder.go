@@ -3,11 +3,11 @@ package logic
 import (
 	"context"
 	"encoding/json"
-	"go-cms/app/mqueue/cmd/job/internal/svc"
-	"go-cms/app/mqueue/cmd/job/jobtype"
-	"go-cms/app/order/cmd/rpc/order"
-	"go-cms/app/order/model"
-	"go-cms/common/xerr"
+	"looklook/app/mqueue/cmd/job/internal/svc"
+	"looklook/app/mqueue/cmd/job/jobtype"
+	"looklook/app/order/cmd/rpc/order"
+	"looklook/app/order/model"
+	"looklook/common/xerr"
 
 	"github.com/hibiken/asynq"
 	"github.com/pkg/errors"

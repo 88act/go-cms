@@ -2,8 +2,8 @@ package svc
 
 import (
 	"context"
-	"go-cms/app/payment/cmd/api/internal/config"
-	"go-cms/common/xerr"
+	"looklook/app/payment/cmd/api/internal/config"
+	"looklook/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/wechatpay-apiv3/wechatpay-go/core"

@@ -5,7 +5,7 @@ Clusters:
         Brokers:
           - "kafka:9092"
         Topics:
-          - go-cms-log
+          - looklook-log
         Group: pro
         Consumers: 16
     Filters:
@@ -42,4 +42,4 @@ Clusters:
       ElasticSearch:
         Hosts:
           - "http://elasticsearch:9200"
-        Index: "go-cms-{{yyyy-MM-dd}}"
+        Index: "looklook-{{yyyy-MM-dd}}"

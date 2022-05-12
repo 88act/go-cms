@@ -2,8 +2,8 @@ package logic
 
 import (
 	"context"
-	"go-cms/app/mqueue/cmd/job/internal/svc"
-	"go-cms/app/mqueue/cmd/job/jobtype"
+	"looklook/app/mqueue/cmd/job/internal/svc"
+	"looklook/app/mqueue/cmd/job/jobtype"
 
 	"github.com/hibiken/asynq"
 )

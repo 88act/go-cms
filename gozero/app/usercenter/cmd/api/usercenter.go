@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"go-cms/app/usercenter/cmd/api/internal/config"
-	"go-cms/app/usercenter/cmd/api/internal/handler"
-	"go-cms/app/usercenter/cmd/api/internal/svc"
+	"looklook/app/usercenter/cmd/api/internal/config"
+	"looklook/app/usercenter/cmd/api/internal/handler"
+	"looklook/app/usercenter/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"

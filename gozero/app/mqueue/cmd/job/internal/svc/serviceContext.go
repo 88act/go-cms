@@ -1,9 +1,9 @@
 package svc
 
 import (
-	"go-cms/app/mqueue/cmd/job/internal/config"
-	"go-cms/app/order/cmd/rpc/order"
-	"go-cms/app/usercenter/cmd/rpc/usercenter"
+	"looklook/app/mqueue/cmd/job/internal/config"
+	"looklook/app/order/cmd/rpc/order"
+	"looklook/app/usercenter/cmd/rpc/usercenter"
 
 	"github.com/hibiken/asynq"
 	"github.com/silenceper/wechat/v2/miniprogram"

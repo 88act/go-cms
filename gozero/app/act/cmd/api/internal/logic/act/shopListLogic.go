@@ -3,8 +3,8 @@ package act
 import (
 	"context"
 
-	"go-cms/app/act/cmd/api/internal/svc"
-	"go-cms/app/act/cmd/api/internal/types"
+	"looklook/app/act/cmd/api/internal/svc"
+	"looklook/app/act/cmd/api/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

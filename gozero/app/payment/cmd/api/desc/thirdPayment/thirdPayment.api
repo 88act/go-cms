@@ -3,7 +3,7 @@ syntax = "v1"
 info(
 	title: "支付服务"
 	desc: "支付服务"
-	author: "go-cms"
+	author: "looklook"
 	email: "10512203@qq.com"
 	version: "v1"
 )

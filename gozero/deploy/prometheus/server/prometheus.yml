@@ -11,77 +11,77 @@ scrape_configs:
 
   - job_name: 'order-api'
     static_configs:
-      - targets: [ 'go-cms:4001' ]
+      - targets: [ 'looklook:4001' ]
         labels:
           job: order-api
           app: order-api
           env: dev
   - job_name: 'order-rpc'
     static_configs:
-      - targets: [ 'go-cms:4002' ]
+      - targets: [ 'looklook:4002' ]
         labels:
           job: order-rpc
           app: order-rpc
           env: dev
   - job_name: 'order-mq'
     static_configs:
-      - targets: [ 'go-cms:4003' ]
+      - targets: [ 'looklook:4003' ]
         labels:
           job: order-mq
           app: order-mq
           env: dev
   - job_name: 'payment-api'
     static_configs:
-      - targets: [ 'go-cms:4004' ]
+      - targets: [ 'looklook:4004' ]
         labels:
           job: payment-api
           app: payment-api
           env: dev
   - job_name: 'payment-rpc'
     static_configs:
-      - targets: [ 'go-cms:4005' ]
+      - targets: [ 'looklook:4005' ]
         labels:
           job: payment-rpc
           app: payment-rpc
           env: dev
   - job_name: 'travel-api'
     static_configs:
-      - targets: [ 'go-cms:4006' ]
+      - targets: [ 'looklook:4006' ]
         labels:
           job: travel-api
           app: travel-api
           env: dev
   - job_name: 'travel-rpc'
     static_configs:
-      - targets: [ 'go-cms:4007' ]
+      - targets: [ 'looklook:4007' ]
         labels:
           job: travel-rpc
           app: travel-rpc
           env: dev
   - job_name: 'usercenter-api'
     static_configs:
-      - targets: ['go-cms:4008']
+      - targets: ['looklook:4008']
         labels:
           job: usercenter-api
           app: usercenter-api
           env: dev
   - job_name: 'usercenter-rpc'
     static_configs:
-      - targets: ['go-cms:4009']
+      - targets: ['looklook:4009']
         labels:
           job: usercenter-rpc
           app: usercenter-rpc
           env: dev
   - job_name: 'mqueue-job'
     static_configs:
-      - targets: [ 'go-cms:4010' ]
+      - targets: [ 'looklook:4010' ]
         labels:
           job: mqueue-job
           app: mqueue-job
           env: dev
   - job_name: 'mqueue-scheduler'
     static_configs:
-      - targets: [ 'go-cms:4011' ]
+      - targets: [ 'looklook:4011' ]
         labels:
           job: mqueue-scheduler
           app: mqueue-scheduler

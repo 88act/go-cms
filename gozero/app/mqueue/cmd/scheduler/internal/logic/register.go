@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"go-cms/app/mqueue/cmd/scheduler/internal/svc"
+	"looklook/app/mqueue/cmd/scheduler/internal/svc"
 )
 
 type MqueueScheduler struct {

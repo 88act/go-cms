@@ -1,8 +1,8 @@
 
 
-## go-zero-go-cms
+## go-zero-looklook
 
-English | [简体中文](https://github.com/Mikaelemmmm/go-zero-go-cms/blob/main/README-cn.md)
+English | [简体中文](https://github.com/Mikaelemmmm/go-zero-looklook/blob/main/README-cn.md)
 
 
 
@@ -45,13 +45,13 @@ I may have contacted go zero earlier. I have been using go zero since about 1000
 
 This is the go zero tutorial I'm recording ：https://www.bilibili.com/medialist/play/389552232?from=space&business=space_series&business_id=2122723&desc=1
 
-At the end of this tutorial, we will also share go-zero -go-cms. Please look forward to it～
+At the end of this tutorial, we will also share go-zero -looklook. Please look forward to it～
 
 
 
 ## Doc
 
- https://github.com/Mikaelemmmm/go-zero-go-cms/tree/main/doc/english   Under the doc directory of the project
+ https://github.com/Mikaelemmmm/go-zero-looklook/tree/main/doc/english   Under the doc directory of the project
 
 
 
@@ -92,11 +92,11 @@ The project directory structure is as follows：
 
 ## System architecture diagram
 
-![jiagou](./doc/chinese/images/1/gozerogo-cms.png)
+![jiagou](./doc/chinese/images/1/gozerolooklook.png)
 
 ## Business architecture diagram
 
-![jiagou](./doc/chinese/images/1/go-zero-go-cms-service.png)
+![jiagou](./doc/chinese/images/1/go-zero-looklook-service.png)
 
 
 ## Gateway
@@ -163,7 +163,7 @@ Docker compose is recommended in the development environment of the project. The
 
 For testing and online deployment, k8s (etcd, Nacos, consumer, etc.) has detailed tutorials (build + deploy), which can be communicated in the go zero community group, which is very easy
 
-project doc ：https://github.com/Mikaelemmmm/go-zero-go-cms/tree/main/doc
+project doc ：https://github.com/Mikaelemmmm/go-zero-looklook/tree/main/doc
 
 gitlab + jenkins + harbor + k8s
 

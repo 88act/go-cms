@@ -4,8 +4,8 @@ package handler
 import (
 	"net/http"
 
-	order "go-cms/app/order/cmd/api/internal/handler/order"
-	"go-cms/app/order/cmd/api/internal/svc"
+	order "looklook/app/order/cmd/api/internal/handler/order"
+	"looklook/app/order/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"go-cms/app/order/cmd/rpc/internal/config"
+	"looklook/app/order/cmd/rpc/internal/config"
 
 	"github.com/hibiken/asynq"
 )

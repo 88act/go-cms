@@ -6,7 +6,7 @@ package payment
 import (
 	"context"
 
-	"go-cms/app/payment/cmd/rpc/pb"
+	"looklook/app/payment/cmd/rpc/pb"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

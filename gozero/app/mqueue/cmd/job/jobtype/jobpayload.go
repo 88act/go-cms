@@ -1,6 +1,6 @@
 package jobtype
 
-import "go-cms/app/order/model"
+import "looklook/app/order/model"
 
 // DeferCloseHomestayOrderPayload defer close homestay order
 type DeferCloseHomestayOrderPayload struct {

@@ -4,11 +4,11 @@ import (
 	"context"
 	"net/http"
 
-	"go-cms/app/payment/cmd/api/internal/svc"
-	"go-cms/app/payment/cmd/api/internal/types"
-	"go-cms/app/payment/cmd/rpc/payment"
-	"go-cms/app/payment/model"
-	"go-cms/common/xerr"
+	"looklook/app/payment/cmd/api/internal/svc"
+	"looklook/app/payment/cmd/api/internal/types"
+	"looklook/app/payment/cmd/rpc/payment"
+	"looklook/app/payment/model"
+	"looklook/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/verifiers"

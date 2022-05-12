@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"go-cms/app/act/cmd/api/internal/config"
-	"go-cms/app/act/cmd/rpc/act"
+	"looklook/app/act/cmd/api/internal/config"
+	"looklook/app/act/cmd/rpc/act"
 
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/zrpc"

@@ -4,23 +4,23 @@ version: '3'
 
 services: 
   #前端api + 业务rpc
-  go-cms:
+  looklook:
     image: fzqk9/gomodd:v1.0.0 # if you "macOs intel" or "linux amd"
     #image: lyumikael/go-modd-env:v1.0.0  # if you macOs m1
-    container_name: go-cms
+    container_name: looklook
     environment:
       # 时区上海
       TZ: Asia/Shanghai
       GOPROXY: https://goproxy.cn,direct
-    working_dir: /go/go-cms
+    working_dir: /go/looklook
     volumes:
-      - .:/go/go-cms
+      - .:/go/looklook
     privileged: true
     restart: always
     networks:
-      - go-cms_net
+      - looklook_net
 
- #前端网关nginx-gateay (只代理go-cms，admin-api不在这里做代理)
+ #前端网关nginx-gateay (只代理looklook，admin-api不在这里做代理)
   nginx-gateway:
     image: nginx:1.21.5
     container_name: nginx-gateway
@@ -34,13 +34,13 @@ services:
       - ./deploy/nginx/conf.d:/etc/nginx/conf.d
       - ./data/nginx/log:/var/log/nginx
     networks:
-      - go-cms_net
+      - looklook_net
     depends_on:
-      - go-cms
+      - looklook
 
 
 networks:
-  go-cms_net:
+  looklook_net:
     driver: bridge
     ipam:
       config:

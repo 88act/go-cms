@@ -21,7 +21,7 @@ services:
       - ES_SERVER_URLS=http://elasticsearch:9200
       - LOG_LEVEL=debug
     networks:
-      - go-cms_net
+      - looklook_net
  
   #asynqmon asynq延迟队列、定时队列的webui
   asynqmon:
@@ -34,7 +34,7 @@ services:
       - '--redis-password=G62m50oigInC30sf'
     restart: always
     networks:
-      - go-cms_net
+      - looklook_net
     depends_on:
       - redis
 
@@ -62,7 +62,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - go-cms_net
+      - looklook_net
 
   #redis容器
   redis:
@@ -80,7 +80,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - go-cms_net
+      - looklook_net
 
 
 
@@ -100,10 +100,10 @@ services:
     - 9200:9200
     - 9300:9300
     networks:
-      - go-cms_net
+      - looklook_net
 
 networks:
-  go-cms_net:
+  looklook_net:
     driver: bridge
     ipam:
       config:

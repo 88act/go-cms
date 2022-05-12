@@ -3,11 +3,11 @@ package logic
 import (
 	"context"
 
-	"go-cms/app/order/cmd/rpc/internal/svc"
-	"go-cms/app/order/cmd/rpc/pb"
-	"go-cms/app/order/model"
-	"go-cms/common/uniqueid"
-	"go-cms/common/xerr"
+	"looklook/app/order/cmd/rpc/internal/svc"
+	"looklook/app/order/cmd/rpc/pb"
+	"looklook/app/order/model"
+	"looklook/common/uniqueid"
+	"looklook/common/xerr"
 
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"

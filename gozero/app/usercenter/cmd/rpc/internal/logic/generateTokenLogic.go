@@ -2,13 +2,13 @@ package logic
 
 import (
 	"context"
-	"go-cms/common/ctxdata"
+	"looklook/common/ctxdata"
 	"time"
 
 	"github.com/pkg/errors"
 
-	"go-cms/app/usercenter/cmd/rpc/internal/svc"
-	"go-cms/app/usercenter/cmd/rpc/pb"
+	"looklook/app/usercenter/cmd/rpc/internal/svc"
+	"looklook/app/usercenter/cmd/rpc/pb"
 
 	"github.com/golang-jwt/jwt/v4"
 

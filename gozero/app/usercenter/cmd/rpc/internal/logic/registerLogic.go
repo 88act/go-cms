@@ -2,11 +2,11 @@ package logic
 
 import (
 	"context"
-	"go-cms/app/usercenter/cmd/rpc/internal/svc"
-	"go-cms/app/usercenter/cmd/rpc/usercenter"
-	"go-cms/app/usercenter/model"
-	"go-cms/common/tool"
-	"go-cms/common/xerr"
+	"looklook/app/usercenter/cmd/rpc/internal/svc"
+	"looklook/app/usercenter/cmd/rpc/usercenter"
+	"looklook/app/usercenter/model"
+	"looklook/common/tool"
+	"looklook/common/xerr"
 	"strconv"
 
 	"github.com/jinzhu/copier"

@@ -3,7 +3,7 @@ package result
 import (
 	"context"
 
-	"go-cms/common/xerr"
+	"looklook/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"

@@ -3,9 +3,9 @@ package act
 import (
 	"context"
 
-	"go-cms/app/act/cmd/api/internal/svc"
-	"go-cms/app/act/cmd/api/internal/types"
-	"go-cms/app/act/cmd/rpc/act"
+	"looklook/app/act/cmd/api/internal/svc"
+	"looklook/app/act/cmd/api/internal/types"
+	"looklook/app/act/cmd/rpc/act"
 
 	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"

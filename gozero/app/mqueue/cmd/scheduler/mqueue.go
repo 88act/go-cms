@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"flag"
-	"go-cms/app/mqueue/cmd/scheduler/internal/config"
-	"go-cms/app/mqueue/cmd/scheduler/internal/logic"
-	"go-cms/app/mqueue/cmd/scheduler/internal/svc"
+	"looklook/app/mqueue/cmd/scheduler/internal/config"
+	"looklook/app/mqueue/cmd/scheduler/internal/logic"
+	"looklook/app/mqueue/cmd/scheduler/internal/svc"
 	"os"
 
 	"github.com/zeromicro/go-zero/core/logx"

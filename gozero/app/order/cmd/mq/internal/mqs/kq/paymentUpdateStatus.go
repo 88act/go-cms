@@ -3,12 +3,12 @@ package kq
 import (
 	"context"
 	"encoding/json"
-	"go-cms/app/order/cmd/mq/internal/svc"
-	"go-cms/app/order/cmd/rpc/order"
-	"go-cms/app/order/model"
-	paymentModel "go-cms/app/payment/model"
-	"go-cms/common/kqueue"
-	"go-cms/common/xerr"
+	"looklook/app/order/cmd/mq/internal/svc"
+	"looklook/app/order/cmd/rpc/order"
+	"looklook/app/order/model"
+	paymentModel "looklook/app/payment/model"
+	"looklook/common/kqueue"
+	"looklook/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"

@@ -6,7 +6,7 @@ package order
 import (
 	"context"
 
-	"go-cms/app/order/cmd/rpc/pb"
+	"looklook/app/order/cmd/rpc/pb"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

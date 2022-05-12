@@ -2,7 +2,7 @@ package model
 
 import (
 	"context"
-	"go-cms/common/utils"
+	"looklook/common/utils"
 
 	"github.com/zeromicro/go-zero/core/stores/cache"
 

@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"go-cms/app/mqueue/cmd/job/internal/config"
+	"looklook/app/mqueue/cmd/job/internal/config"
 
 	"github.com/silenceper/wechat/v2"
 	"github.com/silenceper/wechat/v2/cache"

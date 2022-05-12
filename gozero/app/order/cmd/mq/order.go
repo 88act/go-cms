@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"go-cms/app/order/cmd/mq/internal/config"
-	"go-cms/app/order/cmd/mq/internal/listen"
+	"looklook/app/order/cmd/mq/internal/config"
+	"looklook/app/order/cmd/mq/internal/listen"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

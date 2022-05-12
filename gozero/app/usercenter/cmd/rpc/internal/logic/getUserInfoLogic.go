@@ -4,10 +4,10 @@ import (
 	"context"
 	"strconv"
 
-	"go-cms/app/usercenter/cmd/rpc/internal/svc"
-	"go-cms/app/usercenter/cmd/rpc/pb"
-	"go-cms/app/usercenter/cmd/rpc/usercenter"
-	"go-cms/common/xerr"
+	"looklook/app/usercenter/cmd/rpc/internal/svc"
+	"looklook/app/usercenter/cmd/rpc/pb"
+	"looklook/app/usercenter/cmd/rpc/usercenter"
+	"looklook/common/xerr"
 
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
