@@ -2,11 +2,11 @@
 
 ## go-zero -gocms
 
- https://github.com/88act/looklook/gozero/README.md) | 简体中文
+ https://github.com/88act/go-cms/gozero/README.md) | 简体中文
 
 
 
-## 前言
+## 项目介绍 
 
 本项目是 gozero 的 gorm v2 版本 ,欢迎 Star
 使用 gormv2 版本操作数据库 ,可能更合适熟悉了gorm v2不想换sqlx,又想享受高效率的的gozero微服务框架的朋友 
