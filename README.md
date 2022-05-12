@@ -59,11 +59,12 @@
 - 1、  克隆本项目
     git clone https://github.com/88act/go-cms.git
 
-- 2、  还原数据库,到本机的mysql 数据库,  数据库文件在文件夹  go-cms/doc/sql/
+- 2、  还原数据库,到本机的mysql 数据库,  数据库文件在文件夹  go-cms/doc/sql/  ,四个模块的表放在同一个数据库,方便测试,实际部署时可以分库
+    -  微服务器项目包括四个模块: usercenter 用户中心 ,act 活动模块 ,order 订单模块 pay 支付模块 
+    -  对应的 数据库前缀分别是 : mem_ , act_ , order_, pay_   
  
-  修改app目录的四个etc文件夹的 DB配置项, 使之正常连接数据库 
-  比如  act.yaml 文件 ，修改自己的数据库配置 ，比如 ： 
-  DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+    - 修改app目录的四个etc文件夹的 DB配置项, 使之正常连接数据库 ,  比如  act.yaml 文件 ，修改自己的数据库配置 ，比如 ： 
+       DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 - 3、 启动4个微服务器,本项目使用 modd 启动和管理 ,  关于modd更多用法可以去这里了解 ： https://github.com/cortesi/modd
     cd gozero
@@ -225,4 +226,20 @@ k8s集群管理(进行中....)
 
 腾讯IM历史消息下载器
 | <img src="https://cms.88act.com/res/img/gocms/g6.jpg"  /> |
+ 
+
+
+
+## 感谢以下优秀的项目 
+
+
+go-zero 微服务: https://github.com/zeromicro/go-zero
+
+go-zero-looklook   https://github.com/Mikaelemmmm/go-zero-looklook
+
+dtm分布式事务：https://github.com/dtm-labs/dtm
+
+gva项目  ：https://github.com/flipped-aurora/gin-vue-admin
+
+  
  

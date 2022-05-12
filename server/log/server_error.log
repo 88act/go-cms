@@ -19,3 +19,4 @@
 [GoCms]2022/05/12 - 22:12:43.658	[31merror[0m	D:/work_go/go-cms/server/api/v1/business/pay_payment.go:159	获取失败!	{"err": "Error 1054: Unknown column 'pay_payment.price' in 'field list'"}
 [GoCms]2022/05/12 - 22:12:56.294	[31merror[0m	D:/work_go/go-cms/server/api/v1/business/pay_payment.go:159	获取失败!	{"err": "Error 1054: Unknown column 'pay_payment.price' in 'field list'"}
 [GoCms]2022/05/12 - 22:15:33.667	[31merror[0m	D:/work_go/go-cms/server/api/v1/system/sys_menu.go:144	删除失败!	{"err": "此菜单存在子菜单不可删除"}
+[GoCms]2022/05/12 - 22:23:22.041	[31merror[0m	D:/work_go/go-cms/server/api/v1/business/pay_payment.go:159	获取失败!	{"err": "Error 1054: Unknown column 'pay_payment.price' in 'field list'"}
