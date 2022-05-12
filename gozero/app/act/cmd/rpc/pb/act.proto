@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+message ActInfo  { 
+  int64 id  = 1; 
+  int64 userId  =2;     //用户id 
+  bool beOnline   = 3;       //类型
+  string actType  = 4;    //活动类型 
+  bool beMulti   = 5;       //分期活动 
+  int32 phase  = 6;    //分期
+  string title  = 7;    //标题
+  string desc  = 8;    //简介
+  string avater  = 9;    //缩略图
+  string mediaList  = 10;    //媒体列表
+  string address  = 11;    //地址 
+  int32 areaId  = 12;    //地区id 
+  int64 lng  = 13;     //经度 
+  int64 lat  = 14;     //纬度 
+  int64 beginTime   = 15;   //开始时间 
+  int64 endTime   = 16;   //结束时间 
+  int64 liveTime   = 17;   //直播开始 
+  int64 liveEnd   = 18;   //直播结束
+  string presenter  = 19;    //主持/讲师
+  string phoneKefu  = 20;    //客服电话
+  string phoneHezu  = 21;    //合作电话
+  string wx  = 22;    //微信
+  string qq  = 23;    //QQ
+  string groupId  = 24;    //群组id 
+  int64 endJoinTime   = 25;   //结束报名 
+  int32 price  = 26;    //票价 
+  int32 priceVip  = 27;    //vip票价
+  string priceDesc  = 28;    //票价描述 
+  int32 refundType  = 29;    //退费类型 
+  int32 refundDays  = 30;    //退费天 
+  int32 beShowjoin  = 31;    //是否显示人数 
+  int32 statusAct  = 32;    //活动状态 
+  int32 maxJoin  = 33;    //最大报名人数 
+  int32 nowJoin  = 34;    //当前报名人数 
+  bool beChosen   = 35;       //是否精选 
+  bool beWeek   = 36;       //是否周末 
+  bool beVip   = 37;       //是否会员 
+  int32 totalWhole  = 38;    //综合指数 
+  int32 totalShare  = 39;    //总分享 
+  int32 totalFav  = 40;    //总收藏 
+  int32 totalJoin  = 41;    //总报名数 
+  int32 totalDiscuss  = 42;    //总评论 
+  int32 totalClick  = 43;    //总点击 
+  int32 totalStar  = 44;    //总评 
+  int32 totalStar1  = 45;    //总星评1 
+  int32 totalStar2  = 46;    //总星评2 
+  int32 totalStar3  = 47;    //总星评3 
+  int32 status  = 48;    //状态
+  string statusMsg  = 49;    //审核原因   
+  int32 catId  = 50;    //系统栏目 
+  int32 catIdUser  = 51;    //用户栏目 
+}
+ 
+message ActDetailReq {
+  int64   id = 1;
+}
+message ActDetailResp {
+  ActInfo act = 1;
+}
+
+message ActListReq {
+  int32   page = 1;
+  int32   pageSize = 2;
+}
+message ActListResp {
+  repeated ActInfo list = 1;
+}
+
+
+
+
+//service
+service act {
+    //actDetail
+    rpc actDetail(ActDetailReq) returns(ActDetailResp);
+    //actList
+    rpc actList(ActListReq) returns(ActListResp);
+}

@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+ 
+
+//req 、resp
+message CreatePaymentReq {
+  int64  userId = 1;
+  string payModel = 2;
+  int64  payTotal = 3; //（分）
+  string orderSn = 4;
+  string serviceType = 5;
+}
+message CreatePaymentResp {
+  string sn = 1; //流水记录单号
+}
+
+
+message PaymentDetail{ 
+  int64 id  = 1;
+  string sn  = 2;    //流水单号 
+  int64 version  = 3;     //版本号 
+  int64 userId  = 4;     //用户id
+  string payMode  = 5;    //支付方式
+  int64 payTotal  = 6;    //支付金额(分)
+  string transactionId  = 7;    //第三方支付单号
+  string tradeStateDesc  = 8;    //支付状态描述
+  string orderSn  = 9;    //业务单号
+  string serviceType  = 10;    //业务类型 
+  int32 payStatus  = 11;    //平台交易状态 
+  int64 payTime   = 12;   //支付时间 
+  int32 status  = 13;    //状态  
+  string tradeType  = 14;    //支付类型
+  string tradeState  = 15;    //交易状态  
+  int64 createdAt  = 16;     
+  int64 updatedAt  = 17;
+}
+
+message GetPaymentBySnReq {
+  string   sn = 1;
+}
+message GetPaymentBySnResp {
+  PaymentDetail paymentDetail = 1;
+}
+
+message GetPaymentSuccessRefundByOrderSnReq {
+  string orderSn = 1;
+}
+message GetPaymentSuccessRefundByOrderSnResp {
+  PaymentDetail paymentDetail = 1;
+}
+
+//更新交易状态
+message UpdateTradeStateReq {
+  string   sn = 1;
+  string   tradeState = 2;
+  string   transactionId = 3;
+  string   tradeType = 4;
+  string   tradeStateDesc = 5;
+  int32    payStatus = 6;
+  int64    payTime = 7;
+}
+message UpdateTradeStateResp {
+}
+
+
+
+//service
+service payment {
+    //创建微信支付预处理订单
+    rpc CreatePayment(CreatePaymentReq) returns(CreatePaymentResp);
+
+    //根据sn查询流水记录
+    rpc GetPaymentBySn(GetPaymentBySnReq) returns(GetPaymentBySnResp);
+
+    //更新交易状态
+    rpc UpdateTradeState(UpdateTradeStateReq) returns(UpdateTradeStateResp);
+
+    //根据订单sn查询流水记录
+    rpc GetPaymentSuccessRefundByOrderSn(GetPaymentSuccessRefundByOrderSnReq) returns(GetPaymentSuccessRefundByOrderSnResp);
+
+}

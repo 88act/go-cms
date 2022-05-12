@@ -1,0 +1,39 @@
+syntax = "v1"
+
+info(
+	title: "订单服务"
+	desc: "订单服务"
+	author: "go-cms"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+
+import (
+	"order/order.api"
+)
+
+//========================> order v1 <========================
+//need login
+@server(
+	prefix: order/v1
+	group: order
+	jwt: JwtAuth
+)
+service order {
+	
+	@doc "创建订单"
+	@handler addOrder
+	post /order/addOrder (AddOrderReq) returns (AddOrderResp)
+	
+	@doc "用户订单列表"
+	@handler orderList
+	post /order/orderList (OrderListReq) returns (OrderListResp)
+	
+	@doc "订单明细"
+	@handler orderDetail
+	post /order/orderDetail (OrderDetailReq) returns (OrderDetailResp)
+	
+	@doc "更新订单"
+	@handler updateOrder
+	post /order/updateOrder (UpdateOrderReq) returns (UpdateOrderResp)
+}

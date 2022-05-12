@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb; 
+ 
+ 
+  message MemUser  { 
+    int64 id  = 1;
+    string username  = 2;    //用户名
+    string email  = 3;    //邮件
+    string mobile  = 4;    //手机
+    string nickname  = 5;    //昵称
+    string realname  = 6;    //真实名
+    string cardId  = 7;    //身份证 
+    int32 sex  = 8;    //性别 
+    int64 birthday   = 9;   //生日
+    string avatar  = 10;    //头像 
+    bool mobileValidated   = 11;       //验证手机 
+    bool emailValidated   = 12;       //验证邮箱 
+    bool cardidValidated   = 13;       //验证实名
+    string info  = 14;    //备注
+    string recommendCode  = 15;    //推荐码16位（自己的） 
+    int32 status  = 16;    //状态 
+    int32 statusSafe  = 17;    //安全状态 
+    int32 regIp  = 18;    //注册ip 
+    int32 loginIp  = 19;    //登录ip 
+    int32 loginTotal  = 20;    //登录次数 
+    int64 loginTime   = 21;   //最后登录时间   
+    string password  = 22;    //密码
+    string passwordSlat  = 23;    //密码盐
+  }
+ 
+ 
+message UserAuth {
+  int64  id = 1;
+  int64  userId = 2;
+  string authType = 3;
+  string authKey = 4;
+}
+
+
+//req 、resp
+message RegisterReq {
+  string mobile = 1;
+  string nickname = 2;
+  string password = 3;
+  string email = 4; 
+  string avatar = 5; 
+  string authKey = 6;
+  string authType =7;
+}
+message RegisterResp {
+  string accessToken = 1;
+  int64  accessExpire = 2;
+  int64  refreshAfter = 3;
+}
+
+message LoginReq {
+  string  authType = 1;
+  string authKey = 2;
+  string  password = 3;
+}
+message LoginResp {
+  string accessToken = 1;
+  int64  accessExpire = 2;
+  int64  refreshAfter = 3;
+}
+
+message GetUserInfoReq {
+  int64  id = 1;
+}
+message GetUserInfoResp {
+   MemUser user = 1;
+}
+
+message GetUserAuthByAuthKeyReq {
+  string  authKey = 1;
+  string  authType = 2;
+}
+message GetUserAuthByAuthKeyResp {
+   UserAuth userAuth = 1;
+}
+
+message GetUserAuthByUserIdReq {
+  int64  userId = 1;
+  string  authType = 2;
+}
+message GetUserAuthyUserIdResp {
+   UserAuth userAuth = 1;
+}
+
+message GenerateTokenReq {
+  int64 userId = 1;
+}
+message GenerateTokenResp {
+  string accessToken = 1;
+  int64  accessExpire = 2;
+  int64  refreshAfter = 3;
+}
+
+//service
+service usercenter {
+  rpc login(LoginReq) returns(LoginResp);
+  rpc register(RegisterReq) returns(RegisterResp);
+  rpc getUserInfo(GetUserInfoReq) returns(GetUserInfoResp);
+  rpc getUserAuthByAuthKey(GetUserAuthByAuthKeyReq) returns(GetUserAuthByAuthKeyResp);
+  rpc getUserAuthByUserId(GetUserAuthByUserIdReq) returns(GetUserAuthyUserIdResp);
+  rpc generateToken(GenerateTokenReq) returns(GenerateTokenResp);
+}

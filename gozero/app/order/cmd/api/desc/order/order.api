@@ -1,0 +1,80 @@
+syntax = "v1"
+
+info(
+	title: "订单服务"
+	desc: "订单服务"
+	author: "go-cms"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+
+// OrderInfo 详情
+type (
+    OrderInfo  { 
+		Id   int64   `json:"id"`            //  id
+		Sn  string `json:"sn"`              //订单号 
+		UserId  int64   `json:"userId"`     //用户id
+		OrderType  int `json:"orderType"`   //订单类型 
+		ObjId  int64   `json:"objId"`       //对象id
+		Price  int `json:"price"`           //实付价
+		PriceSrc  int `json:"priceSrc"`     //原价
+		CouponId  int `json:"couponId"`     //优惠券ID
+	    Title  string `json:"title"`        //标题
+		Remark  string `json:"remark"`      //备注
+		OrderCode  string `json:"orderCode"` //核销码
+		StatusPay  int `json:"statusPay"`    //支付状态
+		StatusOrder  int `json:"statusOrder"` //订单状态
+		Status  int `json:"status"`           //记录状态
+   }
+)
+
+type (
+	AddOrderReq {		 
+		OrderType  int `json:"orderType"`  //订单类型 
+		ObjId  int64   `json:"objId"`     //对象id
+		Price  int `json:"price"`         //实付价
+		PriceSrc  int `json:"priceSrc"`   //原价
+		CouponId  int `json:"couponId"`   //优惠券ID
+		Title  string `json:"title"`        //标题
+		Remark  string `json:"remark"`    //备注
+	}
+	AddOrderResp {
+		Sn  string `json:"sn"`    //订单号 
+	}
+) 
+
+type (
+	OrderDetailReq {
+		Sn  string `json:"sn"`    //订单号 	 
+	}
+	OrderDetailResp {
+		info  OrderInfo `json:"orderInfo"`  //订单详情  
+	}
+) 
+
+
+type (
+	OrderListReq {
+		Page     int32 `json:"page"`
+		PageSize int32 `json:"pageSize"`
+		Search   string `json:"search"`  
+	}
+	OrderListResp {
+		List  []OrderInfo `json:"list"`  //订单详情  
+	}
+) 
+  
+ type (
+	UpdateOrderReq {
+		Sn  string `json:"sn"`             //订单号 
+	    CouponId  int `json:"couponId"`     //优惠券ID
+		Remark  string `json:"remark"`      //备注
+		OrderCode  string `json:"orderCode"` //核销码	 
+		StatusOrder  int `json:"statusOrder"` //订单状态
+		Status  int `json:"status"`           //记录状态
+	}
+	UpdateOrderResp {
+		rows  int64 `json:"rows"`           //行数 
+	}
+) 
+  
