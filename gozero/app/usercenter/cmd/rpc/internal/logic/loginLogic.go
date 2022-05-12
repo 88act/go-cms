@@ -3,11 +3,11 @@ package logic
 import (
 	"context"
 
-	"looklook/app/usercenter/cmd/rpc/internal/svc"
-	"looklook/app/usercenter/cmd/rpc/usercenter"
-	"looklook/app/usercenter/model"
-	"looklook/common/tool"
-	"looklook/common/xerr"
+	"go-cms/app/usercenter/cmd/rpc/internal/svc"
+	"go-cms/app/usercenter/cmd/rpc/usercenter"
+	"go-cms/app/usercenter/model"
+	"go-cms/common/tool"
+	"go-cms/common/xerr"
 
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"

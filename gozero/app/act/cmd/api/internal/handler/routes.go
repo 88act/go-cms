@@ -3,8 +3,8 @@ package handler
 
 import (
 	"net/http" 
-	act "looklook/app/act/cmd/api/internal/handler/act"
-	"looklook/app/act/cmd/api/internal/svc" 
+	act "go-cms/app/act/cmd/api/internal/handler/act"
+	"go-cms/app/act/cmd/api/internal/svc" 
 	"github.com/zeromicro/go-zero/rest"
 )
 

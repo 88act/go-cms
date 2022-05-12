@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"looklook/app/payment/cmd/rpc/internal/logic"
-	"looklook/app/payment/cmd/rpc/internal/svc"
-	"looklook/app/payment/cmd/rpc/pb"
+	"go-cms/app/payment/cmd/rpc/internal/logic"
+	"go-cms/app/payment/cmd/rpc/internal/svc"
+	"go-cms/app/payment/cmd/rpc/pb"
 )
 
 type PaymentServer struct {

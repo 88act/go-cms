@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"looklook/app/act/cmd/rpc/internal/logic"
-	"looklook/app/act/cmd/rpc/internal/svc"
-	"looklook/app/act/cmd/rpc/pb"
+	"go-cms/app/act/cmd/rpc/internal/logic"
+	"go-cms/app/act/cmd/rpc/internal/svc"
+	"go-cms/app/act/cmd/rpc/pb"
 )
 
 type ActServer struct {

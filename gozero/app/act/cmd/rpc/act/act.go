@@ -6,7 +6,7 @@ package act
 import (
 	"context"
 
-	"looklook/app/act/cmd/rpc/pb"
+	"go-cms/app/act/cmd/rpc/pb"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

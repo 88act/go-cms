@@ -4,11 +4,11 @@ import (
 	"flag"
 	"fmt"
 
-	"looklook/app/act/cmd/rpc/internal/config"
-	"looklook/app/act/cmd/rpc/internal/server"
-	"looklook/app/act/cmd/rpc/internal/svc"
-	"looklook/app/act/cmd/rpc/pb"
-	"looklook/common/interceptor/rpcserver"
+	"go-cms/app/act/cmd/rpc/internal/config"
+	"go-cms/app/act/cmd/rpc/internal/server"
+	"go-cms/app/act/cmd/rpc/internal/svc"
+	"go-cms/app/act/cmd/rpc/pb"
+	"go-cms/common/interceptor/rpcserver"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

@@ -3,10 +3,10 @@ package logic
 import (
 	"context"
 
-	"looklook/app/act/cmd/rpc/act"
-	"looklook/app/act/cmd/rpc/internal/svc"
-	"looklook/app/act/cmd/rpc/pb"
-	"looklook/app/act/model"
+	"go-cms/app/act/cmd/rpc/act"
+	"go-cms/app/act/cmd/rpc/internal/svc"
+	"go-cms/app/act/cmd/rpc/pb"
+	"go-cms/app/act/model"
 
 	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"

@@ -25,8 +25,8 @@
 | order-mq         | 4003            |
 | payment-api      | 4004            |
 | payment-rpc      | 4005            |
-| travel-api       | 4006            |
-| travel-rpc       | 4007            |
+| act-api       | 4006            |
+| act-rpc       | 4007            |
 | usercenter-api   | 4008            |
 | usercenter-rpc   | 4009            |
 | mqueue-job       | 4010            |

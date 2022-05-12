@@ -3,10 +3,10 @@ package thirdPayment
 import (
 	"net/http"
 
-	"looklook/app/payment/cmd/api/internal/logic/thirdPayment"
-	"looklook/app/payment/cmd/api/internal/svc"
-	"looklook/app/payment/cmd/api/internal/types"
-	"looklook/common/result"
+	"go-cms/app/payment/cmd/api/internal/logic/thirdPayment"
+	"go-cms/app/payment/cmd/api/internal/svc"
+	"go-cms/app/payment/cmd/api/internal/types"
+	"go-cms/common/result"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )

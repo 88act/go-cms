@@ -44,19 +44,19 @@ scrape_configs:
           job: payment-rpc
           app: payment-rpc
           env: dev
-  - job_name: 'travel-api'
+  - job_name: 'act-api'
     static_configs:
       - targets: [ 'looklook:4006' ]
         labels:
-          job: travel-api
-          app: travel-api
+          job: act-api
+          app: act-api
           env: dev
-  - job_name: 'travel-rpc'
+  - job_name: 'act-rpc'
     static_configs:
       - targets: [ 'looklook:4007' ]
         labels:
-          job: travel-rpc
-          app: travel-rpc
+          job: act-rpc
+          app: act-rpc
           env: dev
   - job_name: 'usercenter-api'
     static_configs:

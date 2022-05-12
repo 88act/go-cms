@@ -3,10 +3,10 @@ package user
 import (
 	"net/http"
 
-	"looklook/app/usercenter/cmd/api/internal/logic/user"
-	"looklook/app/usercenter/cmd/api/internal/svc"
-	"looklook/app/usercenter/cmd/api/internal/types"
-	"looklook/common/result"
+	"go-cms/app/usercenter/cmd/api/internal/logic/user"
+	"go-cms/app/usercenter/cmd/api/internal/svc"
+	"go-cms/app/usercenter/cmd/api/internal/types"
+	"go-cms/common/result"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )

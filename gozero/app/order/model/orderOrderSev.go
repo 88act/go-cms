@@ -2,7 +2,7 @@ package model
 
 import (
 	"context"
-	"looklook/common/utils"
+	"go-cms/common/utils"
 
 	"github.com/zeromicro/go-zero/core/stores/cache"
 	"gorm.io/gorm"

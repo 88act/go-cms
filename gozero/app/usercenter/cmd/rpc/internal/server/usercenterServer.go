@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"looklook/app/usercenter/cmd/rpc/internal/logic"
-	"looklook/app/usercenter/cmd/rpc/internal/svc"
-	"looklook/app/usercenter/cmd/rpc/pb"
+	"go-cms/app/usercenter/cmd/rpc/internal/logic"
+	"go-cms/app/usercenter/cmd/rpc/internal/svc"
+	"go-cms/app/usercenter/cmd/rpc/pb"
 )
 
 type UsercenterServer struct {

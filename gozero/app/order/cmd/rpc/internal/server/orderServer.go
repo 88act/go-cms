@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"looklook/app/order/cmd/rpc/internal/logic"
-	"looklook/app/order/cmd/rpc/internal/svc"
-	"looklook/app/order/cmd/rpc/pb"
+	"go-cms/app/order/cmd/rpc/internal/logic"
+	"go-cms/app/order/cmd/rpc/internal/svc"
+	"go-cms/app/order/cmd/rpc/pb"
 )
 
 type OrderServer struct {

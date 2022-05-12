@@ -3,11 +3,11 @@ package act
 import (
 	"net/http"
 
-	"looklook/common/result"
+	"go-cms/common/result"
 
-	"looklook/app/act/cmd/api/internal/logic/act"
-	"looklook/app/act/cmd/api/internal/svc"
-	"looklook/app/act/cmd/api/internal/types"
+	"go-cms/app/act/cmd/api/internal/logic/act"
+	"go-cms/app/act/cmd/api/internal/svc"
+	"go-cms/app/act/cmd/api/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )

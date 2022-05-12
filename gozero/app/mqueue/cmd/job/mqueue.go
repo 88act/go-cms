@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"flag"
-	"looklook/app/mqueue/cmd/job/internal/logic"
-	"looklook/app/mqueue/cmd/job/internal/svc"
+	"go-cms/app/mqueue/cmd/job/internal/logic"
+	"go-cms/app/mqueue/cmd/job/internal/svc"
 	"os"
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"looklook/app/mqueue/cmd/job/internal/config"
+	"go-cms/app/mqueue/cmd/job/internal/config"
 
 	"github.com/zeromicro/go-zero/core/conf"
 )

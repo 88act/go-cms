@@ -4,8 +4,8 @@ package handler
 import (
 	"net/http"
 
-	thirdPayment "looklook/app/payment/cmd/api/internal/handler/thirdPayment"
-	"looklook/app/payment/cmd/api/internal/svc"
+	thirdPayment "go-cms/app/payment/cmd/api/internal/handler/thirdPayment"
+	"go-cms/app/payment/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

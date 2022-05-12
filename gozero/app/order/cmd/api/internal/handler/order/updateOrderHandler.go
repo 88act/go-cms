@@ -3,11 +3,11 @@ package order
 import (
 	"net/http"
 
-	"looklook/common/result"
+	"go-cms/common/result"
 
-	"looklook/app/order/cmd/api/internal/logic/order"
-	"looklook/app/order/cmd/api/internal/svc"
-	"looklook/app/order/cmd/api/internal/types"
+	"go-cms/app/order/cmd/api/internal/logic/order"
+	"go-cms/app/order/cmd/api/internal/svc"
+	"go-cms/app/order/cmd/api/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )

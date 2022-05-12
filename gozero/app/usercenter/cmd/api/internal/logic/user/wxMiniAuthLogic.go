@@ -4,11 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"looklook/app/usercenter/cmd/api/internal/svc"
-	"looklook/app/usercenter/cmd/api/internal/types"
-	"looklook/app/usercenter/cmd/rpc/usercenter"
-	usercenterModel "looklook/app/usercenter/model"
-	"looklook/common/xerr"
+	"go-cms/app/usercenter/cmd/api/internal/svc"
+	"go-cms/app/usercenter/cmd/api/internal/types"
+	"go-cms/app/usercenter/cmd/rpc/usercenter"
+	usercenterModel "go-cms/app/usercenter/model"
+	"go-cms/common/xerr"
 
 	"github.com/pkg/errors"
 	wechat "github.com/silenceper/wechat/v2"
@@ -67,7 +67,7 @@ func (l *WxMiniAuthLogic) WxMiniAuth(req types.WXMiniAuthReq) (*types.WXMiniAuth
 
 		//Wechat-Mini Decrypted data
 		mobile := userData.PhoneNumber
-		nickName := fmt.Sprintf("looklook%s", mobile[7:])
+		nickName := fmt.Sprintf("go-cms%s", mobile[7:])
 		registerRsp, err := l.svcCtx.UsercenterRpc.Register(l.ctx, &usercenter.RegisterReq{
 			AuthKey:  authResult.OpenID,
 			AuthType: usercenterModel.UserAuthTypeSmallWX,

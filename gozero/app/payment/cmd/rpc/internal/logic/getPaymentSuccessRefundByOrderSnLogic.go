@@ -2,11 +2,11 @@ package logic
 
 import (
 	"context"
-	"looklook/app/payment/cmd/rpc/internal/svc"
-	"looklook/app/payment/cmd/rpc/payment"
-	"looklook/app/payment/cmd/rpc/pb"
-	"looklook/app/payment/model"
-	"looklook/common/xerr"
+	"go-cms/app/payment/cmd/rpc/internal/svc"
+	"go-cms/app/payment/cmd/rpc/payment"
+	"go-cms/app/payment/cmd/rpc/pb"
+	"go-cms/app/payment/model"
+	"go-cms/common/xerr"
 
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"

@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"looklook/app/act/cmd/api/internal/config"
-	"looklook/app/act/cmd/api/internal/handler"
-	"looklook/app/act/cmd/api/internal/svc"
+	"go-cms/app/act/cmd/api/internal/config"
+	"go-cms/app/act/cmd/api/internal/handler"
+	"go-cms/app/act/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"

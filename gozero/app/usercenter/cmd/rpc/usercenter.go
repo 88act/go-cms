@@ -7,11 +7,11 @@ import (
 	"github.com/zeromicro/go-zero/core/service"
 	"google.golang.org/grpc/reflection"
 
-	"looklook/app/usercenter/cmd/rpc/internal/config"
-	"looklook/app/usercenter/cmd/rpc/internal/server"
-	"looklook/app/usercenter/cmd/rpc/internal/svc"
-	"looklook/app/usercenter/cmd/rpc/pb"
-	"looklook/common/interceptor/rpcserver"
+	"go-cms/app/usercenter/cmd/rpc/internal/config"
+	"go-cms/app/usercenter/cmd/rpc/internal/server"
+	"go-cms/app/usercenter/cmd/rpc/internal/svc"
+	"go-cms/app/usercenter/cmd/rpc/pb"
+	"go-cms/common/interceptor/rpcserver"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/zrpc"

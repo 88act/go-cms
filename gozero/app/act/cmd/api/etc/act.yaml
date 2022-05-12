@@ -21,7 +21,7 @@ Log:
   Level: error
 
 DB:
-  DataSource: root:123456@tcp(mysql:53306)/go-cms-builder?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 Cache:
   - Host: redis:6379
     Pass: G62m50oigInC30sf

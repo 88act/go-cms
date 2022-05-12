@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"looklook/app/payment/cmd/api/internal/logic/thirdPayment"
-	"looklook/app/payment/cmd/api/internal/svc"
+	"go-cms/app/payment/cmd/api/internal/logic/thirdPayment"
+	"go-cms/app/payment/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

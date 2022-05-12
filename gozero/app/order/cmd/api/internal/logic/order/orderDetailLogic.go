@@ -3,10 +3,10 @@ package order
 import (
 	"context"
 
-	"looklook/app/order/cmd/api/internal/svc"
-	"looklook/app/order/cmd/api/internal/types"
-	"looklook/app/order/cmd/rpc/order"
-	"looklook/common/ctxdata"
+	"go-cms/app/order/cmd/api/internal/svc"
+	"go-cms/app/order/cmd/api/internal/types"
+	"go-cms/app/order/cmd/rpc/order"
+	"go-cms/common/ctxdata"
 
 	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"

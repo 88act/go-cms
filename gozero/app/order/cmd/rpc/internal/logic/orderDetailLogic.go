@@ -3,10 +3,10 @@ package logic
 import (
 	"context"
 
-	"looklook/app/order/cmd/rpc/internal/svc"
-	"looklook/app/order/cmd/rpc/order"
-	"looklook/app/order/cmd/rpc/pb"
-	"looklook/common/xerr"
+	"go-cms/app/order/cmd/rpc/internal/svc"
+	"go-cms/app/order/cmd/rpc/order"
+	"go-cms/app/order/cmd/rpc/pb"
+	"go-cms/common/xerr"
 
 	"github.com/jinzhu/copier"
 	"github.com/pkg/errors"
