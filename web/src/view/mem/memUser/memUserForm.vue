@@ -6,10 +6,10 @@
               <el-input v-model="formData.username" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="密码:"> 
-              <el-input v-model="formData.pws" clearable placeholder="请输入" />
+              <el-input v-model="formData.password" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="密码盐:"> 
-              <el-input v-model="formData.pwsSlat" clearable placeholder="请输入" />
+              <el-input v-model="formData.passwordSlat" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="邮件:"> 
               <el-input v-model="formData.email" clearable placeholder="请输入" />
@@ -34,8 +34,8 @@
         <el-form-item label="生日:">
                 <el-date-picker v-model="formData.birthday" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
        </el-form-item>
-        <el-form-item label="头像:">
-               <ImageView ref="imageView_avatar" be-edit :url="getMapData(formData.avatar,formData.mapData)" :guid="formData.avatar" />
+        <el-form-item label="头像:"> 
+              <el-input v-model="formData.avatar" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="验证手机:">
              <el-switch active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否" v-model="formData.mobileValidated" clearable ></el-switch>
@@ -46,17 +46,11 @@
               
        </el-form-item>
         <el-form-item label="验证实名:">
-             <el-switch active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否" v-model="formData.realnameValidated" clearable ></el-switch>
+             <el-switch active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否" v-model="formData.cardidValidated" clearable ></el-switch>
               
        </el-form-item>
-        <el-form-item label="登录次数:">
-                 <el-input v-model.number="formData.loginTimes" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="推荐人ID:">
-                 <el-input v-model.number="formData.recommendId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="推荐人ID2:">
-                 <el-input v-model.number="formData.recommendId2" clearable placeholder="请输入" />
+        <el-form-item label="备注:"> 
+              <el-input v-model="formData.info" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="推荐码16位（自己的）:"> 
               <el-input v-model="formData.recommendCode" clearable placeholder="请输入" />
@@ -75,10 +69,13 @@
                  <el-input v-model.number="formData.regIp" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="登录ip:">
-                 <el-input v-model.number="formData.lastLoginIp" clearable placeholder="请输入" />
+                 <el-input v-model.number="formData.loginIp" clearable placeholder="请输入" />
+       </el-form-item>
+        <el-form-item label="登录次数:">
+                 <el-input v-model.number="formData.loginTotal" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="最后登录时间:">
-                <el-date-picker v-model="formData.lastLoginTime" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
+                <el-date-picker v-model="formData.loginTime" type="datetime" style="width:100%" placeholder="选择时间日期" clearable />
        </el-form-item>
         <el-form-item>
           <el-button size="mini" type="primary" @click="save">保存</el-button>
@@ -109,8 +106,8 @@ export default {
       usersafe_typeOptions: [],
       formData: {
            username: '',
-           pws: '',
-           pwsSlat: '',
+           password: '',
+           passwordSlat: '',
            email: '',
            mobile: '',
            nickname: '',
@@ -118,19 +115,18 @@ export default {
            cardId: '',
             sex: 0,
             birthday: new Date(),
-            avatar: "",
+           avatar: '',
            mobileValidated: false,
            emailValidated: false,
-           realnameValidated: false,
-            loginTimes: 0,
-            recommendId: 0,
-            recommendId2: 0,
+           cardidValidated: false,
+           info: '',
            recommendCode: '',
             status: 0,
             statusSafe: 0,
             regIp: 0,
-            lastLoginIp: 0,
-            lastLoginTime: new Date(),
+            loginIp: 0,
+            loginTotal: 0,
+            loginTime: new Date(),
             mapData: {}
       }
     }
@@ -151,8 +147,7 @@ export default {
     await this.getDict('usersafe_type') 
   },
   methods: {
-    async save() {
-      this.formData.avatar = this.$refs.imageView_avatar.myGuid;  
+    async save() {  
       delete this.formData.mapData;
       delete this.formData.CreatedAt;
       delete this.formData.UpdatedAt;

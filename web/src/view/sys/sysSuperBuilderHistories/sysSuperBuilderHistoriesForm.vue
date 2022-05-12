@@ -3,28 +3,31 @@
     <div class="gocms-form-box">
       <el-form :model="formData" label-position="right" label-width="80px">
         <el-form-item label="表名:"> 
-              <el-input v-model="formData.tableName" clearable placeholder="请输入" />
+              <el-input v-model="formData.tabName" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item label="表单:">
               <editor ref="editor_requestMeta" :value="formData.requestMeta" placeholder="请输入表单" />
        </el-form-item>
-        <el-form-item label="superBuilderPath字段:"> 
-              <el-input v-model="formData.superBuilderPath" clearable placeholder="请输入" />
+        <el-form-item label="路径:">
+              <editor ref="editor_superBuilderPath" :value="formData.superBuilderPath" placeholder="请输入路径" />
        </el-form-item>
-        <el-form-item label="injectionMeta字段:"> 
-              <el-input v-model="formData.injectionMeta" clearable placeholder="请输入" />
+        <el-form-item label="注射:">
+              <editor ref="editor_injectionMeta" :value="formData.injectionMeta" placeholder="请输入注射" />
        </el-form-item>
         <el-form-item label="struct名称:"> 
               <el-input v-model="formData.structName" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="struct名称:"> 
+        <el-form-item label="struct中文名:"> 
               <el-input v-model="formData.structCnName" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="apiIds字段:"> 
+        <el-form-item label="api:"> 
               <el-input v-model="formData.apiIds" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="flag字段:">
+        <el-form-item label="标记:">
                  <el-input v-model.number="formData.flag" clearable placeholder="请输入" />
+       </el-form-item>
+        <el-form-item label="表名:"> 
+              <el-input v-model="formData.tableName" clearable placeholder="请输入" />
        </el-form-item>
         <el-form-item>
           <el-button size="mini" type="primary" @click="save">保存</el-button>
@@ -51,7 +54,7 @@ export default {
   data() {
     return {
       formData: {
-           tableName: '',
+           tabName: '',
            requestMeta: '',
            superBuilderPath: '',
            injectionMeta: '',
@@ -59,6 +62,7 @@ export default {
            structCnName: '',
            apiIds: '',
             flag: 0,
+           tableName: '',
             mapData: {}
       }
     }
@@ -77,7 +81,9 @@ export default {
   },
   methods: {
     async save() { 
-      this.formData.requestMeta = this.$refs.editor_requestMeta.getContent();  
+      this.formData.requestMeta = this.$refs.editor_requestMeta.getContent(); 
+      this.formData.superBuilderPath = this.$refs.editor_superBuilderPath.getContent(); 
+      this.formData.injectionMeta = this.$refs.editor_injectionMeta.getContent();  
       delete this.formData.mapData;
       delete this.formData.CreatedAt;
       delete this.formData.UpdatedAt;

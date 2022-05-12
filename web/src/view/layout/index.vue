@@ -8,8 +8,8 @@
           <img alt class="logoimg" :src="$GIN_VUE_ADMIN.appLogo">
           <h2 v-if="isSider" class="tit-text" :style="{color:textColor}">{{ $GIN_VUE_ADMIN.appName }}</h2>
         </div>
-		<div class="tilte2">
-		 </div>
+	<!-- 	<div class="tilte2"> 
+		 </div>-->
         <Aside class="aside" />
       </el-aside>
       <!-- 分块滑动功能 -->

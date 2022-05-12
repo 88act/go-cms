@@ -71,7 +71,7 @@
             <img src="@/assets/docs.png" class="link-icon" />
           </a> 
         </div> -->
-        <div class="copyright">
+       <!-- <div class="copyright">
 			<div >
 		  <a style="color:#0055ff;" target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021007954号-1</a>
 			  <br>  
@@ -79,7 +79,7 @@
 			  <img src="https://www.88act.com/static/beian.png"> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602008885" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44010602008885号</p></a>
 			   </div>  
 		  </div>  
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

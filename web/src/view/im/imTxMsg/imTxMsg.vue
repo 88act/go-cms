@@ -17,9 +17,6 @@
         <el-form-item label="ID">
             <el-input placeholder="搜索ID" v-model="searchInfo.ID" />
         </el-form-item> 
-                <el-form-item label="订单id">
-                  <el-input placeholder="搜索条件" v-model="searchInfo.orderId" clearable />
-                </el-form-item> 
                 <el-form-item label="消息类型">
                   <el-input placeholder="搜索条件" v-model="searchInfo.chatType" clearable />
                 </el-form-item> 
@@ -65,11 +62,6 @@
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value"></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="订单状态" prop="order_status">                
-                    <el-select v-model="searchInfo.order_status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </el-form-item>
         <el-form-item>
           <el-button size="mini" type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>
           <el-button size="mini" type="primary" icon="el-icon-plus" @click="goEditForm(0)">新增</el-button>
@@ -101,17 +93,10 @@
     >
       <el-table-column type="selection" width="55" />      
        <el-table-column label="ID" min-width="60" prop="ID" sortable="custom" /> 
-          <el-table-column label="订单id" prop="orderId" width="120"   sortable="custom"  /> 
-		  <el-table-column label="订单状态" prop="order_status" width="120"  sortable="custom" >
-		    <template #default="scope">
-		      {{filterDict(scope.row.order_status,"status_run")}}
-		    </template>
-		  </el-table-column> 
           <el-table-column label="消息类型" prop="chatType" width="120"   sortable="custom"  /> 
           <el-table-column label="消息时间" prop="msgTime" width="120"   sortable="custom"  /> 
           <el-table-column label="发送人" prop="fromAccount" width="120"   sortable="custom"  /> 
           <el-table-column label="接收人" prop="toAccount" width="120"   sortable="custom"  />
-		  
             <el-table-column label="时间撮" width="180" prop="msgTimestamp"   sortable="custom" >
                 <template #default="scope">{{formatDate(scope.row.msgTimestamp)}}</template>
              </el-table-column> 
@@ -120,15 +105,6 @@
           <el-table-column label="消息类型" prop="msgType" width="120"   sortable="custom"  /> 
       <!--msgContent BeHide --> 
           <el-table-column label="文本" prop="msgText" width="120"    /> 
-		   <el-table-column label="原消息" width="180" prop="msgContent"    >
-			 <template #default="scope">
-				  <el-tooltip  placement="top">
-					  <template #content>{{scope.row.msgContent}}</template>
-					 <el-button>原始消息</el-button>
-				   </el-tooltip>
-				 </template>
-		  </el-table-column>  
-		  
       <!--mediaList BeHide --> 
       <!--mediaListTx BeHide -->
         <el-table-column label="媒体下载" prop="statusMedia" width="120"  sortable="custom" >
@@ -142,8 +118,7 @@
           <template #default="scope">
             {{filterDict(scope.row.status,"status")}}
           </template>
-        </el-table-column>
-        
+        </el-table-column> 
       <el-table-column label="日期" width="180" prop="created_at" sortable="custom" >
         <template #default="scope">{{ formatDate(scope.row.CreatedAt)}}</template>
       </el-table-column>
@@ -168,9 +143,6 @@
     <!---------- 编辑弹窗------------------ -->
     <el-dialog  v-if="dialogFormVisible"  :before-close="closeDialog" v-model="dialogFormVisible" title="编辑资料">
       <el-form :model="formData" label-position="right" label-width="80px">
-        <el-form-item label="订单id:"> 
-              <el-input v-model="formData.orderId" clearable placeholder="请输入" />
-       </el-form-item>
         <el-form-item label="消息类型:"> 
               <el-input v-model="formData.chatType" clearable placeholder="请输入" />
        </el-form-item>
@@ -223,11 +195,6 @@
                       <el-option v-for="(item,key) in statusOptions" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
        </el-form-item>
-        <el-form-item label="订单状态:">
-                 <el-select v-model="formData.order_status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in status_runOptions" :key="key" :label="item.label" :value="item.value" />
-                 </el-select>
-       </el-form-item>
      </el-form>
       <div slot="footer" class="el-dialog__footer">
         <el-button @click="closeDialog">取 消</el-button>
@@ -261,9 +228,7 @@ export default {
       excelListApi: excelList,
       status_downloadOptions: [],
       statusOptions: [],
-      status_runOptions: [],
       formData: {
-           orderId: '',
            chatType: '',
            msgTime: '',
            fromAccount: '',
@@ -280,7 +245,6 @@ export default {
            clientIp: '',
            msgFromPlatform: '',
             status: 0,
-            order_status: 0,
             mapData: {}
       } 
     }
@@ -289,7 +253,6 @@ export default {
   async created() {
     await this.getDict('status_download')
     await this.getDict('status')
-    await this.getDict('status_run')
     await this.getTableData()
   },
   methods: { 
