@@ -180,22 +180,11 @@ npm run serve
 ````
 go get -u github.com/swaggo/swag/cmd/swag
 ````
-  
-#### 2.3.2 生成API文档
+ 
 
-```` shell
-cd server
-swag init
-````
-
-> 执行上面的命令后，server目录下会出现docs文件夹里的 `docs.go`, `swagger.json`, `swagger.yaml` 三个文件更新，启动go服务之后, 在浏览器输入 [http://localhost:40040/swagger/index.html](http://localhost:40040/swagger/index.html) 即可查看swagger文档
-
-
-## 3. 技术选型
-
+## 3. 技术  
 - 前端：用基于vue3 element-plus构建基础页面。
-- 后端：golang gin gormv2  也使用了部分其他开源项目模块,如 gofarme  gav celly
-- 开发热更新: air 。
+- 后端：golang gin gormv2  也使用了部分其他开源项目模块,如 gofarme  gav celly 
 - 数据库： MySql`(8.0) 
 - 缓存： Redis` 
 - API文档：使用`Swagger`构建自动化文档。
@@ -213,10 +202,7 @@ swag init
 
 ## 5. 贡献者
  
-## 6. 商用注意事项
-
-如果您将此项目用于商业用途，请遵守Apache2.0协议 
-
+ 
 
 ## 7. 附系统截图
   代码生成与字段配置  
