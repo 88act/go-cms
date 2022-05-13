@@ -75,6 +75,7 @@ http://120.24.150.47/admin
 
 
     cd gozero
+
     ./modd  
 
 - 4、 正常可以看到 api 和 rpc 已经正常运行
