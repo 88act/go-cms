@@ -72,6 +72,8 @@ http://120.24.150.47/admin
        DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 - 3、 启动4个微服务器,本项目使用 modd 启动和管理 ,  关于modd更多用法可以去这里了解 ： https://github.com/cortesi/modd
+
+
     cd gozero
     ./modd  
 
@@ -94,12 +96,12 @@ post  http://127.0.0.1:1001/order/v1/order/addOrder
  
 - 6、 完成测试
 
-####  比较复杂的方式 
+####  比较复杂的启动方式 
 
 - 1、 先启动 docker , 然后  
-  cd /go-cms/gozero/                                                                                                                     
-$ docker network create go-zero-looklook_looklook_net
-                                                                                                                       
+  cd /go-cms/gozero/    
+                                                                                                                 
+$ docker network create go-zero-looklook_looklook_net                                                                                                                      
 $ docker-compose -f docker-compose-env.yml up -d   
 
 - 2、  然后,按照最简单的方式启动
