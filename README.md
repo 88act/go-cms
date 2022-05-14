@@ -31,13 +31,18 @@
 -  /web/ 是gin gorm v2管理后台项目配套的vue的项目
 -  /gokit/ gokit微服务器测试项目
 
-
+[在线预览](http://120.24.150.47/admin)   
+http://120.24.150.47/admin
+测试用户名：test123
+测试密码：test123 
+                                                      
+                                                      
 ## /gozero/微服务项目介绍 
 
 >  本项目是 gozero 的 gorm v2 版本 ,欢迎 Star
 -  使用 gormv2 版本操作数据库 ,可能更合适熟悉了gorm v2不想换sqlx,又想享受高效率的的gozero微服务框架的朋友 
  
--  项目背景:居于互联网PC和小程序的活动圈项目,包括活动发布,活动报名,活动下单/支付等功能
+-  项目背景:居于互联网PC和小程序的活动项目,包括活动发布,活动报名,活动下单/支付等功能
 
 -  本项目特点，能根据数据库表, 
 
@@ -67,7 +72,10 @@
        DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 - 3、 启动4个微服务器,本项目使用 modd 启动和管理 ,  关于modd更多用法可以去这里了解 ： https://github.com/cortesi/modd
+
+
     cd gozero
+
     ./modd  
 
 - 4、 正常可以看到 api 和 rpc 已经正常运行
@@ -89,10 +97,12 @@ post  http://127.0.0.1:1001/order/v1/order/addOrder
  
 - 6、 完成测试
 
-####  比较复杂的方式 
+####  比较复杂的启动方式 
 
 - 1、 先启动 docker , 然后  
-$ docker network create go-zero-looklook_looklook_net
+  cd /go-cms/gozero/    
+                                                                                                                 
+$ docker network create go-zero-looklook_looklook_net                                                                                                                      
 $ docker-compose -f docker-compose-env.yml up -d   
 
 - 2、  然后,按照最简单的方式启动
@@ -170,22 +180,11 @@ npm run serve
 ````
 go get -u github.com/swaggo/swag/cmd/swag
 ````
-  
-#### 2.3.2 生成API文档
+ 
 
-```` shell
-cd server
-swag init
-````
-
-> 执行上面的命令后，server目录下会出现docs文件夹里的 `docs.go`, `swagger.json`, `swagger.yaml` 三个文件更新，启动go服务之后, 在浏览器输入 [http://localhost:40040/swagger/index.html](http://localhost:40040/swagger/index.html) 即可查看swagger文档
-
-
-## 3. 技术选型
-
+## 3. 技术  
 - 前端：用基于vue3 element-plus构建基础页面。
-- 后端：golang gin gormv2  也使用了部分其他开源项目模块,如 gofarme  gav celly
-- 开发热更新: air 。
+- 后端：golang gin gormv2  也使用了部分其他开源项目模块,如 gofarme  gav celly 
 - 数据库： MySql`(8.0) 
 - 缓存： Redis` 
 - API文档：使用`Swagger`构建自动化文档。
@@ -203,10 +202,7 @@ swag init
 
 ## 5. 贡献者
  
-## 6. 商用注意事项
-
-如果您将此项目用于商业用途，请遵守Apache2.0协议 
-
+ 
 
 ## 7. 附系统截图
   代码生成与字段配置  
