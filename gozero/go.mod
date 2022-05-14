@@ -28,6 +28,7 @@ require (
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
@@ -99,7 +100,7 @@ require (
 	github.com/silenceper/wechat/v2 v2.0.9
 	github.com/wechatpay-apiv3/wechatpay-go v0.2.9
 	github.com/zeromicro/go-queue v1.1.2
-	github.com/zeromicro/go-zero v1.3.2
+	github.com/zeromicro/go-zero v1.3.0
 	golang.org/x/crypto v0.0.0-20211202192323-5770296d904e // indirect
 )
 

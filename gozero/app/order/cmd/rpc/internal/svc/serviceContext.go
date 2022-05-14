@@ -1,21 +1,25 @@
 package svc
 
 import (
+	"go-cms/app/act/cmd/rpc/act"
 	"go-cms/app/order/cmd/rpc/internal/config"
 	"go-cms/app/order/model"
 	"os"
 
+	"github.com/hibiken/asynq"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/zeromicro/go-zero/zrpc"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
 type ServiceContext struct {
-	Config      config.Config
-	RedisClient *redis.Redis
-
+	Config        config.Config
+	AsynqClient   *asynq.Client
+	RedisClient   *redis.Redis
+	ActRpc        act.Act
 	OrderOrderSev *model.OrderOrderSev
 }
 
@@ -31,7 +35,9 @@ func NewServiceContext(c config.Config) *ServiceContext {
 			r.Type = c.Redis.Type
 			r.Pass = c.Redis.Pass
 		}),
+		AsynqClient:   newAsynqClient(c),
 		OrderOrderSev: model.NewOrderOrderSev(gormDB, c.Cache),
+		ActRpc:        act.NewAct(zrpc.MustNewClient(c.ActRpcConf)),
 	}
 }
 

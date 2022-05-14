@@ -33,7 +33,9 @@ func (l *OrderDetailLogic) OrderDetail(in *pb.OrderDetailReq) (*pb.OrderDetailRe
 	// todo: add your logic here and delete this line
 	seqMap := make(map[string]interface{})
 	seqMap["sn"] = in.Sn
-	seqMap["user_id"] = in.UserId
+	if in.UserId > 0 {
+		seqMap["user_id"] = in.UserId
+	}
 	data, err := l.svcCtx.OrderOrderSev.GetByMap(l.ctx, seqMap, "")
 	if err != nil && err == gorm.ErrRecordNotFound {
 		return nil, errors.Wrapf(xerr.NewErrCode(xerr.DB_RecordNotFound), "活动不存在 :%s,err:%v", in.Sn, err)

@@ -2,10 +2,10 @@
 package handler
 
 import (
-	"net/http" 
-	act "go-cms/app/act/cmd/api/internal/handler/act"
-	"go-cms/app/act/cmd/api/internal/svc" 
 	"github.com/zeromicro/go-zero/rest"
+	act "go-cms/app/act/cmd/api/internal/handler/act"
+	"go-cms/app/act/cmd/api/internal/svc"
+	"net/http"
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
