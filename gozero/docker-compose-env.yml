@@ -37,7 +37,7 @@ services:
       - looklook_net
     depends_on:
       - redis
- 
+
   #redis容器
   redis:
     image: redis:6.2.5

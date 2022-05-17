@@ -206,21 +206,6 @@ services:
     networks:
       - looklook_net
 
-  postgres:
-    image: postgres:11.4
-    container_name: postgres_sql
-    environment: 
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres 
-    ports:
-      - 5432:5432
-    volumes:
-      # 数据挂载
-      - './data/postgres:/var/lib/postgresql/data'
-      # 日志  
-    networks:
-      - looklook_net
-
   #redis容器
   redis:
     image: redis:6.2.5

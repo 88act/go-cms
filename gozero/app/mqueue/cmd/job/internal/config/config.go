@@ -11,7 +11,7 @@ type Config struct {
 	Redis      redis.RedisConf
 	WxMiniConf WxMiniConf
 
-	SettleRpcConf     zrpc.RpcClientConf
+	//	SettleRpcConf     zrpc.RpcClientConf
 	OrderRpcConf      zrpc.RpcClientConf
 	UsercenterRpcConf zrpc.RpcClientConf
 }

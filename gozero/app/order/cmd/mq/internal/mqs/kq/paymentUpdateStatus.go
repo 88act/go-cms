@@ -29,16 +29,18 @@ func NewPaymentUpdateStatusMq(ctx context.Context, svcCtx *svc.ServiceContext) *
 	}
 }
 
+// 消耗/订阅 消息
 func (l *PaymentUpdateStatusMq) Consume(_, val string) error {
 
+	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行.... ")
 	var message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage
 	if err := json.Unmarshal([]byte(val), &message); err != nil {
-		logx.WithContext(l.ctx).Error("PaymentUpdateStatusMq->Consume Unmarshal err : %v , val : %s", err, val)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 PaymentUpdateStatusMq->Consume Unmarshal err : %v , val : %s", err, val)
 		return err
 	}
 
 	if err := l.execService(message); err != nil {
-		logx.WithContext(l.ctx).Error("PaymentUpdateStatusMq->execService  err : %v , val : %s , message:%+v", err, val, message)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 PaymentUpdateStatusMq->execService  err : %v , val : %s , message:%+v", err, val, message)
 		return err
 	}
 
@@ -47,28 +49,28 @@ func (l *PaymentUpdateStatusMq) Consume(_, val string) error {
 
 func (l *PaymentUpdateStatusMq) execService(message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
 
-	orderTradeState := l.getOrderTradeStateByPaymentTradeState(message.PayStatus)
-	if orderTradeState != -99 {
+	orderPayState := l.getOrderPayStateByTrade(message.PayStatus)
+	if orderPayState != -99 {
 		//update homestay order state
 		//_, err := l.svcCtx.OrderRpc.UpdateHomestayOrderTradeState(l.ctx, &order.UpdateHomestayOrderTradeStateReq{
 		_, err := l.svcCtx.OrderRpc.UpdatePayStatus(l.ctx, &order.UpdatePayStatusReq{
 			Sn:        message.OrderSn,
-			StatusPay: 1,
+			StatusPay: orderPayState,
 		})
 		if err != nil {
-			return errors.Wrapf(xerr.NewErrMsg("update homestay order state fail"), "update homestay order state fail err : %v ,message:%+v", err, message)
+			return errors.Wrapf(xerr.NewErrMsg("更新订单支付状态失败 "), "更新订单支付状态失败 err : %v ,message:%+v", err, message)
 		}
 	}
 
 	return nil
 }
 
-//Get order status based on payment status.
-func (l *PaymentUpdateStatusMq) getOrderTradeStateByPaymentTradeState(thirdPaymentPayStatus int32) int32 {
+//获取订单支付状态 By第三方交易状态 .
+func (l *PaymentUpdateStatusMq) getOrderPayStateByTrade(thirdPaymentPayStatus int32) int32 {
 
 	switch thirdPaymentPayStatus {
 	case paymentModel.PayStatus_PayOk:
-		return model.OrderStatus_WaitUse
+		return model.OrderStatus_Payed
 	case paymentModel.PayStatus_refunded:
 		return model.OrderStatus_Refund
 	default:

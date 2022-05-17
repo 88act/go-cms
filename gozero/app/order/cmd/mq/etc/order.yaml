@@ -36,6 +36,27 @@ PaymentUpdateStatusConf:
   Consumers: 1
   Processors: 1
 
+SendEmailConf:
+  Name: SendEmail
+  Brokers:
+    - kafka:9092
+  Group: SendEmail-group
+  Topic: SendEmail-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+SendSmsConf:
+  Name: SendSms
+  Brokers:
+    - kafka:9092
+  Group: SendSms-group
+  Topic: SendSms-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1  
+
+
 #rpc
 OrderRpcConf:
   Endpoints:

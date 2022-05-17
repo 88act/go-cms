@@ -41,10 +41,9 @@ func (l *CloseHomestayOrderHandler) ProcessTask(ctx context.Context, t *asynq.Ta
 	if err != nil || resp.Info == nil {
 		return errors.Wrapf(ErrCloseOrderFal, "closeOrderStateMqHandler  订单不存在 err:%v, sn:%s ,order: %+v", err, p.Sn, resp.Info)
 	}
-	logx.WithContext(ctx).Errorf("延时关闭  StatusPay:%s ,sn: %s ,", resp.Info.StatusPay, p.Sn)
 
 	if resp.Info.StatusPay == model.OrderStatus_WaitPay {
-		logx.WithContext(ctx).Errorf("延时关闭 2  StatusPay  :%+v ", model.OrderStatus_WaitPay)
+		logx.WithContext(ctx).Errorf("延时关闭 StatusPay =OrderStatus_WaitPay")
 		_, err := l.svcCtx.OrderRpc.UpdateOrderStatus(ctx, &order.UpdateOrderStatusReq{
 			Sn:          p.Sn,
 			StatusOrder: model.OrderStatus_Cancel,

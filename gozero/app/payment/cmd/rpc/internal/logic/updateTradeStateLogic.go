@@ -67,7 +67,7 @@ func (l *UpdateTradeStateLogic) UpdateTradeState(in *pb.UpdateTradeStateReq) (*p
 		return nil, errors.Wrapf(xerr.NewErrCode(xerr.DB_UpdateErr), " UpdateTradeState UpdateWithVersion db  err:%v ,thirdPayment : %+v , in : %+v", err, thirdPayment, in)
 	}
 
-	//4、notify  sub "payment-update-paystatus-topic"  services(order-mq ..), pub、sub use kq
+	//4、通知订阅消息队列 notify  sub "payment-update-paystatus-topic"  services(order-mq ..), pub、sub use kq
 	if err := l.pubKqPaySuccess(in.Sn, in.PayStatus); err != nil {
 		logx.WithContext(l.ctx).Errorf("l.pubKqPaySuccess : %+v", err)
 	}
@@ -84,8 +84,8 @@ func (l *UpdateTradeStateLogic) pubKqPaySuccess(orderSn string, payStatus int32)
 
 	body, err := json.Marshal(m)
 	if err != nil {
-		return errors.Wrapf(xerr.NewErrMsg("kq UpdateTradeStateLogic pushKqPaySuccess task marshal error "), "kq UpdateTradeStateLogic pushKqPaySuccess task marshal error  , v : %+v", m)
+		return errors.Wrapf(xerr.NewErrMsg(" 发布kafka 支付信息失败 kq UpdateTradeStateLogic pushKqPaySuccess task marshal error "), "kq UpdateTradeStateLogic pushKqPaySuccess task marshal error  , v : %+v", m)
 	}
-
+	// 发布kafka 消息 支付成功
 	return l.svcCtx.KqueuePaymentUpdatePayStatusClient.Push(string(body))
 }
