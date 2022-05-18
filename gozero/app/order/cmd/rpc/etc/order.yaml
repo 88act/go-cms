@@ -35,5 +35,27 @@ ActRpcConf:
     - 127.0.0.1:2003
   NonBlock: true
 
- 
+
+#rpc
+UsercenterRpcConf:
+  Endpoints:
+    - 127.0.0.1:2004
+  NonBlock: true 
+
+  
+ #pay success notify order-mq for kq(kafka pub sub)
+KqPaymentUpdatePayStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: payment-update-paystatus-topic
+
+KqSendSmsConf:
+  Brokers:
+    - kafka:9092
+  Topic: semd-sms-topic
+
+KqSendEmailConf:
+  Brokers:
+    - kafka:9092
+  Topic: semd-email-topic
 

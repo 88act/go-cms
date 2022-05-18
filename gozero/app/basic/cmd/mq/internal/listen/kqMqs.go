@@ -2,9 +2,9 @@ package listen
 
 import (
 	"context"
-	"go-cms/app/order/cmd/mq/internal/config"
-	kqMq "go-cms/app/order/cmd/mq/internal/mqs/kq"
-	"go-cms/app/order/cmd/mq/internal/svc"
+	"go-cms/app/basic/cmd/mq/internal/config"
+	kqMq "go-cms/app/basic/cmd/mq/internal/mqs/kq"
+	"go-cms/app/basic/cmd/mq/internal/svc"
 
 	"github.com/zeromicro/go-queue/kq"
 	"github.com/zeromicro/go-zero/core/service"
@@ -15,7 +15,7 @@ func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext)
 
 	return []service.Service{
 		//Listening for changes in consumption flow status
-		kq.MustNewQueue(c.PaymentUpdateStatusConf, kqMq.NewPaymentUpdateStatusMq(ctx, svcContext)),
+		kq.MustNewQueue(c.ImageZipConf, kqMq.NewImageZipMq(ctx, svcContext)),
 		kq.MustNewQueue(c.SendEmailConf, kqMq.NewSendEmailMq(ctx, svcContext)),
 		kq.MustNewQueue(c.SendSmsConf, kqMq.NewSendSmsMq(ctx, svcContext)),
 		//.....

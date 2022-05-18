@@ -4,9 +4,11 @@ import (
 	"go-cms/app/act/cmd/rpc/act"
 	"go-cms/app/order/cmd/rpc/internal/config"
 	"go-cms/app/order/model"
+	"go-cms/app/usercenter/cmd/rpc/usercenter"
 	"os"
 
 	"github.com/hibiken/asynq"
+	"github.com/zeromicro/go-queue/kq"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/redis"
 	"github.com/zeromicro/go-zero/zrpc"
@@ -16,33 +18,36 @@ import (
 )
 
 type ServiceContext struct {
-	Config        config.Config
-	AsynqClient   *asynq.Client
-	RedisClient   *redis.Redis
-	ActRpc        act.Act
-	OrderOrderSev *model.OrderOrderSev
+	Config            config.Config
+	AsynqClient       *asynq.Client
+	RedisClient       *redis.Redis
+	ActRpc            act.Act
+	UsercenterRpc     usercenter.Usercenter
+	OrderOrderSev     *model.OrderOrderSev
+	KqSendEmailClient *kq.Pusher
+	KqSendSmsClient   *kq.Pusher
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 
 	//sqlConn := sqlx.NewMysql(c.DB.DataSource)
 	gormDB := GormMysql(c.DB.DataSource)
-	// 新建 gorm 数据库 链接
-
 	return &ServiceContext{
 		Config: c,
 		RedisClient: redis.New(c.Redis.Host, func(r *redis.Redis) {
 			r.Type = c.Redis.Type
 			r.Pass = c.Redis.Pass
 		}),
-		AsynqClient:   newAsynqClient(c),
-		OrderOrderSev: model.NewOrderOrderSev(gormDB, c.Cache),
-		ActRpc:        act.NewAct(zrpc.MustNewClient(c.ActRpcConf)),
+		AsynqClient:       newAsynqClient(c),
+		OrderOrderSev:     model.NewOrderOrderSev(gormDB, c.Cache),
+		ActRpc:            act.NewAct(zrpc.MustNewClient(c.ActRpcConf)),
+		UsercenterRpc:     usercenter.NewUsercenter(zrpc.MustNewClient(c.UsercenterRpcConf)),
+		KqSendEmailClient: kq.NewPusher(c.KqSendEmailConf.Brokers, c.KqSendEmailConf.Topic),
+		KqSendSmsClient:   kq.NewPusher(c.KqSendSmsConf.Brokers, c.KqSendSmsConf.Topic),
 	}
 }
 
 func GormMysql(dsn string) *gorm.DB {
-	//dsn := "root:PXDN93VRKUm8TeE7@tcp(mysql:33069)/go-cms_usercenter?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
 	var ormLogger logger.Interface
 	//if cfg.Debug {
 	ormLogger = logger.Default.LogMode(logger.Info)

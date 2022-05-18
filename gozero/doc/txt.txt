@@ -1,0 +1,83 @@
+
+// api rpc 
+cd D:\work_go\opensrc\go-zero-looklook\app\usercenter\cmd\api\desc
+goctl api go -api api.api -dir ../  --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
+cd D:\work_go\opensrc\go-zero-looklook\app\act\cmd\rpc\pb
+goctl rpc protoc act.proto --go_out=../ --go-grpc_out=../  --zrpc_out=../ --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
+
+
+cd D:\work_go\opensrc\go-zero-looklook\app\order\cmd\api\desc
+goctl api go -api order.api -dir ../  --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
+cd D:\work_go\opensrc\go-zero-looklook\app\order\cmd\rpc\pb
+goctl rpc protoc order.proto --go_out=../ --go-grpc_out=../  --zrpc_out=../ --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
+
+
+
+# 数据库 
+cd D:\work_go\opensrc\go-zero-looklook\app\usercenter\model
+goctl model mysql datasource -url="root:PXDN93VRKUm8TeE7@tcp(127.0.0.1:33069)/looklook_usercenter"  -dir="./" -cache=true --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl -table="user"
+
+docker network create go-zero-looklook_looklook_net
+docker-compose up
+
+docker-compose -f docker-compose-env.yml up -d  
+docker-compose -f docker-compose-env.yml down
+
+docker-compose -f docker-compose.yml up -d  
+docker-compose -f docker-compose.yml down
+
+如果是访问nginx失败，访问成功可以忽略，可能是nginx依赖后端服务，之前因为后端服务没启动起来，nginx这里没启动起来，重启一次nginx即可,项目根目录下重启
+docker-compose restart nginx -f docker-compose.yml 
+
+
+
+
+
+
+docker build -t fzqk9/gomodd:v1.0.0 . 
+docker run --name gomodd -d -p 40050:40050 fzqk9/gomodd:v1.0.0
+
+监控所有容器的所有目录绑定。该脚本将侦听容器启动/停止事件并通知所有正在运行的容器有关文件更改的信息。
+
+pip uninstall docker-volume-watcher
+仅监视容器的绑定container_name。
+
+docker-volume-watcher 容器名称
+仅监视container_name与主机目录的绑定C:\some\directory。
+
+docker-volume-watcher container_name C:\some\directory
+您还可以使用*和?字符指定通配符。例如：仅监控名称包含 myproject 的容器到以 . 开头的目录的绑定C:\project\folder\。
+
+docker-volume-watcher *myproject* C:\project\folder\*
+不要监视文件/目录匹配*.git*和*build*模式：
+
+docker-volume-watcher -e " *.git* "  " *build* "
+
+
+
+
+
+time.Time 这个数据结构，数据库中用的是 timestamp 这个 比如我的字段 是delete_at 默认数库设置的是null ,结果插入的时候，
+就报了Incorrect datetime value: '0000-00-00' for column 'deleted_at' at row 1"}这个错，
+查询的时候报deleted_at\": unsupported Scan, storing driver.Value type \u003cnil\u003e into type *time.Time" 
+后面果断去掉了这个字段
+字段上面加上 .omitempty 这个标签，好像也有用,`db:".omitempty"`
+其次就是这个  Conversion from collation utf8_general_ci into utf8mb4_unicode_ci，这个导致的大概原因是，现在都喜欢用emj表情了，mysql数据识别不了
+
+最后发现是数据连接问题：
+
+mysql这边照样按照原始的方式,将配置文件修改编码格式
+重新创建数据库,并且设置数据库编码为utf8mb4 ,排序规则为utf8mb4_unicode_ci
+(这样的话,所有的表还有string字段都是这个编码格式,如果不想所有的都是,可以单独设置,这个不是重点.因为在navicat上都好设置,手动点一下就行了)
+重点来了:golang中使用的是 github.com/go-sql-driver/mysql驱动,
+将连接mysql的dsn:(因为我这使用的是gorm,所以dsn可能跟原生的格式不太一样,不过没关系,只需要关注charset和collation就行了)
+root:password@/name?parseTime=True&loc=Local&charset=utf8
+修改为:
+root:password@/name?parseTime=True&loc=Local&charset=utf8mb4&collation=utf8mb4_unicode_ci
+
+---------------------------------
+

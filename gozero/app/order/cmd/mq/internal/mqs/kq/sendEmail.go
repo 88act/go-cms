@@ -17,37 +17,37 @@ import (
 /**
 Listening to the payment flow status change notification message queue
 */
-type PaymentUpdateStatusMq struct {
+type SendEmailMq struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewPaymentUpdateStatusMq(ctx context.Context, svcCtx *svc.ServiceContext) *PaymentUpdateStatusMq {
-	return &PaymentUpdateStatusMq{
+func NewSendEmailMq(ctx context.Context, svcCtx *svc.ServiceContext) *SendEmailMq {
+	return &SendEmailMq{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
 // 消耗/订阅 消息
-func (l *PaymentUpdateStatusMq) Consume(_, val string) error {
+func (l *SendEmailMq) Consume(_, val string) error {
 
 	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行.... ")
 	var message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage
 	if err := json.Unmarshal([]byte(val), &message); err != nil {
-		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 PaymentUpdateStatusMq->Consume Unmarshal err : %v , val : %s", err, val)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 SendEmailMq->Consume Unmarshal err : %v , val : %s", err, val)
 		return err
 	}
 
 	if err := l.execService(message); err != nil {
-		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 PaymentUpdateStatusMq->execService  err : %v , val : %s , message:%+v", err, val, message)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 SendEmailMq->execService  err : %v , val : %s , message:%+v", err, val, message)
 		return err
 	}
 
 	return nil
 }
 
-func (l *PaymentUpdateStatusMq) execService(message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
+func (l *SendEmailMq) execService(message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
 
 	orderPayState := l.getOrderPayStateByTrade(message.PayStatus)
 	if orderPayState != -99 {
@@ -60,14 +60,13 @@ func (l *PaymentUpdateStatusMq) execService(message kqueue.ThirdPaymentUpdatePay
 		if err != nil {
 			return errors.Wrapf(xerr.NewErrMsg("更新订单支付状态失败 "), "更新订单支付状态失败 err : %v ,message:%+v", err, message)
 		}
-		logx.WithContext(l.ctx).Info("第三方支付回调更改支付状态通知 成功 sn=%s , message:%+v", message.OrderSn, message)
 	}
 
 	return nil
 }
 
 //获取订单支付状态 By第三方交易状态 .
-func (l *PaymentUpdateStatusMq) getOrderPayStateByTrade(thirdPaymentPayStatus int32) int32 {
+func (l *SendEmailMq) getOrderPayStateByTrade(thirdPaymentPayStatus int32) int32 {
 
 	switch thirdPaymentPayStatus {
 	case paymentModel.PayStatus_PayOk:
