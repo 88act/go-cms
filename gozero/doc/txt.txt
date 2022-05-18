@@ -1,5 +1,25 @@
 
 
+进入容器
+
+```shell
+$ docker exec -it kafka /bin/sh
+$ cd /opt/kafka/bin/
+```
+
+创建3个topic
+
+```shell
+$ ./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic looklook-log
+$ ./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic payment-update-paystatus-topic
+
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic send-sms-topic
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic send-email-topic
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic image-zip-topic
+
+
+
+
 
 // api rpc 
 cd D:\work_go\opensrc\go-zero-looklook\app\usercenter\cmd\api\desc

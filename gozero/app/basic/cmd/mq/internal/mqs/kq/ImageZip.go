@@ -28,8 +28,8 @@ func NewImageZipMq(ctx context.Context, svcCtx *svc.ServiceContext) *ImageZipMq 
 // 消耗/订阅 消息
 func (l *ImageZipMq) Consume(_, val string) error {
 
-	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行.... ")
-	var message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage
+	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行....ImageZipMq ")
+	var message kqueue.ImageZipMessage
 	if err := json.Unmarshal([]byte(val), &message); err != nil {
 		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 ImageZipMq->Consume Unmarshal err : %v , val : %s", err, val)
 		return err
@@ -43,7 +43,7 @@ func (l *ImageZipMq) Consume(_, val string) error {
 	return nil
 }
 
-func (l *ImageZipMq) execService(message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
+func (l *ImageZipMq) execService(message kqueue.ImageZipMessage) error {
 
 	// orderPayState := l.getOrderPayStateByTrade(message.PayStatus)
 	// if orderPayState != -99 {

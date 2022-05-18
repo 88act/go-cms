@@ -27,7 +27,7 @@ func NewSendSmsMq(ctx context.Context, svcCtx *svc.ServiceContext) *SendSmsMq {
 // 消耗/订阅 消息
 func (l *SendSmsMq) Consume(_, val string) error {
 
-	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行.... ")
+	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行....SendSmsMq  ")
 	var message kqueue.SmsMessage
 	if err := json.Unmarshal([]byte(val), &message); err != nil {
 		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 SendSmsMq->Consume Unmarshal err : %v , val : %s", err, val)
