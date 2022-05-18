@@ -43,19 +43,24 @@ UsercenterRpcConf:
   NonBlock: true 
 
   
- #pay success notify order-mq for kq(kafka pub sub)
-KqPaymentUpdatePayStatusConf:
-  Brokers:
-    - kafka:9092
-  Topic: payment-update-paystatus-topic
+
 
 KqSendSmsConf:
   Brokers:
     - kafka:9092
-  Topic: semd-sms-topic
+  Topic: send-sms-topic
 
 KqSendEmailConf:
   Brokers:
     - kafka:9092
-  Topic: semd-email-topic
+  Topic: send-email-topic
+
+
+#pay success notify order-mq for kq(kafka pub sub)
+KqPaymentUpdatePayStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: payment-update-paystatus-topic
+ 
+
 

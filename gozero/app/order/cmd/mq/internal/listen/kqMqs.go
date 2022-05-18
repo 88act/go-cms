@@ -16,8 +16,8 @@ func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext)
 	return []service.Service{
 		//Listening for changes in consumption flow status
 		kq.MustNewQueue(c.PaymentUpdateStatusConf, kqMq.NewPaymentUpdateStatusMq(ctx, svcContext)),
-		kq.MustNewQueue(c.SendEmailConf, kqMq.NewSendEmailMq(ctx, svcContext)),
-		kq.MustNewQueue(c.SendSmsConf, kqMq.NewSendSmsMq(ctx, svcContext)),
+		//kq.MustNewQueue(c.SendEmailConf, kqMq.NewSendEmailMq(ctx, svcContext)),
+		//kq.MustNewQueue(c.SendSmsConf, kqMq.NewSendSmsMq(ctx, svcContext)),
 		//.....
 	}
 

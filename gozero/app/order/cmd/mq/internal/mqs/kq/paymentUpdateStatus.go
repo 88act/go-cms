@@ -49,6 +49,7 @@ func (l *PaymentUpdateStatusMq) Consume(_, val string) error {
 
 func (l *PaymentUpdateStatusMq) execService(message kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
 
+	logx.WithContext(l.ctx).Errorf("消息队列 内容 =  message =%v", message)
 	orderPayState := l.getOrderPayStateByTrade(message.PayStatus)
 	if orderPayState != -99 {
 		//update homestay order state
@@ -60,7 +61,7 @@ func (l *PaymentUpdateStatusMq) execService(message kqueue.ThirdPaymentUpdatePay
 		if err != nil {
 			return errors.Wrapf(xerr.NewErrMsg("更新订单支付状态失败 "), "更新订单支付状态失败 err : %v ,message:%+v", err, message)
 		}
-		logx.WithContext(l.ctx).Info("第三方支付回调更改支付状态通知 成功 sn=%s , message:%+v", message.OrderSn, message)
+		logx.WithContext(l.ctx).Errorf("消息队列 第三方支付回调更改支付状态通知 成功 sn=%s , message:%+v", message.OrderSn, message)
 	}
 
 	return nil

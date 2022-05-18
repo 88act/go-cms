@@ -15,9 +15,9 @@ type Config struct {
 	// kq : pub sub
 	PaymentUpdateStatusConf kq.KqConf
 	//邮件发送 Kq : pub sub
-	SendEmailConf kq.KqConf
+	//SendEmailConf kq.KqConf
 	//短信发送 Kq : pub sub
-	SendSmsConf kq.KqConf
+	//SendSmsConf kq.KqConf
 
 	// rpc
 	OrderRpcConf      zrpc.RpcClientConf

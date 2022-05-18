@@ -18,14 +18,15 @@ import (
 )
 
 type ServiceContext struct {
-	Config            config.Config
-	AsynqClient       *asynq.Client
-	RedisClient       *redis.Redis
-	ActRpc            act.Act
-	UsercenterRpc     usercenter.Usercenter
-	OrderOrderSev     *model.OrderOrderSev
-	KqSendEmailClient *kq.Pusher
-	KqSendSmsClient   *kq.Pusher
+	Config                  config.Config
+	AsynqClient             *asynq.Client
+	RedisClient             *redis.Redis
+	ActRpc                  act.Act
+	UsercenterRpc           usercenter.Usercenter
+	OrderOrderSev           *model.OrderOrderSev
+	KqSendEmailClient       *kq.Pusher
+	KqSendSmsClient         *kq.Pusher
+	KqUpdatePayStatusClient *kq.Pusher
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -38,12 +39,13 @@ func NewServiceContext(c config.Config) *ServiceContext {
 			r.Type = c.Redis.Type
 			r.Pass = c.Redis.Pass
 		}),
-		AsynqClient:       newAsynqClient(c),
-		OrderOrderSev:     model.NewOrderOrderSev(gormDB, c.Cache),
-		ActRpc:            act.NewAct(zrpc.MustNewClient(c.ActRpcConf)),
-		UsercenterRpc:     usercenter.NewUsercenter(zrpc.MustNewClient(c.UsercenterRpcConf)),
-		KqSendEmailClient: kq.NewPusher(c.KqSendEmailConf.Brokers, c.KqSendEmailConf.Topic),
-		KqSendSmsClient:   kq.NewPusher(c.KqSendSmsConf.Brokers, c.KqSendSmsConf.Topic),
+		AsynqClient:             newAsynqClient(c),
+		OrderOrderSev:           model.NewOrderOrderSev(gormDB, c.Cache),
+		ActRpc:                  act.NewAct(zrpc.MustNewClient(c.ActRpcConf)),
+		UsercenterRpc:           usercenter.NewUsercenter(zrpc.MustNewClient(c.UsercenterRpcConf)),
+		KqSendEmailClient:       kq.NewPusher(c.KqSendEmailConf.Brokers, c.KqSendEmailConf.Topic),
+		KqSendSmsClient:         kq.NewPusher(c.KqSendSmsConf.Brokers, c.KqSendSmsConf.Topic),
+		KqUpdatePayStatusClient: kq.NewPusher(c.KqSendSmsConf.Brokers, c.KqPaymentUpdatePayStatusConf.Topic),
 	}
 }
 

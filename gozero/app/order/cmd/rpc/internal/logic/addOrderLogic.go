@@ -79,6 +79,17 @@ func (l *AddOrderLogic) AddOrder(in *pb.AddOrderReq) (*pb.AddOrderResp, error) {
 		return nil, errors.Wrapf(xerr.NewErrMsg("消息队列 发送 短信通知 失败"), "userid=%d ,order objId=%s, err: %v", in.UserId, in.ObjId, err)
 	}
 
+	//4、通知订阅消息队列 notify  sub "payment-update-paystatus-topic"  services(order-mq ..), pub、sub use kq
+
+	payObj := kqueue.ThirdPaymentUpdatePayStatusNotifyMessage{
+		OrderSn:   order.Sn,
+		PayStatus: 2,
+	}
+
+	if err := l.pubKqPaySuccess(payObj); err != nil {
+		logx.WithContext(l.ctx).Errorf("通知订阅消息队 l.pubKqPaySuccess : %+v", err)
+	}
+
 	return &pb.AddOrderResp{Sn: order.Sn}, nil
 }
 
@@ -102,4 +113,13 @@ func (l *AddOrderLogic) sendSms(smsObj kqueue.SmsMessage) error {
 	logx.Errorf("发布kafka 消息 sendSms body =%v", body)
 	// 发布kafka 消息
 	return l.svcCtx.KqSendSmsClient.Push(string(body))
+}
+
+func (l *AddOrderLogic) pubKqPaySuccess(obj kqueue.ThirdPaymentUpdatePayStatusNotifyMessage) error {
+	body, err := json.Marshal(obj)
+	if err != nil {
+		return errors.Wrapf(xerr.NewErrMsg(" 发布kafka 支付信息失败   error "), "k sk marshal error  , v : %+v", err.Error())
+	}
+	// 发布kafka 消息 支付成功
+	return l.svcCtx.KqUpdatePayStatusClient.Push(string(body))
 }
