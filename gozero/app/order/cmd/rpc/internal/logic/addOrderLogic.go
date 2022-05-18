@@ -120,6 +120,7 @@ func (l *AddOrderLogic) pubKqPaySuccess(obj kqueue.ThirdPaymentUpdatePayStatusNo
 	if err != nil {
 		return errors.Wrapf(xerr.NewErrMsg(" 发布kafka 支付信息失败   error "), "k sk marshal error  , v : %+v", err.Error())
 	}
+	logx.Errorf("发布kafka 消息 订单  body =%v", body)
 	// 发布kafka 消息 支付成功
 	return l.svcCtx.KqUpdatePayStatusClient.Push(string(body))
 }

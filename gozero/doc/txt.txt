@@ -1,4 +1,6 @@
 
+
+
 // api rpc 
 cd D:\work_go\opensrc\go-zero-looklook\app\usercenter\cmd\api\desc
 goctl api go -api api.api -dir ../  --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
