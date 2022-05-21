@@ -1,3 +1,4 @@
 .vscode
 .cloudbase
 node_modules
+/web/dist

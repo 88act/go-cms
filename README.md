@@ -44,41 +44,47 @@ http://120.24.150.47/admin
  
 -  项目背景:居于互联网PC和小程序的活动项目,包括活动发布,活动报名,活动下单/支付等功能
 
--  本项目特点，能根据数据库表, 
+-  本项目特点，能根据数据库表:  
+ 
+- [ ] 1、自动生成 gozero 项目需要的 gorm v2版本 model数据库操作层代码
+- [ ] 2、自动生成 gozero 项目需要的 proto文件, api文件, 进一步解放生产力 
+- [ ] 3、自动生成 管理后台的go代码, vue,js 前端代码 
 
--  1、自动生成 gozero 项目需要的 gorm版本 model数据库操作层, proto文件, api文件,  进一步解放生产力 
-
--  2、自动生成 管理后台的go代码 ,和vue 代码 
-
--  3、api和rpc 双层redis缓存设计，根据业务需求灵活设置缓存时长和键值（开发中....） 
-
+   正在更新的内容
+- [x] 4、api和 model 双层redis缓存设计，根据业务需求灵活设置缓存时长和键值, 减少r层调用的时间.（开发中....） 
+- [x] 5、增加mqtt 物联网 与kafka 消息队列,rpc层的配套使用demo
+- [x] 6、增加websocket/tcp 调用 rpc 层功能
+- 
+ 
 
 -  没有gozero原来的缓存设计, 本项目后继将增加居于 api层的缓存和rpc层缓存的双层缓存设计,减少调用rpc的耗时, 
 根据api接口和参数, 作为缓存的key ,根据具体业务需要,灵活设计缓存的时间 
 
 -  超过 500 star,将更新配套的 uniapp 前端版本 和 缓存版本。  欢迎star来鼓励。。。。
 
- 
+  
 
 ####  最简单的启动模式
 - 1、  克隆本项目
     git clone https://github.com/88act/go-cms.git
 
-- 2、  还原数据库,到本机的mysql 数据库,  数据库文件在文件夹  go-cms/doc/sql/  ,四个模块的表放在同一个数据库,方便测试,实际部署时可以分库
-    -  微服务器项目包括四个模块: usercenter 用户中心 ,act 活动模块 ,order 订单模块 pay 支付模块 
-    -  对应的 数据库前缀分别是 : mem_ , act_ , order_, pay_   
+- 2、  还原数据库,到本机的mysql 数据库,  数据库文件在文件夹  go-cms/doc/sql/  ,五个模块的表放在同一个数据库,方便测试,实际部署时,可以为五个独立数据库
+    -  微服务器项目包括五个模块:
+     -     usercenter 用户中心 ,act 活动模块 ,order 订单模块, pay 支付模块 , basic模块(基础服务"如:邮件发送,短信发送,文件服务,等等)
+    -  对应的 数据库前缀分别是 :
+     -   mem_ , act_ , order_, pay_ ,basic_  
  
-    - 修改app目录的四个etc文件夹的 DB配置项, 使之正常连接数据库 ,  比如  act.yaml 文件 ，修改自己的数据库配置 ，比如 ： 
-       DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+    - 修改app目录的五个模块etc文件夹的 DB配置项, 使之正常连接数据库 ,  比如  act.yaml 文件 ，修改自己的数据库配置 ，比如 ： 
+    -   DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
-- 3、 启动4个微服务器,本项目使用 modd 启动和管理 ,  关于modd更多用法可以去这里了解 ： https://github.com/cortesi/modd
+- 3、 启动五个模块api和rpc,本项目使用 modd 启动和管理 ,  关于modd更多用法可以去这里了解 ： https://github.com/cortesi/modd
 
 
     cd gozero
 
     ./modd  
 
-- 4、 正常可以看到 api 和 rpc 已经正常运行
+- 4、 正常可以看到5个 api 和 rpc 项目已经正常运行
 
 - 5、 测试 ,启动 postman, 运行下面post, 终端可以观察到gorm sql语句的执行情况
 
@@ -105,12 +111,26 @@ post  http://127.0.0.1:1001/order/v1/order/addOrder
 $ docker network create go-zero-looklook_looklook_net                                                                                                                      
 $ docker-compose -f docker-compose-env.yml up -d   
 
-- 2、  然后,按照最简单的方式启动
 
-- 3、 本项目docker只启动了基本的 jaeger链路追踪, asynq延迟队列 redis,elasticsearch,mysql 等
+- 2、  然后,按照上面的最简单的方式步骤,一一启动
+
+- 3、  由于是本机代码直接访问docker 里面的服务,需要在host文件做一个映射
+
+ - host 文件增加以下映射 
+
+    127.0.0.1 jaeger
+    127.0.0.1 redis
+    127.0.0.1 mysql
+    127.0.0.1 Prometheus
+    127.0.0.1 metrics
+    127.0.0.1 jaeger
+    127.0.0.1 kafka
+
+
+- 4、 本项目docker只启动了基本的 jaeger链路追踪, asynq延迟队列 redis,elasticsearch,mysql 等
   如果想启动所有的服务 ,可以参考 https://github.com/Mikaelemmmm/go-zero-looklook  项目里面的详细说明
 
-- 4、  访问 http://127.0.0.1:16686/search  可以查看链路追踪的情况
+- 5、  访问 http://127.0.0.1:16686/search  可以查看链路追踪的情况
 ####  
  
 ####  =============================================================================================================================================
