@@ -1,0 +1,56 @@
+syntax = "v1"
+
+info(
+	title: "基础服务"
+	desc: "基础服务"
+	author: "go-cms"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+
+import (
+	"file/file.api"
+	"sms/sms.api"
+)
+
+//=====================================> basic v1 <=================================
+//no need login
+@server(
+	prefix: basic/v1
+	group: basic
+)
+service basic {
+	
+	@doc "获取key"
+	@handler getKey
+	get /basic/getKey (getKeyReq) returns (getKeyResp)
+	
+	@doc "获取图形码"
+	@handler getCaptcha
+	get /basic/getCaptcha (GetCaptchaReq) returns (GetCaptchaResp)
+	
+	@doc "发送验证码"
+	@handler getCode
+	get /basic/sendCode (GetCodeReq) returns (GetCodeResp)
+	
+	@doc "文件列表"
+	@handler FileList
+	post /basic/fileList (FileListReq) returns (FileListResp)
+	
+	@doc "文件详情"
+	@handler FileDetail
+	post /basic/fileDetail (FileDetailReq) returns (FileDetailResp)
+	
+}
+
+// need login
+@server(
+	prefix: basic/v1
+	group: basic
+	jwt: JwtAuth
+)
+service basic {
+	@doc "上传文件"
+	@handler Upload
+	post /basic/upload (UploadReq) returns (UploadResp)
+}

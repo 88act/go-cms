@@ -1,0 +1,39 @@
+syntax = "v1"
+
+info(
+	title: "基础服务"
+	desc: "基础服务"
+	author: "go-cms"
+	email: "10512203@qq.com"
+	version: "v1"
+) 
+ 
+type (
+	getKeyReq { 
+	}
+	getKeyResp {
+		Key        string `json:"key"`
+		ExpireTime int32 `json:"expireTime"`
+	}
+) 
+type (
+	GetCaptchaReq {
+	    Key        string `json:"key"`
+	}
+	GetCaptchaResp {
+		image string `json:"image"`
+	}
+) 
+
+type (
+	GetCodeReq {
+		sendType     int32 `json:"sendType"` // 1 短信 2 邮件  
+	    phone        string `json:"phone"`   // 1 短信 2 邮件 
+		verilyType   int32 `json:"verilyType"` //验证码类型 1注册,2密码登录,3手机登录,4修改密码
+		Key          string `json:"key"`
+		code         string `json:"code"`
+	}
+	GetCodeResp { 
+	}
+) 
+ 

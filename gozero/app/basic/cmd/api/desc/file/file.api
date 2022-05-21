@@ -1,0 +1,45 @@
+syntax = "v1"
+
+info(
+	title: "基础服务"
+	desc: "基础服务"
+	author: "go-cms"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+ // BasicFile 结构体 
+type (
+ FileInfo  {  
+    Guid  string `json:"guid"`    //唯一id  
+    Path  string `json:"path"`    //文件路径
+    Ext  string `json:"ext"`    //文件类型
+    Size  int `json:"size"`   //文件大小[k] 
+   }
+) 
+
+type (
+	FileListReq {
+		ids []string `json:"ids"` 
+	}
+	FileListResp {
+		List []FileInfo `json:"list"`
+	}
+) 
+
+type (
+	FileDetailReq {
+		id string `json:"id"` 
+	}
+	FileDetailResp {
+		info FileInfo `json:"info"`
+	}
+) 
+
+
+type (
+	UploadReq { 
+	}
+	UploadResp {
+		info FileInfo `json:"info"`
+	}
+) 

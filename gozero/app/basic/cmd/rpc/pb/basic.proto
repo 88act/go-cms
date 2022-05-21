@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+ 
+message BasicFile  { 
+  int64 id  = 1;   
+  string guid  = 2;    //唯一id 
+  int64 userId  = 3;     //用户id 
+  int32 mediaType  = 4;    //媒体类型 
+  int32 driver  = 5;    //存储位置
+  string path  = 6;    //文件路径
+  string ext  = 7;    //文件类型 
+  int32 size  = 8;    //文件大小[k]
+  string md5  = 9;    //md5值
+  string sha1  = 10;    //sha散列值 
+  int32 sort  = 11;    //排序 
+  int32 download  = 12;    //下载次数 
+  int32 usedTime  = 13;    //使用次数  
+  string name  = 14;    //文件名 
+  int32 module  = 15;    //模块名  
+  int64 createdAt  = 16; 
+  int64 updatedAt  = 17;
+}
+
+message FileInfo  {   
+  string guid  = 1;    //唯一id 
+  string path  = 2;    //文件路径
+  string ext  = 3;    //文件类型 
+  int32 size  = 4;    //文件大小[k]
+}
+
+message FileDetailReq {
+  int64   id = 1;
+}
+message FileDetailResp {
+  BasicFile info = 1;
+}
+
+message FileListReq {
+  repeated string  ids = 1;  //多个唯一id 
+}
+message FileListResp {
+  repeated FileInfo list = 1;
+}
+
+message AddFileReq { 
+  int64 userId  = 1;     //用户id 
+  int32 mediaType  = 2;    //媒体类型  
+  string path  = 3;    //文件路径
+  string ext  = 4;    //文件类型 
+  int32 size  = 5;    //文件大小[k]
+  string md5  = 6;    //md5值
+  string sha1  = 7;    //sha散列值 
+  int32 sort  = 8;    //排序 
+  string name  = 9;    //文件名 
+  int32 module  = 10;    //模块名  
+  string pid  = 11;    //目录id 
+}
+message AddFileResp {
+    FileInfo info = 1;
+}
+
+ 
+//service
+service Basic {
+    //FileDetail //文件详情
+    rpc FileDetail(FileDetailReq) returns(FileDetailResp);
+    //FileList 文件列表
+    rpc FileList(FileListReq) returns(FileListResp);
+    //addFile 新增文件
+    rpc addFile(AddFileReq) returns(AddFileResp);
+}

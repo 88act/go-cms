@@ -37,6 +37,12 @@ cd D:\work_go\opensrc\go-zero-looklook\app\order\cmd\rpc\pb
 goctl rpc protoc order.proto --go_out=../ --go-grpc_out=../  --zrpc_out=../ --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
 
 
+cd D:\work_go\go-cms\gozero\app\basic\cmd\api\desc
+goctl api go -api basic.api -dir ../  --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
+cd D:\work_go\go-cms\gozero\app\basic\cmd\rpc\pb
+goctl rpc protoc basic.proto --go_out=../ --go-grpc_out=../  --zrpc_out=../ --style=goZero --home D:\work_go\opensrc\go-zero-looklook\deploy\goctl
+
 
 
 # 数据库 
