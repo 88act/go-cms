@@ -46,14 +46,14 @@ http://120.24.150.47/admin
 
 -  本项目特点，能根据数据库表:  
  
-- [ ] 1、自动生成 gozero 项目需要的 gorm v2版本 model数据库操作层代码
-- [ ] 2、自动生成 gozero 项目需要的 proto文件, api文件, 进一步解放生产力 
-- [ ] 3、自动生成 管理后台的go代码, vue,js 前端代码 
+- [x] 1、自动生成 gozero 项目需要的 gorm v2版本 model数据库操作层代码
+- [x] 2、自动生成 gozero 项目需要的 proto文件, api文件, 进一步解放生产力 
+- [x] 3、自动生成 管理后台的go代码, vue,js 前端代码 
 
    正在更新的内容
-- [x] 4、api和 model 双层redis缓存设计，根据业务需求灵活设置缓存时长和键值, 减少r层调用的时间.（开发中....） 
-- [x] 5、增加mqtt 物联网 与kafka 消息队列,rpc层的配套使用demo
-- [x] 6、增加websocket/tcp 调用 rpc 层功能
+- [ ] 4、api和 model 双层redis缓存设计，根据业务需求灵活设置缓存时长和键值, 减少r层调用的时间.（开发中....） 
+- [ ] 5、增加mqtt 物联网 与kafka 消息队列,rpc层的配套使用demo
+- [] 6、增加websocket/tcp 调用 rpc 层功能
 - 
  
 
@@ -136,7 +136,7 @@ $ docker-compose -f docker-compose-env.yml up -d
 ####  =============================================================================================================================================
 
 
-### 1.1 gin gorm v2 管理后台项目
+### 1.1 gin gorm v2 管理后台项目,配套gozero前端框架,管理数据后台
 
 > go-cms, golang的cms内容管理系统, 管理后台web-admin居于 vue3 element-plus ,客户端居于uniapp,后端居于 golang gin  后端集成jwt鉴权，动态路由，动态菜单，casbin鉴权功能. 
 
