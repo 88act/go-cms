@@ -2,8 +2,8 @@ package listen
 
 import (
 	"context"
-	"go-cms/app/order/cmd/mq/internal/config"
-	"go-cms/app/order/cmd/mq/internal/svc"
+	"go-cms/app/order/cmd/rpc/internal/config"
+	"go-cms/app/order/cmd/rpc/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/service"
 )

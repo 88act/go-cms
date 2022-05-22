@@ -47,7 +47,7 @@ func main() {
 	defer serviceGroup.Stop()
 
 	for _, mq := range listen.Mqs(c) {
-		fmt.Printf("启动消息队列监听  mq  server ...\n")
+		fmt.Printf("启动消息队列监听 basic mq  server ...\n")
 		serviceGroup.Add(mq)
 	}
 	serviceGroup.Add(s)

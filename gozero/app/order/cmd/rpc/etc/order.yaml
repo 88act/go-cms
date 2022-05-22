@@ -62,5 +62,14 @@ KqPaymentUpdatePayStatusConf:
     - kafka:9092
   Topic: payment-update-paystatus-topic
  
-
+#kq
+PaymentUpdateStatusConf:
+  Name: PaymentUpdateStatus
+  Brokers:
+    - kafka:9092
+  Group: payment-update-paystatus-group
+  Topic: payment-update-paystatus-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
 

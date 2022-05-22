@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"go-cms/app/order/cmd/rpc/internal/config"
+	"go-cms/app/order/cmd/rpc/internal/mqs/listen"
 	"go-cms/app/order/cmd/rpc/internal/server"
 	"go-cms/app/order/cmd/rpc/internal/svc"
 	"go-cms/app/order/cmd/rpc/pb"
@@ -37,9 +38,15 @@ func main() {
 
 	//rpc log
 	s.AddUnaryInterceptors(rpcserver.LoggerInterceptor)
+	fmt.Printf("Starting order  rpc server at %s...\n", c.ListenOn)
 
-	defer s.Stop()
+	serviceGroup := service.NewServiceGroup()
+	defer serviceGroup.Stop()
 
-	fmt.Printf("Starting rpc server at %s...\n", c.ListenOn)
-	s.Start()
+	for _, mq := range listen.Mqs(c) {
+		fmt.Printf("\n 启动消息队列监听  order mq listen... ")
+		serviceGroup.Add(mq)
+	}
+	serviceGroup.Add(s)
+	serviceGroup.Start()
 }

@@ -3,6 +3,7 @@ package config
 import (
 	"go-cms/common/kqueue"
 
+	"github.com/zeromicro/go-queue/kq"
 	"github.com/zeromicro/go-zero/core/stores/cache"
 	"github.com/zeromicro/go-zero/zrpc"
 )
@@ -18,4 +19,5 @@ type Config struct {
 	KqPaymentUpdatePayStatusConf kqueue.KqConfig
 	KqSendEmailConf              kqueue.KqConfig
 	KqSendSmsConf                kqueue.KqConfig
+	PaymentUpdateStatusConf      kq.KqConf
 }
