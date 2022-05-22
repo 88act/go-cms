@@ -52,11 +52,11 @@ func GormMysql(dsn string) *gorm.DB {
 	})
 	if err != nil {
 		logx.Errorf(err.Error())
-		logx.Errorf("MySQL启动异常")
+		logx.Errorf("basic MySQL启动异常")
 		os.Exit(0)
 		return nil
 	}
-	logx.Info("act rpc MySQL启动 success")
+	logx.Info("basic rpc MySQL启动 success")
 	return db
 
 }

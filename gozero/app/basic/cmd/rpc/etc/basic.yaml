@@ -5,7 +5,7 @@ Mode: dev
 #监控
 Prometheus:
   Host: 0.0.0.0
-  Port: 4007
+  Port: 4010
   Path: /metrics
 
 #链路追踪
@@ -17,9 +17,46 @@ Telemetry:
 
 Log:
   ServiceName: basic-rpc
-  Level: error 
+  Level: info 
 DB:
     DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 Cache:
   - Host: redis:6379
     Pass: G62m50oigInC30sf
+
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: G62m50oigInC30sf
+ 
+SendEmailConf:
+  Name: SendEmail
+  Brokers:
+    - kafka:9092
+  Group: send-email-group
+  Topic: send-email-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+SendSmsConf:
+  Name: SendSms
+  Brokers:
+    - kafka:9092
+  Group: send-sms-group
+  Topic: send-sms-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1  
+
+  
+ImageZipConf:
+  Name: ImageZip
+  Brokers:
+    - kafka:9092
+  Group: image-zip-group
+  Topic: image-zip-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1 

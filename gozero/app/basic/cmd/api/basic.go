@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"go-cms/app/basic/cmd/api/internal/config"
+	"go-cms/app/basic/cmd/api/internal/handler"
+	"go-cms/app/basic/cmd/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
-	"honnef.co/go/tools/config"
 )
 
 var configFile = flag.String("f", "etc/basic.yaml", "the config file")
@@ -23,6 +25,6 @@ func main() {
 
 	handler.RegisterHandlers(server, ctx)
 
-	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
+	fmt.Printf("Starting basic api server at %s:%d...\n", c.Host, c.Port)
 	server.Start()
 }

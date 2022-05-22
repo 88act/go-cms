@@ -2,9 +2,9 @@ package listen
 
 import (
 	"context"
-	"go-cms/app/basic/cmd/mq/internal/config"
-	kqMq "go-cms/app/basic/cmd/mq/internal/mqs/kq"
-	"go-cms/app/basic/cmd/mq/internal/svc"
+	"go-cms/app/basic/cmd/rpc/internal/config"
+	kqMq "go-cms/app/basic/cmd/rpc/internal/mqs/kq"
+	"go-cms/app/basic/cmd/rpc/internal/svc"
 
 	"github.com/zeromicro/go-queue/kq"
 	"github.com/zeromicro/go-zero/core/service"

@@ -3,8 +3,7 @@ package kq
 import (
 	"context"
 	"encoding/json"
-	"go-cms/app/basic/cmd/mq/internal/svc"
-
+	"go-cms/app/basic/cmd/rpc/internal/svc"
 	"go-cms/common/kqueue"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -13,37 +12,37 @@ import (
 /**
 Listening to the payment flow status change notification message queue
 */
-type ImageZipMq struct {
+type SendEmailMq struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewImageZipMq(ctx context.Context, svcCtx *svc.ServiceContext) *ImageZipMq {
-	return &ImageZipMq{
+func NewSendEmailMq(ctx context.Context, svcCtx *svc.ServiceContext) *SendEmailMq {
+	return &SendEmailMq{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
 // 消耗/订阅 消息
-func (l *ImageZipMq) Consume(_, val string) error {
+func (l *SendEmailMq) Consume(_, val string) error {
 
-	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行....ImageZipMq ")
-	var message kqueue.ImageZipMessage
+	logx.WithContext(l.ctx).Error("消耗/订阅 消息 ,开始执行.... SendEmailMq ")
+	var message kqueue.EmailMessage
 	if err := json.Unmarshal([]byte(val), &message); err != nil {
-		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 ImageZipMq->Consume Unmarshal err : %v , val : %s", err, val)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 SendEmailMq->Consume Unmarshal err : %v , val : %s", err, val)
 		return err
 	}
 
 	if err := l.execService(message); err != nil {
-		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 ImageZipMq->execService  err : %v , val : %s , message:%+v", err, val, message)
+		logx.WithContext(l.ctx).Error("第三方支付回调更改支付状态通知 SendEmailMq->execService  err : %v , val : %s , message:%+v", err, val, message)
 		return err
 	}
 
 	return nil
 }
 
-func (l *ImageZipMq) execService(message kqueue.ImageZipMessage) error {
+func (l *SendEmailMq) execService(message kqueue.EmailMessage) error {
 
 	// orderPayState := l.getOrderPayStateByTrade(message.PayStatus)
 	// if orderPayState != -99 {
@@ -56,8 +55,9 @@ func (l *ImageZipMq) execService(message kqueue.ImageZipMessage) error {
 	// 	if err != nil {
 	// 		return errors.Wrapf(xerr.NewErrMsg("更新订单支付状态失败 "), "更新订单支付状态失败 err : %v ,message:%+v", err, message)
 	// 	}
-	// 	logx.WithContext(l.ctx).Info("第三方支付回调更改支付状态通知 成功 sn=%s , message:%+v", message.OrderSn, message)
 	// }
-	logx.Errorf("图片压缩 .... ")
+
+	logx.Errorf("收到订阅 send email")
+
 	return nil
 }
