@@ -126,11 +126,19 @@ $ docker-compose -f docker-compose-env.yml up -d
     127.0.0.1 jaeger
     127.0.0.1 kafka
 
+- 4、 进入容器kafka 创建5个topic
 
-- 4、 本项目docker只启动了基本的 jaeger链路追踪, asynq延迟队列 redis,elasticsearch,mysql 等
-  如果想启动所有的服务 ,可以参考 https://github.com/Mikaelemmmm/go-zero-looklook  项目里面的详细说明
+```shell
+docker exec -it kafka /bin/sh
+cd /opt/kafka/bin/
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic looklook-log
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic payment-update-paystatus-topic
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic send-sms-topic
+./kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 -partitions 1 --topic send-email-topic
 
-- 5、  访问 http://127.0.0.1:16686/search  可以查看链路追踪的情况
+ 
+- 5、  访问 http://127.0.0.1:16686/search  可以查看链路追踪的情况,
+       详细可以参考 https://github.com/Mikaelemmmm/go-zero-looklook  项目里面
 ####  
  
 ####  =============================================================================================================================================
