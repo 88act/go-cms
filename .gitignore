@@ -2,3 +2,4 @@
 .cloudbase
 node_modules
 /web/dist
+/server/res
