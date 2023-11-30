@@ -1,0 +1,669 @@
+.el-form-item__label {
+  font-weight: 700;
+}
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+.el-dropdown-menu {
+  padding: 0 !important;
+}
+
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.is-dark {
+  z-index: 9999 !important;
+}
+
+/* 重置 el-button 中 icon 的 margin */
+.reset-margin [class*="el-icon"] + span {
+  margin-left: 2px !important;
+}
+
+/* 自定义 popover 的类名 */
+.pure-popper {
+  padding: 0 !important;
+}
+
+/* 自定义 tooltip 的类名 */
+.pure-tooltip {
+  // 右侧操作面板right-panel类名的z-index为40000，tooltip需要大于它才能显示
+  z-index: 41000 !important;
+}
+
+/* nprogress 适配 element-plus 的主题色 */
+#nprogress {
+  & .bar {
+    background-color: var(--el-color-primary) !important;
+  }
+
+  & .peg {
+    box-shadow:
+      0 0 10px var(--el-color-primary),
+      0 0 5px var(--el-color-primary) !important;
+  }
+
+  & .spinner-icon {
+    border-top-color: var(--el-color-primary);
+    border-left-color: var(--el-color-primary);
+  }
+}
+
+.pure-dialog {
+
+ .el-dialog{
+    border-radius: 14px;
+  }
+  .pure-dialog-svg {
+    color: var(--el-color-info);
+  }
+
+  .el-dialog__headerbtn {
+    top: 20px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* 全局覆盖element-plus的el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标的样式，表现更鲜明 */
+.el-dialog__headerbtn,
+.el-dialog,
+.el-message-box__headerbtn {
+  &:hover {
+    .el-dialog__close {
+      color: var(--el-color-info) !important;
+    }
+  }
+}
+
+.el-icon {
+  &.el-dialog__close,
+  &.el-drawer__close,
+  &.el-message-box__close,
+  &.el-notification__closeBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    outline: none;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: rgb(0 0 0 / 88%) !important;
+      text-decoration: none;
+      background-color: rgb(0 0 0 / 6%);
+
+      .pure-dialog-svg {
+        color: rgb(0 0 0 / 88%) !important;
+      }
+    }
+  }
+}
+
+/* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，暗黑模式在 src/style/dark.scss 文件进行了适配 */
+.pure-message {
+  padding: 10px 13px !important;
+  background: #fff !important;
+  border-width: 0 !important;
+  box-shadow:
+    0 3px 6px -4px #0000001f,
+    0 6px 16px #00000014,
+    0 9px 28px 8px #0000000d !important;
+
+  &.el-message.is-closable .el-message__content {
+    padding-right: 17px !important;
+  }
+
+  & .el-message__content {
+    color: #000000d9 !important;
+    pointer-events: all !important;
+    background-image: initial !important;
+  }
+
+  & .el-message__icon {
+    margin-right: 8px !important;
+  }
+
+  & .el-message__closeBtn {
+    right: 9px !important;
+    border-radius: 4px;
+    outline: none;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background-color: rgb(0 0 0 / 6%);
+    }
+  }
+}
+
+/* 自定义菜单搜索样式 */
+.pure-search-dialog {
+  .el-dialog__header {
+    display: none;
+  }
+
+  .el-dialog__body {
+    padding-top: 12px;
+    padding-bottom: 0;
+  }
+
+  .el-input__inner {
+    font-size: 1.2em;
+  }
+
+  .el-dialog__footer {
+    padding-bottom: 10px;
+    box-shadow:
+      0 -1px 0 0 #e0e3e8,
+      0 -3px 6px 0 rgb(69 98 155 / 12%);
+  }
+}
+
+
+
+
+/**
+ * add  by linjd ---------------------
+ */
+
+
+.gocms-form-box {
+  padding:8px;
+	border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.gocms-form-box2 {
+  padding:12px;
+}
+
+.gocms-table-box {
+   padding:12px;
+   border-radius: 8px;
+   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+	 th.el-table__cell,
+	 td.el-table__cell {
+	     position: static !important;
+	}
+}
+
+
+
+.gocms-box-search-button {
+	display: flex;justify-content:space-between;align-items: center;
+   padding-left:20px;
+}
+
+
+.gocms-box-search {
+  margin-bottom: 12px;
+	padding: 10px;   
+  border-radius: 4px;
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1); 
+}
+
+.gocms-table-div2 {
+  width: 300px;
+  align-items: center;
+  padding: 10px;
+  margin-top: 12px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.gocms-table-box_dialog {
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+	 // by ljd  20220719
+	 th.el-table__cell,
+	 td.el-table__cell {
+	    // by ljd  20220719
+	     position: static !important;
+	}
+}
+
+
+
+.gocms-pagination {
+   	display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    .el-pagination__editor {
+        .el-input__inner {
+            height: 32px;
+        }
+    }
+    .el-pagination__total {
+        line-height: 32px !important;
+    }
+    .btn-prev {
+        padding-right: 6px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .number {
+	    padding-right: 6px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .btn-quicknext {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .btn-next {
+        padding-left: 6px;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    //
+    // .active {
+    //     background: #4D70FF;
+    //     border-radius: 2px;
+    //     color: #ffffff !important;
+    // }
+    .el-pager li.active+li {
+        border-left: 1px solid #ddd !important;
+    }
+    // end
+
+
+    // .is-active {
+    //     background: #4D70FF;
+    //     border-radius: 2px;
+    //     color: #ffffff !important;
+    // }
+    .el-pager li.is-active+li {
+        border-left: 1px solid #ddd !important;
+    }
+    .el-pagination__sizes {
+		padding-left: 10px;
+        .el-input {
+            .el-input__suffix {
+                margin-top: 2px;
+
+            }
+        }
+    }
+}
+
+
+
+.gocms-pagination2 {
+   	display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    .el-pagination__editor {
+        .el-input__inner {
+            height: 32px;
+        }
+    }
+    .el-pagination__total {
+        line-height: 32px !important;
+    }
+    .btn-prev {
+        padding-right: 6px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .number {
+	    padding-right: 6px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .btn-quicknext {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+    }
+    .btn-next {
+        padding-left: 6px;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    //
+    .active {
+        background: #4D70FF;
+        border-radius: 2px;
+        color: #ffffff !important;
+    }
+    .el-pager li.active+li {
+        border-left: 1px solid #ddd !important;
+    }
+    // end
+
+
+    .is-active {
+        background: #4D70FF;
+        border-radius: 2px;
+        color: #ffffff !important;
+    }
+    .el-pager li.is-active+li {
+        border-left: 1px solid #ddd !important;
+    }
+    .el-pagination__sizes {
+		padding-left: 10px;
+        .el-input {
+            .el-input__suffix {
+                margin-top: 2px;
+
+            }
+        }
+    }
+}
+
+
+
+.my-dialog-header-2 {
+  display: flex;
+
+  justify-content: space-between;
+ }
+.my-dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  /*  title */
+  font-family: SourceHanSansCN-Normal;
+  font-size: 24px;
+  font-weight: 350;
+  line-height: 24px;
+  letter-spacing: 0px;
+  /* text-color-primary */
+  color: #303133;
+}
+
+
+.my-dialog-closeIcon {
+   cursor:pointer;
+   font-size: 20px;
+   margin-top: -25px;
+   margin-right: -33px
+}
+
+.my-dialog-closeIcon2 {
+   cursor:pointer;
+   font-size: 32px;
+   margin-top: -10px;
+   margin-right: -10px
+}
+
+
+.gocms-btn-list {
+    margin-bottom: 12px;
+    display: flex;
+    .el-button+.el-button {
+        margin-left: 12px;
+    }
+}
+
+
+
+.quickEdit{
+    cursor: pointer;
+    text-decoration:underline ;
+    color:#409EFF
+ }
+ .quickEditTxt{
+    cursor: pointer;
+    text-decoration:underline dotted;
+    color:#409EFF
+}
+
+
+
+ // tree -table
+ .mytable {
+ 	width: 400px;
+ }
+
+
+ .mytable-cell-header{
+	 height: 30px;
+	 justify-content: center;
+	 align-items: center;
+	 background: #0B63CB;
+	 color: #fff;
+ }
+
+ .mytable-cell {
+ 	height: 30px;
+ 	justify-content: center;
+ 	align-items: center;
+ 	background: #F4F4F4;
+ 	// box-sizing: border-box;
+ 	// border-width: 1px 1px 1px 1px;
+ 	// border-style: solid;
+ 	// border-color: rgba(0, 0, 0, 0.1);
+ }
+ .mytable-cell2 {
+ 	height: 30px;
+ 	border-radius: 0px 0px 0px 4px;
+ 	background: #dadada;
+ 	// box-sizing: border-box;
+ 	// border-width: 0px 1px 1px 1px;
+ 	// border-style: solid;
+ 	// border-color: rgba(0, 0, 0, 0.1);
+ }
+
+ .mytable-td {
+ 	width: 80px;
+ }
+ .mytable-td2 {
+ 	width: 260px;
+  }
+
+
+
+ //  icon
+ .my-image-icon-mediaLib {
+   cursor: pointer;
+   width: 100px;
+   height: 100px;
+  // line-height: 120px;
+   margin: 0 auto;
+  // display: flex;
+   justify-content: center;
+   border-radius: 8px;
+   &:hover {
+     color: #fff;
+     background: linear-gradient(
+         to bottom,
+         rgba(255, 255, 255, 0.15) 0%,
+         rgba(0, 0, 0, 0.15) 100%
+       ),
+       radial-gradient(
+           at top center,
+           rgba(255, 255, 255, 0.4) 0%,
+           rgba(0, 0, 0, 0.4) 120%
+         )
+         #989898;
+     background-blend-mode: multiply, multiply;
+     .update {
+       color: #fff;
+     }
+   }
+   .update {
+ 	 cursor: pointer;
+ 	 //padding-top:50px;
+     height: 100px;
+     width: 100px;
+     text-align: center;
+     color: transparent;
+   }
+ }
+
+  .my-image-icon {
+ 　　cursor:pointer;
+    width: 100px;
+    height: 100px;
+   // line-height: 120px;
+    margin: 0 auto;
+   // display: flex;
+    justify-content: center;
+   border-radius: 8px;
+    &:hover {
+      color: #fff;
+      background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.15) 0%,
+          rgba(0, 0, 0, 0.15) 100%
+        ),
+        radial-gradient(
+            at top center,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(0, 0, 0, 0.4) 120%
+          )
+          #989898;
+      background-blend-mode: multiply, multiply;
+      .update {
+        color: #fff;
+      }
+    }
+    .update {
+		 padding:10px;
+		 width: 100px;
+		 height:100px;
+		 text-align: center;
+		 color: transparent;
+    }
+  }
+
+ // img icon
+ .my-image-icon-edit {
+  // cursor: pointer;
+   width: 146px;
+   height: 146px;
+  // line-height: 120px;
+   margin: 0 auto;
+  // display: flex;
+   justify-content: center;
+   border-radius: 0px;
+   &:hover {
+     color: #fff;
+     background: linear-gradient(
+         to bottom,
+         rgba(255, 255, 255, 0.15) 0%,
+         rgba(0, 0, 0, 0.15) 100%
+       ),
+       radial-gradient(
+           at top center,
+           rgba(255, 255, 255, 0.4) 0%,
+           rgba(0, 0, 0, 0.4) 120%
+         )
+         #989898;
+     background-blend-mode: multiply, multiply;
+     .update {
+       color: #fff;
+     }
+   }
+   .update {
+ 	padding:40px;
+    width: 146px;
+    height: 146px;
+    text-align:center;
+    color:transparent;
+   }
+ }
+
+ //
+ .btn-save {
+    display:flex;
+	justify-content:flex-end;
+ }
+ // chat box
+ .gocms-chat-box {
+ 	margin-left: 10px;
+ 	margin-right: 10px;
+ 	margin-top: 3px;
+ 	padding: 10px;
+ 	background-color: #fff;
+ 	border-radius: 8px;
+ 	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+ }
+
+
+
+// .el-dialog {
+// 	//width: 600px;
+//   padding: 24px;
+// 	border-radius: 8px;
+//     .el-dialog__body {
+//         padding: 12px 6px;
+//     }
+//     .el-dialog__header {
+//         .el-dialog__title {
+//             font-size: 18px;
+//             font-weight: 500;
+//         }
+//         padding: 8px 0px 12px 8px;
+// 		//margin-right:0px;
+// 		//margin-top:-10px;
+//      //  border-bottom: 1px solid #E4E4E4;
+//     }
+//     .el-dialog__footer {
+//         padding: 0 16px 16px 0;
+//         .dialog-footer {
+//             .el-button {
+//                 padding-left: 24px;
+//                 padding-right: 24px;
+//             }
+//             .el-button+.el-button {
+//                 margin-left: 30px;
+//             }
+//         }
+//     }
+// }
