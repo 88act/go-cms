@@ -13,7 +13,7 @@
  
 [github地址](https://github.com/88act/go-cms): https://github.com/88act/go-cms
  
-go-cms v2.0 新版    
+go-cms v2.0 新版 升级到 go 1.21    
 本项目是一个 cms/企业官网/文章/新闻/群组/圈子 通用内容管理系统 
 演示golang gin  结合 vue3 的管理后台，以及演示居于gozero+gorm的微服务前端api项目 
 vue3 使用最新的TypeScript、Pinia、Tailwindcss，Vite、Element-Plus技术。
@@ -28,7 +28,7 @@ vue3 使用最新的TypeScript、Pinia、Tailwindcss，Vite、Element-Plus技术
 ## 1. 基本介绍
 
 > 本项目 目录介绍
--  /gozero/ 居于gozero v1.60，结合gorm v2 微服务项目,作为前端api
+-  /gozero/ 居于最新版 gozero v1.60，结合gorm v2 微服务项目,作为前端api
 -  /uniapp/ 配套的前端的uniapp项目,可发布成小程序或h5，hybird程序 
 -  /server/ 居于gin的 gorm v2 管理后台项目
 -  /web/ 配套的管理后台vue3，居于 Vue3、TypeScript、Pinia、Tailwindcss，Vite、Element-Plus、 等主流技术栈开发，支持多语言国际化。
