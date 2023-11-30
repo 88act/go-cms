@@ -1,20 +1,21 @@
-<template>	 
+<template>
 		<div class="gocms-form-box bg-bg_color">
 			<el-form ref="editForm" :model="formData" :rules="editRules"  label-position="right" label-width="80px" >
         <el-form-item label="文章id:"  prop="artId">
                  <el-input v-model.number="formData.artId" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="详细:"  prop="detail">
-                <editor ref="editor_detail" :value="formData.detail" placeholder="请输入详细" />
-       </el-form-item> 
+        <el-form-item label="详细:"  prop="detail"> 			<div id="vditor" />
+
+       </el-form-item>
 			</el-form>
 			<div class="btn-save">
-				<el-button class="el-btn-save" type="primary" @click="save">保存</el-button>				
-			</div>		 
+				<el-button class="el-btn-save" type="primary" @click="save">保存</el-button>
+			</div>
 	</div>
 </template>
 
 <script setup lang="ts">
+  import { getToken, formatToken } from "@/utils/auth";
   import { message } from "@/utils/message";
   import { useVModel } from "@vueuse/core";
   import { ref, onMounted, computed, type CSSProperties, } from "vue";
@@ -49,7 +50,7 @@
     formatDate,
     formatBoolean
   } from '@/utils/utils'
- 
+
 
   import {
     required,
@@ -75,7 +76,7 @@
 	updateCmsDetail,
 	findCmsDetail
 } from '@/api/cmsDetail'
-	
+
 
   // 声明 props 类型
   export interface FormProps {
@@ -84,7 +85,7 @@
     index : number,
     options ?: DialogOptions;
   }
-  // 声明 props 默认值 
+  // 声明 props 默认值
   const props = withDefaults(defineProps<FormProps>(), {
     editId: () => 0,
     beChange: () => false,
@@ -94,12 +95,17 @@
   const emit = defineEmits(["update:editId", "update:beChange"]);
   const id = useVModel(props, "editId", emit);
   const beChange = useVModel(props, "beChange", emit);
-  const editForm = ref(null) 
+  const editForm = ref(null)
    // 字典
+
+   import Vditor from 'vditor';
+   import 'vditor/dist/index.css';
+   const vditor = ref(null);
+
 
   const treeOptions = ref([])
   //图片处理
-  import FileListEdit from '@/components/mediaLib/fileListEdit.vue'  
+  import FileListEdit from '@/components/mediaLib/fileListEdit.vue'
 
   // // 查询
   const getData = async () => {
@@ -114,7 +120,7 @@
       formData.value = res.data
       //formData.value.pidList = getTreeFullPath(treeOptions.value, formData.value.branchId);
     } else {
-       message(res.msg, { type: "error" })
+     //  message(res.msg, { type: "error" })
     }
   }
   //保存
@@ -134,8 +140,8 @@
       delete formData.value.mapData;
       delete formData.value.createdAt;
       delete formData.value.updatedAt;
-	//图片 
-			//BeEditor   this.formData.detail = this.$refs.editor_detail.getContent(); 
+	//图片
+			//BeEditor   this.formData.detail = this.$refs.editor_detail.getContent();
       let res;
       if (id.value > 0) { //update
         res = await updateCmsDetail(formData.value)
@@ -152,12 +158,12 @@
         message(res.msg, { type: "success" })
         closeDialog(props.options, props.index)
       } else {
-        message(res.msg, { type: "error" })
+         message(res.msg, { type: "error" })
       }
     }
   }
 
-const getOptionsData = async () => { 
+const getOptionsData = async () => {
 }
   const getTreeData = async () => {
     let treeDataReq = {
@@ -168,26 +174,75 @@ const getOptionsData = async () => {
     }
     treeOptions.value = await getPidTreeData(treeDataReq)
   }
+
+  const myToken =ref("")
+
   const init = async () => {
     //console.log("props.data = ", props.data)
     console.log("id = ", id.value)
     getOptionsData()
-    //getTreeData()
+     getTreeData()
     if (id.value > 0) {
-      getData()
+      await  getData()
     }
+    myToken.value = getToken().accessToken
+    vditor.value = new Vditor('vditor', {
+    		width:"100%",
+    		mode: "wysiwyg",
+    		outline: {
+    		    "enable": true
+    		},
+    		toolbarConfig: {
+    			pin: true,
+    		},
+    		cache: {
+    			enable: false,
+    		},
+    		counter: {
+    		    "enable": true,
+    		    "max": 4000
+    		},
+    		 upload: {
+    		      accept: 'image/*,.mp3,.wav,.rar',
+    		      token: myToken.value,   //'x-token': userStore.token,  X-Upload-Token
+    		      url: 'api/commFile/upload',
+    		      linkToImgUrl: '',
+    			   fieldName:"file",
+    			   success:(_, msg)=>{
+    				  let res = JSON.parse(msg)
+    				  if (res && res.code == 200 ){
+    					  let path =res.data.path
+    					  path = path.replace(".jpg", "_src.jpg");
+    					  path = path.replace(".png", "_src.png");
+    					  vditor.value.insertValue(`![${res.data.name}](${path})`)
+    				  }else {
+    					  console.log("上传出错 ,",msg)
+    				  }
+    				  //vditor.value.insertValue(`![${JSON.parse(msg).data.name}](${JSON.parse(msg).data.url})`)
+    			  }
+    		    },
+    		after: () => {
+    			// vditor.value is a instance of Vditor now and thus can be safely used here
+    			 // vditor.value.setValue('Vue Composition API + Vditor + TypeScript Minimal Example');
+    			vditor.value.setValue(formData.value.detail)
+    		},
+    	});
   }
+
   onMounted(() => {
     init()
   })
+
+
+
  const formData = ref({
 		   id:0,
-            artId: 0,
+         artId: 0,
            detail: '',
-	})  
- 
+	})
+
     const editRules = ({
-	})  
+	})
 
 	  //const fileObjList = ref([])
   // const defaultProps = ref({
@@ -202,4 +257,3 @@ const getOptionsData = async () => {
 
 </script>
 
- 
