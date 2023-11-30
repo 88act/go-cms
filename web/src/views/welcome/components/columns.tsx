@@ -25,7 +25,7 @@ export function useColumns() {
           用户名
         </div>
       ),
-      value: "乐于分享的程序员小铭"
+      value: "go-cms"
     },
     {
       labelRenderer: () => (
@@ -80,7 +80,7 @@ export function useColumns() {
           联系地址
         </div>
       ),
-      value: "中华人民共和国"
+      value: "go-cms"
     }
   ];
 
@@ -97,7 +97,7 @@ export function useColumns() {
       cellRenderer: () => (
         <TypeIt
           className={"github"}
-          values={["办法总比困难多"]}
+          values={["go-cms"]}
           cursor={false}
           speed={100}
         />

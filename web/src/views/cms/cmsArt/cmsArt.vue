@@ -15,7 +15,7 @@
 					<div>
 						<el-form-item  >
 							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>						
+							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>					
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
 						 </el-form-item>
@@ -31,28 +31,83 @@
 							<el-form-item label="id">
 								<el-input placeholder="搜索id" v-model="searchInfo.id" />
 							</el-form-item>
-								<el-form-item label="商户">
-									<el-input placeholder="搜索条件" v-model="searchInfo.cuId" clearable />
+								<el-form-item label="父id">
+									<el-input placeholder="搜索条件" v-model="searchInfo.pid" clearable />
+								</el-form-item>
+								<el-form-item label="用户id">
+									<el-input placeholder="搜索条件" v-model="searchInfo.userId" clearable />
+								</el-form-item>
+								<el-form-item label="类别">
+									<el-input placeholder="搜索条件" v-model="searchInfo.catId" clearable />
+								</el-form-item>
+								<el-form-item label="系统类别">
+									<el-input placeholder="搜索条件" v-model="searchInfo.catIdSys" clearable />
+								</el-form-item>
+								<el-form-item label="文章类型" prop="type">                
+									<el-select v-model="searchInfo.type" placeholder="请选择" clearable>
+									<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
+									</el-select>
 								</el-form-item> 
-								<el-form-item label="api路径">
-								<el-input placeholder="搜索条件" v-model="searchInfo.path" clearable />
+								<el-form-item label="文章标题">
+								<el-input placeholder="搜索条件" v-model="searchInfo.title" clearable />
 								</el-form-item> 
-								<el-form-item label="api中文描述">
+								<el-form-item label="文章摘要">
 								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
 								</el-form-item> 
-								<el-form-item label="所属模块">
-								<el-input placeholder="搜索条件" v-model="searchInfo.model" clearable />
+								<el-form-item label="标签列表">
+								<el-input placeholder="搜索条件" v-model="searchInfo.tagList" clearable />
 								</el-form-item> 
-								<el-form-item label="api组">
-								<el-input placeholder="搜索条件" v-model="searchInfo.apiGroup" clearable />
+								<el-form-item label="来源">
+								<el-input placeholder="搜索条件" v-model="searchInfo.source" clearable />
 								</el-form-item> 
-								<el-form-item label="方法">
-								<el-input placeholder="搜索条件" v-model="searchInfo.method" clearable />
+								<el-form-item label="链接地址">
+								<el-input placeholder="搜索条件" v-model="searchInfo.link" clearable />
+								</el-form-item>
+							<el-form-item label="置顶" prop="beTop">
+							<el-select v-model="searchInfo.beTop" clearable placeholder="请选择">
+								<el-option
+									key="true"
+									label="是"
+									value="true">
+								</el-option>
+								<el-option
+									key="false"
+									label="否"
+									value="false">
+								</el-option>
+							</el-select>
+						</el-form-item>
+								<el-form-item label="综合指数">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalWhole" clearable />
+								</el-form-item>
+								<el-form-item label="总分享">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalShare" clearable />
+								</el-form-item>
+								<el-form-item label="总收藏">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalFav" clearable />
+								</el-form-item>
+								<el-form-item label="总评论">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalDiscuss" clearable />
+								</el-form-item>
+								<el-form-item label="总点击">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalClick" clearable />
+								</el-form-item>
+								<el-form-item label="总星">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalStar" clearable />
+								</el-form-item>
+								<el-form-item label="总赞">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalGood" clearable />
+								</el-form-item>
+								<el-form-item label="总踩">
+									<el-input placeholder="搜索条件" v-model="searchInfo.totalPoor" clearable />
 								</el-form-item>
 								<el-form-item label="状态" prop="status">                
 									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
 									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
 									</el-select>
+								</el-form-item> 
+								<el-form-item label="审核信息">
+								<el-input placeholder="搜索条件" v-model="searchInfo.verifyMsg" clearable />
 								</el-form-item>  
                     </div> 
 				</el-form>
@@ -61,48 +116,46 @@
 			<el-table row-key="id" ref="multipleTable" border  style="width: 100%" tooltip-effect="dark" :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
 				<el-table-column label="序号" width="80" prop="id" sortable="custom" /> 
-					<el-table-column label="商户" prop="cuId" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="api路径" prop="path" min-width="120"   sortable="custom" >
-					<template #default="scope">
-						<el-popover trigger="click" placement="top" width="300">  
-						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.path"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('path',scope.row.id,scope.row.path,scope)">保存</el-button> </el-col> 
-						</el-row>  
+					<el-table-column label="用户id" prop="userId" min-width="120"   sortable="custom"  /> 
+					<el-table-column label="类别" prop="catId" min-width="120"   sortable="custom"  /> 
+					<el-table-column label="系统类别" prop="catIdSys" min-width="120"   sortable="custom"  />
+					<el-table-column label="文章类型" prop="type" min-width="120"  sortable="custom" >
+					<template #default="scope">  
+					<el-popover trigger="click" placement="top"  width = "280">  
+						<el-select v-model="scope.row.type" placeholder="请选择"  @change="quickEdit_do('type',scope.row.id,scope.row.type,scope)">
+							<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
+						</el-select> 
 						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.path}} </div>
+							<div class="quickEdit" > {{filterDict(scope.row.type,art_type_options)}} </div>
 						</template>
 						</el-popover>
-					</template>
+					</template>  
 					</el-table-column> 
-					<el-table-column label="api中文描述" prop="desc" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="所属模块" prop="model" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="api组" prop="apiGroup" min-width="120"   sortable="custom" >
-					<template #default="scope">
-						<el-popover trigger="click" placement="top" width="300">  
-						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.apiGroup"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('api_group',scope.row.id,scope.row.apiGroup,scope)">保存</el-button> </el-col> 
-						</el-row>  
-						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.apiGroup}} </div>
+					<el-table-column label="文章标题" prop="title" min-width="120"   sortable="custom"  /> 
+					<el-table-column label="标签列表" prop="tagList" min-width="120"   sortable="custom"  />
+					<el-table-column label="插图" prop="image" min-width="120"   sortable="custom" >
+						<template #default="scope"> 						    
+							 <FileListView :objList="getFileByGuidStr(scope.row.image,scope.row.fileObjList)" />  
 						</template>
-						</el-popover>
-					</template>
-					</el-table-column> 
-					<el-table-column label="方法" prop="method" min-width="120"   sortable="custom" >
-					<template #default="scope">
-						<el-popover trigger="click" placement="top" width="300">  
-						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.method"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('method',scope.row.id,scope.row.method,scope)">保存</el-button> </el-col> 
-						</el-row>  
-						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.method}} </div>
-						</template>
-						</el-popover>
-					</template>
 					</el-table-column>
+					<el-table-column label="置顶" prop="beTop" min-width="120"   sortable="custom"  >                        
+						<template #default="scope" ><el-switch v-model="scope.row.beTop" @change="quickEdit_do('be_top',scope.row.id,scope.row.beTop,scope)"/></template> 
+					</el-table-column> 
+					<el-table-column label="综合指数" prop="totalWhole" min-width="120"   sortable="custom" >
+					<template #default="scope">
+						<el-popover trigger="click" placement="top" width="300">  
+						<el-row :gutter="4">
+						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.totalWhole"></el-input></el-col>
+						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('total_whole',scope.row.id,scope.row.totalWhole,scope)">保存</el-button> </el-col> 
+						</el-row>  
+						<template #reference>
+							<div  class="quickEditTxt"  > {{scope.row.totalWhole}} </div>
+						</template>
+						</el-popover>
+					</template>
+					</el-table-column> 
+					<el-table-column label="总分享" prop="totalShare" min-width="120"   sortable="custom"  /> 
+					<el-table-column label="总点击" prop="totalClick" min-width="120"   sortable="custom"  />
 					<el-table-column label="状态" prop="status" min-width="120"  sortable="custom" >
 					<template #default="scope">  
 					<el-popover trigger="click" placement="top"  width = "280">  
@@ -120,13 +173,12 @@
 					<template #default="scope">{{formatDate(scope.row.createdAt,1)}}</template>
 				</el-table-column> 
 
-				<el-table-column label="编辑" width="100">
+				<el-table-column label="编辑" width="80"  fixed="right">
 					<template #default="scope">
-						<el-button icon="delete" type="primary" link @click="deleteRow(scope.row)"></el-button>
-						<el-button icon="edit" type="primary" link @click="goEditForm(scope.row.id)"></el-button>
+			              <el-button :icon="useRenderIcon('ep:edit')" type="primary" link @click="goEditForm(scope.row.id)"/>
+                          <el-button :icon="useRenderIcon('ep:delete')" type="primary" link @click="deleteRow(scope.row)" />
 					</template>
 				</el-table-column>
-
 			</el-table>
 		</div>
 		<el-pagination class="gocms-pagination" layout="total, prev, pager, next, jumper, sizes" :current-page="page"
@@ -203,16 +255,16 @@
 
 
  import {
-	createSysApis,
-	deleteSysApisByIds,
-	updateSysApis,
-	findSysApis,
-	getSysApisList,
+	createCmsArt,
+	deleteCmsArtByIds,
+	updateCmsArt,
+	findCmsArt,
+	getCmsArtList,
 	quickEdit,
 	excelList
- } from '@/api/sysApis'
+ } from '@/api/cmsArt'
 
- import SysApisForm from './sysApisForm.vue'
+ import CmsArtForm from './cmsArtForm.vue'
 
 
    const page = ref(1)
@@ -226,6 +278,7 @@
    const multipleSelection = ref([])  
 
     // 字典 
+		const art_type_options = ref([]) 
 		const status_options = ref([])
 	// 搜索 
 	const onSearch = () => {
@@ -270,7 +323,7 @@
 				let data = {
 					"ids": [row.id]
 				}
-				const res = await deleteSysApisByIds(data)
+				const res = await deleteCmsArtByIds(data)
 				if (res.code === 200) {
 					message(res.msg, { type: "success" })
 					if (tableData.value.length === 1 && page.value > 1) {
@@ -303,7 +356,7 @@
 				let data = {
 					"ids": ids
 				}
-				const res = await deleteSysApisByIds(data)
+				const res = await deleteCmsArtByIds(data)
 				if (res.code === 200) {
 					message(res.msg, { type: "success" })
 					if (tableData.value.length === 1 && page.value > 1) {
@@ -342,7 +395,7 @@
 			fullscreenIcon: true,
 			hideFooter: true,
 			contentRenderer: ({ options, index }) =>
-				h(SysRoleForm, {
+				h(CmsArtForm, {
 				editId: editId.value,
 				beChange: beChange.value,
 				index: index,
@@ -376,7 +429,7 @@
 		}
 		if (paramData.createdAtBetween)
 			delete paramData.createdAtBetween 
-		const res = await getSysApisList(paramData)
+		const res = await getCmsArtList(paramData)
 		if (res.code === 200) {
 			tableData.value = res.data.list
 			total.value = res.data.total
@@ -396,6 +449,7 @@
 	}
 
 	const getOptionsData = async () => { 
+			art_type_options.value = await getDict('art_type') 
 			status_options.value = await getDict('status') 
 		//sexOptions.value = await getDict('sex')
 		//statusOptions.value = await getDict('status')

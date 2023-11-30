@@ -15,7 +15,7 @@
 					<div>
 						<el-form-item  >
 							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>						
+							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>					
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
 						 </el-form-item>
@@ -31,23 +31,22 @@
 							<el-form-item label="id">
 								<el-input placeholder="搜索id" v-model="searchInfo.id" />
 							</el-form-item>
-								<el-form-item label="商户">
-									<el-input placeholder="搜索条件" v-model="searchInfo.cuId" clearable />
+								<el-form-item label="用户id">
+									<el-input placeholder="搜索条件" v-model="searchInfo.userId" clearable />
+								</el-form-item>
+								<el-form-item label="群组类别" prop="type">                
+									<el-select v-model="searchInfo.type" placeholder="请选择" clearable>
+									<el-option v-for="(item,key) in group_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
+									</el-select>
 								</el-form-item> 
-								<el-form-item label="api路径">
-								<el-input placeholder="搜索条件" v-model="searchInfo.path" clearable />
+								<el-form-item label="名称">
+								<el-input placeholder="搜索条件" v-model="searchInfo.title" clearable />
 								</el-form-item> 
-								<el-form-item label="api中文描述">
+								<el-form-item label="内容">
 								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
 								</el-form-item> 
-								<el-form-item label="所属模块">
-								<el-input placeholder="搜索条件" v-model="searchInfo.model" clearable />
-								</el-form-item> 
-								<el-form-item label="api组">
-								<el-input placeholder="搜索条件" v-model="searchInfo.apiGroup" clearable />
-								</el-form-item> 
-								<el-form-item label="方法">
-								<el-input placeholder="搜索条件" v-model="searchInfo.method" clearable />
+								<el-form-item label="标签">
+								<el-input placeholder="搜索条件" v-model="searchInfo.tagList" clearable />
 								</el-form-item>
 								<el-form-item label="状态" prop="status">                
 									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
@@ -61,47 +60,36 @@
 			<el-table row-key="id" ref="multipleTable" border  style="width: 100%" tooltip-effect="dark" :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
 				<el-table-column label="序号" width="80" prop="id" sortable="custom" /> 
-					<el-table-column label="商户" prop="cuId" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="api路径" prop="path" min-width="120"   sortable="custom" >
-					<template #default="scope">
-						<el-popover trigger="click" placement="top" width="300">  
-						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.path"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('path',scope.row.id,scope.row.path,scope)">保存</el-button> </el-col> 
-						</el-row>  
+					<el-table-column label="用户id" prop="userId" min-width="120"   sortable="custom"  />
+					<el-table-column label="群组类别" prop="type" min-width="120"  sortable="custom" >
+					<template #default="scope">  
+					<el-popover trigger="click" placement="top"  width = "280">  
+						<el-select v-model="scope.row.type" placeholder="请选择"  @change="quickEdit_do('type',scope.row.id,scope.row.type,scope)">
+							<el-option v-for="(item,key) in group_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
+						</el-select> 
 						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.path}} </div>
+							<div class="quickEdit" > {{filterDict(scope.row.type,group_type_options)}} </div>
 						</template>
 						</el-popover>
-					</template>
+					</template>  
 					</el-table-column> 
-					<el-table-column label="api中文描述" prop="desc" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="所属模块" prop="model" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="api组" prop="apiGroup" min-width="120"   sortable="custom" >
+					<el-table-column label="名称" prop="title" min-width="120"   sortable="custom" >
 					<template #default="scope">
 						<el-popover trigger="click" placement="top" width="300">  
 						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.apiGroup"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('api_group',scope.row.id,scope.row.apiGroup,scope)">保存</el-button> </el-col> 
+						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.title"></el-input></el-col>
+						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('title',scope.row.id,scope.row.title,scope)">保存</el-button> </el-col> 
 						</el-row>  
 						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.apiGroup}} </div>
+							<div  class="quickEditTxt"  > {{scope.row.title}} </div>
 						</template>
 						</el-popover>
 					</template>
-					</el-table-column> 
-					<el-table-column label="方法" prop="method" min-width="120"   sortable="custom" >
-					<template #default="scope">
-						<el-popover trigger="click" placement="top" width="300">  
-						<el-row :gutter="4">
-						<el-col :span="19">  <el-input type="textarea" autosize placeholder="请输入内容" v-model="scope.row.method"></el-input></el-col>
-						<el-col :span="5"> <el-button size="small" type="primary"  class="el-btn-save" @click="quickEdit_do('method',scope.row.id,scope.row.method,scope)">保存</el-button> </el-col> 
-						</el-row>  
-						<template #reference>
-							<div  class="quickEditTxt"  > {{scope.row.method}} </div>
+					</el-table-column>
+					<el-table-column label="插图" prop="image" min-width="120"   sortable="custom" >
+						<template #default="scope"> 						    
+							 <FileListView :objList="getFileByGuidStr(scope.row.image,scope.row.fileObjList)" />  
 						</template>
-						</el-popover>
-					</template>
 					</el-table-column>
 					<el-table-column label="状态" prop="status" min-width="120"  sortable="custom" >
 					<template #default="scope">  
@@ -120,13 +108,12 @@
 					<template #default="scope">{{formatDate(scope.row.createdAt,1)}}</template>
 				</el-table-column> 
 
-				<el-table-column label="编辑" width="100">
+				<el-table-column label="编辑" width="80"  fixed="right">
 					<template #default="scope">
-						<el-button icon="delete" type="primary" link @click="deleteRow(scope.row)"></el-button>
-						<el-button icon="edit" type="primary" link @click="goEditForm(scope.row.id)"></el-button>
+			              <el-button :icon="useRenderIcon('ep:edit')" type="primary" link @click="goEditForm(scope.row.id)"/>
+                          <el-button :icon="useRenderIcon('ep:delete')" type="primary" link @click="deleteRow(scope.row)" />
 					</template>
 				</el-table-column>
-
 			</el-table>
 		</div>
 		<el-pagination class="gocms-pagination" layout="total, prev, pager, next, jumper, sizes" :current-page="page"
@@ -203,16 +190,16 @@
 
 
  import {
-	createSysApis,
-	deleteSysApisByIds,
-	updateSysApis,
-	findSysApis,
-	getSysApisList,
+	createCmsGroup,
+	deleteCmsGroupByIds,
+	updateCmsGroup,
+	findCmsGroup,
+	getCmsGroupList,
 	quickEdit,
 	excelList
- } from '@/api/sysApis'
+ } from '@/api/cmsGroup'
 
- import SysApisForm from './sysApisForm.vue'
+ import CmsGroupForm from './cmsGroupForm.vue'
 
 
    const page = ref(1)
@@ -226,6 +213,7 @@
    const multipleSelection = ref([])  
 
     // 字典 
+		const group_type_options = ref([]) 
 		const status_options = ref([])
 	// 搜索 
 	const onSearch = () => {
@@ -270,7 +258,7 @@
 				let data = {
 					"ids": [row.id]
 				}
-				const res = await deleteSysApisByIds(data)
+				const res = await deleteCmsGroupByIds(data)
 				if (res.code === 200) {
 					message(res.msg, { type: "success" })
 					if (tableData.value.length === 1 && page.value > 1) {
@@ -303,7 +291,7 @@
 				let data = {
 					"ids": ids
 				}
-				const res = await deleteSysApisByIds(data)
+				const res = await deleteCmsGroupByIds(data)
 				if (res.code === 200) {
 					message(res.msg, { type: "success" })
 					if (tableData.value.length === 1 && page.value > 1) {
@@ -342,7 +330,7 @@
 			fullscreenIcon: true,
 			hideFooter: true,
 			contentRenderer: ({ options, index }) =>
-				h(SysRoleForm, {
+				h(CmsGroupForm, {
 				editId: editId.value,
 				beChange: beChange.value,
 				index: index,
@@ -376,7 +364,7 @@
 		}
 		if (paramData.createdAtBetween)
 			delete paramData.createdAtBetween 
-		const res = await getSysApisList(paramData)
+		const res = await getCmsGroupList(paramData)
 		if (res.code === 200) {
 			tableData.value = res.data.list
 			total.value = res.data.total
@@ -396,6 +384,7 @@
 	}
 
 	const getOptionsData = async () => { 
+			group_type_options.value = await getDict('group_type') 
 			status_options.value = await getDict('status') 
 		//sexOptions.value = await getDict('sex')
 		//statusOptions.value = await getDict('status')

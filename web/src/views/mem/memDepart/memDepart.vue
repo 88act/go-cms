@@ -1,7 +1,7 @@
 <template>
   <div>
     <!----------查询form--------- -->
-    <div class="gocms-table-box">
+    <div class="gocms-table-box bg-bg_color">
       <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
         <div class="gocms-box-search-button">
           <div>
