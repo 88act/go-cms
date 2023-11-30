@@ -17,7 +17,7 @@ import (
 	//"github.com/Wanghongw/unpackit"
 )
 
-//@author: [88act-5](https://github.com/88act)
+//@author: 10512203@qq.com
 //@function: FileMove
 //@description: 文件移动供外部调用
 //@param: src string, dst string(src: 源位置,绝对路径or相对路径, dst: 目标位置,绝对路径or相对路径,必须为文件夹)
@@ -56,7 +56,7 @@ func DeLFile(filePath string) error {
 	return os.RemoveAll(filePath)
 }
 
-//@author: [88act-5](https://github.com/88act)
+//@author: 10512203@qq.com
 //@function: TrimSpace
 //@description: 去除结构体空格
 //@param: target interface (target: 目标结构体,传入必须是指针类型)
@@ -180,7 +180,7 @@ func Zip(srcFile string, destZip string) error {
 	return err
 }
 
-//解压缩 (只能是zip 文件 gz不行)
+// 解压缩 (只能是zip 文件 gz不行)
 func Unzip(zipFile string, destDir string) error {
 	zipReader, err := zip.OpenReader(zipFile)
 	if err != nil {
@@ -219,7 +219,7 @@ func Unzip(zipFile string, destDir string) error {
 }
 
 // 下面是 gz 文件操作------------------------------------------------------------------------------
-//压缩 使用gzip压缩成tar.gz
+// 压缩 使用gzip压缩成tar.gz
 func Gz(files []*os.File, dest string) error {
 	d, _ := os.Create(dest)
 	defer d.Close()
@@ -276,7 +276,7 @@ func compress(file *os.File, prefix string, tw *tar.Writer) error {
 	return nil
 }
 
-//解压 tar.gz
+// 解压 tar.gz
 func UnGz(tarFile, dest string) error {
 	srcFile, err := os.Open(tarFile)
 	if err != nil {

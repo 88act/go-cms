@@ -1,31 +1,37 @@
- # github.com/88act/go-cms/server Global Configuration
+#服务器许可证
+license:  
+  rsaPath: D:/work_go/go-cms_server/server # 公钥路径
+  appId: 20fc1872ddbf40e38fa1a59a99c1191b            # 产品ID go-cms服务器端
+  maxClient: 20        # 客户端数量 
+  endTime: 4822854526   # 到期时间
+  rtcType: 1           # 远程模式  0 关闭  1 开启
+  license: oMAKfP/YmTtoQUZWmIKHlaqebXYMC92cu5zgKfKrpBSBbLeWsQV6AJBb+K5v/tpRaCcAhhloVPd0XbC7vPCpkL4aGZS/FPFfGC1QF0MjXj+TxDGwvWOBRLKJm3fiU34KIFmuNYe0xOBVlBmn8kD91XeW2j7w84PvW5TWWjJ6tW9kSFifuXbEDSsVvN4R/0rORcrAWT0F7Y+9dzklKLWHnOqAOayJU+JQ/KRaqB+bt+k8zbNnDUZ7dXR/GH1Nl00axH13iZ90gyE6/eWSrTAplarqeDEoVhqCJ/NEPcT8b2wtNXM9WFoPGbIPnnyuQc5pwJOJ+1UDd/DUSvTeslKCjA==
 
-# mysql connect configuration
-
-mysql:
-
-  path: 127.0.0.1:53306
+mysql: 
+  path: mysql-gocms:53306 
   config: charset=utf8mb4&parseTime=True&loc=Local
-  db-name:  go-cms 
-  username: root
-  password: 123456
- 
-  max-idle-conns: 10
-  max-open-conns: 100
+  db-name: go-cms
+  username: gocms
+  password: gocms123456  
+  max-idle-conns: 0
+  max-open-conns: 0
   log-mode: ""
   log-zap: false
   
-#腾讯im
-txim: 
-  appid : '14006477---'
-  key : '**2cd7c8679331f6cf506d68bf8358185458779***'
- 
+# redis configuration
+redis:
+  open: 1
+  db: 2
+  addr: 'redis:6379'
+  #addr: '192.168.1.18:6379'
+  #password: 'G62m50oigInC30sf'
 
 # system configuration
 system:
-  go-mode: 'debug'  # go 是否 release/debug 模式  
-  env: 'public'  # 是否权限检查 Change to "develop" to skip authentication for development mode
-  addr: 40050 # 8888
+  superAdmin: false  #  超管理模式，全菜单和全权限 
+  go-mode: 'release'  # go 是否 release/debug 模式  
+  env: 'develop'  # 是否权限检查 Change to "develop" to skip authentication for development mode
+  addr: 44088 # 8888
   db-type: 'mysql'
   oss-type: 'local'    # 控制oss选择走本期还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
   use-multipoint: false
@@ -33,31 +39,36 @@ system:
   iplimit-count: 15000
   #  IP限制一个小时
   iplimit-time: 3600
-
+  rsa-path: D:/work_go/go-cms_server/server/
+  api-url: https://www.go-cms.com/
+  # wss-url: wss://www.go-cms.com/wss/  
+  #wss-url: ws://127.0.0.1:8888/   
+  wss-url: wss://10.0.0.222/wss/  
 
 # jwt configuration
-jwt:
+jwt:  
   signing-key: 'go-cms'
   expires-time: 604800
   buffer-time: 86400
+
+# local configuration
+local:
+  base-url: http://127.0.0.1:44099/
+  base-path: D:/work_go/go-cms_server/server/
+  path: res/sys
+  path-user: res/user  
 
 # zap logger configuration
 zap:
   level: 'info'
   format: 'console'
-  prefix: '[GoCms]'
+  prefix: '[te]'
   director: 'log'
   show-line: true
   encode-level: 'LowercaseColorLevelEncoder'
   stacktrace-key: 'stacktrace'
   log-in-console: true
 
-# redis configuration
-redis:
-  open: 0
-  db: 0
-  addr: '127.0.0.1:6379'
-  password: ''
 
 # email configuration
 email:
@@ -77,34 +88,8 @@ casbin:
 captcha:
   key-long: 2
   img-width: 240
-  img-height: 80
-
-
-# local configuration
-local:
-  base-url: http://localhost:40050/
-  base-path: C:/work_go/go-cms-builder/server/
-  path: res/sys
-  path-user: res/user
-
-# super-builder configuration
-super-builder:
-  transfer-restart: true
-  # root 自动适配项目根目录
-  # 请不要手动配置,他会在项目加载的时候识别出根路径
-  root: ""
-  server: /server
-  server-api: /api/v1/business
-  server-initialize: /initialize
-  server-model: /model/business
-  server-request: /model/business/request/
-  server-router: /router/business
-  server-service: /service/business
-  web: /web/src
-  web-api: /api
-  web-form: /view
-  web-table: /view
-
+  img-height: 80 
+ 
 # qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
 qiniu:
   zone: 'ZoneHuaDong'
@@ -131,25 +116,11 @@ tencent-cos:
   region: 'ap-shanghai'
   secret-id: 'xxxxxxxx'
   secret-key: 'xxxxxxxx'
-  base-url: 'https://gin.vue.admin'
+  base-url: 'https://www.go-cms.com/'
   base-path: 'yourBasePath'
-  path-prefix: 'github.com/88act/go-cms/server'
+  path-prefix: 'poetsclub.jiquxr.com'
 
 # excel configuration
 excel:
   dir: './resource/excel/'
-
-
-# timer task db clear table
-Timer:
-  start: true
-  spec: "@daily"  # 定时任务详细配置参考 https://pkg.go.dev/github.com/robfig/cron/v3
-  detail: [
-    # tableName: 需要清理的表名
-    # compareField: 需要比较时间的字段
-    # interval: 时间间隔, 具体配置详看 time.ParseDuration() 中字符串表示 且不能为负数
-    # 2160h = 24 * 30 * 3 -> 三个月
-    { tableName: "sys_operation_records" , compareField: "created_at", interval: "2160h" },
-    { tableName: "jwt_blacklists" , compareField: "created_at", interval: "168h" }
-    #{ tableName: "log2" , compareField: "created_at", interval: "2160h" }
-  ]
+ 

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: ZipFiles
 //@description: 压缩文件
 //@param: filename string, files []string, oldForm, newForm string

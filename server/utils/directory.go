@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: PathExists
 //@description: 文件目录是否存在
 //@param: path string
@@ -25,7 +25,7 @@ func PathExists(path string) (bool, error) {
 	return false, err
 }
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: CreateDir
 //@description: 批量创建文件夹
 //@param: dirs ...string

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: StructToMap
 //@description: 利用反射将结构体转化为map
 //@param: obj interface{}
@@ -27,7 +27,7 @@ func StructToMap(obj interface{}) map[string]interface{} {
 	return data
 }
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: ArrayToString
 //@description: 将数组格式化为字符串
 //@param: array []interface{}

@@ -6,7 +6,6 @@ import (
 
 	"go-cms/global"
 
-	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"
 )
 
@@ -23,10 +22,10 @@ type RedisStore struct {
 	Context    context.Context
 }
 
-func (rs *RedisStore) UseWithCtx(ctx context.Context) base64Captcha.Store {
-	rs.Context = ctx
-	return rs
-}
+// func (rs *RedisStore) UseWithCtx(ctx context.Context) base64Captcha.Store {
+// 	rs.Context = ctx
+// 	return rs
+// }
 
 func (rs *RedisStore) Set(id string, value string) {
 	err := global.REDIS.Set(rs.Context, rs.PreKey+id, value, rs.Expiration).Err()

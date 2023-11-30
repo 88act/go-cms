@@ -8,8 +8,7 @@ type Server struct {
 	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
 	System  System  `mapstructure:"system" json:"system" yaml:"system"`
 	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	// auto
-	SuperBuilder SuperBuilder `mapstructure:"super-builder" json:"superBuilder" yaml:"super-builder"`
+
 	// gorm
 	Mysql Mysql `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	// oss
@@ -20,5 +19,6 @@ type Server struct {
 	Excel      Excel      `mapstructure:"excel" json:"excel" yaml:"excel"`
 	Timer      Timer      `mapstructure:"timer" json:"timer" yaml:"timer"`
 
-	Txim Txim `mapstructure:"txim" json:"txim" yaml:"txim"`
+	Txim    Txim    `mapstructure:"txim" json:"txim" yaml:"txim"`
+	License License `mapstructure:"license" json:"license" yaml:"license"`
 }

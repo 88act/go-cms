@@ -50,7 +50,7 @@ type Disk struct {
 	UsedPercent int `json:"usedPercent"`
 }
 
-//@author: [88act-2](https://github.com/88act)
+//@author: [linjd] 10212203@qq.com
 //@function: InitCPU
 //@description: OS信息
 //@return: o Os, err error
@@ -64,12 +64,17 @@ func InitOS() (o Os) {
 	return o
 }
 
-//@author: [88act-2](https://github.com/88act)
+//@author: [linjd] 10212203@qq.com
 //@function: InitCPU
 //@description: CPU信息
 //@return: c Cpu, err error
 
 func InitCPU() (c Cpu, err error) {
+	//fmt.Println("InitCPU=================")
+	//fmt.Println(cpu.Info())
+	//cpuinfo, _ := cpu.Info()
+	//fmt.Println("cpuinfo[0].PhysicalID == ")
+	//fmt.Println(cpuinfo[0].PhysicalID)
 	if cores, err := cpu.Counts(false); err != nil {
 		return c, err
 	} else {
@@ -83,7 +88,7 @@ func InitCPU() (c Cpu, err error) {
 	return c, nil
 }
 
-//@author: [88act-2](https://github.com/88act)
+//@author: [linjd] 10212203@qq.com
 //@function: InitRAM
 //@description: ARM信息
 //@return: r Rrm, err error
@@ -99,7 +104,7 @@ func InitRAM() (r Rrm, err error) {
 	return r, nil
 }
 
-//@author: [88act-2](https://github.com/88act)
+//@author: [linjd] 10212203@qq.com
 //@function: InitDisk
 //@description: 硬盘信息
 //@return: d Disk, err error

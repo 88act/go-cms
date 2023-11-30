@@ -7,7 +7,7 @@ import (
 	"mime/multipart"
 	"time"
 
-	 "go-cms/global"
+	"go-cms/global"
 
 	"github.com/qiniu/api.v7/v7/auth/qbox"
 	"github.com/qiniu/api.v7/v7/storage"
@@ -16,9 +16,9 @@ import (
 
 type Qiniu struct{}
 
-//@author: [88act](https://github.com/88act)
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@object: *Qiniu
 //@function: UploadFile
 //@description: 上传文件
@@ -50,9 +50,9 @@ func (*Qiniu) UploadFile(file *multipart.FileHeader, module int, userType int) (
 	return global.CONFIG.Qiniu.ImgPath + "/" + ret.Key, ret.Key, nil
 }
 
-//@author: [88act](https://github.com/88act)
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@object: *Qiniu
 //@function: DeleteFile
 //@description: 删除文件
@@ -70,7 +70,7 @@ func (*Qiniu) DeleteFile(key string) error {
 	return nil
 }
 
-//@author: [88act-2](https://github.com/88act)
+//@author: 10512203@qq.com
 //@object: *Qiniu
 //@function: qiniuConfig
 //@description: 根据配置文件进行返回七牛云的配置

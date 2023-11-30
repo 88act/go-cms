@@ -16,7 +16,6 @@ import (
 	"mime/multipart"
 	"os"
 	"path"
-	"strconv"
 	"strings"
 	"time"
 
@@ -31,9 +30,9 @@ const DEFAULT_MAX_HEIGHT float64 = 200
 
 type Local struct{}
 
-//@author: [88act](https://github.com/88act)
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@object: *Local
 //@function: UploadFile
 //@description: 上传文件
@@ -55,13 +54,11 @@ func (*Local) UploadFile(file *multipart.FileHeader, module int, userType int) (
 	//filename := name + "_" + time.Now().Format("20060102150405") + ext
 	var path string
 	if userType == 1 { //管理用户
-		path = global.CONFIG.Local.Path + "/" + strconv.Itoa(module) +
-			"/" + time.Now().Format("20060102")
+		path = global.CONFIG.Local.Path + "/" + time.Now().Format("20060102") //  + strconv.Itoa(module) + "/"
 	} else if userType == 2 { //普通用户
-		path = global.CONFIG.Local.PathUser + "/" + strconv.Itoa(module) +
-			"/" + time.Now().Format("20060102")
+		path = global.CONFIG.Local.PathUser + "/" + time.Now().Format("20060102")
 	}
-	fmt.Println("UploadFile path = ", path)
+	//fmt.Println("UploadFile path = ", path)
 
 	// 尝试创建此路径
 	//mkdirErr := os.MkdirAll(global.REDIS.Local.Path, os.ModePerm)
@@ -73,20 +70,21 @@ func (*Local) UploadFile(file *multipart.FileHeader, module int, userType int) (
 	// 拼接路径和文件名
 	//path := global.REDIS.Local.Path + "/" + filename
 	path_src := path + "/" + name + "_src" + ext //原图
+	path_hi := path + "/" + name + "_hi" + ext   //高清原图
 	path = path + "/" + name + ext               // 缩略图
 	pathAll := global.CONFIG.Local.BasePath + path
 	pathAll_src := global.CONFIG.Local.BasePath + path_src
-	fmt.Println("UploadFile path   = ", path)
-	fmt.Println("UploadFile path_src   = ", path_src)
-	fmt.Println("UploadFile pathAll   = ", pathAll)
-	fmt.Println("UploadFile pathAll_src = ", pathAll_src)
+	pathAll_hi := global.CONFIG.Local.BasePath + path_hi
+	//fmt.Println("UploadFile path   = ", path)
+	///fmt.Println("UploadFile path_src   = ", path_src)
+	//fmt.Println("UploadFile pathAll   = ", pathAll)
+	fmt.Println("UploadFile pathAll_hi = ", pathAll_hi)
 
 	f, openError := file.Open() // 读取文件
 	if openError != nil {
-		global.LOG.Error("AAA file.Open() Filed", zap.Any("err", openError.Error()))
+		global.LOG.Error("读取文件出错", zap.Any("err", openError.Error()))
 		return "", "", errors.New("AAA file.Open() Filed, err:" + openError.Error())
 	}
-
 	defer f.Close() // 创建文件 defer 关闭
 	out, createErr := os.Create(pathAll_src)
 	if createErr != nil {
@@ -148,9 +146,9 @@ func makeThumbnail(imagePath string, savePath string, ext string) error {
 	return nil
 }
 
-//@author: [88act](https://github.com/88act)
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@object: *Local
 //@function: DeleteFile
 //@description: 删除文件

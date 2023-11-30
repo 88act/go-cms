@@ -6,8 +6,8 @@ import (
 	"go-cms/global"
 )
 
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@interface_name: OSS
 //@description: OSS接口
 
@@ -17,8 +17,8 @@ type OSS interface {
 	DeleteFile(key string) error
 }
 
-//@author: [88act-4](https://github.com/88act)
-//@author: [88act-2](https://github.com/88act)
+//@author: 10512203@qq.com
+//@author: 10512203@qq.com
 //@function: NewOss
 //@description: OSS接口
 //@description: OSS的实例化方法

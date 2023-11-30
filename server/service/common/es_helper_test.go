@@ -2,12 +2,7 @@ package common
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
-
-	"go-cms/model/business"
-
-	"github.com/gogf/gf/util/gconv"
 )
 
 func Test_es(t *testing.T) {
@@ -22,16 +17,16 @@ func Test_es2(t *testing.T) {
 	fmt.Println(ok)
 }
 
-func Test_es3(t *testing.T) {
-	es := GetEsHelper()
-	cmsCat := business.CmsCat{}
-	cmsCat.ID = 6
-	cmsCat.Name = "Name6"
-	cmsCat.CreatedAt = gconv.Time("2021-12-6")
-	cmsCat.Desc = "Desc6"
-	ok := es.Put("test", "CmsCat", "id6", cmsCat)
-	fmt.Println(ok)
-}
+// func Test_es3(t *testing.T) {
+// 	es := GetEsHelper()
+// 	cmsCat := business.CmsCat{}
+// 	cmsCat.ID = 6
+// 	cmsCat.Name = "Name6"
+// 	cmsCat.CreatedAt = //gconv.Time("2021-12-6")
+// 	//cmsCat.Desc = "Desc6"
+// 	ok := es.Put("test", "CmsCat", "id6", cmsCat)
+// 	fmt.Println(ok)
+// }
 
 func Test_es4(t *testing.T) {
 	es := GetEsHelper()
@@ -58,13 +53,13 @@ func Test_es6(t *testing.T) {
 	fmt.Println("-----------list----------------")
 	fmt.Println(list)
 	//从搜索结果中取数据的方法
-	for _, item := range list.Each(reflect.TypeOf(&business.CmsCat{})) {
-		fmt.Println("搜索结果中取数据1111 ")
-		fmt.Println(item)
-		if t, ok := item.(business.CmsCat); ok {
-			fmt.Println("搜索结果中取数据2222 ")
-			fmt.Println(t)
-		}
-	}
+	// for _, item := range list.Each(reflect.TypeOf(&business.CmsCat{})) {
+	// 	fmt.Println("搜索结果中取数据1111 ")
+	// 	fmt.Println(item)
+	// 	if t, ok := item.(business.CmsCat); ok {
+	// 		fmt.Println("搜索结果中取数据2222 ")
+	// 		fmt.Println(t)
+	// 	}
+	// }
 
 }

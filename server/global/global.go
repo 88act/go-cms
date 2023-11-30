@@ -3,8 +3,6 @@ package global
 import (
 	"go-cms/utils/timer"
 
-	"github.com/songzhibin97/gkit/cache/local_cache"
-
 	"golang.org/x/sync/singleflight"
 
 	"go.uber.org/zap"
@@ -12,6 +10,7 @@ import (
 	"go-cms/config"
 
 	"github.com/go-redis/redis/v8"
+	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
 )

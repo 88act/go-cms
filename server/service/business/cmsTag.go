@@ -1,0 +1,267 @@
+package business
+
+import (
+    "context"
+	"errors"
+    "go-cms/mycache"
+	"go-cms/global"
+	"go-cms/model/business"  
+    "go-cms/model/common/request"
+     comSev "go-cms/service/common" 
+    "go-cms/utils"
+    "sync" 
+    "gorm.io/gorm" 
+	
+)
+
+type CmsTagService struct {
+   	comSev.BaseService
+}
+
+var once_CmsTag sync.Once = sync.Once{}
+var obj_CmsTagService *CmsTagService
+
+//获取单例 
+func GetCmsTagSev() *CmsTagService {
+	once_CmsTag.Do(func() {
+		obj_CmsTagService= new(CmsTagService)
+		obj_CmsTagService.Db = global.DB
+        //instanse.init()
+	})
+	return obj_CmsTagService
+}
+
+
+
+// Create 创建CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) Create(ctx context.Context, data business.CmsTag) (id int64,err error) { 
+	err = m.Db.WithContext(ctx).Create(&data).Error
+	if err != nil {
+		return 0, err
+	}
+	return data.Id, err
+}
+
+// Delete 删除CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) Delete(ctx context.Context, data business.CmsTag) (err error) {
+    m.DelCache("cms_tag", []int64{data.Id})
+	err = m.Db.WithContext(ctx).Delete(&data).Error
+	return err
+}
+
+// DeleteByIds 批量删除CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) DeleteByIds(ctx context.Context, ids request.IdsReq) (err error) {
+    m.DelCache("cms_tag", ids.Ids)
+	err = m.Db.WithContext(ctx).Delete(&[]business.CmsTag{},"id in ?",ids.Ids).Error
+	return err
+}
+
+// map删除 ，beUnscoped=true 硬删除
+func (m *CmsTagService) DeleteByMap(ctx context.Context, mapData map[string]interface{}, beUnscoped bool) (err error) {
+	if beUnscoped {
+		err = m.Db.WithContext(ctx).Unscoped().Where(mapData).Delete(business.CmsTag{}).Error
+	} else {
+		err = m.Db.WithContext(ctx).Where(mapData).Delete(business.CmsTag{}).Error
+	}
+	return err
+}
+
+
+// Update  更新CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) Update(ctx context.Context, data business.CmsTag) (err error) {
+    m.DelCache("cms_tag", []int64{data.Id})
+	err = m.Db.WithContext(ctx).Save(&data).Error
+	return err
+}
+
+
+// UpdateByMap  更新CmsTag记录 by Map
+// Author 10512203@qq.com
+func (m *CmsTagService) UpdateByMap(ctx context.Context, data business.CmsTag, mapData map[string]interface{}) (err error) {
+    m.DelCache("cms_tag", []int64{data.Id})
+    err = m.Db.WithContext(ctx).Model(&data).Updates(mapData).Error
+	return err
+}
+
+
+// UpdateExpr 字段自增/自减
+// Author 10512203@qq.com
+func (m *CmsTagService) UpdateExpr(ctx context.Context, data business.CmsTag,column string, num int) (err error) {
+       err = m.Db.WithContext(ctx).Model(&data).UpdateColumn(column, gorm.Expr(column+" + ?", num)).Error
+	return err
+}
+ 
+
+// Get 根据id获取CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) Get(ctx context.Context, id int64,fields string ) (obj business.CmsTag,err error ) {
+ 
+ 	if id <= 0 {
+		return obj, errors.New("参数id错误")
+	}
+    cacheKey := m.GetCacheKey("cms_tag", id)
+	if cacheData, err := mycache.GetCache().Get(cacheKey); err == nil {
+		obj = cacheData.(business.CmsTag)
+		return obj, err
+	}
+    if utils.IsEmptyStr(fields) {
+        err = m.Db.WithContext(ctx).Where("id = ?", id).First(&obj).Error 
+    } else {
+        err = m.Db.WithContext(ctx).Select(fields).Where("id = ?", id).First(&obj).Error  
+	} 
+    m.getFile(ctx,&obj)
+    mycache.GetCache().Set(cacheKey, obj,obj.TableName())
+    return  obj, err
+}
+
+
+// GetList 分页获取CmsTag记录
+// Author 10512203@qq.com
+func (m *CmsTagService) GetList(ctx context.Context, seq business .CmsTagSearch, fields string) (list []business.CmsTag, total int64,err error) {
+	limit := seq.PageSize
+	offset := seq.PageSize * (seq.Page - 1)
+    //修改 by ljd  增加查询排序 
+    order := seq.OrderKey
+	desc := seq.OrderDesc
+    // 创建db
+	db := m.Db.WithContext(ctx).Model(&business.CmsTag{})
+ 
+
+    //修改 by ljd  
+    if seq.Id > 0 {
+		db = db.Where("id = ?", seq.Id)
+	}
+    
+	if !utils.IsEmpty(seq.CreatedAtBegin) && !utils.IsEmpty(seq.CreatedAtEnd) {
+		db = db.Where("created_at BETWEEN ? AND ?", seq.CreatedAtBegin, seq.CreatedAtEnd)
+	}
+
+    // 如果有条件搜索 下方会自动创建搜索语句
+    if seq.UserId != nil  {
+        db = db.Where("user_id = ?",seq.UserId)
+    }
+    if seq.Title != "" {
+        db = db.Where("title LIKE ?","%"+ seq.Title+"%")
+    }
+    if seq.Sort != nil  {
+        db = db.Where("sort = ?",seq.Sort)
+    }
+    if seq.Status != nil  {
+        db = db.Where("status = ?",seq.Status)
+    }
+    
+    err = db.Count(&total).Error
+    if err != nil {
+		return list, 0, err
+	}
+	//err = db.Limit(limit).Offset(offset).Find(&list).Error
+    //修改 by ljd  增加查询排序 
+     OrderStr := "id desc"
+     if !utils.IsEmpty(order) { 
+		if desc {
+			OrderStr = order + " desc"
+		} else {
+			OrderStr = order
+		} 
+	}  
+    if utils.IsEmptyStr(fields) {
+      err = db.Order(OrderStr).Limit(limit).Offset(offset).Find(&list).Error
+    } else {
+      err = db.Select(fields).Order(OrderStr).Limit(limit).Offset(offset).Find(&list).Error
+    }         
+    m.getFileList(ctx,list)
+	return list, total,err
+}
+ 
+
+//GetListAll 分页获取CmsTag记录 (全部字段)
+// Author 10512203@qq.com
+func (m *CmsTagService) GetListAll(ctx context.Context, seq business .CmsTagSearch, fields string) (list []business.CmsTag, total int64,err error) {
+	return m.GetList(ctx, seq, "*")
+}
+
+
+// GetByMap 根据Map获取单一记录
+// Author  [linjd] 10512203@qq.com
+func (m *CmsTagService) GetByMap(ctx context.Context, mapData map[string]interface{}, fields string) (obj business.CmsTag, err error) {
+    orderBy := "id desc"
+	db := m.Db.WithContext(ctx).Model(&business.CmsTag{})
+	if utils.IsEmptyStr(fields) {
+		err = db.WithContext(ctx).Where(mapData).Order(orderBy).First(&obj).Error
+	} else {
+		err = db.WithContext(ctx).Select(fields).Order(orderBy).Where(mapData).First(&obj).Error
+	}
+	if err != nil {
+		return obj, err
+	}
+	m.getFile(ctx,&obj)
+	return obj, err
+}
+
+// GetByMap 根据Map获取列表
+// Author 10512203@qq.com
+func (m *CmsTagService) GetListByMap(ctx context.Context,mapData map[string]interface{}, fields string ,orderBy string) (list []business.CmsTag, err error) {
+	if utils.IsEmptyStr(orderBy) {
+		orderBy = "id desc"
+	}
+	db := m.Db.WithContext(ctx).Model(&business.CmsTag{})
+	if utils.IsEmptyStr(fields) {
+		err = db.Where(mapData).Order(orderBy).Find(&list).Error
+	} else {
+		err = db.Select(fields).Where(mapData).Order(orderBy).Find(&list).Error
+	}
+	if err != nil {
+		return nil, err
+	}	 
+    m.getFileList(ctx,list)
+	return list, err
+} 
+
+//	获取数量
+//
+// Author 10512203@qq.com
+ func (m *CmsTagService) Count(ctx context.Context,mapDataWhere map[string]interface{})  (total int64, err error) {
+	db := m.Db.WithContext(ctx).Model(&business.CmsTag{})
+	err = db.Where(mapDataWhere).Count(&total).Error
+	return total, err
+}
+
+//如果有文件类型，更新文件 path
+func (m *CmsTagService) getFileList(ctx context.Context,list []business.CmsTag) {
+    for i, v := range list {
+
+    //    if !utils.IsEmpty(v.FileList) {			 
+	// 		objList := strings.Split(v.FileList, ",")
+	// 		for _, guid := range objList {
+	// 			if !utils.IsEmptyStr(guid) {
+	// 				fileObj := global.FileObj{Guid: guid}
+	// 				fileObj.Path, _ = m.GetPathByGuid(ctx, guid)
+	// 				v.FileObjList = append(v.FileObjList, fileObj)
+	// 			}
+	// 		}
+	// 	}
+		list[i] = v 
+	} 
+} 
+ 
+
+//如果有文件类型，更新文件 path
+func (m *CmsTagService) getFile(ctx context.Context,v *business.CmsTag) { 
+    if v !=nil { 
+
+    //   if !utils.IsEmpty(v.FileList) {
+	// 		objList := strings.Split(v.FileList, ",")  
+	// 		for _, guid := range objList {
+	// 			if !utils.IsEmptyStr(guid) {
+	// 				fileObj := global.FileObj{Guid: guid}
+	// 				fileObj.Path, _ = m.GetPathByGuid(ctx, guid)
+	// 				v.FileObjList = append(v.FileObjList, fileObj)
+	// 			}
+	// 		}
+	// 	}
+    }   
+} 

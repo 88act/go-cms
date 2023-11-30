@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: GetSystemConfig
 //@description: 读取配置文件
 //@return: err error, conf config.Server
@@ -22,7 +22,7 @@ func (systemConfigService *SystemConfigService) GetSystemConfig() (err error, co
 }
 
 // @description   set system config,
-//@author: [88act](https://github.com/88act)
+//@author:  [linjd] 10512203@qq.com
 //@function: SetSystemConfig
 //@description: 设置配置文件
 //@param: system model.System

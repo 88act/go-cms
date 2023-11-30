@@ -1,6 +1,7 @@
 package config
 
 type System struct {
+	SuperAdmin    bool   `mapstructure:"superAdmin" json:"superAdmin" yaml:"superAdmin"` //超级管理
 	GoMode        string `mapstructure:"go-mode" json:"go-mode" yaml:"go-mode"`
 	Env           string `mapstructure:"env" json:"env" yaml:"env"`                                 // 环境值
 	Addr          int    `mapstructure:"addr" json:"addr" yaml:"addr"`                              // 端口值
@@ -9,4 +10,7 @@ type System struct {
 	UseMultipoint bool   `mapstructure:"use-multipoint" json:"useMultipoint" yaml:"use-multipoint"` // 多点登录拦截
 	LimitCountIP  int    `mapstructure:"iplimit-count" json:"iplimitCount" yaml:"iplimit-count"`
 	LimitTimeIP   int    `mapstructure:"iplimit-time" json:"iplimitTime" yaml:"iplimit-time"`
+	RsaPath       string `mapstructure:"rsa-path" json:"rsaPath" yaml:"rsa-path"`
+	ApiUrl        string `mapstructure:"api-url" json:"apiUrl" yaml:"api-url"`
+	WssUrl        string `mapstructure:"wss-url" json:"wssUrl" yaml:"wss-url"`
 }

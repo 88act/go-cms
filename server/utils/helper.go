@@ -2,8 +2,10 @@ package utils
 
 import (
 	"bytes"
+	"crypto/md5"
 	"errors"
 	"fmt"
+	"io"
 	"math/rand"
 	"net/url"
 	"os"
@@ -11,8 +13,34 @@ import (
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 )
+
+func ArrayHave(items []string, item string) bool {
+	for _, eachItem := range items {
+		if eachItem == item {
+			return true
+		}
+	}
+	return false
+}
+
+// func arrayHaveInt64(items []string, id int64) bool {
+// 	for _, eachItem := range items {
+// 		if eachItem == id {
+// 			return true
+// 		}
+// 	}
+// 	return false
+// }
+
+// fmt.Println(strings.Fields("hello widuu golang")) //out  [hello widuu golang]
+
+// s := []string{"hello", "word", "xiaowei"}
+// fmt.Println(strings.Join(s, "-")) // hello-word-xiaowei
+
+// fmt.Println(strings.Split("a,b,c,d,e", ",")) //[a b c d e]
 
 // 三目运算函数
 func Ternary(a bool, b, c interface{}) interface{} {
@@ -22,7 +50,18 @@ func Ternary(a bool, b, c interface{}) interface{} {
 	return c
 }
 
-//struct 转 切片
+// func If(cond bool, a, b interface{}) {
+//     if cond {
+//         return a
+//     }
+
+//     return b
+// }
+
+// age := 20
+// val := If(age > 18, "成年人", "未成年人").(string)
+
+// struct 转 切片
 func Strct2Slice(f interface{}, sheetFieldsJson []string) []interface{} {
 	v := reflect.ValueOf(f)
 	ss := []interface{}{} // make([]string, v.NumField())
@@ -33,19 +72,26 @@ func Strct2Slice(f interface{}, sheetFieldsJson []string) []interface{} {
 	return ss
 }
 
-//转为int指针
+// 转为int指针
 func StringPtr(s string) *string {
 	return &s
 }
 
-//转为string指针
+// 转为string指针
 func IntPtr(s int) *int {
 	return &s
 }
 
-//判断是否为空
+// 判断是否为空
 // 0， nil ，"", 空数组 = true
 func IsEmpty(params interface{}) bool {
+
+	if params == nil {
+		return true
+	}
+	if params == "" {
+		return true
+	}
 	//初始化变量
 	var (
 		flag          bool = true
@@ -53,7 +99,6 @@ func IsEmpty(params interface{}) bool {
 	)
 
 	r := reflect.ValueOf(params)
-
 	//获取对应类型默认值
 	default_value = reflect.Zero(r.Type())
 	//由于params 接口类型 所以default_value也要获取对应接口类型的值 如果获取不为接口类型 一直为返回false
@@ -62,6 +107,23 @@ func IsEmpty(params interface{}) bool {
 	}
 	return flag
 }
+
+// 空字符串 返回true 否则返回 false
+func IsEmptyStr(params string) bool {
+	str := strings.TrimSpace(params)
+	if str == "" {
+		return true
+	} else {
+		return false
+	}
+}
+
+// func IsEmptyObj(params *interface{}) bool {
+// 	if params == nil {
+// 		return true
+// 	}
+// 	return IsEmpty(*params)
+// }
 
 // StrToTime 字符串转time
 func Str2Time(str string) *time.Time {
@@ -86,7 +148,7 @@ func Int2Time(ts int64) *time.Time {
 	return &t
 }
 
-//StrToInt string 转int
+// StrToInt string 转int
 func StrToInt(str string) int {
 	i, e := strconv.Atoi(str)
 	if e != nil {
@@ -95,7 +157,16 @@ func StrToInt(str string) int {
 	return i
 }
 
-//StrToUInt string 转int
+// StrToInt string 转int64
+func StrToInt64(str string) int64 {
+	i, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		return 0
+	}
+	return i
+}
+
+// StrToUInt string 转uint
 func StrToUInt(str string) uint {
 	i, e := strconv.Atoi(str)
 	if e != nil {
@@ -104,7 +175,7 @@ func StrToUInt(str string) uint {
 	return uint(i)
 }
 
-//阻塞式的执行外部shell命令的函数,等待执行完毕并返回标准输出
+// 阻塞式的执行外部shell命令的函数,等待执行完毕并返回标准输出
 func ExecShell(s string) (string, error) {
 	//函数返回一个*Cmd，用于使用给出的参数执行name指定的程序
 	cmd := exec.Command("/bin/bash", "-c", s)
@@ -270,6 +341,70 @@ func TimeToStr(t *time.Time) string {
 	// second := time.Now().Format("05")
 	str := year + month + day + hour
 	return str
+}
+
+// Truncate方法用的是绝对时间，如果给出的时间为本地时间，会存在时区，会出现不同时间化为同一天的情况
+// 两个日期间相差多少天,两个不同日期的，相差一秒都算一天 https://www.jianshu.com/p/b2efbe971105
+func TimeSub(t1, t2 time.Time) int {
+	t1 = time.Date(t1.Year(), t1.Month(), t1.Day(), 0, 0, 0, 0, time.Local)
+	t2 = time.Date(t2.Year(), t2.Month(), t2.Day(), 0, 0, 0, 0, time.Local)
+
+	return int(t1.Sub(t2).Hours() / 24)
+}
+
+const (
+	KC_RAND_KIND_NUM   = 0 // 纯数字
+	KC_RAND_KIND_LOWER = 1 // 小写字母
+	KC_RAND_KIND_UPPER = 2 // 大写字母
+	KC_RAND_KIND_ALL   = 3 // 数字、大小写字母
+)
+
+// 随机字符串
+func Krand(size int, kind int) string {
+	ikind, kinds, result := kind, [][]int{[]int{10, 48}, []int{26, 97}, []int{26, 65}}, make([]byte, size)
+	is_all := kind > 2 || kind < 0
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < size; i++ {
+		if is_all { // random ikind
+			ikind = rand.Intn(3)
+		}
+		scope, base := kinds[ikind][0], kinds[ikind][1]
+		result[i] = uint8(base + rand.Intn(scope))
+	}
+	return string(result)
+}
+
+/** md5 加密方式 **/
+func Md5ByString(str string) string {
+	m := md5.New()
+	_, err := io.WriteString(m, str)
+	if err != nil {
+		panic(err)
+	}
+	arr := m.Sum(nil)
+	return fmt.Sprintf("%x", arr)
+}
+
+func Md5ByBytes(b []byte) string {
+	return fmt.Sprintf("%x", md5.Sum(b))
+}
+
+// 判断字符串是否为字母数字
+func IsAlphaNumeric(str string) bool {
+	// 遍历字符串，判断每个字符是否为字母数字
+	for _, ch := range str {
+		if !strings.ContainsRune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", ch) {
+			return false
+		}
+	}
+	return true
+}
+
+// 判断字符串是否为字母数字
+func IsAlphaNumeric2(str string) bool {
+	// 使用正则表达式匹配字母数字
+	reg := regexp.MustCompile("^[a-zA-Z0-9]+$")
+	return reg.MatchString(str)
 }
 
 // date := time.Now().Format("2006-01-02 15:04:05")
