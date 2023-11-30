@@ -2,9 +2,12 @@
 <img src="https://cms.88act.com/res/img/go-cms.png" width=300" height="300" />
 </div>
 <div align=center>
-<img src="https://img.shields.io/badge/golang-1.16-blue"/>
+<img src="https://img.shields.io/badge/golang-1.21-blue"/>
+<img src="https://img.shields.io/badge/go-zero-1.6.0-blue"/>
 <img src="https://img.shields.io/badge/gin-1.6.3-blue"/>
-<img src="https://img.shields.io/badge/vue-3.0.0-blue"/> 
+<img src="https://img.shields.io/badge/vue-3.3.7-blue"/> 
+<img src="https://img.shields.io/badge/vite-4.5.0-blue"/> 
+<img src="https://img.shields.io/badge/typescript-5.2.2-blue"/> 
  
 </div>
 
