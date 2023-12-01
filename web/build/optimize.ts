@@ -35,7 +35,7 @@ const include = [
   "@howdyjs/mouse-menu",
   "vue-virtual-scroller",
   "@amap/amap-jsapi-loader",
-  "el-table-infinite-scroll"
+  "el-table-infinite-scroll",  
   ];
 
 /**

@@ -9,8 +9,10 @@ import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
+
 import Table from "@pureadmin/table";
 import PureDescriptions from "@pureadmin/descriptions";
+
 
 // 引入重置样式
 import "./style/reset.scss";
@@ -40,6 +42,7 @@ import {
 app.component("IconifyIconOffline", IconifyIconOffline);
 app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
+ 
 
 // 全局注册按钮级别权限组件
 import { Auth } from "@/components/ReAuth";
