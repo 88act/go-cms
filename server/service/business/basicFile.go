@@ -147,9 +147,7 @@ func (m *BasicFileService) GetList(ctx context.Context, seq business.BasicFileSe
 	if seq.UserId != nil {
 		db = db.Where("user_id = ?", seq.UserId)
 	}
-	if seq.CuId != nil {
-		db = db.Where("cu_id = ?", seq.CuId)
-	}
+
 	if seq.Name != "" {
 		db = db.Where("name = ?", seq.Name)
 	}

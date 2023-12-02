@@ -141,7 +141,7 @@ func (m *BasicFileApi) ExcelList(c *gin.Context) {
 			sheetFields := []string{}
 			sheetFields = append(sheetFields, "唯一id")
 			sheetFields = append(sheetFields, "用户id")
-			sheetFields = append(sheetFields, "系统用户id")
+
 			sheetFields = append(sheetFields, "文件名")
 			sheetFields = append(sheetFields, "栏目id")
 			sheetFields = append(sheetFields, "模块id")
@@ -165,7 +165,7 @@ func (m *BasicFileApi) ExcelList(c *gin.Context) {
 				var arr = []interface{}{}
 				arr = append(arr, v.Guid)
 				arr = append(arr, v.UserId)
-				arr = append(arr, v.CuId)
+
 				arr = append(arr, v.Name)
 				arr = append(arr, v.CatId)
 				arr = append(arr, v.Module)

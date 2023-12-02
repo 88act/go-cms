@@ -48,6 +48,9 @@ func OperationRecord() gin.HandlerFunc {
 		if record.Path == "/base/login" || record.Path == "/memUser/memChangePwd" || record.Path == "/base/changePwdMy" || record.Path == "/base/changePwd" {
 			record.Body = "--***--"
 		}
+		if record.Path == "/cmsDetail/createCmsDetail" {
+			record.Body = "---Detail---"
+		}
 		// 存在某些未知错误 TODO
 		//values := c.Request.Header.Values("content-type")
 		//if len(values) >0 && strings.Contains(values[0], "boundary") {

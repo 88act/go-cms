@@ -13,7 +13,7 @@ const Field_CmsDetail_mini = "" // "id,created_at,updated_at,art_id,detail,
 // CmsDetail 结构体
 type CmsDetail struct {
 	global.BaseModel
-	ArtId  int64  `json:"artId" form:"artId" cn:"文章id"  gorm:"column:art_id;comment:文章id;type:bigint"`
+	//ArtId  int64  `json:"artId" form:"artId" cn:"文章id"  gorm:"column:art_id;comment:文章id;type:bigint"`
 	Detail string `json:"detail" form:"detail" cn:"详细"  gorm:"column:detail;comment:详细;type:text;"`
 }
 
@@ -25,6 +25,6 @@ func (CmsDetail) TableName() string {
 type CmsDetailSearch struct {
 	request.PageInfo
 	global.BaseModel
-	ArtId  *int64 `json:"artId"  form:"artId" `
+	//ArtId  *int64 `json:"artId"  form:"artId" `
 	Detail string `json:"detail"   form:"detail" `
 }

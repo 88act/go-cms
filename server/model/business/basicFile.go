@@ -15,7 +15,6 @@ type BasicFile struct {
 	global.BaseModel
 	Guid      string `json:"guid" form:"guid" cn:"唯一id"  gorm:"column:guid;comment:唯一id;type:varchar(32);"`
 	UserId    int64  `json:"userId" form:"userId" cn:"用户id"  gorm:"column:user_id;comment:用户id;type:bigint"`
-	CuId      int64  `json:"cuId" form:"cuId" cn:"cuId"  gorm:"column:cu_id;comment:cu_id;type:bigint"`
 	Name      string `json:"name" form:"name" cn:"文件名"  gorm:"column:name;comment:文件名;type:varchar(255);"`
 	CatId     int64  `json:"catId" form:"catId" cn:"栏目id"  gorm:"column:cat_id;comment:栏目id;type:bigint"`
 	Module    int    `json:"module" form:"module" cn:"模块id"   gorm:"column:module;comment:模块id;type:smallint"`
@@ -43,7 +42,6 @@ type BasicFileSearch struct {
 	global.BaseModel
 	Guid      string `json:"guid"   form:"guid" `
 	UserId    *int64 `json:"userId"  form:"userId" `
-	CuId      *int64 `json:"cuId" form:"cuId" `
 	Name      string `json:"name"   form:"name" `
 	CatId     *int64 `json:"catId"  form:"catId" `
 	Module    *int   `json:"module"   form:"module" `

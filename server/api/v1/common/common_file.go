@@ -97,7 +97,7 @@ func (m *CommonFileApi) UploadFile(c *gin.Context) {
 
 	basicFile := business.BasicFile{}
 	basicFile.UserId = utils.GetUserID(c)
-	basicFile.CuId = utils.GetCuId(c)
+	//basicFile.CuId = utils.GetCuId(c)
 	//basicFile.CatId = gconv.Int64(c.DefaultPostForm("catId", "0"))
 	basicFile.Size = gconv.Int(c.DefaultPostForm("size", "0"))
 	basicFile.Ext = c.DefaultPostForm("ext", "")
@@ -162,7 +162,7 @@ func (m *CommonFileApi) UploadFileToken(c *gin.Context) {
 
 	basicFile := business.BasicFile{}
 	basicFile.UserId = utils.GetUserID(c)
-	basicFile.CuId = basicFile.UserId
+	//basicFile.CuId = basicFile.UserId
 	basicFile.CatId = 1 //gconv.Int64(c.DefaultPostForm("catId", "0"))
 	basicFile.Size = gconv.Int(c.DefaultPostForm("size", "0"))
 	basicFile.Ext = c.DefaultPostForm("ext", "")

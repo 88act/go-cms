@@ -39,7 +39,7 @@ system:
   iplimit-count: 15000
   #  IP限制一个小时
   iplimit-time: 3600
-  rsa-path: D:/work_go/go-cms_server/server/
+  rsa-path: D:/work_go/go-cms/server/
   api-url: https://www.go-cms.com/
   # wss-url: wss://www.go-cms.com/wss/  
   #wss-url: ws://127.0.0.1:8888/   
@@ -53,8 +53,8 @@ jwt:
 
 # local configuration
 local:
-  base-url: http://127.0.0.1:44099/
-  base-path: D:/work_go/go-cms_server/server/
+  base-url: http://127.0.0.1:44088/
+  base-path: D:/work_go/go-cms/server/
   path: res/sys
   path-user: res/user  
 

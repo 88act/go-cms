@@ -138,7 +138,7 @@ func (m *CmsDetailApi) ExcelList(c *gin.Context) {
 			m.FailWithMessage("没有数据", c)
 		} else {
 			sheetFields := []string{}
-			sheetFields = append(sheetFields, "文章id")
+			//sheetFields = append(sheetFields, "文章id")
 			sheetFields = append(sheetFields, "详细")
 
 			excel := excelize.NewFile()
@@ -146,7 +146,7 @@ func (m *CmsDetailApi) ExcelList(c *gin.Context) {
 			for i, v := range list {
 				axis := fmt.Sprintf("A%d", i+2)
 				var arr = []interface{}{}
-				arr = append(arr, v.ArtId)
+				//arr = append(arr, v.ArtId)
 				arr = append(arr, v.Detail)
 				excel.SetSheetRow("Sheet1", axis, &arr)
 			}
