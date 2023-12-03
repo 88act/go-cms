@@ -217,8 +217,8 @@
 			//BeEditor   this.formData.desc = this.$refs.editor_desc.getContent();
 		let guidList_image = fileListEdit_image.value.getGuidList()
 		formData.value.image =  guidList_image.length >0? guidList_image.join(","):""
-		let guidList_fileList = fileListEdit_fileList.value.getGuidList()
-		formData.value.fileList =  guidList_fileList.length >0? guidList_fileList.join(","):""
+		// let guidList_fileList = fileListEdit_fileList.value.getGuidList()
+		// formData.value.fileList =  guidList_fileList.length >0? guidList_fileList.join(","):""
       let res;
       if (id.value > 0) { //update
         res = await updateCmsArt(formData.value)

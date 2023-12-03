@@ -67,17 +67,17 @@
 	</el-dialog>
 </template>
 
-<script setup> 
+<script setup lang="ts">
 	import {
 		ref,
 		watch,
-		computed
+		computed,
+    onMounted
 	} from 'vue'
 	import {
 		isEmpty,
 		obj2Num
 	} from '@/utils/utils'
-	const currentInstance = getCurrentInstance()
 
 	// const path = import.meta.env.VITE_BASE_PATH+":"+ import.meta.env.VITE_SERVER_PORT "/"
 	// 注意属性是只读的，不能修改
@@ -168,14 +168,6 @@
 
 
 
-	const getGuidList = () => {
-		let guids = []
-		myList.value.forEach(function(value, index) {
-			// console.log("forEach :", value)
-			guids.push(value.guid)
-		})
-		return guids
-	}
 
     // 音视频播放
 	const dialogVideo = ref(false)
@@ -208,9 +200,12 @@
 		} else
 			noImg.value = true
 
-		// console.log("myList.value :", myList.value)
+	  console.log("========myList.value :", myList.value)
 	}
-	init()
+  onMounted(()=>{
+    	init()
+  })
+
 
 	watch(() => props.objList, (newValue, oldValue) => {
 		console.log('objList 值变了', '变化后的值是' + newValue, '变化前的值是' + oldValue);
@@ -236,9 +231,6 @@
 	})
 
 
-	defineExpose({
-		getGuidList
-	})
 </script>
 <style>
 

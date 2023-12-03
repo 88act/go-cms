@@ -156,15 +156,14 @@
 						</el-popover>
 					</template>
 					</el-table-column>
-
 				<el-table-column label="创建时间" width="120" prop="created_at" sortable="custom">
 					<template #default="scope">{{formatDate(scope.row.createdAt,1)}}</template>
 				</el-table-column>
 				<el-table-column label="编辑" width="110"  fixed="right">
-					<template #default="scope">
-                   <el-button :icon="useRenderIcon('ep:circle-plus-filled')" type="primary" link @click="goEditDetail(scope.row.id)"/>
-			              <el-button :icon="useRenderIcon('ep:edit')" type="primary" link @click="goEditForm(scope.row.id)"/>
-                          <el-button :icon="useRenderIcon('ep:delete')" type="primary" link @click="deleteRow(scope.row)" />
+				<template #default="scope">
+        <el-button :icon="useRenderIcon('ep:circle-plus-filled')" type="primary" link @click="goEditDetail(scope.row.id)"/>
+			  <el-button :icon="useRenderIcon('ep:edit')" type="primary" link @click="goEditForm(scope.row.id)"/>
+        <el-button :icon="useRenderIcon('ep:delete')" type="primary" link @click="deleteRow(scope.row)" />
 					</template>
 				</el-table-column>
 			</el-table>
@@ -253,7 +252,7 @@
  } from '@/api/cmsArt'
 
  import CmsArtForm from './cmsArtForm.vue'
-  import CmsDetailForm from '../cmsDetail/cmsDetailForm.vue'
+ import CmsDetailForm from '../cmsDetail/cmsDetailForm.vue'
 
 
    const page = ref(1)

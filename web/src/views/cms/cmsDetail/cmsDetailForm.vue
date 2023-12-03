@@ -161,40 +161,22 @@ const onUploadImg = async (files, callback) => {
       });
     })
   );
-  console.log("res===1====",res)
-   let resObj =  res[0]
-   console.log("res===2====",resObj)
- // let resObj = JSON.parse(resObj2)
-
-  if (resObj && resObj.code == 200 ){
-    let path =resObj.data.path
-    path = path.replace(".jpg", "_src.jpg");
-    path = path.replace(".png", "_src.png");
-    console.log("res==path===",path)
-    callback((path)=>path)
-  }else {
-     message("上传出错"+resObj.msg,{'type':"error"})
+    callback(res.map((item) =>  item.data.path));
+    //  console.log("res===1====",res)
+    //   let resObj =  res[0]
+    //   console.log("res===2====",resObj)
+    // // let resObj = JSON.parse(resObj2)
+    
+    //  if (resObj && resObj.code == 200 ){
+    //    let path =resObj.data.path
+    //    path = path.replace(".jpg", "_src.jpg");
+    //    path = path.replace(".png", "_src.png");
+    //    console.log("res==path===",path)
+    //    callback((path)=>path)
+    //  }else {
+    //     message("上传出错"+resObj.msg,{'type':"error"})
+    //  }
   }
-
- // callback(res.map((item) => "http://127.0.0.1:44088/res/sys/20231201/bc3552b40e4c4544b86f3dd417f8f43a.png"
-    // if ( item.data.code == 200 ){
-    //   item.data.data.path
-    // } else{
-    //    message("上传出错"+item.data.msg,{'type':"error"})
-    // }
-    // let resObj = JSON.parse(item.data)
-    // let path =resObj.data.path
-    // if (resObj && resObj.code == 200 ){
-
-    //   path = path.replace(".jpg", "_src.jpg");
-    //   path = path.replace(".png", "_src.png");
-
-    // }else {
-    //    message("上传出错"+resObj.msg,{'type':"error"})
-    // }
-    // path
-
-};
 
   const formData = ref({
     id: 0,
