@@ -26,9 +26,18 @@
       </el-form>
 
       <!----------数据表------------------ -->
-      <el-table row-key="id" ref="multipleTable" border style="width: 100%" tooltip-effect="dark" :data="tableData"
-        @selection-change="handleSelectionChange" @sort-change="sortChange">
-        <el-table-column type="selection" width="55" />
+	<el-table :expand-row-keys="expandsIds" row-key="id" ref="multipleTable"  border :data="tableData"	@row-click="rowClick" @expand-change="expandChange" @sort-change="sortChange"	@selection-change="handleSelectionChange" >
+        <el-table-column type="expand"  >
+        	<template #default="scope">
+        		<div style="padding-left: 60px;">
+        					<span>地址：</span>
+        					<span>, 固话：</span>
+        					<span>, 邮件：</span>
+        					<span>, 网址：</span>
+        					<span>, 备注：</span>
+        		</div>
+        	</template>
+        </el-table-column>
         <el-table-column label="序号" width="80" prop="id" sortable="custom" />
         <el-table-column label="栏目类型" prop="type" min-width="120" sortable="custom">
           <template #default="scope">
@@ -399,6 +408,40 @@
   onMounted(() => {
     init()
   })
+
+ //###########################################
+ const expandsIds =ref([])
+ const expandsNowId = ref(0)
+  const expandChange = (row, expandedRows) => {
+  	if (expandedRows.length) {
+  		expandsIds.value = []
+  		if (row) {
+
+  			//getResultData(row)
+  			expandsIds.value.push(row.id)
+  			expandsNowId.value = row.id
+  		}
+  	} else {
+  		expandsNowId.value = 0
+  		expandsIds.value = []
+  	}
+  }
+  const rowClick = (row, column, event) => {
+  	if (expandsNowId.value == row.id) {
+  		expandsIds.value = []
+  		expandsNowId.value = 0
+  	} else if (row && column) {
+  		if (column.property == "id" || column.property == "title" ||
+  			column.property == "ccontact" || column.property == "Created_at" || column.property == "name" || column
+  			.property == "mobile") {
+  			expandsIds.value = []
+  			//getTableData_jobTask(row.ID)
+  			expandsIds.value.push(row.id)
+  			expandsNowId.value = row.id
+  		}
+
+  	}
+  }
 </script>
 
 <style lang="scss" scoped>

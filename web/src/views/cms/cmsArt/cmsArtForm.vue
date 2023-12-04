@@ -1,23 +1,7 @@
 <template>
 		<div class="gocms-form-box bg-bg_color">
 			<el-form ref="editForm" :model="formData" :rules="editRules"  label-position="right" label-width="80px" >
-        <!-- <el-form-item label="父id:"  prop="pid">
-                 <el-input v-model.number="formData.pid" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="用户id:"  prop="userId">
-                 <el-input v-model.number="formData.userId" clearable placeholder="请输入" />
-       </el-form-item> -->
-        <el-form-item label="栏目:"  prop="catId">
-                 <el-input v-model.number="formData.catId" clearable placeholder="请输入" />
-       </el-form-item>
-   <!--     <el-form-item label="系统类别:"  prop="catIdSys">
-                 <el-input v-model.number="formData.catIdSys" clearable placeholder="请输入" />
-       </el-form-item> -->
-        <el-form-item label="文章类型:"  prop="type">
-                 <el-select v-model="formData.type" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value" />
-                 </el-select>
-       </el-form-item>
+
         <el-form-item label="文章标题:"  prop="title">
                 <el-input v-model="formData.title" clearable placeholder="请输入" />
        </el-form-item>
@@ -27,53 +11,21 @@
         <el-form-item label="标签列表:"  prop="tagList">
                 <el-input v-model="formData.tagList" clearable placeholder="请输入" />
        </el-form-item>
-  <!--      <el-form-item label="来源:"  prop="source">
-                <el-input v-model="formData.source" clearable placeholder="请输入" />
-       </el-form-item> -->
+
         <el-form-item label="插图:"  prop="image">
-						 <FileListEdit ref="fileListEdit_image" :multi="false" :imgSize="150" :mediaType="1" :max="1024" :objList="getFileByGuidStr(formData.image,formData.fileObjList)" />
+						 <FileListEdit ref="fileListEdit_image" :multi="false" :imgSize="120" :mediaType="1" :max="2048" :objList="getFileByGuidStr(formData.image,formData.fileObjList)" />
        </el-form-item>
-      <!--  <el-form-item label="媒体列表:"  prop="fileList">
-                  <div style="display: block;">
-                      <div>
-						    <FileListEdit ref="fileListEdit_fileList" :multi="true" :mediaType="1" :max="1024" :objList="getFileByGuidStr(formData.fileList,formData.fileObjList)" />
-                       </div>
-                       <div >
-                          <span style="font-family: SourceHanSansCN-Regular; font-size: 12px; font-weight: normal; line-height: 20px;letter-spacing: -0.01px;" >只能上传jpg/png文件，且不超过1024kb</span>
-                       </div>
-                  </div>
-       </el-form-item> -->
         <el-form-item label="链接地址:"  prop="link">
                 <el-input v-model="formData.link" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="置顶:"  prop="beTop">
+        <el-form-item label="热门:"  prop="beTop">
              <el-switch active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否" v-model="formData.beTop" clearable ></el-switch>
 
        </el-form-item>
         <el-form-item label="综合指数:"  prop="totalWhole">
                  <el-input v-model.number="formData.totalWhole" clearable placeholder="请输入" />
        </el-form-item>
-        <!-- <el-form-item label="总分享:"  prop="totalShare">
-                 <el-input v-model.number="formData.totalShare" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总收藏:"  prop="totalFav">
-                 <el-input v-model.number="formData.totalFav" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总评论:"  prop="totalDiscuss">
-                 <el-input v-model.number="formData.totalDiscuss" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总点击:"  prop="totalClick">
-                 <el-input v-model.number="formData.totalClick" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总星:"  prop="totalStar">
-                 <el-input v-model.number="formData.totalStar" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总赞:"  prop="totalGood">
-                 <el-input v-model.number="formData.totalGood" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="总踩:"  prop="totalPoor">
-                 <el-input v-model.number="formData.totalPoor" clearable placeholder="请输入" />
-       </el-form-item> -->
+
         <el-form-item label="状态:"  prop="status">
                  <el-select v-model="formData.status" placeholder="请选择" clearable>
                       <el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value" />

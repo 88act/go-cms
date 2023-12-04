@@ -17,22 +17,13 @@
       <el-form-item label="摘要:" prop="desc">
         <el-input v-model="formData.desc" clearable placeholder="请输入" />
       </el-form-item>
+
       <el-form-item label="插图:" prop="image">
-        <div style="display: block;">
-          <div>
-            <FileListEdit ref="fileListEdit_image"  :mediaType="1" :max="1024"
-              :objList="getFileByGuidStr(formData.image,formData.fileObjList)" />
-          </div>
-          <div>
-            <span
-              style="font-family: SourceHanSansCN-Regular; font-size: 12px; font-weight: normal; line-height: 20px;letter-spacing: -0.01px;">只能上传jpg/png文件，且不超过1024kb</span>
-          </div>
-        </div>
+          <FileListEdit ref="fileListEdit_image" :multi="false" :imgSize="140" :mediaType="1" :max="2048" :objList="getFileByGuidStr(formData.image,formData.fileObjList)" />
       </el-form-item>
       <el-form-item label="是否导航:" prop="beNav">
         <el-switch active-color="#13ce66" inactive-color="#ff4949" active-text="是" inactive-text="否"
           v-model="formData.beNav" clearable></el-switch>
-
       </el-form-item>
       <el-form-item label="排序:" prop="sort">
         <el-input v-model.number="formData.sort" clearable placeholder="请输入" />

@@ -28,7 +28,6 @@
 							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
 							start-placeholder="开始日期" end-placeholder="结束日期" />
 					</el-form-item>
-
 								<el-form-item label="类别">
 									<el-input placeholder="搜索条件" v-model="searchInfo.catId" clearable />
 								</el-form-item>
@@ -39,8 +38,7 @@
 									<el-select v-model="searchInfo.type" placeholder="请选择" clearable>
 									<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
 									</el-select>
-								</el-form-item>
-
+								</el-form-item> 
 								<el-form-item label="文章摘要">
 								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
 								</el-form-item>
@@ -49,9 +47,6 @@
 								</el-form-item>
 								<el-form-item label="来源">
 								<el-input placeholder="搜索条件" v-model="searchInfo.source" clearable />
-								</el-form-item>
-								<el-form-item label="链接地址">
-								<el-input placeholder="搜索条件" v-model="searchInfo.link" clearable />
 								</el-form-item>
 							<el-form-item label="置顶" prop="beTop">
 							<el-select v-model="searchInfo.beTop" clearable placeholder="请选择">
@@ -82,15 +77,7 @@
 								<el-form-item label="总点击">
 									<el-input placeholder="搜索条件" v-model="searchInfo.totalClick" clearable />
 								</el-form-item>
-								<el-form-item label="总星">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalStar" clearable />
-								</el-form-item>
-								<el-form-item label="总赞">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalGood" clearable />
-								</el-form-item>
-								<el-form-item label="总踩">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalPoor" clearable />
-								</el-form-item>
+
 								<el-form-item label="状态" prop="status">
 									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
 									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
@@ -103,7 +90,7 @@
 				</el-form>
 
 			<!----------数据表------------------ -->
-			<el-table row-key="id" ref="multipleTable" border  style="width: 100%" tooltip-effect="dark" :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
+			<el-table row-key="id" ref="multipleTable" border   :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
 				<el-table-column label="序号" width="80" prop="id" sortable="custom" />
 
