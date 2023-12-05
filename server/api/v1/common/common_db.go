@@ -5,7 +5,6 @@ import (
 	"go-cms/global"
 	"go-cms/model/common/request"
 	commSev "go-cms/service/common"
-	"go-cms/utils"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -50,8 +49,8 @@ func (m *CommonDbApi) QuickEdit(c *gin.Context) {
 func (m *CommonDbApi) PidData(c *gin.Context) {
 	var req request.PidDataReq
 	_ = c.ShouldBindJSON(&req)
-	cuId := utils.GetCuId(c)
-	req.CuId = &cuId
+	// cuId := utils.GetCuId(c)
+	// req.CuId = &cuId
 	if list, err := commSev.GetCommonDbSev().GetPidData(c, req); err == nil {
 		m.OkWithDetailed(request.PidDataResp{
 			List: list,
@@ -66,8 +65,7 @@ func (m *CommonDbApi) PidData(c *gin.Context) {
 func (m *CommonDbApi) PidTreeData(c *gin.Context) {
 	var req request.PidDataReq
 	_ = c.ShouldBindJSON(&req)
-	cuid := utils.GetCuId(c)
-	req.CuId = &cuid
+
 	var list []*request.PidTreeData
 	if req.Table == "ims_job_task" {
 		list = commSev.GetCommonDbSev().GetTreeData_jobTask(c, req)
@@ -152,7 +150,6 @@ func (m *CommonDbApi) UpdatePidSort(c *gin.Context) {
 	var req request.UpdatePidSortReq
 	_ = c.ShouldBindJSON(&req)
 
-	global.LOG.Error("11111111111")
 	fmt.Print(req)
 	if err := commSev.GetCommonDbSev().UpdatePidSort(c, req); err != nil {
 		m.FailWithMessage("修改失败:"+err.Error(), c)

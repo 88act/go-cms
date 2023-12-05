@@ -24,8 +24,6 @@ func (s *CommonDbRouter) InitCommonFileRouterPrv(Router *gin.RouterGroup) {
 		commonFileRouterWithoutRecord.GET("get", basicFileApi.FindBasicFile) // 根据ID获取BasicFile
 		commonFileRouterWithoutRecord.POST("upload", fileApi.UploadFile)
 		commonFileRouterWithoutRecord.GET("getFileByKey", fileApi.GetFileByKey) // 根据sha1 key 获取BasicFile
-		commonFileRouterWithoutRecord.POST("uploadToken", fileApi.UploadFileToken)
-
 	}
 
 }

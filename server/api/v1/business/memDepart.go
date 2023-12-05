@@ -72,22 +72,29 @@ func (m *MemDepartApi) UpdateMemDepart(c *gin.Context) {
 	var dataObj business.MemDepart
 	_ = c.ShouldBindJSON(&dataObj)
 
+	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
+		m.FailWithMessage("更新失败,"+err.FirstString(), c)
+		return
+	}
+
 	if dataObj.Pid > 0 {
 		if obj2, err := bizSev.GetMemDepartSev().Get(c, dataObj.Pid, ""); err == nil {
 			if obj2.Pid > 0 {
-				if obj3, err := bizSev.GetMemDepartSev().Get(c, obj2.Pid, ""); err == nil {
-					if obj3.Pid > 0 {
-						m.FailWithMessage("错误，仅支持三级部门", c)
-						return
+				if obj2.Pid == dataObj.Id {
+					m.FailWithMessage("错误上级部门", c)
+					c.Abort()
+					return
+				} else {
+					if obj3, err := bizSev.GetMemDepartSev().Get(c, obj2.Pid, ""); err == nil {
+						if obj3.Pid > 0 {
+							m.FailWithMessage("错误，仅支持三级部门", c)
+							c.Abort()
+							return
+						}
 					}
 				}
 			}
 		}
-	}
-
-	if err := gvalid.CheckStruct(c, dataObj, nil); err != nil {
-		m.FailWithMessage("更新失败,"+err.FirstString(), c)
-		return
 	}
 
 	if err := bizSev.GetMemDepartSev().Update(c, dataObj); err != nil {

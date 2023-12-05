@@ -12,8 +12,6 @@ import (
 	//bizSev "go-cms/service/business"
 	"go-cms/utils"
 	"sync"
-
-	"github.com/gogf/gf/util/gconv"
 )
 
 type CommonDbService struct {
@@ -54,9 +52,6 @@ func (m *CommonDbService) GetPidData(ctx context.Context, req request.PidDataReq
 		whereSql := "status=1 AND deleted_at IS NULL "
 		if req.Table == "basic_area" {
 			whereSql = " 1=1"
-		}
-		if req.Table == "ims_job" || req.Table == "ims_task" || req.Table == "mem_user" {
-			whereSql += fmt.Sprintf(" AND cu_id= %d", *req.CuId)
 		}
 		if !utils.IsEmpty(req.Where) {
 			whereSql += " AND " + req.Where
@@ -155,7 +150,7 @@ func (m *CommonDbService) GetTreeData_memDepart(ctx context.Context, req request
 	OrderStr := "sort asc"
 	fields := "id as `value`,name as label,pid"
 	db := global.DB.WithContext(ctx).Model(&business.MemDepart{})
-	err := db.Select(fields).Where("cu_id =? and  deleted_at IS NULL", *req.CuId).Order(OrderStr).Scan(&list).Error
+	err := db.Select(fields).Where("deleted_at IS NULL").Order(OrderStr).Scan(&list).Error
 	if err == nil {
 		list2 := m.getTreeList(list, 0)
 		return list2
@@ -228,16 +223,8 @@ func (m *CommonDbService) GetTreeData(ctx context.Context, req request.PidDataRe
 		// if !utils.IsEmpty(req.PidValue) {
 		// 	db = db.Where(pidFields+"=?", req.PidValue)
 		// }
-		if req.Table == "sys_menu" {
-			if req.Where != "be_sys=1" {
-				whereSql += " AND  be_sys=0"
-			}
-		} else if req.Table == "sys_role" {
-			whereSql += " AND cu_id=" + gconv.String(req.CuId)
-		} else {
-			if !utils.IsEmpty(req.Where) {
-				whereSql += " AND " + req.Where
-			}
+		if !utils.IsEmpty(req.Where) {
+			whereSql += " AND " + req.Where
 		}
 	}
 

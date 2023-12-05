@@ -28,7 +28,7 @@ type QuickEdit struct {
 
 // 获取 pid 对应的data   新增 BY ljd 20220615
 type PidDataReq struct {
-	CuId      *int64 `json:"cuId" form:"cuId"`           // 客户Id
+	//CuId      *int64 `json:"cuId" form:"cuId"`           // 客户Id
 	Table     string `json:"table" form:"table"`         // 表
 	PidField  string `json:"pidField" form:"pidField"`   // value 字段名 (一般是id )
 	PidValue  *int64 `json:"pidValue" form:"pidValue"`   // PidValue 字段的值

@@ -79,6 +79,7 @@ func (m *SysMenuApi) UpdateSysMenu(c *gin.Context) {
 		if obj2, err := bizSev.GetSysMenuSev().Get(c, dataObj.Pid, ""); err == nil {
 			if obj2.Pid > 0 {
 				m.FailWithMessage("错误，仅支持二级菜单", c)
+				c.Abort()
 				return
 			}
 		}
