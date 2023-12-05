@@ -15,61 +15,13 @@
 					<div>
 						<el-form-item  >
 							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>					
+							 
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
 						 </el-form-item>
 					</div>
 				</div>
-
-				<div v-if="searchToggle" class="gocms-box-search"> 
-					<el-form-item label="创建时间">
-						<el-date-picker v-model="searchInfo.createdAtBetween" type="datetimerange"
-							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
-							start-placeholder="开始日期" end-placeholder="结束日期" />
-					</el-form-item> 
-							<el-form-item label="id">
-								<el-input placeholder="搜索id" v-model="searchInfo.id" />
-							</el-form-item>
-								<el-form-item label="用户id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.userId" clearable />
-								</el-form-item> 
-								<el-form-item label="标题">
-								<el-input placeholder="搜索条件" v-model="searchInfo.title" clearable />
-								</el-form-item> 
-								<el-form-item label="简介">
-								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
-								</el-form-item> 
-								<el-form-item label="邮件">
-								<el-input placeholder="搜索条件" v-model="searchInfo.email" clearable />
-								</el-form-item>
-								<el-form-item label="地区id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.areaId" clearable />
-								</el-form-item> 
-								<el-form-item label="地址">
-								<el-input placeholder="搜索条件" v-model="searchInfo.address" clearable />
-								</el-form-item>
-								<el-form-item label="综合指数">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalWhole" clearable />
-								</el-form-item>
-								<el-form-item label="总点击">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalClick" clearable />
-								</el-form-item>
-								<el-form-item label="总粉丝">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalFan" clearable />
-								</el-form-item>
-								<el-form-item label="总赞">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalGood" clearable />
-								</el-form-item>
-								<el-form-item label="总踩">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalPoor" clearable />
-								</el-form-item>
-								<el-form-item label="状态" prop="status">                
-									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>  
-                    </div> 
+ 
 				</el-form>
 		 
 			<!----------数据表------------------ -->

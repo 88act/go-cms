@@ -14,84 +14,21 @@
 					</div>
 					<div>
 						<el-form-item  >
-							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>
+							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>  
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>
 						 </el-form-item>
 					</div>
 				</div>
 
-				<div v-if="searchToggle" class="gocms-box-search">
-					<el-form-item label="创建时间">
-						<el-date-picker v-model="searchInfo.createdAtBetween" type="datetimerange"
-							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
-							start-placeholder="开始日期" end-placeholder="结束日期" />
-					</el-form-item>
-								<el-form-item label="类别">
-									<el-input placeholder="搜索条件" v-model="searchInfo.catId" clearable />
-								</el-form-item>
-								<el-form-item label="系统类别">
-									<el-input placeholder="搜索条件" v-model="searchInfo.catIdSys" clearable />
-								</el-form-item>
-								<el-form-item label="文章类型" prop="type">
-									<el-select v-model="searchInfo.type" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>
-								<el-form-item label="文章摘要">
-								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
-								</el-form-item>
-								<el-form-item label="标签列表">
-								<el-input placeholder="搜索条件" v-model="searchInfo.tagList" clearable />
-								</el-form-item>
-								<el-form-item label="来源">
-								<el-input placeholder="搜索条件" v-model="searchInfo.source" clearable />
-								</el-form-item>
 
-								<el-form-item label="综合指数">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalWhole" clearable />
-								</el-form-item>
-								<el-form-item label="总分享">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalShare" clearable />
-								</el-form-item>
-								<el-form-item label="总收藏">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalFav" clearable />
-								</el-form-item>
-								<el-form-item label="总评论">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalDiscuss" clearable />
-								</el-form-item>
-								<el-form-item label="总点击">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalClick" clearable />
-								</el-form-item>
-
-								<el-form-item label="状态" prop="status">
-									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>
-								<el-form-item label="审核信息">
-								<el-input placeholder="搜索条件" v-model="searchInfo.verifyMsg" clearable />
-								</el-form-item>
-                    </div>
 				</el-form>
 
 			<!----------数据表------------------ -->
 			<el-table row-key="id" ref="multipleTable" border   :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
 				<el-table-column label="序号" width="80" prop="id" sortable="custom" />
-				<!-- <el-table-column label="文章类型" prop="type" min-width="120"  sortable="custom" >
-					<template #default="scope">
-					<el-popover trigger="click" placement="top"  width = "280">
-						<el-select v-model="scope.row.type" placeholder="请选择"  @change="quickEdit_do('type',scope.row.id,scope.row.type,scope)">
-							<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
-						</el-select>
-						<template #reference>
-							<div class="quickEdit" > {{filterDict(scope.row.type,art_type_options)}} </div>
-						</template>
-						</el-popover>
-					</template>
-					</el-table-column> -->
+
 					<el-table-column label="文章标题" prop="title" min-width="120"   sortable="custom"  />
 					<el-table-column label="标签列表" prop="tagList" min-width="120"   sortable="custom"  />
 					<el-table-column label="插图" prop="image" min-width="120"   sortable="custom" >

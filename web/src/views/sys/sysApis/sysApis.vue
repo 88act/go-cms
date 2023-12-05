@@ -15,46 +15,13 @@
 					<div>
 						<el-form-item  >
 							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>						
+						 
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
 						 </el-form-item>
 					</div>
 				</div>
-
-				<div v-if="searchToggle" class="gocms-box-search"> 
-					<el-form-item label="创建时间">
-						<el-date-picker v-model="searchInfo.createdAtBetween" type="datetimerange"
-							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
-							start-placeholder="开始日期" end-placeholder="结束日期" />
-					</el-form-item> 
-							<el-form-item label="id">
-								<el-input placeholder="搜索id" v-model="searchInfo.id" />
-							</el-form-item>
-								<el-form-item label="商户">
-									<el-input placeholder="搜索条件" v-model="searchInfo.cuId" clearable />
-								</el-form-item> 
-								<el-form-item label="api路径">
-								<el-input placeholder="搜索条件" v-model="searchInfo.path" clearable />
-								</el-form-item> 
-								<el-form-item label="api中文描述">
-								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
-								</el-form-item> 
-								<el-form-item label="所属模块">
-								<el-input placeholder="搜索条件" v-model="searchInfo.model" clearable />
-								</el-form-item> 
-								<el-form-item label="api组">
-								<el-input placeholder="搜索条件" v-model="searchInfo.apiGroup" clearable />
-								</el-form-item> 
-								<el-form-item label="方法">
-								<el-input placeholder="搜索条件" v-model="searchInfo.method" clearable />
-								</el-form-item>
-								<el-form-item label="状态" prop="status">                
-									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>  
-                    </div> 
+ 
 				</el-form>
 		 
 			<!----------数据表------------------ -->

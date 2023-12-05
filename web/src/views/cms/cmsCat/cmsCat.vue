@@ -14,8 +14,7 @@
           </div>
           <div>
             <el-form-item>
-              <el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>
-
+              <el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button> 
               <el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
               <el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>
             </el-form-item>

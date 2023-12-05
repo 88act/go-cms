@@ -1,28 +1,17 @@
-<template>	 
+<template>
 		<div class="gocms-form-box bg-bg_color">
 			<el-form ref="editForm" :model="formData" :rules="editRules"  label-position="right" label-width="80px" >
-        <el-form-item label="父ID:"  prop="pid">
-                 <el-input v-model.number="formData.pid" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="id:"  prop="artId">
-                 <el-input v-model.number="formData.artId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="用户id:"  prop="userId">
-                 <el-input v-model.number="formData.userId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="用户At:"  prop="userIdAt">
-                 <el-input v-model.number="formData.userIdAt" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="标题:"  prop="title">   
+
+        <el-form-item label="标题:"  prop="title">
                 <el-input v-model="formData.title" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="内容:"  prop="detail">   
+        <el-form-item label="内容:"  prop="detail">
                 <el-input v-model="formData.detail" clearable placeholder="请输入" />
        </el-form-item>
-        <el-form-item label="图片:"  prop="fileList"> 
-                  <div style="display: block;"> 
-                      <div> 
-						    <FileListEdit ref="fileListEdit_fileList" :multi="true" :mediaType="1" :max="1024" :objList="getFileByGuidStr(formData.fileList,formData.fileObjList)" /> 
+        <el-form-item label="图片:"  prop="fileList">
+                  <div style="display: block;">
+                      <div>
+						    <FileListEdit ref="fileListEdit_fileList" :imgSize="140" :mediaType="1" :max="1024" :objList="getFileByGuidStr(formData.fileList,formData.fileObjList)" />
                        </div>
                        <div >
                           <span style="font-family: SourceHanSansCN-Regular; font-size: 12px; font-weight: normal; line-height: 20px;letter-spacing: -0.01px;" >只能上传jpg/png文件，且不超过1024kb</span>
@@ -39,11 +28,11 @@
                  <el-select v-model="formData.status" placeholder="请选择" clearable>
                       <el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value" />
                  </el-select>
-       </el-form-item> 
+       </el-form-item>
 			</el-form>
 			<div class="btn-save">
-				<el-button class="el-btn-save" type="primary" @click="save">保存</el-button>				
-			</div>		 
+				<el-button class="el-btn-save" type="primary" @click="save">保存</el-button>
+			</div>
 	</div>
 </template>
 
@@ -82,7 +71,7 @@
     formatDate,
     formatBoolean
   } from '@/utils/utils'
- 
+
 
   import {
     required,
@@ -108,7 +97,7 @@
 	updateCmsDiscuss,
 	findCmsDiscuss
 } from '@/api/cmsDiscuss'
-	
+
 
   // 声明 props 类型
   export interface FormProps {
@@ -117,7 +106,7 @@
     index : number,
     options ?: DialogOptions;
   }
-  // 声明 props 默认值 
+  // 声明 props 默认值
   const props = withDefaults(defineProps<FormProps>(), {
     editId: () => 0,
     beChange: () => false,
@@ -127,14 +116,14 @@
   const emit = defineEmits(["update:editId", "update:beChange"]);
   const id = useVModel(props, "editId", emit);
   const beChange = useVModel(props, "beChange", emit);
-  const editForm = ref(null) 
+  const editForm = ref(null)
    // 字典
 		const status_options = ref([])
 
   const treeOptions = ref([])
   //图片处理
   import FileListEdit from '@/components/mediaLib/fileListEdit.vue'
-    const fileListEdit_fileList = ref(null)  
+    const fileListEdit_fileList = ref(null)
 
   // // 查询
   const getData = async () => {
@@ -171,7 +160,7 @@
       delete formData.value.updatedAt;
 	//图片
 		let guidList_fileList = fileListEdit_fileList.value.getGuidList()
-		formData.value.fileList =  guidList_fileList.length >0? guidList_fileList.join(","):"" 
+		formData.value.fileList =  guidList_fileList.length >0? guidList_fileList.join(","):""
       let res;
       if (id.value > 0) { //update
         res = await updateCmsDiscuss(formData.value)
@@ -193,8 +182,8 @@
     }
   }
 
-const getOptionsData = async () => { 
-			status_options.value = await getDict("status") 
+const getOptionsData = async () => {
+			status_options.value = await getDict("status")
 }
   const getTreeData = async () => {
     let treeDataReq = {
@@ -229,10 +218,10 @@ const getOptionsData = async () => {
             totalGood: 0,
             totalPoor: 0,
             status: 0,
-	})  
- 
+	})
+
     const editRules = ({
-	})  
+	})
 
 	  //const fileObjList = ref([])
   // const defaultProps = ref({
@@ -247,4 +236,3 @@ const getOptionsData = async () => {
 
 </script>
 
- 

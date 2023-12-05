@@ -231,8 +231,7 @@ import type {
      table: "sys_menu",
      pidField: "id",
      nameField: "title",
-     pidValue: 0,
-     where:"be_sys=1"
+     pidValue: 0, 
    }
    treeOptions.value = await getPidTreeData(treeDataReq)
   }

@@ -1,9 +1,9 @@
 <template>
-	<div> 	 
+	<div>
 		<!----------查询form--------- -->
-		<div class="gocms-table-box bg-bg_color"> 
+		<div class="gocms-table-box bg-bg_color">
 				<el-form :inline="true" :model="searchInfo" class="demo-form-inline">
-				<div class="gocms-box-search-button">  
+				<div class="gocms-box-search-button">
 					<div>
 						<el-form-item label="ID">
 							<el-input placeholder="搜索ID" v-model="searchInfo.id"  clearable />
@@ -14,56 +14,31 @@
 					</div>
 					<div>
 						<el-form-item  >
-							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>					
+							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button> 
 							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
-							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
+							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>
 						 </el-form-item>
 					</div>
 				</div>
-
-				<div v-if="searchToggle" class="gocms-box-search"> 
-					<el-form-item label="创建时间">
-						<el-date-picker v-model="searchInfo.createdAtBetween" type="datetimerange"
-							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
-							start-placeholder="开始日期" end-placeholder="结束日期" />
-					</el-form-item> 
-							<el-form-item label="id">
-								<el-input placeholder="搜索id" v-model="searchInfo.id" />
-							</el-form-item>
-								<el-form-item label="用户id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.userId" clearable />
-								</el-form-item>
-								<el-form-item label="栏目id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.catId" clearable />
-								</el-form-item>
-								<el-form-item label="文章id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.artId" clearable />
-								</el-form-item>
-								<el-form-item label="状态" prop="status">                
-									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>  
-                    </div> 
+ 
 				</el-form>
-		 
+
 			<!----------数据表------------------ -->
 			<el-table row-key="id" ref="multipleTable" border  style="width: 100%" tooltip-effect="dark" :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
-				<el-table-column label="序号" width="80" prop="id" sortable="custom" /> 
-					<el-table-column label="用户id" prop="userId" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="栏目id" prop="catId" min-width="120"   sortable="custom"  /> 
+				<el-table-column label="序号" width="80" prop="id" sortable="custom" />
+					<el-table-column label="用户id" prop="userId" min-width="120"   sortable="custom"  />
+					<el-table-column label="栏目id" prop="catId" min-width="120"   sortable="custom"  />
 					<el-table-column label="文章id" prop="artId" min-width="120"   sortable="custom"  />
 					<el-table-column label="状态" prop="status" min-width="120"  sortable="custom" >
-					<template #default="scope">  
+					<template #default="scope">
 						{{filterDict(scope.row.status,status_options)}}
 					</template>
-					</el-table-column> 
+					</el-table-column>
 
 				<el-table-column label="创建时间" width="120" prop="created_at" sortable="custom">
 					<template #default="scope">{{formatDate(scope.row.createdAt,1)}}</template>
-				</el-table-column> 
+				</el-table-column>
 
 				<el-table-column label="编辑" width="80"  fixed="right">
 					<template #default="scope">
@@ -75,11 +50,11 @@
 		</div>
 		<el-pagination class="gocms-pagination" layout="total, prev, pager, next, jumper, sizes" :current-page="page"
 			:page-size="pageSize" :page-sizes="[10,20,50, 100]" :total="total" @current-change="handleCurrentChange"
-			@size-change="handleSizeChange" />  
-		 
+			@size-change="handleSizeChange" />
+
 	</div>
 </template>
- 
+
 <script setup lang="tsx">
    import {
      ref,
@@ -136,7 +111,7 @@
      formatDate,
      formatBoolean
    } from '@/utils/utils'
-   
+
 
    import {
      addDialog,
@@ -165,13 +140,13 @@
    const tableData = ref([])
    const searchInfo = ref({})
    const searchToggle = ref(false)
-   const beChange = ref(false) 
+   const beChange = ref(false)
    const editId = ref(0)
-   const multipleSelection = ref([])  
+   const multipleSelection = ref([])
 
-    // 字典 
+    // 字典
 		const status_options = ref([])
-	// 搜索 
+	// 搜索
 	const onSearch = () => {
 		page.value = 1
 		pageSize.value = 20
@@ -203,7 +178,7 @@
 		getTableData()
 	}
 
-	//删除   
+	//删除
 	const deleteRow = async (row) => {
 		ElMessageBox.confirm('确认删除?', '提示', {
 				confirmButtonText: '确定',
@@ -235,7 +210,7 @@
 				ids.push(item.id)
 		})
 		if (ids.length == 0) {
-			message("请先选择删除项", { type: "error" })			 
+			message("请先选择删除项", { type: "error" })
 			return;
 		}
 		ElMessageBox.confirm('确认删除?', '提示', {
@@ -258,7 +233,7 @@
 			})
 	}
 
-	//快速编辑 
+	//快速编辑
 	const quickEdit_do = async (field, id, value, scope) => {
 		let value2 = value;
 		if (typeof(value) === "boolean")
@@ -299,9 +274,9 @@
 				    getTableData()
 				}
 			}
-		}); 
+		});
 	}
- 
+
 	// 查询
 	const getTableData = async () => {
         // 时间范围
@@ -311,7 +286,7 @@
 		}else {
 			searchInfo.value.createdAtBegin = null
 			searchInfo.value.createdAtEnd = null
-		}	
+		}
 		removeNullAttr(searchInfo.value)
 		let paramData = {
 			page: page.value,
@@ -319,7 +294,7 @@
 			...searchInfo.value
 		}
 		if (paramData.createdAtBetween)
-			delete paramData.createdAtBetween 
+			delete paramData.createdAtBetween
 		const res = await getCmsCatArtList(paramData)
 		if (res.code === 200) {
 			tableData.value = res.data.list
@@ -339,12 +314,12 @@
 		treeOptions.value = await getPidTreeData(treeDataReq)
 	}
 
-	const getOptionsData = async () => { 
-			status_options.value = await getDict('status') 
+	const getOptionsData = async () => {
+			status_options.value = await getDict('status')
 		//sexOptions.value = await getDict('sex')
 		//statusOptions.value = await getDict('status')
 		//usersafe_typeOptions.value = await getDict('usersafe_type')
-	} 
+	}
 	const init = () => {
 		getOptionsData()
 		//getTreeData()
@@ -357,4 +332,3 @@
 
  <style lang="scss" scoped>
  </style>
- 

@@ -15,61 +15,20 @@
 					<div>
 						<el-form-item  >
 							<el-button class="el-btn-save" type="primary" @click="onSearch">查询</el-button>			
-							<el-button class="el-btn-save" type="primary" :icon="searchToggle?useRenderIcon('ep:arrow-up-bold'):useRenderIcon('ep:arrow-down-bold')" @click="searchToggle=!searchToggle">筛选</el-button>					
-							<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
+								<el-button class="el-btn-save" type="primary" @click="goEditForm(0)">新增</el-button>
 							<el-button class="el-btn-save" type="primary" @click="deleteMultiRow">删除</el-button>	
 						 </el-form-item>
 					</div>
 				</div>
 
-				<div v-if="searchToggle" class="gocms-box-search"> 
-					<el-form-item label="创建时间">
-						<el-date-picker v-model="searchInfo.createdAtBetween" type="datetimerange"
-							format="YYYY-MM-DD HH:mm:ss" value-format="YYYY-MM-DD HH:mm:ss" :shortcuts="shortcuts" range-separator="至"
-							start-placeholder="开始日期" end-placeholder="结束日期" />
-					</el-form-item> 
-							<el-form-item label="id">
-								<el-input placeholder="搜索id" v-model="searchInfo.id" />
-							</el-form-item>
-								<el-form-item label="父ID">
-									<el-input placeholder="搜索条件" v-model="searchInfo.pid" clearable />
-								</el-form-item>
-								<el-form-item label="id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.artId" clearable />
-								</el-form-item>
-								<el-form-item label="用户id">
-									<el-input placeholder="搜索条件" v-model="searchInfo.userId" clearable />
-								</el-form-item>
-								<el-form-item label="用户At">
-									<el-input placeholder="搜索条件" v-model="searchInfo.userIdAt" clearable />
-								</el-form-item> 
-								<el-form-item label="标题">
-								<el-input placeholder="搜索条件" v-model="searchInfo.title" clearable />
-								</el-form-item> 
-								<el-form-item label="内容">
-								<el-input placeholder="搜索条件" v-model="searchInfo.detail" clearable />
-								</el-form-item>
-								<el-form-item label="总赞">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalGood" clearable />
-								</el-form-item>
-								<el-form-item label="总踩">
-									<el-input placeholder="搜索条件" v-model="searchInfo.totalPoor" clearable />
-								</el-form-item>
-								<el-form-item label="状态" prop="status">                
-									<el-select v-model="searchInfo.status" placeholder="请选择" clearable>
-									<el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value"></el-option>
-									</el-select>
-								</el-form-item>  
-                    </div> 
+				 
 				</el-form>
 		 
 			<!----------数据表------------------ -->
 			<el-table row-key="id" ref="multipleTable" border  style="width: 100%" tooltip-effect="dark" :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
-				<el-table-column label="序号" width="80" prop="id" sortable="custom" /> 
-					<el-table-column label="id" prop="artId" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="用户id" prop="userId" min-width="120"   sortable="custom"  /> 
-					<el-table-column label="用户At" prop="userIdAt" min-width="120"   sortable="custom"  /> 
+				<el-table-column label="序号" width="80" prop="id" sortable="custom" />  
+				 
 					<el-table-column label="标题" prop="title" min-width="120"   sortable="custom"  />
 					<el-table-column label="图片" prop="fileList" min-width="120"   sortable="custom" >
 						<template #default="scope"> 						    
