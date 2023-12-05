@@ -15,8 +15,6 @@ type CmsArt struct {
 	global.BaseModel
 	Pid          int64  `json:"pid" form:"pid" cn:"父id"  gorm:"column:pid;comment:父id:章节集合;type:bigint"`
 	UserId       int64  `json:"userId" form:"userId" cn:"用户id"  gorm:"column:user_id;comment:用户id;type:bigint"`
-	CatId        int64  `json:"catId" form:"catId" cn:"类别"  gorm:"column:cat_id;comment:类别;type:bigint"`
-	CatIdSys     int64  `json:"catIdSys" form:"catIdSys" cn:"系统类别"  gorm:"column:cat_id_sys;comment:系统类别;type:bigint"`
 	Type         int    `json:"type" form:"type" cn:"文章类型"   gorm:"column:type;comment:文章类型;type:smallint"`
 	Title        string `json:"title" form:"title" cn:"文章标题"  gorm:"column:title;comment:文章标题;type:varchar(200);"`
 	Desc         string `json:"desc" form:"desc" cn:"文章摘要"  gorm:"column:desc;comment:文章摘要;type:varchar(500);"`
@@ -25,7 +23,6 @@ type CmsArt struct {
 	Image        string `json:"image"  form:"image"  cn:"插图" gorm:"column:image;comment:插图;type:单图片"`
 	FileList     string `json:"fileList"  form:"fileList"  cn:"媒体列表" gorm:"column:file_list;comment:媒体列表;type:多图片"`
 	Link         string `json:"link" form:"link" cn:"链接地址"  gorm:"column:link;comment:链接地址;type:varchar(255);"`
-	BeTop        bool   `json:"beTop" form:"beTop" cn:"置顶"   gorm:"column:be_top;comment:置顶:0否 1是;type:tinyint"`
 	TotalWhole   int    `json:"totalWhole" form:"totalWhole" cn:"综合指数"   gorm:"column:total_whole;comment:综合指数;type:int"`
 	TotalShare   int    `json:"totalShare" form:"totalShare" cn:"总分享"   gorm:"column:total_share;comment:总分享;type:int"`
 	TotalFav     int    `json:"totalFav" form:"totalFav" cn:"总收藏"   gorm:"column:total_fav;comment:总收藏;type:int"`
@@ -48,8 +45,6 @@ type CmsArtSearch struct {
 	global.BaseModel
 	Pid          *int64 `json:"pid"  form:"pid" `
 	UserId       *int64 `json:"userId"  form:"userId" `
-	CatId        *int64 `json:"catId"  form:"catId" `
-	CatIdSys     *int64 `json:"catIdSys"  form:"catIdSys" `
 	Type         *int   `json:"type"   form:"type" `
 	Title        string `json:"title"   form:"title" `
 	Desc         string `json:"desc"   form:"desc" `
@@ -58,7 +53,6 @@ type CmsArtSearch struct {
 	Image        string `json:"image" form:"image" `
 	FileList     string `json:"fileList" form:"fileList" `
 	Link         string `json:"link"   form:"link" `
-	BeTop        *bool  `json:"beTop" form:"beTop" `
 	TotalWhole   *int   `json:"totalWhole"   form:"totalWhole" `
 	TotalShare   *int   `json:"totalShare"   form:"totalShare" `
 	TotalFav     *int   `json:"totalFav"   form:"totalFav" `

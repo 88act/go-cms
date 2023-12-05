@@ -139,12 +139,7 @@ func (m *CmsArtService) GetList(ctx context.Context, seq business.CmsArtSearch, 
 	if seq.UserId != nil {
 		db = db.Where("user_id = ?", seq.UserId)
 	}
-	if seq.CatId != nil {
-		db = db.Where("cat_id = ?", seq.CatId)
-	}
-	if seq.CatIdSys != nil {
-		db = db.Where("cat_id_sys = ?", seq.CatIdSys)
-	}
+
 	if seq.Type != nil {
 		db = db.Where("type = ?", seq.Type)
 	}
@@ -163,9 +158,7 @@ func (m *CmsArtService) GetList(ctx context.Context, seq business.CmsArtSearch, 
 	if seq.Link != "" {
 		db = db.Where("link = ?", seq.Link)
 	}
-	if seq.BeTop != nil {
-		db = db.Where("be_top = ?", seq.BeTop)
-	}
+
 	if seq.TotalWhole != nil {
 		db = db.Where("total_whole = ?", seq.TotalWhole)
 	}
