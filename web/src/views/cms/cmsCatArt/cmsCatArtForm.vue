@@ -1,25 +1,16 @@
-<template>	 
-		<div class="gocms-form-box bg-bg_color">
-			<el-form ref="editForm" :model="formData" :rules="editRules"  label-position="right" label-width="80px" >
-        <el-form-item label="用户id:"  prop="userId">
-                 <el-input v-model.number="formData.userId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="栏目id:"  prop="catId">
-                 <el-input v-model.number="formData.catId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="文章id:"  prop="artId">
-                 <el-input v-model.number="formData.artId" clearable placeholder="请输入" />
-       </el-form-item>
-        <el-form-item label="状态:"  prop="status">
-                 <el-select v-model="formData.status" placeholder="请选择" clearable>
-                      <el-option v-for="(item,key) in status_options" :key="key" :label="item.label" :value="item.value" />
-                 </el-select>
-       </el-form-item> 
-			</el-form>
-			<div class="btn-save">
-				<el-button class="el-btn-save" type="primary" @click="save">保存</el-button>				
-			</div>		 
-	</div>
+<template>
+  <div class="gocms-form-box bg-bg_color">
+    <el-form ref="editForm" :model="formData" :rules="editRules" label-position="right" label-width="80px">
+      <el-form-item label="文章:" prop="artId">
+        <el-select v-model="formData.artId" placeholder="请选择"  :filterable="true" clearable style="width: 450px;" >
+          <el-option v-for="(item,key) in art_options" :key="key" :label="item.label" :value="item.value" />
+        </el-select>
+      </el-form-item>
+    </el-form>
+    <div class="btn-save">
+      <el-button class="el-btn-save" type="primary" @click="save">保存</el-button>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -57,7 +48,7 @@
     formatDate,
     formatBoolean
   } from '@/utils/utils'
- 
+
 
   import {
     required,
@@ -78,12 +69,12 @@
     DialogOptions
   } from "@/components/ReDialog/type";
 
- import {
-	createCmsCatArt,
-	updateCmsCatArt,
-	findCmsCatArt
-} from '@/api/cmsCatArt'
-	
+  import {
+    createCmsCatArt,
+    updateCmsCatArt,
+    findCmsCatArt
+  } from '@/api/cmsCatArt'
+
 
   // 声明 props 类型
   export interface FormProps {
@@ -92,7 +83,7 @@
     index : number,
     options ?: DialogOptions;
   }
-  // 声明 props 默认值 
+  // 声明 props 默认值
   const props = withDefaults(defineProps<FormProps>(), {
     editId: () => 0,
     beChange: () => false,
@@ -102,13 +93,9 @@
   const emit = defineEmits(["update:editId", "update:beChange"]);
   const id = useVModel(props, "editId", emit);
   const beChange = useVModel(props, "beChange", emit);
-  const editForm = ref(null) 
-   // 字典
-		const status_options = ref([])
-
-  const treeOptions = ref([])
-  //图片处理
-  import FileListEdit from '@/components/mediaLib/fileListEdit.vue'  
+  const editForm = ref(null)
+  // 字典
+  const art_options = ref([])
 
   // // 查询
   const getData = async () => {
@@ -123,7 +110,7 @@
       formData.value = res.data
       //formData.value.pidList = getTreeFullPath(treeOptions.value, formData.value.branchId);
     } else {
-       message(res.msg, { type: "error" })
+      message(res.msg, { type: "error" })
     }
   }
   //保存
@@ -140,17 +127,9 @@
       }
     })
     if (resValid) {
-      delete formData.value.mapData;
-      delete formData.value.createdAt;
-      delete formData.value.updatedAt;
-	//图片 
-      let res;
-      if (id.value > 0) { //update
-        res = await updateCmsCatArt(formData.value)
-      } else {
-        formData.value.status = 1
-        res = await createCmsCatArt(formData.value)
-      }
+       formData.value.catId= id.value
+       formData.value.status = 1
+       let  res = await createCmsCatArt(formData.value)
       if (res.code === 200) {
         console.log(res)
         beChange.value = true;
@@ -165,40 +144,36 @@
     }
   }
 
-const getOptionsData = async () => { 
-			status_options.value = await getDict("status") 
-}
-  const getTreeData = async () => {
-    let treeDataReq = {
-      table: "memBranch",
+  const getOptionsData = async () => {
+
+    let dictReq = {
+      table: "cms_art",
       pidField: "id",
-      nameField: "title",
-      pidValue: 0
+      nameField: "title"
     }
-    treeOptions.value = await getPidTreeData(treeDataReq)
+    art_options.value = await getPidData(dictReq)
   }
   const init = async () => {
-    //console.log("props.data = ", props.data)
+   //console.log("props.data = ", props.data)
     console.log("id = ", id.value)
     getOptionsData()
-    //getTreeData()
-    if (id.value > 0) {
-      getData()
-    }
+    // if (id.value > 0) {
+    //   getData()
+    // }
   }
   onMounted(() => {
     init()
   })
- const formData = ref({
-		   id:0,
-            userId: 0,
-            catId: 0,
-            artId: 0,
-            status: 0,
-	})  
- 
-    const editRules = ({
-	})  
+  const formData = ref({
+    id: 0,
+    userId: 0,
+    catId: 0,
+    artId: 0,
+    status: 0,
+  })
+
+  const editRules = ({
+  })
 
 	  //const fileObjList = ref([])
   // const defaultProps = ref({
@@ -210,7 +185,4 @@ const getOptionsData = async () => {
   // 	children: 'children',
   // 	label: 'label',
   // })
-
 </script>
-
- 

@@ -38,7 +38,7 @@
 									<el-select v-model="searchInfo.type" placeholder="请选择" clearable>
 									<el-option v-for="(item,key) in art_type_options" :key="key" :label="item.label" :value="item.value"></el-option>
 									</el-select>
-								</el-form-item> 
+								</el-form-item>
 								<el-form-item label="文章摘要">
 								<el-input placeholder="搜索条件" v-model="searchInfo.desc" clearable />
 								</el-form-item>
@@ -48,20 +48,7 @@
 								<el-form-item label="来源">
 								<el-input placeholder="搜索条件" v-model="searchInfo.source" clearable />
 								</el-form-item>
-							<el-form-item label="置顶" prop="beTop">
-							<el-select v-model="searchInfo.beTop" clearable placeholder="请选择">
-								<el-option
-									key="true"
-									label="是"
-									value="true">
-								</el-option>
-								<el-option
-									key="false"
-									label="否"
-									value="false">
-								</el-option>
-							</el-select>
-						</el-form-item>
+
 								<el-form-item label="综合指数">
 									<el-input placeholder="搜索条件" v-model="searchInfo.totalWhole" clearable />
 								</el-form-item>
@@ -93,9 +80,7 @@
 			<el-table row-key="id" ref="multipleTable" border   :data="tableData" @selection-change="handleSelectionChange" @sort-change="sortChange" >
  				<el-table-column type="selection" width="55" />
 				<el-table-column label="序号" width="80" prop="id" sortable="custom" />
-
-					<el-table-column label="系统类别" prop="catIdSys" min-width="120"   sortable="custom"  />
-				<!-- 	<el-table-column label="文章类型" prop="type" min-width="120"  sortable="custom" >
+				<!-- <el-table-column label="文章类型" prop="type" min-width="120"  sortable="custom" >
 					<template #default="scope">
 					<el-popover trigger="click" placement="top"  width = "280">
 						<el-select v-model="scope.row.type" placeholder="请选择"  @change="quickEdit_do('type',scope.row.id,scope.row.type,scope)">
@@ -114,9 +99,7 @@
 							 <FileListView :objList="getFileByGuidStr(scope.row.image,scope.row.fileObjList)" />
 						</template>
 					</el-table-column>
-					<el-table-column label="置顶" prop="beTop" min-width="120"   sortable="custom"  >
-						<template #default="scope" ><el-switch v-model="scope.row.beTop" @change="quickEdit_do('be_top',scope.row.id,scope.row.beTop,scope)"/></template>
-					</el-table-column>
+
 					<el-table-column label="综合指数" prop="totalWhole" min-width="120"   sortable="custom" >
 					<template #default="scope">
 						<el-popover trigger="click" placement="top" width="300">

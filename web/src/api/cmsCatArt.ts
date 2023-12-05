@@ -31,6 +31,9 @@ export const updateCmsCatArt = (data?: object) => {
 export const quickEdit = (data?: object) => {
    return http.request<resData>("post", "/cmsCatArt/quickEdit", { data });  
 }
+export const quickEditArt = (data?: object) => {
+   return http.request<resData>("post", "/cmsCatArt/quickEdit", { data });  
+}
  
 
 // @Tags CmsCatArt

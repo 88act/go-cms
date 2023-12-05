@@ -29,17 +29,45 @@
 	<el-table :expand-row-keys="expandsIds" row-key="id" ref="multipleTable"  border :data="tableData"	@row-click="rowClick" @expand-change="expandChange" @sort-change="sortChange"	@selection-change="handleSelectionChange" >
         <el-table-column type="expand"  >
         	<template #default="scope">
-        		<div style="padding-left: 60px;">
-        					<span>地址：</span>
-        					<span>, 固话：</span>
-        					<span>, 邮件：</span>
-        					<span>, 网址：</span>
-        					<span>, 备注：</span>
-        		</div>
+            <div style="display: flex;  width: 90%;margin-left: 60px ">
+
+        	     <el-table row-key="id"  border   style=" width: 100%;" :data="tableDataArt"  >
+        	     		<el-table-column label="id" prop="artId" width="100"   sortable="custom"  />
+                 	<el-table-column label="文章" prop="title" min-width="180"   sortable="custom"  />
+                  <el-table-column label="热门" prop="beHot" width="120" sortable="custom">
+                    <template #default="scope"><el-switch v-model="scope.row.beHot"
+                        @change="quickEdit_do_art('be_hot',scope.row.id,scope.row.beHot,scope)" /></template>
+                  </el-table-column>
+                  <el-table-column label="排序" prop="sort" width="120" sortable="custom">
+                    <template #default="scope">
+                      <el-popover trigger="click" placement="top" width="300">
+                        <el-row :gutter="4">
+                          <el-col :span="19"> <el-input  autosize placeholder="请输入内容"
+                              v-model="scope.row.sort"></el-input></el-col>
+                          <el-col :span="5"> <el-button size="small" type="primary" class="el-btn-save"
+                              @click="quickEdit_do_art('sort',scope.row.id,scope.row.sort,scope)">保存</el-button> </el-col>
+                        </el-row>
+                        <template #reference>
+                          <div class="quickEditTxt"> {{scope.row.sort}} </div>
+                        </template>
+                      </el-popover>
+                    </template>
+                  </el-table-column>
+        	     	 	<el-table-column label="创建时间" width="120" prop="created_at" sortable="custom">
+        	     		<template #default="scope">{{formatDate(scope.row.createdAt,0)}}</template>
+        	     	</el-table-column>
+        	     	<el-table-column label="编辑" width="80"  fixed="right">
+        	     		<template #default="scope">
+        	            <el-button :icon="useRenderIcon('ep:delete')" type="primary" link @click="deleteRowArt(scope.row)" />
+        	     		</template>
+        	     	</el-table-column>
+        	     </el-table>
+               <el-button class="el-btn-save" type="primary" @click="goEditFormArt(scope.row.id)">添加文章</el-button>
+           </div >
         	</template>
         </el-table-column>
         <el-table-column label="序号" width="80" prop="id" sortable="custom" />
-        <el-table-column label="栏目类型" prop="type" min-width="120" sortable="custom">
+        <el-table-column label="栏目类型" prop="type" width="120" sortable="custom">
           <template #default="scope">
             <el-popover trigger="click" placement="top" width="280">
               <el-select v-model="scope.row.type" placeholder="请选择"
@@ -53,21 +81,17 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column label="标题" prop="title" min-width="120" sortable="custom" />
-        <el-table-column label="插图" prop="image" min-width="120" sortable="custom">
+        <el-table-column label="标题" prop="title" min-width="180" sortable="custom" />
+        <el-table-column label="插图" prop="image" width="120" sortable="custom">
           <template #default="scope">
             <FileListView :objList="getFileByGuidStr(scope.row.image,scope.row.fileObjList)" />
           </template>
         </el-table-column>
-        <el-table-column label="置顶" prop="beTop" min-width="120" sortable="custom">
-          <template #default="scope"><el-switch v-model="scope.row.beTop"
-              @change="quickEdit_do('be_top',scope.row.id,scope.row.beTop,scope)" /></template>
-        </el-table-column>
-        <el-table-column label="是否导航" prop="beNav" min-width="120" sortable="custom">
+        <el-table-column label="是否导航" prop="beNav" width="100" sortable="custom">
           <template #default="scope"><el-switch v-model="scope.row.beNav"
               @change="quickEdit_do('be_nav',scope.row.id,scope.row.beNav,scope)" /></template>
         </el-table-column>
-        <el-table-column label="排序" prop="sort" min-width="120" sortable="custom">
+        <el-table-column label="排序" prop="sort" width="100" sortable="custom">
           <template #default="scope">
             <el-popover trigger="click" placement="top" width="300">
               <el-row :gutter="4">
@@ -82,7 +106,7 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column label="状态" prop="status" min-width="120" sortable="custom">
+        <el-table-column label="状态" prop="status" width="100" sortable="custom">
           <template #default="scope">
             <el-popover trigger="click" placement="top" width="280">
               <el-select v-model="scope.row.status" placeholder="请选择"
@@ -190,7 +214,19 @@
     excelList
   } from '@/api/cmsCat'
 
+
+  import {
+  	createCmsCatArt,
+  	deleteCmsCatArtByIds,
+  	updateCmsCatArt,
+  	findCmsCatArt,
+  	getCmsCatArtList,
+    quickEditArt
+  } from '@/api/cmsCatArt'
+
   import CmsCatForm from './cmsCatForm.vue'
+  import CmsCatArtForm from '../cmsCatArt/cmsCatArtForm.vue'
+
 
 
   const page = ref(1)
@@ -326,6 +362,29 @@
     // if (scope._self.$refs[`popover-${scope.$index}`])
     // scope._self.$refs[`popover-${scope.$index}`].doClose();
   }
+  const quickEdit_do_art = async (field, id, value, scope) => {
+    let value2 = value;
+    if (typeof(value) === "boolean")
+      value2 = value ? "1" : "0"
+    value2 = value2 + "";
+    let obj = {
+      field: field,
+      id: id,
+      value: value2
+    }
+    const res = await quickEditArt(obj)
+    if (res.code === 200)
+      message(res.msg, {
+        type: "success"
+      })
+    else
+      message(res.msg, {
+        type: "error"
+      })
+    // if (scope._self.$refs[`popover-${scope.$index}`])
+    // scope._self.$refs[`popover-${scope.$index}`].doClose();
+  }
+
 
   //编辑
   const goEditForm = (id) => {
@@ -353,6 +412,7 @@
       }
     });
   }
+
 
   // 查询
   const getTableData = async () => {
@@ -383,15 +443,6 @@
     })
   }
 
-  const getTreeData = async () => {
-    let treeDataReq = {
-      table: "memBranch",
-      pidField: "id",
-      nameField: "title",
-      pidValue: 0
-    }
-    treeOptions.value = await getPidTreeData(treeDataReq)
-  }
 
   const getOptionsData = async () => {
     cat_type_options.value = await getDict('cat_type')
@@ -410,16 +461,86 @@
   })
 
  //###########################################
+
+
+const goEditFormArt = (id) => {
+    addDialog({
+      title: "编 辑",
+      fullscreenIcon: true,
+      hideFooter: true,
+      contentRenderer: ({
+          options,
+          index
+        }) =>
+        h(CmsCatArtForm, {
+          editId:id,
+          beChange: beChange.value,
+          index: index,
+          options: options,
+          "onUpdate:editId": val => ( val),
+          "onUpdate:beChange": val => ( beChange.value = val)
+        }),
+      closeCallBack: () => {
+        if (beChange.value) {
+           getTableDataArt()
+        }
+      }
+    });
+  }
+
+
+ const tableDataArt = ref([])
+
+ // 查询
+ const getTableDataArt = async () => {
+  if (expandsNowId.value >0) {
+      let paramData = {
+        page: 1,
+        pageSize: 1000,
+        catId:expandsNowId.value
+      }
+      const res = await getCmsCatArtList(paramData)
+      if (res.code === 200) {
+         tableDataArt.value = res.data.list
+      } else message(res.msg, {
+        type: "error"
+      })
+  }else{
+      tableDataArt.value =[]
+  }
+
+ }
+
+
+ //删除
+ const deleteRowArt  = async (row) => {
+ 	ElMessageBox.confirm('确认删除?', '提示', {
+ 			confirmButtonText: '确定',
+ 			cancelButtonText: '取消',
+ 			//type: 'warning'
+ 		})
+ 		.then(async () => {
+ 			let data = {
+ 				"ids": [row.id]
+ 			}
+ 			const res = await deleteCmsCatArtByIds(data)
+ 			if (res.code === 200) {
+ 				message(res.msg, { type: "success" })
+ 				getTableDataArt()
+ 			} else message(res.msg, { type: "error" })
+ 		})
+ }
+
+
  const expandsIds =ref([])
  const expandsNowId = ref(0)
   const expandChange = (row, expandedRows) => {
   	if (expandedRows.length) {
   		expandsIds.value = []
   		if (row) {
-
-  			//getResultData(row)
   			expandsIds.value.push(row.id)
   			expandsNowId.value = row.id
+       	getTableDataArt()
   		}
   	} else {
   		expandsNowId.value = 0
@@ -432,12 +553,11 @@
   		expandsNowId.value = 0
   	} else if (row && column) {
   		if (column.property == "id" || column.property == "title" ||
-  			column.property == "ccontact" || column.property == "Created_at" || column.property == "name" || column
-  			.property == "mobile") {
+  			column.property == "contact" || column.property == "created_at" ) {
   			expandsIds.value = []
-  			//getTableData_jobTask(row.ID)
   			expandsIds.value.push(row.id)
   			expandsNowId.value = row.id
+       	getTableDataArt()
   		}
 
   	}
