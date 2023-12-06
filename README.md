@@ -89,10 +89,10 @@ go-cms, golang的cms内容管理系统,
 
 
 ####  gocms 管理后台截图
-![gocms](https://120.79.55.204/res/img/cms1.jpg)
+![gocms](https://www.88act.com/cms/cms1.jpg)
 ![gocms](https://120.79.55.204/res/img/cms2.jpg)
 
-<img src="https://120.79.55.204/res/img/cms1.jpg" width = "70%" />
+<img src="https://www.88act.com/cms/cms1.jpg" width = "70%" />
 <img src="https://120.79.55.204/res/img/cms2.jpg" width = "70%" />
 <img src="https://120.79.55.204/res/img/cms3.jpg" width = "70%" />
 <img src="https://120.79.55.204/res/img/cms4.jpg" width = "70%" />
