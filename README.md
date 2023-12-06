@@ -21,8 +21,7 @@ go-cms v2.0 新版 升级到 go 1.21
 演示golang gin  结合 vue3 的管理后台，以及演示居于gozero+gorm的微服务前端api项目 
 vue3 使用最新的TypeScript、Pinia、Tailwindcss，Vite、Element-Plus技术。
 
-> 在线体验： 
-- 管理后台: https://120.79.55.204/admin/  账号admin  密码123456    
+
 
  
 ## 1. 基本介绍
@@ -87,15 +86,13 @@ go-cms, golang的cms内容管理系统,
 
 
 
-
+> 在线体验： 
+- 管理后台: https://120.79.55.204/admin/  账号admin  密码123456    
 ####  gocms 管理后台截图
 ![gocms](https://www.88act.com/cms/cms1.jpg)
-![gocms](https://120.79.55.204/res/img/cms2.jpg)
-
-<img src="https://www.88act.com/cms/cms1.jpg" width = "70%" />
-<img src="https://120.79.55.204/res/img/cms2.jpg" width = "70%" />
-<img src="https://120.79.55.204/res/img/cms3.jpg" width = "70%" />
-<img src="https://120.79.55.204/res/img/cms4.jpg" width = "70%" />
-<img src="https://120.79.55.204/res/img/cms5.jpg" width = "70%" />
-<img src="https://120.79.55.204/res/img/cms6.jpg" width = "70%" />
-
+![gocms](https://www.88act.com/cms/cms2.jpg)
+![gocms](https://www.88act.com/cms/cms3.jpg)
+![gocms](https://www.88act.com/cms/cms4.jpg)
+![gocms](https://www.88act.com/cms/cms5.jpg)
+![gocms](https://www.88act.com/cms/cms6.jpg)
+![gocms](https://www.88act.com/cms/cms7.jpg)
