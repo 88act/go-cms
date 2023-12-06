@@ -4,7 +4,7 @@ var message map[uint32]string
 
 func init() {
 	message = make(map[uint32]string)
-	message[OK] = "SUCCESS"
+	message[OK] = "成功"
 	message[SERVER_COMMON_ERROR] = "服务器开小差啦,稍后再来试一试"
 	message[REUQEST_PARAM_ERROR] = "参数错误"
 	message[TOKEN_EXPIRE_ERROR] = "token失效，请重新登陆"
@@ -14,6 +14,7 @@ func init() {
 	message[DB_RecordNotFound] = "数据不存在"
 	message[DB_InsertErr] = "新增数据失败"
 	message[DB_UpdateErr] = "更新数据失败"
+	message[VerifyCode_ERROR] = "验证码错误"
 }
 
 func MapErrMsg(errcode uint32) string {
@@ -25,6 +26,7 @@ func MapErrMsg(errcode uint32) string {
 }
 
 func IsCodeErr(errcode uint32) bool {
+	//eturn false
 	if _, ok := message[errcode]; ok {
 		return true
 	} else {

@@ -14,7 +14,7 @@ import (
 
 func FileDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.FileDetailReq
+		var req types.ValReq
 		if err := httpx.Parse(r, &req); err != nil {
 			result.ParamErrorResult(r, w, err)
 			return
@@ -22,6 +22,6 @@ func FileDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 
 		l := basic.NewFileDetailLogic(r.Context(), svcCtx)
 		resp, err := l.FileDetail(&req)
-		result.HttpResult(r, w, resp, err)
+		result.HttpResult(r, w, resp, err, req)
 	}
 }

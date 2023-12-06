@@ -2,26 +2,26 @@ package model
 
 import (
 	"context"
+	. "go-cms/common/baseModel"
 	"go-cms/common/utils"
 
-	"github.com/zeromicro/go-zero/core/stores/cache"
 	"gorm.io/gorm"
 )
 
 type BasicSmsSev struct {
-	db    *gorm.DB
-	cache cache.ClusterConf
+	db *gorm.DB
+	//cache cache.ClusterConf
 }
 
-func NewBasicSmsSev(db *gorm.DB, cache cache.ClusterConf) *BasicSmsSev {
+func NewBasicSmsSev(db *gorm.DB) *BasicSmsSev {
 	instance := new(BasicSmsSev)
 	instance.db = db
-	instance.cache = cache
+	//nstance.cache = cache
 	return instance
 }
 
 // Create 创建记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) Create(ctx context.Context, data BasicSms) (id int64, err error) {
 	err = m.db.WithContext(ctx).Create(&data).Error
 	if err != nil {
@@ -31,35 +31,35 @@ func (m *BasicSmsSev) Create(ctx context.Context, data BasicSms) (id int64, err 
 }
 
 // Delete 删除记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) Delete(ctx context.Context, data BasicSms) (err error) {
 	err = m.db.WithContext(ctx).Delete(&data).Error
 	return err
 }
 
 // DeleteByIds 批量删除记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) DeleteByIds(ctx context.Context, ids IdsReq) (err error) {
 	err = m.db.WithContext(ctx).Delete(&[]BasicSms{}, "id in ?", ids.Ids).Error
 	return err
 }
 
 // Update  更新记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) Update(ctx context.Context, data BasicSms) (err error) {
 	err = m.db.WithContext(ctx).Save(&data).Error
 	return err
 }
 
 // UpdateByMap  更新记录 by Map
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) UpdateByMap(ctx context.Context, data BasicSms, mapData map[string]interface{}) (err error) {
 	err = m.db.WithContext(ctx).Model(&data).Updates(mapData).Error
 	return err
 }
 
 // Get 根据id获取记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) Get(ctx context.Context, id int64, fields string) (obj *BasicSms, err error) {
 
 	if utils.IsEmpty(fields) {
@@ -77,7 +77,7 @@ func (m *BasicSmsSev) Get(ctx context.Context, id int64, fields string) (obj *Ba
 }
 
 // GetByMap 根据Map获取记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) GetByMap(ctx context.Context, mapData map[string]interface{}, fields string) (obj *BasicSms, err error) {
 
 	if utils.IsEmpty(fields) {
@@ -95,7 +95,7 @@ func (m *BasicSmsSev) GetByMap(ctx context.Context, mapData map[string]interface
 }
 
 // GetList 分页获取记录
-// Author [88act](https://github.com/88act)
+// Author 10512203@qq.com
 func (m *BasicSmsSev) GetList(ctx context.Context, seq BasicSmsSearch, fields string) (list []BasicSms, total int64, err error) {
 	limit := seq.PageSize
 	offset := seq.PageSize * (seq.Page - 1)
@@ -108,9 +108,7 @@ func (m *BasicSmsSev) GetList(ctx context.Context, seq BasicSmsSearch, fields st
 	if seq.Id > 0 {
 		db = db.Where("`id` = ?", seq.Id)
 	}
-	if len(seq.CreatedAtBetween) >= 2 {
-		db = db.Where("`created_at` BETWEEN ? AND ?", seq.CreatedAtBetween[0], seq.CreatedAtBetween[1])
-	}
+
 	// 如果有条件搜索
 	if seq.UserId != nil {
 		db = db.Where("`user_id` = ?", seq.UserId)

@@ -23,6 +23,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/user/login",
 				Handler: user.LoginHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/user/loginScan",
+				Handler: user.LoginScanHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/usercenter/v1"),
 	)
@@ -36,8 +41,8 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/user/wxMiniAuth",
-				Handler: user.WxMiniAuthHandler(serverCtx),
+				Path:    "/user/tokenVerify",
+				Handler: user.TokenVerifyHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),

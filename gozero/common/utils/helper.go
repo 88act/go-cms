@@ -2,17 +2,50 @@ package utils
 
 import (
 	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math/rand"
+	"net/http"
 	"net/url"
 	"os"
 	"os/exec"
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 )
+
+// 微秒 0.001.001
+func MicrosecondsStr(latency time.Duration) int64 {
+	return latency.Microseconds()
+}
+
+// struct转map
+func Stru2map(content interface{}) map[string]interface{} {
+	var name map[string]interface{}
+	if marshalContent, err := json.Marshal(content); err != nil {
+		fmt.Println(err)
+	} else {
+		d := json.NewDecoder(bytes.NewReader(marshalContent))
+		d.UseNumber() // 设置将float64转为一个number
+		if err := d.Decode(&name); err != nil {
+			fmt.Println(err)
+		} else {
+			for k, v := range name {
+				fmt.Println(k)
+				fmt.Println(v)
+				delete(name, k)
+				k2 := CamelCaseToUdnderscore(k)
+				name[k2] = v
+			}
+		}
+	}
+	fmt.Println("name-------")
+	fmt.Println(name)
+	return name
+}
 
 // 三目运算函数
 func Ternary(a bool, b, c interface{}) interface{} {
@@ -22,7 +55,18 @@ func Ternary(a bool, b, c interface{}) interface{} {
 	return c
 }
 
-//struct 转 切片
+// func If(cond bool, a, b interface{}) {
+//     if cond {
+//         return a
+//     }
+
+//     return b
+// }
+
+// age := 20
+// val := If(age > 18, "成年人", "未成年人").(string)
+
+// struct 转 切片
 func Strct2Slice(f interface{}, sheetFieldsJson []string) []interface{} {
 	v := reflect.ValueOf(f)
 	ss := []interface{}{} // make([]string, v.NumField())
@@ -33,19 +77,20 @@ func Strct2Slice(f interface{}, sheetFieldsJson []string) []interface{} {
 	return ss
 }
 
-//转为int指针
+// 转为int指针
 func StringPtr(s string) *string {
 	return &s
 }
 
-//转为string指针
+// 转为string指针
 func IntPtr(s int) *int {
 	return &s
 }
 
-//判断是否为空
+// 判断是否为空
 // 0， nil ，"", 空数组 = true
 func IsEmpty(params interface{}) bool {
+
 	//初始化变量
 	var (
 		flag          bool = true
@@ -53,7 +98,6 @@ func IsEmpty(params interface{}) bool {
 	)
 
 	r := reflect.ValueOf(params)
-
 	//获取对应类型默认值
 	default_value = reflect.Zero(r.Type())
 	//由于params 接口类型 所以default_value也要获取对应接口类型的值 如果获取不为接口类型 一直为返回false
@@ -62,6 +106,23 @@ func IsEmpty(params interface{}) bool {
 	}
 	return flag
 }
+
+// 空字符串 返回true 否则返回 false
+func IsEmptyStr(params string) bool {
+	str := strings.TrimSpace(params)
+	if str == "" {
+		return true
+	} else {
+		return false
+	}
+}
+
+// func IsEmptyObj(params *interface{}) bool {
+// 	if params == nil {
+// 		return true
+// 	}
+// 	return IsEmpty(*params)
+// }
 
 // StrToTime 字符串转time
 func Str2Time(str string) *time.Time {
@@ -86,7 +147,7 @@ func Int2Time(ts int64) *time.Time {
 	return &t
 }
 
-//StrToInt string 转int
+// StrToInt string 转int
 func StrToInt(str string) int {
 	i, e := strconv.Atoi(str)
 	if e != nil {
@@ -95,7 +156,16 @@ func StrToInt(str string) int {
 	return i
 }
 
-//StrToUInt string 转int
+// StrToInt string 转int64
+func StrToInt64(str string) int64 {
+	i, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		return 0
+	}
+	return i
+}
+
+// StrToUInt string 转uint
 func StrToUInt(str string) uint {
 	i, e := strconv.Atoi(str)
 	if e != nil {
@@ -104,7 +174,7 @@ func StrToUInt(str string) uint {
 	return uint(i)
 }
 
-//阻塞式的执行外部shell命令的函数,等待执行完毕并返回标准输出
+// 阻塞式的执行外部shell命令的函数,等待执行完毕并返回标准输出
 func ExecShell(s string) (string, error) {
 	//函数返回一个*Cmd，用于使用给出的参数执行name指定的程序
 	cmd := exec.Command("/bin/bash", "-c", s)
@@ -324,3 +394,37 @@ func TimeToStr(t *time.Time) string {
 // 	OrgTimeStr:  08:15:11 ; Convert Result:  0000-01-01 08:15:11 +0800 CST
 // 	*/
 // }
+
+// 获取请求中的IP
+func RemoteIp(req *http.Request) string {
+	var remoteAddr string
+	// X-Real-Ip
+	remoteAddr = req.Header.Get("X-Real-Ip")
+	if remoteAddr != "" {
+		return remoteAddr
+	} else {
+		remoteAddr = "127.0.0.1"
+	}
+	// RemoteAddr
+	remoteAddr = req.RemoteAddr
+	if remoteAddr != "" {
+		return remoteAddr
+	}
+	// ipv4
+	remoteAddr = req.Header.Get("ipv4")
+	if remoteAddr != "" {
+		return remoteAddr
+	}
+	//
+	remoteAddr = req.Header.Get("XForwardedFor")
+	if remoteAddr != "" {
+		return remoteAddr
+	}
+	// X-Forwarded-For
+	remoteAddr = req.Header.Get("X-Forwarded-For")
+	if remoteAddr != "" {
+		return remoteAddr
+	}
+
+	return remoteAddr
+}

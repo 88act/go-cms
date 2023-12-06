@@ -1,0 +1,53 @@
+syntax = "v1"
+
+info(
+	title: "通用请求"
+	desc: "通用请求"
+	author: "linjd"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+ 
+type (
+	//分页
+	PageInfoReq {
+		Page      int    `json:"page"`
+		PageSize  int    `json:"pageSize"`
+		Order     string `json:"order"`
+		Desc      bool   `json:"desc"`
+		SearchKey string `json:"searchKey"`
+		Status    int    `json:"status"`
+	} 
+)
+
+type (
+	//idList 请求
+	IdListReq {
+		IdList []int64 `json:"idList"` // idList 请求
+	}
+ 
+	//guidList 请求
+	GuidListReq {
+		GuidList []string `json:"guidList"` // guidList 请求
+	}
+
+	 //ok 返回值
+	OkResp {
+		Status   int    `json:"status"`
+		Msg     string `json:"msg"`
+	}
+) 
+
+
+type (
+	//键值对 请求
+	IdValueReq {
+		Table string `json:"table"` //对应表
+		Id    int64  `json:"id"`    // id
+		Value string `json:"value"` //值
+	}
+	//键值对List 请求
+	IdValueListReq {       
+		IdValueList []IdValueReq `json:"idValueList"` // IdValueList
+	}
+)

@@ -29,6 +29,7 @@ package pb;
     int64 loginTime   = 21;   //最后登录时间   
     string password  = 22;    //密码
     string passwordSlat  = 23;    //密码盐
+    int32 userType = 24; 
   }
  
  
@@ -41,14 +42,13 @@ message UserAuth {
 
 
 //req 、resp
-message RegisterReq {
-  string mobile = 1;
-  string nickname = 2;
-  string password = 3;
-  string email = 4; 
-  string avatar = 5; 
-  string authKey = 6;
-  string authType =7;
+message RegisterReq { 
+  string username = 1;
+  string mobile = 2;
+  string email = 3; 
+  string password = 4; 
+  int32 userType = 5; 
+  int32 loginType = 6; 
 }
 message RegisterResp {
   string accessToken = 1;
@@ -57,10 +57,14 @@ message RegisterResp {
 }
 
 message LoginReq {
-  string  authType = 1;
-  string authKey = 2;
-  string  password = 3;
+  string username = 1;
+  string mobile = 2;
+  string email = 3; 
+  string password = 4; 
+  int32 userType = 5; 
+  int32 loginType = 6; 
 }
+
 message LoginResp {
   string accessToken = 1;
   int64  accessExpire = 2;

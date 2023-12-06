@@ -3,13 +3,14 @@ syntax = "v1"
 info(
 	title: "用户中心服务"
 	desc: "用户中心服务"
-	author: "Mikael"
-	email: "13247629622@163.com"
+	author: "Linjd"
+	email: "10512203@qq.com"
 	version: "v1"
 )
 
 import (
-	"./user/user.api"
+	"user/user.api"
+	"user/common.api"
 )
 
 //============================> usercenter v1 <============================
@@ -20,13 +21,18 @@ import (
 )
 service usercenter {
 	
-	@doc "register"
+	@doc "注册"
 	@handler register
-	post /user/register (RegisterReq) returns (RegisterResp)
+	post /user/register (LoginReq) returns (LoginResp)
 	
-	@doc "login"
+	@doc "登录"
 	@handler login
 	post /user/login (LoginReq) returns (LoginResp)
+	
+	@doc "扫码登录"
+	@handler loginScan
+	post /user/loginScan (LoginScanReq) returns (LoginResp)
+	
 }
 
 //need login
@@ -37,11 +43,11 @@ service usercenter {
 )
 service usercenter {
 	
-	@doc "get user info"
+	@doc "用户资料"
 	@handler detail
-	post /user/detail (UserInfoReq) returns (UserInfoResp)
+	post /user/detail   returns (UserInfoResp)
 	
-	@doc "wechat mini auth"
-	@handler wxMiniAuth
-	post /user/wxMiniAuth (WXMiniAuthReq) returns (WXMiniAuthResp)
+	@doc "验证token有效性"
+	@handler tokenVerify
+	post /user/tokenVerify  returns (OkResp)
 }

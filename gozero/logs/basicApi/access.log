@@ -1,0 +1,4 @@
+{"@timestamp":"2023-12-06T16:01:34.350+08:00","caller":"svc/serviceContext.go:29","content":"basicApi 服务启动...0.0.0.0 port=1002","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.426+08:00","caller":"svc/serviceContext.go:87","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.426+08:00","caller":"svc/serviceContext.go:88","content":"basicApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.428+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}

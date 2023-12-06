@@ -1,0 +1,471 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "用户中心服务",
+    "description": "用户中心服务",
+    "version": "v1"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "usercenter/v1/user/detail": {
+      "post": {
+        "summary": "用户资料",
+        "operationId": "detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserInfoResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "usercenter/v1/user/login": {
+      "post": {
+        "summary": "登录",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "usercenter/v1/user/loginScan": {
+      "post": {
+        "summary": "扫码登录",
+        "operationId": "loginScan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "usercenter/v1/user/register": {
+      "post": {
+        "summary": "注册",
+        "operationId": "register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginReq"
+            }
+          }
+        ],
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "usercenter/v1/user/tokenVerify": {
+      "post": {
+        "summary": "验证token有效性",
+        "operationId": "tokenVerify",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OkResp"
+            }
+          }
+        },
+        "requestBody": {},
+        "tags": [
+          "user"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "FileObj": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string"
+        }
+      },
+      "title": "FileObj",
+      "required": [
+        "path",
+        "guid"
+      ]
+    },
+    "GuidListReq": {
+      "type": "object",
+      "properties": {
+        "guidList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": " guidList 请求"
+        }
+      },
+      "title": "GuidListReq",
+      "required": [
+        "guidList"
+      ]
+    },
+    "IdListReq": {
+      "type": "object",
+      "properties": {
+        "idList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": " idList 请求"
+        }
+      },
+      "title": "IdListReq",
+      "required": [
+        "idList"
+      ]
+    },
+    "IdReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " id  请求"
+        }
+      },
+      "title": "IdReq",
+      "required": [
+        "id"
+      ]
+    },
+    "IdValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " id"
+        },
+        "value": {
+          "type": "string",
+          "description": "值"
+        },
+        "path": {
+          "type": "string",
+          "description": "url"
+        }
+      },
+      "title": "IdValue",
+      "required": [
+        "id",
+        "value",
+        "path"
+      ]
+    },
+    "IdValueListReq": {
+      "type": "object",
+      "properties": {
+        "idValueList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdValueReq"
+          },
+          "description": " IdValueList"
+        }
+      },
+      "title": "IdValueListReq",
+      "required": [
+        "idValueList"
+      ]
+    },
+    "IdValueListResp": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdValue"
+          }
+        }
+      },
+      "title": "IdValueListResp",
+      "required": [
+        "list"
+      ]
+    },
+    "IdValueReq": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "对应表"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " id"
+        },
+        "value": {
+          "type": "string",
+          "description": "值"
+        }
+      },
+      "title": "IdValueReq",
+      "required": [
+        "table",
+        "id",
+        "value"
+      ]
+    },
+    "LoginReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      },
+      "title": "LoginReq",
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "LoginResp": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "description": "认证token"
+        },
+        "accessExpire": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "refreshAfter": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "LoginResp",
+      "required": [
+        "accessToken",
+        "accessExpire",
+        "refreshAfter"
+      ]
+    },
+    "MemUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 用户id"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "手机"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "昵称"
+        },
+        "realname": {
+          "type": "string",
+          "description": "真实名"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "性别"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "头像"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态"
+        }
+      },
+      "title": "MemUser",
+      "required": [
+        "id",
+        "username",
+        "mobile",
+        "nickname",
+        "realname",
+        "sex",
+        "avatar",
+        "status"
+      ]
+    },
+    "OkResp": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      },
+      "title": "OkResp",
+      "required": [
+        "msg"
+      ]
+    },
+    "PageInfoReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "searchKey": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAtBegin": {
+          "type": "string"
+        },
+        "createdAtEnd": {
+          "type": "string"
+        }
+      },
+      "title": "PageInfoReq",
+      "required": [
+        "page",
+        "pageSize",
+        "order",
+        "desc",
+        "searchKey",
+        "status",
+        "createdAtBegin",
+        "createdAtEnd"
+      ]
+    },
+    "UserInfoResp": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/MemUser",
+          "description": "用户信息"
+        }
+      },
+      "title": "UserInfoResp",
+      "required": [
+        "userInfo"
+      ]
+    },
+    "ValReq": {
+      "type": "object",
+      "properties": {
+        "val": {
+          "type": "string",
+          "description": " 值 请求"
+        }
+      },
+      "title": "ValReq",
+      "required": [
+        "val"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
+}

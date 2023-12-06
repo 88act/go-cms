@@ -1,6 +1,10 @@
 // 自动生成模板BasicEmail
 package model
 
+import (
+	. "go-cms/common/baseModel"
+)
+
 // BasicEmail 结构体
 type BasicEmail struct {
 	BaseModel

@@ -3,6 +3,7 @@ package svc
 import (
 	"go-cms/app/usercenter/cmd/rpc/internal/config"
 	"go-cms/app/usercenter/model"
+	"go-cms/common/myconfig"
 	"log"
 	"os"
 
@@ -23,6 +24,7 @@ type ServiceContext struct {
 func NewServiceContext(c config.Config) *ServiceContext {
 
 	//sqlConn := sqlx.NewMysql(c.DB.DataSource)
+	myconfig.HttpRoot = c.LocalRes.BaseUrl
 	gormDB := GormMysql(c.DB.DataSource)
 	// 新建 gorm 数据库 链接
 
@@ -33,7 +35,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 			r.Pass = c.Redis.Pass
 		}),
 
-		MemUserSev: *model.NewMemUserSev(gormDB, c.Cache),
+		MemUserSev: *model.NewMemUserSev(gormDB),
 	}
 }
 
@@ -58,7 +60,7 @@ func GormMysql(dsn string) *gorm.DB {
 		os.Exit(0)
 		return nil
 	}
-	logx.Info("MySQL启动 success")
+	logx.Info("user center MySQL启动 success")
 	return db
 
 }

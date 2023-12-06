@@ -1,0 +1,3 @@
+package myconfig
+
+var HttpRoot = "/"

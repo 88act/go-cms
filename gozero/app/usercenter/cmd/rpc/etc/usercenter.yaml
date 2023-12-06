@@ -1,36 +1,48 @@
-Name: usercenter-rpc
-ListenOn: 0.0.0.0:2004
-Mode: dev
+Name: usercenter-rpc   #rpc服务名
+ListenOn: 0.0.0.0:2001 #rpc监听地址和端口，如：127.0.0.1:8888
+Timeout: 2000   # // 超时控制，单位：毫秒
+CpuThreshold: 900  # cpu降载阈值，默认900，可允许设置范围0到1000
+Mode: dev  
 
-#jwtAuth
-JwtAuth:
-  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
-  AccessExpire: 31536000
-
-#Monitoring
-Prometheus:
-  Host: 0.0.0.0
-  Port: 4009
-  Path: /metrics
-
-#Link Tracking
-Telemetry:
-  Name: usercenter-rpc
-  Endpoint: http://127.0.0.1:14268/api/traces
-  Sampler: 1.0
-  Batcher: jaeger
-
+#日志配置
 Log:
   ServiceName: usercenter-rpc
   Level: error
 
-Redis:
-  Host: redis:6379
-  Type: node
-  Pass: G62m50oigInC30sf
+#数据库配置  
 DB: 
-  DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  DataSource: gocms:gocms123456@tcp(120.79.7.235:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+ 
+LocalRes:
+  BaseUrl: https://gocms/
+  BasePath: /root/dnmp/www/localhost/
+  Path: res/sys
+  PathUser: res/user 
+  RtcModel: 1  
+  
+#缓存配置 
 Cache:
   - Host: redis:6379
     Pass: G62m50oigInC30sf
+ 
+ 
 
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: ae0536f9-1111-1111-1111-5a19ed505da0
+  AccessExpire: 31536000
+
+#Monitoring
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 22001
+#  Path: /metrics
+
+#Link Tracking
+#Telemetry:
+#  Name: usercenter-rpc
+#  Endpoint: http://127.0.0.1:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger

@@ -15,4 +15,12 @@ type Config struct {
 		DataSource string
 	}
 	Cache cache.CacheConf
+
+	LocalRes struct {
+		BaseUrl  string
+		BasePath string
+		Path     string
+		PathUser string
+		RtcModel int
+	}
 }

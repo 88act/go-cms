@@ -1,37 +1,84 @@
-Name: usercenter-api
+Name: usercenterApi
 Host: 0.0.0.0
-Port: 1004
-Mode: dev
+Port: 1001
+#生产模式pro (不记录sql) 开发模式dev 
+Mode: dev 
 
+LogConf:
+  ServiceName: usercenterApi
+  Level: debug
+  KeepDays: 90
+  # console file
+  Mode: console  
+  Path: logs/usercenterApi
+  Rotation: daily
+  MaxSize: 5110
+  MaxBackups: 20
+
+DB:
+  DNS: gocms:gocms123456@tcp(mysql-gocms:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  #设置打开数据库连接的最大数量
+  MaxOpenConns: 100
+  #设置空闲连接池中连接的最大数量
+  MaxIdleConns: 20
+  #连接最大空闲时间 单位秒
+  ConnMaxIdleTime: 60
+  #设置连接可复用的最大时间 单位秒
+  ConnMaxLifetime: 180
+  #慢查询200毫秒
+  #SlowThresholdMillisecond: 200
+ 
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass:
+  Key: 
+
+LocalRes:
+  BaseUrl: https://10.0.0.81/
+  BasePath: /mydata/dnmp/www/gocms/
+  Path: res/sys
+  PathUser: res/user  
+
+ 
+   
 #jwtAuth
 JwtAuth:
-  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+  AccessSecret: ae0536f9-1111-1111-1111-5a19ed505da0
+  AccessExpire: 31536000
 
-#监控
-Prometheus:
-  Host: 0.0.0.0
-  Port: 4008
-  Path: /metrics
 
-#链路追踪
-Telemetry:
-  Name: usercenter-api
-  Endpoint: http://jaeger:14268/api/traces
-  Sampler: 1.0
-  Batcher: jaeger
 
-Log:
-  ServiceName: usercenter-api
-  Level: error
 
 #WxMiniConf
 WxMiniConf:
-  AppId: wx2add729fadddddd
-  Secret: 20365395b3de9b2a9351ddddddd
+  AppId: wx2111111119fadddddd
+  Secret: 20311111111111111ddddddd
 
 #rpc service
-UsercenterRpcConf:
-  Endpoints:
-    - 127.0.0.1:2004
-  NonBlock: true
+# UsercenterRpcConf:
+#   Endpoints:
+#     - 127.0.0.1:2001
+#   NonBlock: true
 
+#rpc调用配置Basic
+# BasicRpcConf:
+#   Endpoints:
+#     - 127.0.0.1:2002
+#   NonBlock: true
+   
+ 
+
+#监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 21001
+#  Path: /metrics
+
+#链路追踪
+#Telemetry:
+#  Name: usercenter-api
+#  Endpoint: http://jaeger:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger

@@ -8,7 +8,7 @@ type ResponseSuccessBean struct {
 type NullJson struct{}
 
 func Success(data interface{}) *ResponseSuccessBean {
-	return &ResponseSuccessBean{200, "OK", data}
+	return &ResponseSuccessBean{200, "成功", data}
 }
 
 type ResponseErrorBean struct {

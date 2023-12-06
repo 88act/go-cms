@@ -22,6 +22,30 @@ func NewBasicServer(svcCtx *svc.ServiceContext) *BasicServer {
 	}
 }
 
+// 图形码
+func (s *BasicServer) Captcha(ctx context.Context, in *pb.CaptchaReq) (*pb.CaptchaResp, error) {
+	l := logic.NewCaptchaLogic(ctx, s.svcCtx)
+	return l.Captcha(in)
+}
+
+// 验证码
+func (s *BasicServer) SendCode(ctx context.Context, in *pb.SendCodeReq) (*pb.SendCodeResp, error) {
+	l := logic.NewSendCodeLogic(ctx, s.svcCtx)
+	return l.SendCode(in)
+}
+
+// 图形码
+func (s *BasicServer) VerifyCaptcha(ctx context.Context, in *pb.VerifyCodeReq) (*pb.VerifyCodeResp, error) {
+	l := logic.NewVerifyCaptchaLogic(ctx, s.svcCtx)
+	return l.VerifyCaptcha(in)
+}
+
+// 图形码
+func (s *BasicServer) VerifyCode(ctx context.Context, in *pb.VerifyCodeReq) (*pb.VerifyCodeResp, error) {
+	l := logic.NewVerifyCodeLogic(ctx, s.svcCtx)
+	return l.VerifyCode(in)
+}
+
 // FileDetail //文件详情
 func (s *BasicServer) FileDetail(ctx context.Context, in *pb.FileDetailReq) (*pb.FileDetailResp, error) {
 	l := logic.NewFileDetailLogic(ctx, s.svcCtx)

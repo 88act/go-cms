@@ -1,5 +1,9 @@
 // 自动生成模板BasicSms
 package model
+import (
+ 
+	. "go-cms/common/baseModel"
+)
 
 // BasicSms 结构体
 type BasicSms struct {

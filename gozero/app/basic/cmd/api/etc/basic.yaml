@@ -1,36 +1,76 @@
-Name: basic-api
+Name: basicApi
 Host: 0.0.0.0
-Port: 1005
+Port: 1002
 Mode: dev
 
-#监控
-Prometheus:
-  Host: 0.0.0.0
-  Port: 4009
-  Path: /metrics
-
-#链路追踪
-Telemetry:
-  Name: basic-api
-  Endpoint: http://jaeger:14268/api/traces
-  Sampler: 1.0
-  Batcher: jaeger
-
-
-#jwtAuth
-JwtAuth:
-  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
-  AccessExpire: 720
-
-
-Log:
-  ServiceName: basic-api
-  Level: error
+LogConf:
+  ServiceName: basicApi
+  Level: debug
+  KeepDays: 90
+  Mode: console 
+  Path: logs/basicApi
+  Rotation: daily
+  MaxSize: 5110
+  MaxBackups: 20
 
 DB:
-  DataSource: root:123456@tcp(mysql:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
-Cache:
-  - Host: redis:6379
-    Pass: G62m50oigInC30sf
+  DNS: gocms:gocms123456@tcp(mysql-gocms:53306)/go-cms?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  #设置打开数据库连接的最大数量
+  MaxOpenConns: 100
+  #设置空闲连接池中连接的最大数量
+  MaxIdleConns: 20
+  #连接最大空闲时间 单位秒
+  ConnMaxIdleTime: 60
+  #设置连接可复用的最大时间 单位秒
+  ConnMaxLifetime: 180
+  #慢查询200毫秒
+  #SlowThresholdMillisecond: 200
 
- 
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: 
+  Key: 
+
+LocalRes:
+  BaseUrl: https://10.0.0.81/
+  BasePath: /mydata/dnmp/www/gocms/
+  Path: res/sys
+  PathUser: res/user  
+
+    
+#jwtAuth
+JwtAuth:
+  AccessSecret: ae0536f9-1111-1111-1111-5a19ed505da0
+  AccessExpire: 31536000
+
+
+# Cache:
+#   - Host: redis:6379
+#     Pass: G62m50oigInC30sf  
+
+#rpc
+# UsercenterRpcConf:
+#   Endpoints:
+#     - 127.0.0.1:2001
+#   NonBlock: true
+
+# ImsRpcConf:
+#   Endpoints:
+#     - 127.0.0.1:2003
+#   NonBlock: true
+
+
+#监控
+# Prometheus:
+#   Host: 0.0.0.0
+#   Port: 21003
+#   Path: /metrics
+
+#链路追踪
+#Telemetry:
+#  Name: note-api
+#  Endpoint: http://jaeger:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+

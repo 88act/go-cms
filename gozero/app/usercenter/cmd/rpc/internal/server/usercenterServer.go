@@ -38,15 +38,13 @@ func (s *UsercenterServer) GetUserInfo(ctx context.Context, in *pb.GetUserInfoRe
 }
 
 func (s *UsercenterServer) GetUserAuthByAuthKey(ctx context.Context, in *pb.GetUserAuthByAuthKeyReq) (*pb.GetUserAuthByAuthKeyResp, error) {
-	//l := logic.NewGetUserAuthByAuthKeyLogic(ctx, s.svcCtx)
-	//return l.GetUserAuthByAuthKey(in)
-	return nil, nil
+	l := logic.NewGetUserAuthByAuthKeyLogic(ctx, s.svcCtx)
+	return l.GetUserAuthByAuthKey(in)
 }
 
 func (s *UsercenterServer) GetUserAuthByUserId(ctx context.Context, in *pb.GetUserAuthByUserIdReq) (*pb.GetUserAuthyUserIdResp, error) {
-	//l := logic.NewGetUserAuthByUserIdLogic(ctx, s.svcCtx)
-	//return l.GetUserAuthByUserId(in)
-	return nil, nil
+	l := logic.NewGetUserAuthByUserIdLogic(ctx, s.svcCtx)
+	return l.GetUserAuthByUserId(in)
 }
 
 func (s *UsercenterServer) GenerateToken(ctx context.Context, in *pb.GenerateTokenReq) (*pb.GenerateTokenResp, error) {

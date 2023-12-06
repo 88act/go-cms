@@ -45,6 +45,36 @@ message FileListResp {
   repeated FileInfo list = 1;
 }
 
+message CaptchaReq {  
+}
+message CaptchaResp {
+  string image  =1;       //base64的字符串图形
+  string key   =2;       //下一步用到的 key 
+  int32 expireTime =3;
+  int32 length =4;         //长度
+}
+
+message SendCodeReq {
+  int32 sendType  =1;    // 1 短信 2 邮件  
+  string  phone    =2;     // 短信或邮箱 
+  int32  verilyType  =3;   // 验证码类型 1注册,2密码登录,3手机登录,4修改密码
+  string key       =4;      // 获得的 key 
+  string code  =5;     // 看见的验证码code
+}
+message SendCodeResp { 
+  string Key     =1;        //下一步用到的 key 
+  int32 ExpireTime   =2;    
+}
+
+message VerifyCodeReq {
+  string key    = 1;       // 获得的 key 
+  string code   = 2;       // 看 见的验证码code
+} 
+message VerifyCodeResp {
+  int32 status    = 1;     //状态   1 正常 0 失败  
+} 
+
+
 message AddFileReq { 
   int64 userId  = 1;     //用户id 
   int32 mediaType  = 2;    //媒体类型  
@@ -65,10 +95,22 @@ message AddFileResp {
  
 //service
 service Basic {
+
+    //图形码
+    rpc Captcha(CaptchaReq) returns(CaptchaResp);
+    //验证码
+    rpc SendCode(SendCodeReq) returns(SendCodeResp);
+
+    //图形码
+    rpc VerifyCaptcha(VerifyCodeReq) returns(VerifyCodeResp);
+    //图形码
+    rpc VerifyCode(VerifyCodeReq) returns(VerifyCodeResp);
+
     //FileDetail //文件详情
     rpc FileDetail(FileDetailReq) returns(FileDetailResp);
     //FileList 文件列表
     rpc FileList(FileListReq) returns(FileListResp);
     //addFile 新增文件
-    rpc addFile(AddFileReq) returns(AddFileResp);
+    rpc AddFile(AddFileReq) returns(AddFileResp);
+
 }

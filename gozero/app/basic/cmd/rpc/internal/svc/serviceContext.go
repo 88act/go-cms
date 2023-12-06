@@ -3,6 +3,8 @@ package svc
 import (
 	"go-cms/app/basic/cmd/rpc/internal/config"
 	"go-cms/app/basic/model"
+	"go-cms/common/baseModel"
+	"go-cms/common/mycache"
 	"os"
 
 	"github.com/zeromicro/go-zero/core/logx"
@@ -16,7 +18,7 @@ type ServiceContext struct {
 	Config      config.Config
 	RedisClient *redis.Redis
 
-	BasicFileSev  *model.BasicFileSev
+	BasicFileSev  *baseModel.BasicFileSev
 	BasicEmailSev *model.BasicEmailSev
 	BasicSmsSev   *model.BasicSmsSev
 }
@@ -24,6 +26,8 @@ type ServiceContext struct {
 func NewServiceContext(c config.Config) *ServiceContext {
 	//sqlConn := sqlx.NewMysql(c.DB.DataSource)
 	gormDB := GormMysql(c.DB.DataSource)
+	//myconfig.HttpRoot = c.LocalRes.BaseUrl
+	mycache.InitObj(c.Redis.Host, "", 0)
 	// 新建 gorm 数据库 链接
 
 	return &ServiceContext{
@@ -32,9 +36,9 @@ func NewServiceContext(c config.Config) *ServiceContext {
 			r.Type = c.Redis.Type
 			r.Pass = c.Redis.Pass
 		}),
-		BasicFileSev:  model.NewBasicFileSev(gormDB, c.Cache),
-		BasicEmailSev: model.NewBasicEmailSev(gormDB, c.Cache),
-		BasicSmsSev:   model.NewBasicSmsSev(gormDB, c.Cache),
+		BasicFileSev:  baseModel.NewBasicFileSev(gormDB),
+		BasicEmailSev: model.NewBasicEmailSev(gormDB),
+		BasicSmsSev:   model.NewBasicSmsSev(gormDB),
 	}
 }
 
@@ -59,7 +63,7 @@ func GormMysql(dsn string) *gorm.DB {
 		os.Exit(0)
 		return nil
 	}
-	logx.Info("act rpc MySQL启动 success")
+	logx.Info("basic rpc MySQL启动 success")
 	return db
 
 }

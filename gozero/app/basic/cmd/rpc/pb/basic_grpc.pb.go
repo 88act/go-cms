@@ -22,6 +22,14 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BasicClient interface {
+	//图形码
+	Captcha(ctx context.Context, in *CaptchaReq, opts ...grpc.CallOption) (*CaptchaResp, error)
+	//验证码
+	SendCode(ctx context.Context, in *SendCodeReq, opts ...grpc.CallOption) (*SendCodeResp, error)
+	//图形码
+	VerifyCaptcha(ctx context.Context, in *VerifyCodeReq, opts ...grpc.CallOption) (*VerifyCodeResp, error)
+	//图形码
+	VerifyCode(ctx context.Context, in *VerifyCodeReq, opts ...grpc.CallOption) (*VerifyCodeResp, error)
 	//FileDetail //文件详情
 	FileDetail(ctx context.Context, in *FileDetailReq, opts ...grpc.CallOption) (*FileDetailResp, error)
 	//FileList 文件列表
@@ -36,6 +44,42 @@ type basicClient struct {
 
 func NewBasicClient(cc grpc.ClientConnInterface) BasicClient {
 	return &basicClient{cc}
+}
+
+func (c *basicClient) Captcha(ctx context.Context, in *CaptchaReq, opts ...grpc.CallOption) (*CaptchaResp, error) {
+	out := new(CaptchaResp)
+	err := c.cc.Invoke(ctx, "/pb.Basic/Captcha", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *basicClient) SendCode(ctx context.Context, in *SendCodeReq, opts ...grpc.CallOption) (*SendCodeResp, error) {
+	out := new(SendCodeResp)
+	err := c.cc.Invoke(ctx, "/pb.Basic/SendCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *basicClient) VerifyCaptcha(ctx context.Context, in *VerifyCodeReq, opts ...grpc.CallOption) (*VerifyCodeResp, error) {
+	out := new(VerifyCodeResp)
+	err := c.cc.Invoke(ctx, "/pb.Basic/VerifyCaptcha", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *basicClient) VerifyCode(ctx context.Context, in *VerifyCodeReq, opts ...grpc.CallOption) (*VerifyCodeResp, error) {
+	out := new(VerifyCodeResp)
+	err := c.cc.Invoke(ctx, "/pb.Basic/VerifyCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *basicClient) FileDetail(ctx context.Context, in *FileDetailReq, opts ...grpc.CallOption) (*FileDetailResp, error) {
@@ -58,7 +102,7 @@ func (c *basicClient) FileList(ctx context.Context, in *FileListReq, opts ...grp
 
 func (c *basicClient) AddFile(ctx context.Context, in *AddFileReq, opts ...grpc.CallOption) (*AddFileResp, error) {
 	out := new(AddFileResp)
-	err := c.cc.Invoke(ctx, "/pb.Basic/addFile", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Basic/AddFile", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,6 +113,14 @@ func (c *basicClient) AddFile(ctx context.Context, in *AddFileReq, opts ...grpc.
 // All implementations must embed UnimplementedBasicServer
 // for forward compatibility
 type BasicServer interface {
+	//图形码
+	Captcha(context.Context, *CaptchaReq) (*CaptchaResp, error)
+	//验证码
+	SendCode(context.Context, *SendCodeReq) (*SendCodeResp, error)
+	//图形码
+	VerifyCaptcha(context.Context, *VerifyCodeReq) (*VerifyCodeResp, error)
+	//图形码
+	VerifyCode(context.Context, *VerifyCodeReq) (*VerifyCodeResp, error)
 	//FileDetail //文件详情
 	FileDetail(context.Context, *FileDetailReq) (*FileDetailResp, error)
 	//FileList 文件列表
@@ -82,6 +134,18 @@ type BasicServer interface {
 type UnimplementedBasicServer struct {
 }
 
+func (UnimplementedBasicServer) Captcha(context.Context, *CaptchaReq) (*CaptchaResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Captcha not implemented")
+}
+func (UnimplementedBasicServer) SendCode(context.Context, *SendCodeReq) (*SendCodeResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendCode not implemented")
+}
+func (UnimplementedBasicServer) VerifyCaptcha(context.Context, *VerifyCodeReq) (*VerifyCodeResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyCaptcha not implemented")
+}
+func (UnimplementedBasicServer) VerifyCode(context.Context, *VerifyCodeReq) (*VerifyCodeResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyCode not implemented")
+}
 func (UnimplementedBasicServer) FileDetail(context.Context, *FileDetailReq) (*FileDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FileDetail not implemented")
 }
@@ -102,6 +166,78 @@ type UnsafeBasicServer interface {
 
 func RegisterBasicServer(s grpc.ServiceRegistrar, srv BasicServer) {
 	s.RegisterService(&Basic_ServiceDesc, srv)
+}
+
+func _Basic_Captcha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CaptchaReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BasicServer).Captcha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Basic/Captcha",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BasicServer).Captcha(ctx, req.(*CaptchaReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Basic_SendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendCodeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BasicServer).SendCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Basic/SendCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BasicServer).SendCode(ctx, req.(*SendCodeReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Basic_VerifyCaptcha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyCodeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BasicServer).VerifyCaptcha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Basic/VerifyCaptcha",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BasicServer).VerifyCaptcha(ctx, req.(*VerifyCodeReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Basic_VerifyCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyCodeReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BasicServer).VerifyCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Basic/VerifyCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BasicServer).VerifyCode(ctx, req.(*VerifyCodeReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Basic_FileDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -150,7 +286,7 @@ func _Basic_AddFile_Handler(srv interface{}, ctx context.Context, dec func(inter
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Basic/addFile",
+		FullMethod: "/pb.Basic/AddFile",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BasicServer).AddFile(ctx, req.(*AddFileReq))
@@ -166,6 +302,22 @@ var Basic_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BasicServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "Captcha",
+			Handler:    _Basic_Captcha_Handler,
+		},
+		{
+			MethodName: "SendCode",
+			Handler:    _Basic_SendCode_Handler,
+		},
+		{
+			MethodName: "VerifyCaptcha",
+			Handler:    _Basic_VerifyCaptcha_Handler,
+		},
+		{
+			MethodName: "VerifyCode",
+			Handler:    _Basic_VerifyCode_Handler,
+		},
+		{
 			MethodName: "FileDetail",
 			Handler:    _Basic_FileDetail_Handler,
 		},
@@ -174,7 +326,7 @@ var Basic_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Basic_FileList_Handler,
 		},
 		{
-			MethodName: "addFile",
+			MethodName: "AddFile",
 			Handler:    _Basic_AddFile_Handler,
 		},
 	},

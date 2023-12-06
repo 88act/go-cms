@@ -10,7 +10,8 @@ info(
 
 import (
 	"file/file.api"
-	"sms/sms.api"
+	 
+	"file/common.api"
 )
 
 //=====================================> basic v1 <=================================
@@ -21,25 +22,29 @@ import (
 )
 service basic {
 	
-	@doc "获取key"
-	@handler getKey
-	get /basic/getKey (getKeyReq) returns (getKeyResp)
+	// @doc "获取图形码"
+	// @handler Captcha
+	// get /basic/captcha (CaptchaReq) returns (CaptchaResp)
 	
-	@doc "获取图形码"
-	@handler getCaptcha
-	get /basic/getCaptcha (GetCaptchaReq) returns (GetCaptchaResp)
+	// @doc "发送验证码"
+	// @handler SendCode
+	// get /basic/sendCode (SendCodeReq) returns (SendCodeResp)
 	
-	@doc "发送验证码"
-	@handler getCode
-	get /basic/sendCode (GetCodeReq) returns (GetCodeResp)
-	
-	@doc "文件列表"
+	@doc "文件列表 通过guid获取 "
 	@handler FileList
-	post /basic/fileList (FileListReq) returns (FileListResp)
+	post /basic/fileList (PageInfoReq) returns (FileListResp)
 	
 	@doc "文件详情"
 	@handler FileDetail
-	post /basic/fileDetail (FileDetailReq) returns (FileDetailResp)
+	post /basic/fileDetail (ValReq) returns (FileDetailResp)
+	
+	@doc "上传文件,最大100M ,允许 jpg/png/jpeg/mp3/mp4/pdf/zip/docx"
+	@handler Upload
+	post /basic/upload(UploadReq)  returns (FileDetailResp)
+	
+	@doc "通过md5获取"
+	@handler GetFileByKey
+	post /basic/getFileByKey(ValReq)  returns (FileDetailResp)
 	
 }
 
@@ -50,7 +55,12 @@ service basic {
 	jwt: JwtAuth
 )
 service basic {
-	@doc "上传文件"
-	@handler Upload
-	post /basic/upload (UploadReq) returns (UploadResp)
+	
+	@doc "我的文件列表"
+	@handler MyFileList
+	post /basic/myFileList(PageInfoReq) returns (FileListResp)
+	
+	@doc "删除文件列表"
+	@handler DelFileList
+	post /basic/delFileList(GuidListReq) returns (OkResp)
 }

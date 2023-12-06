@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"go-cms/app/basic/cmd/rpc/internal/config"
-	"go-cms/app/basic/cmd/rpc/internal/listen"
 	"go-cms/app/basic/cmd/rpc/internal/server"
 	"go-cms/app/basic/cmd/rpc/internal/svc"
 	"go-cms/app/basic/cmd/rpc/pb"
@@ -40,16 +39,16 @@ func main() {
 
 	//defer s.Stop()
 
-	fmt.Printf("Starting basic rpc server at %s...\n", c.ListenOn)
+	fmt.Printf("启动 basic rpc server at %s...\n", c.ListenOn)
 	//s.Start()
 
 	serviceGroup := service.NewServiceGroup()
 	defer serviceGroup.Stop()
 
-	for _, mq := range listen.Mqs(c) {
-		fmt.Printf("启动消息队列监听 basic mq  server ...\n")
-		serviceGroup.Add(mq)
-	}
+	// for _, mq := range listen.Mqs(c) {
+	// 	fmt.Printf("启动消息队列监听 basic mq  server ...\n")
+	// 	serviceGroup.Add(mq)
+	// }
 	serviceGroup.Add(s)
 	serviceGroup.Start()
 

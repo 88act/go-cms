@@ -5,8 +5,6 @@ import (
 
 	"go-cms/app/usercenter/cmd/api/internal/svc"
 	"go-cms/app/usercenter/cmd/api/internal/types"
-	"go-cms/app/usercenter/cmd/rpc/usercenter"
-	"go-cms/common/ctxdata"
 
 	"github.com/jinzhu/copier"
 	"github.com/zeromicro/go-zero/core/logx"
@@ -26,21 +24,22 @@ func NewDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) DetailLogic
 	}
 }
 
-func (l *DetailLogic) Detail(req types.UserInfoReq) (*types.UserInfoResp, error) {
+func (l *DetailLogic) Detail(userId int64) (resp *types.UserInfoResp, err error) {
 
-	userId := ctxdata.GetUidFromCtx(l.ctx)
-
-	userInfoResp, err := l.svcCtx.UsercenterRpc.GetUserInfo(l.ctx, &usercenter.GetUserInfoReq{
-		Id: userId,
-	})
-	if err != nil {
+	if memUser, err := l.svcCtx.MemUserSev.Get(l.ctx, userId, ""); err == nil {
+		var user types.MemUser
+		_ = copier.Copy(&user, memUser)
+		return &types.UserInfoResp{UserInfo: user}, nil
+	} else {
 		return nil, err
 	}
-
-	var userInfo types.MemUser
-	_ = copier.Copy(&userInfo, userInfoResp.User)
-
-	return &types.UserInfoResp{
-		UserInfo: userInfo,
-	}, nil
+	// rpcReq := usercenter.GetUserInfoReq{Id: userId}
+	// if rpcResp, err := l.svcCtx.UsercenterRpc.GetUserInfo(l.ctx, &rpcReq); err == nil {
+	// 	//logx.Error(rpcResp)
+	// 	var user types.MemUser
+	// 	_ = copier.Copy(&user, rpcResp.User)
+	// 	return &types.UserInfoResp{UserInfo: user}, nil
+	// } else {
+	// 	return nil, errors.Wrapf(err, "req: %+v", userId)
+	// }
 }

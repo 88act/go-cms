@@ -1,8 +1,9 @@
 package middleware
 
 import (
-	"github.com/zeromicro/go-zero/rest/handler"
 	"net/http"
+
+	"github.com/zeromicro/go-zero/rest/handler"
 )
 
 // CommonJwtAuthMiddleware : with jwt on the verification, no jwt on the verification
@@ -18,6 +19,7 @@ func NewCommonJwtAuthMiddleware(secret string) *CommonJwtAuthMiddleware {
 
 func (m *CommonJwtAuthMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		//if len(r.Header.Get("x-token")) > 0 {
 		if len(r.Header.Get("Authorization")) > 0 {
 			//has jwt Authorization
 			authHandler := handler.Authorize(m.secret)

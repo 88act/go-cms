@@ -1,0 +1,77 @@
+syntax = "v1"
+
+info(
+	title: "通用请求"
+	desc: "通用请求"
+	author: "linjd"
+	email: "10512203@qq.com"
+	version: "v1"
+)
+ 
+type (
+	//分页
+	PageInfoReq {
+		Page      int    `json:"page"`  // 页码
+		PageSize  int    `json:"pageSize"`//页大小
+		Order     string `json:"order"`   //排序字段
+		Desc      bool   `json:"desc"`   //排序升降
+		SearchKey string `json:"searchKey"` //查询key
+		Status    int    `json:"status"`  // 状态 
+		//CreatedAtBegin  string `json:"createdAtBegin"`  
+	    //CreatedAtEnd     string`json:"createdAtEnd"`    
+	} 
+)
+
+type (
+	//id 请求
+	IdReq {
+		Id int64 `json:"id"` // id  请求
+	}
+	ValReq {
+		Val string `json:"val"` // 值 请求
+	}
+	//idList 请求
+	IdListReq {
+		IdList []int64 `json:"idList"` // idList 请求
+	}
+ 
+	//guidList 请求
+	GuidListReq {
+		GuidList []string `json:"guidList"` // guidList 请求
+	}
+
+	//键值对 请求
+	IdValueReq {
+		Table string `json:"table"` //对应表
+		Id    int64  `json:"id"`    // id
+		Value string `json:"value"` //值
+	}
+	//键值对List 请求
+	IdValueListReq {       
+		IdValueList []IdValueReq `json:"idValueList"` // IdValueList
+	} 
+)  
+
+type (
+	 //ok 返回值
+	OkResp {
+		Id int64 `json:"id"` 
+		Status   int    `json:"status"`
+		Msg     string `json:"msg"`
+	}
+
+	//键值对
+	IdValue {		 
+		Id    int64  `json:"id"`    // id
+		Value string `json:"value"` //值
+		Path  string `json:"path"` //url
+	}
+
+	IdValueListResp {
+		 list  []IdValue `json:"list"`  
+	}
+	FileObj {
+		Path string `json:"path"`
+	    Guid string `json:"guid"`
+	}
+)

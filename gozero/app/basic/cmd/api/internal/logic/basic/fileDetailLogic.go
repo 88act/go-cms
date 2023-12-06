@@ -6,6 +6,7 @@ import (
 	"go-cms/app/basic/cmd/api/internal/svc"
 	"go-cms/app/basic/cmd/api/internal/types"
 
+	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -23,8 +24,22 @@ func NewFileDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) FileDet
 	}
 }
 
-func (l *FileDetailLogic) FileDetail(req *types.FileDetailReq) (resp *types.FileDetailResp, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+func (l *FileDetailLogic) FileDetail(req *types.ValReq) (resp *types.FileDetailResp, err error) {
+	if req.Val == "" {
+		return nil, errors.New("参数错误")
+	}
+	mapData := make(map[string]interface{})
+	mapData["guid"] = req.Val
+	//logx.Errorf("====1====userid === %v", userId)
+	if basicFile, err := l.svcCtx.BasicFileSev.GetByMap(l.ctx, mapData, ""); err == nil {
+		basicFileNew := types.FileDetailResp{}
+		basicFileNew.Info.Guid = basicFile.Guid
+		basicFileNew.Info.Name = basicFile.Name
+		basicFileNew.Info.Path = basicFile.Path
+		basicFileNew.Info.MediaType = basicFile.MediaType
+		basicFileNew.Info.Size = basicFile.Size
+		return &basicFileNew, nil
+	} else {
+		return resp, err
+	}
 }

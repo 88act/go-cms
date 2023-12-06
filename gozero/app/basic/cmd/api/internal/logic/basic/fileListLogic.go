@@ -23,8 +23,15 @@ func NewFileListLogic(ctx context.Context, svcCtx *svc.ServiceContext) FileListL
 	}
 }
 
-func (l *FileListLogic) FileList(req *types.FileListReq) (resp *types.FileListResp, err error) {
-	// todo: add your logic here and delete this line
+func (l *FileListLogic) FileList(req *types.PageInfoReq) (out *types.FileListResp, err error) {
 
-	return
+	// fileListResp, err := l.svcCtx.BasicRpc.FileList(l.ctx, &basic.FileListReq{Ids: req.Ids})
+	// if err != nil {
+	// 	return nil, err
+	// }
+
+	// var resp types.FileListResp
+	// _ = copier.Copy(&resp, fileListResp)
+
+	return out, nil
 }

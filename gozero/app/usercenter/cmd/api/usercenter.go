@@ -11,7 +11,7 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "etc/usercenter.yaml", "the config file")
+var configFile = flag.String("f", "./etc/usercenter.yaml", "the config file")
 
 func main() {
 	flag.Parse()
@@ -24,6 +24,6 @@ func main() {
 
 	handler.RegisterHandlers(server, ctx)
 
-	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
+	fmt.Printf("启动 usercenter server at %s:%d...\n", c.Host, c.Port)
 	server.Start()
 }

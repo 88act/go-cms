@@ -6,40 +6,35 @@ info(
 	author: "go-cms"
 	email: "10512203@qq.com"
 	version: "v1"
-)
+) 
+
+
  // BasicFile 结构体 
 type (
  FileInfo  {  
     Guid  string `json:"guid"`    //唯一id  
+	Name  string `json:"name"`    //name  
     Path  string `json:"path"`    //文件路径
-    Ext  string `json:"ext"`    //文件类型
+    mediaType  int `json:"mediaType"`  //媒体类型  // 1 图片 2 视频 3音频 4文档 
     Size  int `json:"size"`   //文件大小[k] 
-   }
-) 
-
-type (
-	FileListReq {
-		ids []string `json:"ids"` 
-	}
+   } 
+   
 	FileListResp {
-		List []FileInfo `json:"list"`
+		Total int64 `json:"total"`     
+		List []FileInfo `json:"list"` 
 	}
-) 
-
-type (
-	FileDetailReq {
-		id string `json:"id"` 
-	}
+ 
 	FileDetailResp {
 		info FileInfo `json:"info"`
 	}
-) 
-
-
-type (
+ 
 	UploadReq { 
+     CatId int64 `json:"catId" form:"catId"`     //栏目id  
+     FileType  string `json:"fileType" form:"fileType"`   //文件类型 
+     Size int `json:"size" form:"size"`           //文件大小[k]
+     Md5  string `json:"md5" form:"md5"`         //md5值
+     Sha1  string `json:"sha1" form:"sha1"`     //sha散列值   
+	 BeCut int `json:"beCut" form:"beCut"`      //是否分割 
 	}
-	UploadResp {
-		info FileInfo `json:"info"`
-	}
+ 
 ) 

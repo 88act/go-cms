@@ -1,0 +1,19 @@
+Name: app-gateway
+Host: 127.0.0.1
+Port: 8888 
+Upstreams:  
+  - Grpc:
+      Endpoints:
+        - 127.0.0.1:2001 
+    Mappings:
+      - Method: post
+        Path: /usercenter/login
+        RpcPath: usercenter.usercenter/Login
+
+  - Grpc:
+      Endpoints:
+        - 127.0.0.1:2001 
+    Mappings:
+      - Method: get
+        Path: /usercenter/Register
+        RpcPath: usercenter.usercenter/Register       

@@ -2,68 +2,89 @@
 package types
 
 type MemUser struct {
-	Id              int64  `json:"id"`              //  id
-	Username        string `json:"username"`        //用户名
-	Password        string `json:"password"`        //密码
-	PasswordSlat    string `json:"passwordSlat"`    //密码盐
-	Email           string `json:"email"`           //邮件
-	Mobile          string `json:"mobile"`          //手机
-	Nickname        string `json:"nickname"`        //昵称
-	Realname        string `json:"realname"`        //真实名
-	CardId          string `json:"cardId"`          //身份证
-	Sex             int    `json:"sex"`             //性别
-	Birthday        *int64 `json:"birthday"`        //生日
-	Avatar          string `json:"avatar"`          //头像
-	MobileValidated bool   `json:"mobileValidated"` //验证手机
-	EmailValidated  bool   `json:"emailValidated"`  //验证邮箱
-	CardidValidated bool   `json:"cardidValidated"` //验证实名
-	Info            string `json:"info"`            //备注
-	RecommendCode   string `json:"recommendCode"`   //推荐码16位（自己的）
-	Status          int    `json:"status"`          //状态
-	StatusSafe      int    `json:"statusSafe"`      //安全状态
-	RegIp           int    `json:"regIp"`           //注册ip
-	LoginIp         int    `json:"loginIp"`         //登录ip
-	LoginTotal      int    `json:"loginTotal"`      //登录次数
-	LoginTime       *int64 `json:"loginTime"`       //最后登录时间
-}
-
-type RegisterReq struct {
-	Mobile   string `json:"mobile"`
-	Password string `json:"password"`
-}
-
-type RegisterResp struct {
-	AccessToken  string `json:"accessToken"`
-	AccessExpire int64  `json:"accessExpire"`
-	RefreshAfter int64  `json:"refreshAfter"`
+	Id       int64  `json:"id"`       // 用户id
+	Username string `json:"username"` //用户名
+	Mobile   string `json:"mobile"`   //手机
+	Nickname string `json:"nickname"` //昵称
+	Realname string `json:"realname"` //真实名
+	Sex      int    `json:"sex"`      //性别
+	Avatar   string `json:"avatar"`   //头像
+	Status   int    `json:"status"`   //状态
+	CuId     int64  `json:"cuId"`     //客户id
+	CuGuid   string `json:"cuGuid"`   //客户GUID
 }
 
 type LoginReq struct {
-	Mobile   string `json:"mobile"`
-	Password string `json:"password"`
+	Username string `json:"username"` //用户名
+	Password string `json:"password"` //密码
+}
+
+type LoginScanReq struct {
+	Value string `json:"value"` //  二维码值
 }
 
 type LoginResp struct {
-	AccessToken  string `json:"accessToken"`
+	AccessToken  string `json:"accessToken"` //认证token
 	AccessExpire int64  `json:"accessExpire"`
 	RefreshAfter int64  `json:"refreshAfter"`
-}
-
-type WXMiniAuthReq struct {
-	Code          string `json:"code"`
-	IV            string `json:"iv"`
-	EncryptedData string `json:"encryptedData"`
-}
-
-type WXMiniAuthResp struct {
-	AccessToken  string `json:"accessToken"`
-	AccessExpire int64  `json:"accessExpire"`
-	RefreshAfter int64  `json:"refreshAfter"`
-}
-
-type UserInfoReq struct {
 }
 
 type UserInfoResp struct {
-	UserInfo MemUser `json:"userInfo"`
+	UserInfo MemUser `json:"userInfo"` //用户信息
+}
+
+type PageInfoReq struct {
+	Page           int    `json:"page"`
+	PageSize       int    `json:"pageSize"`
+	Order          string `json:"order"`
+	Desc           bool   `json:"desc"`
+	SearchKey      string `json:"searchKey"`
+	Status         int    `json:"status"`
+	CreatedAtBegin string `json:"createdAtBegin"`
+	CreatedAtEnd   string `json:"createdAtEnd"`
+}
+
+type IdReq struct {
+	Id int64 `json:"id"` // id  请求
+}
+
+type ValReq struct {
+	Value string `json:"value"` // 值 请求
+}
+
+type IdListReq struct {
+	IdList []int64 `json:"idList"` // idList 请求
+}
+
+type GuidListReq struct {
+	GuidList []string `json:"guidList"` // guidList 请求
+}
+
+type IdValueReq struct {
+	Table string `json:"table"` //对应表
+	Id    int64  `json:"id"`    // id
+	Value string `json:"value"` //值
+}
+
+type IdValueListReq struct {
+	IdValueList []IdValueReq `json:"idValueList"` // IdValueList
+}
+
+type OkResp struct {
+	Msg string `json:"msg"`
+}
+
+type IdValue struct {
+	Id    int64  `json:"id"`    // id
+	Value string `json:"value"` //值
+	Path  string `json:"path"`  //url
+}
+
+type IdValueListResp struct {
+	List []IdValue `json:"list"`
+}
+
+type FileObj struct {
+	Path string `json:"path"`
+	Guid string `json:"guid"`
 }

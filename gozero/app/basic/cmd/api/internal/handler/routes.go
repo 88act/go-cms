@@ -14,21 +14,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodGet,
-				Path:    "/basic/getKey",
-				Handler: basic.GetKeyHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/basic/getCaptcha",
-				Handler: basic.GetCaptchaHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/basic/sendCode",
-				Handler: basic.GetCodeHandler(serverCtx),
-			},
-			{
 				Method:  http.MethodPost,
 				Path:    "/basic/fileList",
 				Handler: basic.FileListHandler(serverCtx),
@@ -38,6 +23,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/basic/fileDetail",
 				Handler: basic.FileDetailHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/basic/upload",
+				Handler: basic.UploadHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/basic/getFileByKey",
+				Handler: basic.GetFileByKeyHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/basic/v1"),
 	)
@@ -46,8 +41,13 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/basic/upload",
-				Handler: basic.UploadHandler(serverCtx),
+				Path:    "/basic/myFileList",
+				Handler: basic.MyFileListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/basic/delFileList",
+				Handler: basic.DelFileListHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),

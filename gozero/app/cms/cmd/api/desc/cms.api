@@ -1,0 +1,59 @@
+syntax = "v1"
+
+info(
+	title: "CMS服务"
+	desc: "CMS服务"
+	author: "linjd"
+	email: "10512203@qq.com"
+	version: "v1.0"
+)
+
+import (
+	"cms/cms.api"
+)
+
+//=====================================> cms v1 <=================================
+
+// need login
+@server(
+	prefix: cms/v1
+	group: cms
+)
+
+service cms {
+	
+	@doc "文章列表"
+	@handler artList
+	post /cms/artList (PageInfoReq) returns (ArtListResp)
+	
+	@doc "栏目列表"
+	@handler catList
+	post /cms/catList  returns (CatListResp)
+	
+	@doc "文章详细"
+	@handler artDetail
+	post /cms/artDetail (IdReq) returns (ArtDetailResp)
+	
+	@doc "评论List"
+	@handler  discussList
+	post /cms/discussList(PageInfoReq) returns (DiscussListResp)
+}
+
+// need login
+@server(
+	prefix: cms/v1
+	group: cms
+	jwt: JwtAuth
+)
+
+service cms {
+	
+	@doc "发表评论"
+	@handler  discuss
+	post /cms/discuss(DiscussReq) returns (OkResp)
+	
+	@doc "删除评论"
+	@handler  delDiscuss
+	post /cms/delDiscuss(IdReq) returns (OkResp)
+	
+}

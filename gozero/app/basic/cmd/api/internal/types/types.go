@@ -2,22 +2,16 @@
 package types
 
 type FileInfo struct {
-	Guid string `json:"guid"` //唯一id
-	Path string `json:"path"` //文件路径
-	Ext  string `json:"ext"`  //文件类型
-	Size int    `json:"size"` //文件大小[k]
-}
-
-type FileListReq struct {
-	Ids []string `json:"ids"`
+	Guid      string `json:"guid"`      //唯一id
+	Name      string `json:"name"`      //name
+	Path      string `json:"path"`      //文件路径
+	MediaType int    `json:"mediaType"` //媒体类型  // 1 图片 2 视频 3音频 4文档
+	Size      int    `json:"size"`      //文件大小[k]
 }
 
 type FileListResp struct {
-	List []FileInfo `json:"list"`
-}
-
-type FileDetailReq struct {
-	Id string `json:"id"`
+	Total int64      `json:"total"`
+	List  []FileInfo `json:"list"`
 }
 
 type FileDetailResp struct {
@@ -25,35 +19,92 @@ type FileDetailResp struct {
 }
 
 type UploadReq struct {
+	CatId    int64  `json:"catId" form:"catId"`       //栏目id
+	FileType string `json:"fileType" form:"fileType"` //文件类型
+	Size     int    `json:"size" form:"size"`         //文件大小[k]
+	Md5      string `json:"md5" form:"md5"`           //md5值
+	Sha1     string `json:"sha1" form:"sha1"`         //sha散列值
+	BeCut    int    `json:"beCut" form:"beCut"`        //是否分割	
+	FilePath    string `json:"filePath" form:"filePath"` //文件路径
+	FileName    string `json:"fileName" form:"fileName"`  //文件名
+	UserId  int64 `json:"userId" form:"userId"`       //文件路径
 }
 
-type UploadResp struct {
-	Info FileInfo `json:"info"`
+type CaptchaReq struct {
 }
 
-type GetKeyReq struct {
+type CaptchaResp struct {
+	Image      string `json:"image"` //base64的字符串图形
+	Key        string `json:"key"`   //下一步用到的 key
+	ExpireTime int32  `json:"expireTime"`
+	Length     int32  `json:"length"` //长度
 }
 
-type GetKeyResp struct {
-	Key        string `json:"key"`
+type SendCodeReq struct {
+	SendType   int32  `json:"sendType"`   // 1 短信 2 邮件
+	Phone      string `json:"phone"`      // 短信或邮箱
+	VerilyType int32  `json:"verilyType"` // 验证码类型 1注册,2密码登录,3手机登录,4修改密码
+	Key        string `json:"key"`        // 获得的 key
+	Code       string `json:"code"`       // 看见的验证码code
+}
+
+type SendCodeResp struct {
+	Key        string `json:"key"` //下一步用到的 key
 	ExpireTime int32  `json:"expireTime"`
 }
 
-type GetCaptchaReq struct {
-	Key string `json:"key"`
+type PageInfoReq struct {
+	Page      int    `json:"page"`      // 页码
+	PageSize  int    `json:"pageSize"`  //页大小
+	Order     string `json:"order"`     //排序字段
+	Desc      bool   `json:"desc"`      //排序升降
+	SearchKey string `json:"searchKey"` //查询key
+	Status    int    `json:"status"`    // 状态
 }
 
-type GetCaptchaResp struct {
-	Image string `json:"image"`
+type IdReq struct {
+	Id int64 `json:"id"` // id  请求
 }
 
-type GetCodeReq struct {
-	SendType   int32  `json:"sendType"`   // 1 短信 2 邮件
-	Phone      string `json:"phone"`      // 1 短信 2 邮件
-	VerilyType int32  `json:"verilyType"` //验证码类型 1注册,2密码登录,3手机登录,4修改密码
-	Key        string `json:"key"`
-	Code       string `json:"code"`
+type ValReq struct {
+	Val string `json:"val"` // 值 请求
 }
 
-type GetCodeResp struct {
+type IdListReq struct {
+	IdList []int64 `json:"idList"` // idList 请求
+}
+
+type GuidListReq struct {
+	GuidList []string `json:"guidList"` // guidList 请求
+}
+
+type IdValueReq struct {
+	Table string `json:"table"` //对应表
+	Id    int64  `json:"id"`    // id
+	Value string `json:"value"` //值
+}
+
+type IdValueListReq struct {
+	IdValueList []IdValueReq `json:"idValueList"` // IdValueList
+}
+
+type OkResp struct {
+	Id     int64  `json:"id"`
+	Status int    `json:"status"`
+	Msg    string `json:"msg"`
+}
+
+type IdValue struct {
+	Id    int64  `json:"id"`    // id
+	Value string `json:"value"` //值
+	Path  string `json:"path"`  //url
+}
+
+type IdValueListResp struct {
+	List []IdValue `json:"list"`
+}
+
+type FileObj struct {
+	Path string `json:"path"`
+	Guid string `json:"guid"`
 }

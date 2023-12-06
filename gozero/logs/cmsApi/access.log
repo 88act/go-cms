@@ -1,0 +1,36 @@
+{"@timestamp":"2023-12-06T16:01:34.552+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.605+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.605+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:01:34.607+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:03:52.258+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:03:52.314+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:03:52.314+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:03:52.316+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:05:26.596+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:05:26.702+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:05:26.702+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:05:26.703+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:05:59.712+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:05:59.769+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:05:59.769+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:05:59.772+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:09:14.828+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:09:14.905+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:09:14.905+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:09:14.907+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:11:57.982+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:11:58.032+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:11:58.032+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:11:58.033+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:19:31.603+08:00","caller":"svc/serviceContext.go:31","content":"cmsApi 服务启动...0.0.0.0 port=1003","level":"info"}
+{"@timestamp":"2023-12-06T16:19:31.653+08:00","caller":"svc/serviceContext.go:90","content":"{MaxOpenConnections:100 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}","level":"info"}
+{"@timestamp":"2023-12-06T16:19:31.653+08:00","caller":"svc/serviceContext.go:91","content":"cmsApi  MySQL启动 success","level":"info"}
+{"@timestamp":"2023-12-06T16:19:31.654+08:00","caller":"mycache/cache.go:42","content":"redis链接成功 addr=redis:6379","level":"info"}
+{"@timestamp":"2023-12-06T16:19:37.745+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /act/v1/act/actList - 127.0.0.1:54872 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"983d49c0bcac9373","trace":"6b45acdf60be1b91ea6041959f954a53"}
+{"@timestamp":"2023-12-06T16:19:41.066+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /act/v1/act/actList - 127.0.0.1:54875 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"94549acebc08f71d","trace":"cae1ab59130b07d949a86dde1f215c8e"}
+{"@timestamp":"2023-12-06T16:19:41.953+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /act/v1/act/actList - 127.0.0.1:54875 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"cc7dafdfab23f4ff","trace":"03a453bcdeda978f8f89c7656849268d"}
+{"@timestamp":"2023-12-06T16:19:42.754+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /act/v1/act/actList - 127.0.0.1:54875 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"e6e0c017d92cd67f","trace":"644dbdb7c3447a6f658357b9e5d7986e"}
+{"@timestamp":"2023-12-06T16:20:17.828+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /cms/v1/cms/cmsList - 127.0.0.1:54890 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"dc836a1edbf15d83","trace":"426146af6f229fbc96f5eb715f66b816"}
+{"@timestamp":"2023-12-06T16:20:30.985+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /cms/v1/cms/actList - 127.0.0.1:54896 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"e691e6e2cb4a9bc8","trace":"f04a9d0dfc0cff954c62fa54d2b360ea"}
+{"@timestamp":"2023-12-06T16:20:32.680+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /cms/v1/cms/actList - 127.0.0.1:54896 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"4deefbf7d44dfc7a","trace":"12e068678009a79c15ddb84fa6c5fe22"}
+{"@timestamp":"2023-12-06T16:20:34.634+08:00","caller":"handler/loghandler.go:147","content":"[HTTP] 404 - POST /cms/v1/cms/actList - 127.0.0.1:54896 - PostmanRuntime/7.35.0","duration":"0.0ms","level":"info","span":"135a37b719a342a0","trace":"5b39ef05b402652600bc672a7f8ab8c6"}
