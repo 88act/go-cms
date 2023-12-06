@@ -3,7 +3,7 @@
 </div>
 <div align=center>
 <img src="https://img.shields.io/badge/golang-1.21-blue"/>
-<img src="https://img.shields.io/badge/go-zero-1.6.0-blue"/>
+<img src="https://img.shields.io/badge/go-zero-blue"/>
 <img src="https://img.shields.io/badge/gin-1.6.3-blue"/>
 <img src="https://img.shields.io/badge/vue-3.3.7-blue"/> 
 <img src="https://img.shields.io/badge/vite-4.5.0-blue"/> 
@@ -21,11 +21,8 @@ go-cms v2.0 新版 升级到 go 1.21
 演示golang gin  结合 vue3 的管理后台，以及演示居于gozero+gorm的微服务前端api项目 
 vue3 使用最新的TypeScript、Pinia、Tailwindcss，Vite、Element-Plus技术。
 
- 
-go-cms v2.0 新版    
-本项目是一个 cms/企业官网/文章/新闻/群组/圈子 通用内容管理系统 
-演示golang gin  结合 vue3 的管理后台，以及演示居于gozero+gorm的微服务前端api项目 
-vue3 使用最新的TypeScript、Pinia、Tailwindcss，Vite、Element-Plus技术。
+> 在线体验： 
+- 管理后台: https://120.79.55.204/admin/  账号admin  密码123456    
 
  
 ## 1. 基本介绍
@@ -87,3 +84,16 @@ go-cms, golang的cms内容管理系统,
 
     ./modd  
  
+
+
+
+
+####  gocms 管理后台截图
+
+<img src="https://120.79.55.204/res/img/cms1.jpg" width = "70%" />
+<img src="https://120.79.55.204/res/img/cms2.jpg" width = "70%" />
+<img src="https://120.79.55.204/res/img/cms3.jpg" width = "70%" />
+<img src="https://120.79.55.204/res/img/cms4.jpg" width = "70%" />
+<img src="https://120.79.55.204/res/img/cms5.jpg" width = "70%" />
+<img src="https://120.79.55.204/res/img/cms6.jpg" width = "70%" />
+
