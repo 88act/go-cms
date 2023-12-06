@@ -1,6 +1,7 @@
 .vscode
 .cloudbase
-node_modules
+/web/node_modules
 /web/dist
 /server/res
 /server/log
+/server/gocms
