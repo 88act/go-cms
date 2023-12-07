@@ -1,5 +1,5 @@
 <div align=center>
-<img src="https://www.88act.com/cms/logo.png" width="200" height="200" />
+<img src="https://www.88act.com/cms/logo.png"   />
 </div>
 <div align=center>
 <img src="https://img.shields.io/badge/golang-1.21-blue"/>
