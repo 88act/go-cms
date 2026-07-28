@@ -32,6 +32,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	mycache.InitObj(c.Redis.Host, c.Redis.Pass, 0)
 	myconfig.HttpRoot = c.LocalRes.BaseUrl
 
+	// Database seeding would typically happen here if SQL files are empty
 	// 新建 gorm 数据库 链接
 	return &ServiceContext{
 		Config: c,
